@@ -6,10 +6,10 @@ This snippet demonstrates how to use the `jwt-encode()` and `jwt-decode()` funct
 
 We want to have the JWT Secret (used for signing and verifying a JWS) configurable via an environment variable.
 
-In a development setup, we can simply define a shell variable that starts with `FLAT_`. `flat.sh` will forward all `FLAT_*` variables to the docker container:
+In a development setup, we can simply define a shell variable that starts with `FLAT_`. `flat` will forward all `FLAT_*` variables to the docker container:
 
 ```shell
-$ FLAT_JWT_SECRET=YXNkZg== flat.sh start
+$ FLAT_JWT_SECRET=YXNkZg== flat start
 ```
 
 The secret must be base64-url encoded. We use our favorite passphrase `asdf` here.
@@ -82,5 +82,5 @@ Of course, you could also do that once outside of FLAT before setting the env va
 ```shell
 $ echo -n "YXNkZg==" | base64
 WVhOa1pnPT0=
-$ FLAT_AUTH0_JWT_SECRET=WVhOa1pnPT0= flat.sh start
+$ FLAT_AUTH0_JWT_SECRET=WVhOa1pnPT0= flat start
 ```

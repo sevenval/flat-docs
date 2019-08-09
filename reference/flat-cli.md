@@ -1,15 +1,17 @@
-# `flat.sh`
+# `flat` CLI
 
-Start the local service with:
+Get `flat` CLI from [sevenval/flat-cli](https://github.com/sevenval/flat-cli).
+
+Start the local FLAT server with:
 
 ```sh
-$ flat.sh start
+$ flat start
 ```
 
 Type
 
 ```sh
-$ flat.sh -h
+$ flat -h
 ```
 
 for all available commands and options of the FLAT cli.

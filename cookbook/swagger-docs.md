@@ -45,7 +45,7 @@ basePath: /api
 …
 ```
 
-The `host` must point to the your FLAT server. `flat.sh start` defaults to `localhost:8080`. Don't forget to set the `http` scheme.
+The `host` must point to the your FLAT server. `flat start` defaults to `localhost:8080`. Don't forget to set the `http` scheme.
 
 Now, Swagger UI can create API requests for you. But your browser won't be allowed to fetch those URLs because of [CORS](https://developer.mozilla.org/docs/Web/HTTP/CORS) restrictions.
 
