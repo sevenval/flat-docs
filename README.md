@@ -2,9 +2,10 @@
 
 ![Couper](https://couper.io/assets/images/couper-logo.svg)
 
-FLAT - the "Frontend Layer API Toolkit" by [Sevenval](https://www.sevenval.com/) is designed
-for easy decoupling frontend from backend in modern web applications.
-See [couper.io](https://couper.io/) for more details.
+_FLAT_ - the "Frontend Layer API Toolkit" by [Sevenval](https://www.sevenval.com/) is designed
+for easy decoupling frontend from backend in modern web applications. It is the
+preview version of _Couper_. See [couper.io](https://couper.io/) for more
+details.
 
 This developer's documention helps building maintainable JSON-based web APIs
 on top of FLAT.
