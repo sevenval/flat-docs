@@ -15,3 +15,5 @@
 ## [Auto Docs with Swagger UI](swagger-docs.md)
 
 ## [Using the Built-in Mocking](builtin-mocking.md)
+
+## [Initializing every Flow](init-flow.md)
