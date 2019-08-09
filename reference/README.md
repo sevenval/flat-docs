@@ -6,7 +6,7 @@
 
 ## [Debugging](debugging.md)
 
-## [`flat.sh`](flat-sh.md)
+## [`flat` CLI](flat-cli.md)
 
 ## [Flow](flow.md)
 

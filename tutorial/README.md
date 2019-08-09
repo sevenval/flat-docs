@@ -16,21 +16,20 @@ working with REST APIs. The [`jq` JSON processor](https://stedolan.github.io/jq/
 is a useful tool when working with JSON.
 
 Running the FLAT Docker image is dead easy thanks to the
-[FLAT runner shell script](../reference/flat-sh.md).
-Please [download the script](https://git.office.sevenval.de/code/pre-couper/flatrunner/raw/develop/flat.sh)
-and make it executable. Saving it in your local `bin` directory will usually make the script available in your `$PATH`:
+[FLAT CLI](../reference/flat-cli.md).
+
+Please download the script from the [FLAT CLI repository](https://github.com/sevenval/flat-cli),
+make it executable and put the script in your `$PATH`:
 
 ```bash
-$ mkdir -p ~/bin
-
-$ curl --output ~/bin/flat.sh 'https://git.office.sevenval.de/code/pre-couper/flatrunner/raw/develop/flat.sh'
-
-$ chmod a+x ~/bin/flat.sh
+$ curl -O https://raw.githubusercontent.com/sevenval/flat-cli/master/flat
+$ chmod +x flat
+$ sudo mv flat /usr/local/bin
 ```
 
 > 📎
-> If the `~/bin/` directory is not already in your `$PATH`, you can add it via
-> `export PATH="$PATH:~/bin"`.
+> You could also put `flat` into your `~/bin/` directory. If that is not
+> already in your `$PATH`, you can add it with `export PATH="$PATH:~/bin"`.
 
 ## Getting started
 
@@ -46,7 +45,7 @@ $ touch ~/hello-world/conf/config.xml
 Now you can start FLAT like this
 
 ```bash
-$ flat.sh ~/hello-world
+$ flat start ~/hello-world
 ```
 
 or from within the working directory:
@@ -54,12 +53,12 @@ or from within the working directory:
 ```bash
 $ cd ~/hello-world
 
-$ flat.sh
+$ flat start
 ```
 
 > 📎
 > You can choose a port other than 8080 with the `-p` option, for example
-> `flat.sh -p 8000`
+> `flat start -p 8000`
 
 Point your web browser to http://localhost:8080/ and see FLAT in action:
 
@@ -914,13 +913,13 @@ In the default setup, the FLAT runner only logs severe errors to the log file an
 `$FLAT_DEBUG`
 
 ```bash
-$ FLAT_DEBUG='*:debug:log' flat.sh ~/hello-world
+$ FLAT_DEBUG='*:debug:log' flat start ~/hello-world
 ```
 
 or use the `-d` option
 
 ```bash
-$ flat.sh -d '*:debug:log' ~/hello-world
+$ flat start -d '*:debug:log' ~/hello-world
 ```
 
 > 📎
@@ -935,7 +934,7 @@ The `*` stands for any topic. `log` means that debug information will be written
 So when we now request our API, a lot of information from the log file will be output on the terminal where we started FLAT. We can now browse through that pile of text or use a more specific topic. For example, if we were only interested in messages related to our `template` and `echo` actions we could set the debug topic to `template,echo`:
 
 ```bash
-$ flat.sh -d template,echo ~/hello-world
+$ flat start -d template,echo ~/hello-world
 ```
 
 However, changing the default debug settings and restarting FLAT every time is not the proper way to go. Instead, we can simply send an appropriate `Debug` header with our request:
