@@ -60,4 +60,4 @@ FLAT has a handy feature to make that work! Simply list the URL of your swagger-
 </config>
 ```
 
-Finally, you can _try it out_. FLAT will handle the CORS preflight checks with your browser, and you can you perform test requests with the swagger UI.
+Finally, you can _try it out_. FLAT will handle the CORS preflight checks with your browser, and you can perform test requests with the swagger UI.
