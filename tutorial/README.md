@@ -46,7 +46,7 @@ $ touch ~/hello-world/conf/config.xml
 Now you can start FLAT like this
 
 ```bash
-$ flat.sh ~/hello-world
+$ flat.sh start ~/hello-world
 ```
 
 or from within the working directory:
@@ -54,12 +54,12 @@ or from within the working directory:
 ```bash
 $ cd ~/hello-world
 
-$ flat.sh
+$ flat.sh start
 ```
 
 > 📎
 > You can choose a port other than 8080 with the `-p` option, for example
-> `flat.sh -p 8000`
+> `flat.sh start -p 8000`
 
 Point your web browser to http://localhost:8080/ and see FLAT in action:
 
@@ -914,13 +914,13 @@ In the default setup, the FLAT runner only logs severe errors to the log file an
 `$FLAT_DEBUG`
 
 ```bash
-$ FLAT_DEBUG='*:debug:log' flat.sh ~/hello-world
+$ FLAT_DEBUG='*:debug:log' flat.sh start ~/hello-world
 ```
 
 or use the `-d` option
 
 ```bash
-$ flat.sh -d '*:debug:log' ~/hello-world
+$ flat.sh start -d '*:debug:log' ~/hello-world
 ```
 
 > 📎
@@ -935,7 +935,7 @@ The `*` stands for any topic. `log` means that debug information will be written
 So when we now request our API, a lot of information from the log file will be output on the terminal where we started FLAT. We can now browse through that pile of text or use a more specific topic. For example, if we were only interested in messages related to our `template` and `echo` actions we could set the debug topic to `template,echo`:
 
 ```bash
-$ flat.sh -d template,echo ~/hello-world
+$ flat.sh start -d template,echo ~/hello-world
 ```
 
 However, changing the default debug settings and restarting FLAT every time is not the proper way to go. Instead, we can simply send an appropriate `Debug` header with our request:

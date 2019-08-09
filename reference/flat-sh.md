@@ -1,12 +1,19 @@
 # `flat.sh`
 
+Start the local service with:
+
+```sh
+$ flat.sh start
+```
+
 Type
 
 ```sh
 $ flat.sh -h
 ```
 
-for help with the FLAT runner.
+for all available commands and options of the FLAT cli.
+
 
 See also
  * [Tools](../tutorial/README.md#tools)

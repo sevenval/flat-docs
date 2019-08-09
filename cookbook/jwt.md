@@ -9,7 +9,7 @@ We want to have the JWT Secret (used for signing and verifying a JWS) configurab
 In a development setup, we can simply define a shell variable that starts with `FLAT_`. `flat.sh` will forward all `FLAT_*` variables to the docker container:
 
 ```shell
-$ FLAT_JWT_SECRET=YXNkZg== flat.sh
+$ FLAT_JWT_SECRET=YXNkZg== flat.sh start
 ```
 
 The secret must be base64-url encoded. We use our favorite passphrase `asdf` here.
