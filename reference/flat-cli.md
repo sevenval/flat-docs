@@ -1,6 +1,6 @@
 # `flat` CLI
 
-Get `flat` CLI from [sevenval/flat-cli](https://github.com/sevenval/flat-cli).
+Get the `flat` CLI from [sevenval/flat-cli](https://github.com/sevenval/flat-cli).
 
 Start the local FLAT server with:
 
