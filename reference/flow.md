@@ -122,4 +122,5 @@ The block associated with the first matching conditional expression will be exec
 ### `return`
 
 `return` quits the current [sub flow](actions/sub-flow.md) and returns to its parent flow.
+If `return` is used in the [init flow](#init-flow) the regular API path flow will still be executed.
 A `return` statement on the top-most flow behaves like [`break`](#break).
