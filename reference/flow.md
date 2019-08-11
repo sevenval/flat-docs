@@ -1,7 +1,7 @@
 # Flow
 
 The flow describes how the incoming request from the client is transformed into the outgoing response.
-The flow comprises [actions](actions.md), [control structures](#control-structures) and [variables](variables.md).
+The flow comprises [_actions_](actions.md), [control structures](#control-structures) and [variables](variables.md).
 
 Here we have a flow with [`if-elseif-else` conditional statements](#if-elseif-else) and some [`echo` actions](actions/echo.md) evaluating the [`$request` variable](variables.md):
 
@@ -34,8 +34,9 @@ paths:
 
 ## Init Flow
 
-An init flow is a flow that is executed before the regular flow for each path in the `basePath`.
-It is specified by `x-flat-init` on the top level in the OpenAPI definition:
+An _init flow_ is a separate flow file that is executed before the regular flow
+that is defined for an API path. It is specified by setting `x-flat-init` on
+the top level in the OpenAPI definition:
 
 ```yaml
 …
@@ -47,10 +48,19 @@ paths:
       x-flat-flow: get.xml  # ⬅ flow for GET /
 ```
 
-The init flow can e.g. be used to initialize variables or set HTTP response headers.
+The init flow can be used [extract common initialization
+tasks](/cookbook/init-flow.md), e.g. initialize variables or set HTTP response
+headers.
 
-A `break` statement in the init flow terminates the **whole request**; the regular flow (specified by `x-flat-flow`) is **not** executed.
-A `return` statement terminates only the **init flow**; the regular flow is executed.
+For requests outside of the API `basePath` (e.g. `/` or `/assets`), the init
+flow is _not_ executed. It is only called for API requests.
+
+A [`break`](#break) statement in the init flow terminates the **whole
+request**; the regular flow (specified by `x-flat-flow`) is _not_ executed. A
+[`return`](#return) statement terminates only the init flow; the regular flow
+is executed. Terminating [actions](actions/README.md) like
+[`echo`](actions/echo.md) or [`dump`](actions/dump.md) will prevent the actual
+flow being executed, too.
 
 
 ## Control Structures
