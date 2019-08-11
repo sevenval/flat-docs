@@ -67,13 +67,15 @@ flow being executed, too.
 
 ### `break`
 
-`break` stops the current flow. Request processing will continue, though.
-If used in a [sub flow](actions/sub-flow.md), all of its parent flows are halted, too.
+`break` stops the flow processing for the current request. It may be used in
+[sub flows](actions/sub-flow.md) or the [init flow](#init-flow), too.
+
+Response processing (such as validation and sending out the response) will
+continue, though.
 
 A `break` statement should usually be executed conditionally, because otherwise
 none of the following statements will ever be executed.
 
-If specified in the init flow, `break` terminates the whole request.
 
 ```xml
 <flow>
