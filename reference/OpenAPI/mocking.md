@@ -8,7 +8,7 @@ Mocking can be activated by the client with the HTTP header
 Mock: true
 ```
 
-If given, FLAT will look for in the `examples` of the API paths `200` `response` section for an example with a content-type that matches the inbound `Accept` header.
+If given, FLAT will look for the `examples` of the API path's `200` `response` section for an example with a content-type that matches the inbound `Accept` header.
 
 ## Example
 

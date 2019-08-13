@@ -2,7 +2,7 @@
 
 OpenAPI has rich tools to describe inbound [parameters](https://swagger.io/docs/specification/2-0/describing-parameters/), the [request body](https://swagger.io/docs/specification/2-0/describing-request-body/) and [API responses](https://swagger.io/docs/specification/2-0/describing-responses/). FLAT can validate all incoming and outgoing HTTP messages against these schemas.
 
-Code and document tend to diverse quickly. Therefore it is strongly recommended to activate validation. It helps spotting error early during development. In production, the error logs help noticing and diagnosing validation errors.
+Code and document tend to divert quickly. Therefore, it is strongly recommended to activate validation. It helps spotting errors early during development. In production, the error logs help noticing and diagnosing validation errors.
 
 The [tutorial](/tutorial/README.md) has a chapter on [validation](/tutorial/README.md#request-validation).
 
@@ -25,7 +25,7 @@ x-flat-validate:
 
 The `request` property activates validation of inbound parameters and request bodies. If the path operation is not defined or the HTTP message does not adhere to the schema, the request is terminated with a [system error](#system-error-document) and status `400`. In that case, the [configured flow](routing.md) is _not_ executed.
 
-The `response` property activates validation of the outgoing HTTP response before it is send to the client. If the response status code is not defined for the path or the response body does not follow the schema, the request is terminated with a [system error](#system-error-document) and status `500`.
+The `response` property activates validation of the outgoing HTTP response before it is sent to the client. If the response status code is not defined for the path or the response body does not follow the schema, the request is terminated with a [system error](#system-error-document) and status `500`.
 
 Whenever a schema error has been detected, a meaningful message is logged.
 

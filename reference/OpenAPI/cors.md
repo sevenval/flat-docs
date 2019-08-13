@@ -4,7 +4,7 @@
 
 In _Single Page Applications_ this is often needed, if the API is running on different domain than the asset domain. For example, if users open `https://example.com` and the Web App fetches from `https://api.example.com`.
 
-It may also be needed in development setups. If the SPA is served by a hot-reloading asset server (such as WebPack or NextJS) on `localhost:3000` and FLAT is running on `localhost:8080`.
+It may also be needed in development setups, for example if the SPA is served by a hot-reloading asset server (such as WebPack or NextJS) on `localhost:3000` and FLAT is running on `localhost:8080`.
 
 ## Configuration
 
@@ -25,7 +25,7 @@ x-flat-cors:
   allow-credentials: true
 ```
 
-`allowed-origins` is a mandatory property that defines the origins that are allowed to use this API as an array of strings. Clients send their origin in the `Origin` HTTP request header. If it matches one of the configured origins, it is reflected back to the client in the `Access-Control-Allowed-Origin` header.
+`allowed-origins` is a mandatory property that lists the origins that are allowed to use this API as an array of strings. Clients send their origin in the `Origin` HTTP request header. If it matches one of the configured origins, it is reflected back to the client in the `Access-Control-Allowed-Origin` header.
 
 If you only want to configure one origin, you can set `allowed-origins` as a string:
 
@@ -36,11 +36,11 @@ x-flat-cors:
 
 The special origin `*` allows all Websites to access the API.
 
-The optional property `allow-credentials` controls whether the browser is allowed to send `Cookies` or `Authorization` headers to the API. This is often necessary the API wants to read access tokens from request headers. (Also see [Working with JWT](/cookobook/jwt.md)).
+The optional property `allow-credentials` controls whether the browser is allowed to send `Cookies` or `Authorization` headers to the API. This is often necessary if the API wants to read access tokens from request headers. (Also see [Working with JWT](/cookobook/jwt.md)).
 
 ## Swagger Integration
 
-FLAT uses the OpenAPI definition to know which HTTP methods ("operations") are allowed on which paths. This information is sent in response to the `OPTIONS` pre-flight check in the `Access-Control-Allow-Methods: GET` header.
+FLAT uses the OpenAPI definition to determine which HTTP methods ("operations") are allowed on which paths. This information is sent in response to the `OPTIONS` pre-flight check in the `Access-Control-Allow-Methods: GET` header.
 
 Requests for URLs outside of the API `basePath` are answered with `405 Method not allowed`.
 
@@ -72,5 +72,3 @@ Content-Length: 0
 ```
 
 They look similar, but in the second request the `Access-Control-Allow-Origin` header is missing.
-
-
