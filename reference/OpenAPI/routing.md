@@ -54,16 +54,19 @@ In FLAT you can assign a [flow](/reference/flow.md) file to every API path to de
 paths:
   /users:
     get:
+      # flow for GET /users
       x-flat-flow: api/users.xml
       responses:
         200:
           description: "Get a list of all users"
     post:
+      # flow for POST /users
       x-flat-flow: api/create-user.xml
       responses:
         201:
           description: "User created"
   /dashboard:
+    # flow for /dashboard (all methods)
     x-flat-flow: api/dashboard.xml
     get:
       …
@@ -79,6 +82,36 @@ An `x-flat-flow` property set directly in the `paths` object behaves as a _fallb
 paths:
   x-flat-flow: api/fallback.xml
 ```
+
+## Init Flow
+
+An _init flow_ is a separate flow file that is executed before the regular [flow](/reference/flow.md)
+that is defined for an API path. It is specified by setting `x-flat-init` on
+the top level in the OpenAPI definition:
+
+```yaml
+…
+x-flat-init: init.xml
+paths:
+  /users:
+    get:
+…
+```
+
+The init flow can be used [extract common initialization
+tasks](/cookbook/init-flow.md), e.g. initialize variables or set HTTP response
+headers.
+
+For requests outside of the API `basePath` (e.g. `/` or `/assets`), the init
+flow is _not_ executed. It is only called for API requests.
+
+A [`break`](#break) statement in the init flow terminates the **whole
+request**; the regular flow (specified by `x-flat-flow`) is _not_ executed. A
+[`return`](#return) statement terminates only the init flow; the regular flow
+is executed. Terminating [actions](actions/README.md) like
+[`echo`](actions/echo.md) or [`dump`](actions/dump.md) will prevent the actual
+flow being executed, too.
+
 
 ## Path Parameters
 
