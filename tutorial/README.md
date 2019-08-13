@@ -49,7 +49,7 @@ $ flat start ~/hello-world
 No FLAT app found in ~/hello-world: create swagger.yaml to start
 ```
 
-Before we can start FLAT, we need a API definition. The default location is `./swagger.yaml`. To get the server up and running an empty one will do the job:
+Before we can start FLAT, we need an API definition. The default location is `./swagger.yaml`. To get the server up and running, an empty one will do the job:
 ```bash
 $ cd ~/hello-world
 $ touch swagger.yaml
@@ -350,7 +350,7 @@ done with the help of the OpenAPI definition. So we better put it in our `swagge
           pattern: ^[a-zA-Z0-9]+$
 ```
 
-Then, we have to enable the request validation feature in the top-level section of `swagger.yaml`:
+Then we have to enable the request validation feature in the top-level section of `swagger.yaml`:
 
 ```yaml
 swagger: "2.0"
