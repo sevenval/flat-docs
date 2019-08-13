@@ -14,4 +14,6 @@
 
 ## [JSON Templates](templating/README.md)
 
+## [OpenAPI/Swagger Integration](OpenAPI/README.md)
+
 ## [Variables](variables.md)
