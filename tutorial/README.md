@@ -1,11 +1,13 @@
-# Hello World!
+# FLAT Tutorial
+
+_Hello World!_
 
 So you're new on your job and your boss wants you to create an API for accessing programming language code snippets.
 
 The design and frontend teams are already working on the user interface and can't wait to access the API you're about to create.
 
-There you go! This tutorial helps you create a REST API for "Hello World" code snippets based on the
-[Frontend Layer API Toolkit](../README.md) – FLAT.
+There you go! This tutorial helps you create a REST API for "Hello World" code snippets based on 
+[FLAT](../README.md).
 
 ## Tools
 
@@ -33,13 +35,24 @@ $ sudo mv flat /usr/local/bin
 
 ## Getting started
 
-Before we can start FLAT, we need a configuration. Create a working directory and place an empty
-configuration file (`conf/config.xml`) in it:
+Let's create a workspace for our little project. We call it `hello-world` and create a directory with that name:
 
 ```bash
-$ mkdir -p ~/hello-world/conf
+$ mkdir ~/hello-world
+```
 
-$ touch ~/hello-world/conf/config.xml
+Let's try to start FLAT:
+
+```bash
+$ flat start ~/hello-world
+
+No FLAT app found in ~/hello-world: create swagger.yaml to start
+```
+
+Before we can start FLAT, we need a API definition. The default location is `./swagger.yaml`. To get the server up and running an empty one will do the job:
+```bash
+$ cd ~/hello-world
+$ touch swagger.yaml
 ```
 
 Now you can start FLAT like this
@@ -52,13 +65,17 @@ or from within the working directory:
 
 ```bash
 $ cd ~/hello-world
-
 $ flat start
 ```
 
 > 📎
 > You can choose a port other than 8080 with the `-p` option, for example
 > `flat start -p 8000`
+
+> 📎
+> If you haven't already guessed: You can stop FLAT at any time as usual by pressing
+> <kbd>Ctrl</kbd> + <kbd>C</kbd> in its terminal.
+
 
 Point your web browser to http://localhost:8080/ and see FLAT in action:
 
@@ -71,20 +88,18 @@ $ curl localhost:8080
 …
 Couper very sorry :(
 
-XNlS3M0L3o-5iHrwuGgNJQAAAI0: Missing OpenAPI definition
+XNlS3M0L3o-5iHrwuGgNJQAAAI0: Invalid definition: swagger.yaml
+Object required
 ```
-
-> 📎
-> If you haven't already guessed: You can stop FLAT at any time as usual by pressing
-> <kbd>Ctrl</kbd> + <kbd>C</kbd> in its terminal.
 
 ## OpenAPI
 
-Now let's create the missing [OpenAPI definition](https://swagger.io/docs/specification/2-0/basic-structure/)
+Looks like an empty definition isn't really useful.
+
+We will need at least a minimal [OpenAPI definition](https://swagger.io/docs/specification/2-0/basic-structure/)
 to get rid of that error page.
 
-First we create a minimal OpenAPI definition in YAML format (`conf/definition.yaml`).
-Currently, FLAT supports OpenAPI 2.0 (also known as Swagger):
+Currently, FLAT supports OpenAPI 2.0 also known as Swagger:
 
 ```yaml
 swagger: "2.0"
@@ -97,31 +112,21 @@ paths:
 
 > 📎
 > OpenAPI definitions can be written in YAML or JSON.
-> We choose YAML for brevity and readability.
-
-In `conf/config.xml` we reference that definition file:
-
-```xml
-<config>
-  <flat>
-    <definition src="definition.yaml"/>
-  </flat>
-</config>
-```
+> We recommend YAML for brevity and readability.
 
 Now we get a different error message:
 
 ```bash
 $ curl localhost:8080 | tail -n1
-XNlTpvUrpUX@vMuN6J30rAAAAA8: No route has matched
+XNlTpvUrpUX@vMuN6J30rAAAAA8: No flow found for GET /
 ```
 
 We'll get rid of it in the next section.
 
 ## In the Flow
 
-The [_Flow_](../reference/flow.md) feature of FLAT gives us full control over request and response.
-Let's create a simple Flow definition (`conf/hello.xml`) with an
+The [_Flow_](../reference/flow.md) feature of FLAT gives us full control over request and response processing.
+Let's create a simple Flow definition in `hello.xml` with an
 [`echo` _action_](../reference/actions/echo.md) that produces a JSON snippet:
 
 ```xml
@@ -130,7 +135,7 @@ Let's create a simple Flow definition (`conf/hello.xml`) with an
 </flow>
 ```
 
-Then we assign that flow definition to the path `/` in our `conf/definition.yaml`.
+Then we assign that flow to the path `/` in our `swagger.yaml`.
 With `x-flat-flow` we tell FLAT to start the `hello.xml` flow whenever `/` is being requested:
 
 ```yaml
@@ -142,9 +147,7 @@ paths:
 ```
 
 > 📎
-> Filenames are resolved relatively to the location of the file they are referenced in.
-> Therefore, we omit the `conf/` prefix when we specify `<definition src="…"/>`
-> or `x-flat-flow`, respectively.
+> File paths are resolved relatively to the location of the file they are referenced in. For `swagger.yaml` and `hello.xml` are in the same directory, we can simply use the filename here.
 
 There we have our first "Hello World" snippet in JSON format:
 
@@ -248,7 +251,7 @@ We replace our previous flow in `hello.xml` with a new one that accesses these f
 
 ```xml
 <flow>
-  <copy in="{concat('../files/', $request/params/language, '.json')}" out="$json"/>
+  <copy in="{concat('./files/', $request/params/language, '.json')}" out="$json"/>
 
   <if test="$json">
     <dump in="$json"/>
@@ -289,24 +292,24 @@ Let's take another look at the code. Is it completely safe to use the `$request/
 as we did above? Of course it's not! Using input from the client without proper sanitizing beforehand is always dangerous!
 
 > 📝
-> **Exercise:** "Hack" our API to gain access to arbitrary files in the `conf` directory,
-> for example `conf/config.xml` file.
+> **Exercise:** "Hack" our API to gain access to arbitrary files in your app directory, for example the `swagger.yaml` file.
 >
 > <details><summary>💡 Hint…</summary>
 >
 > Access to any file in our `~/hello-world` directory is possible by stuffing the whole file path into the
-> `language` path parameter so that the filename assembled by the `concat` function above looks like `../files/../conf/config.xml#.json`.
+> `language` path parameter so that the filename assembled by the `concat` function above looks like `files/../swagger.yaml#.json`.
 >
 > Forward slashes have to be URL encoded as `%2f`, the hash tag `#` for stripping off the `.json` filename extension has to be encoded as `%23`. Instead of `%23` you could also use `%3f` for `?` or `%3b` for `;` here:
 >
 >```bash
->$ curl localhost:8080/..%2fconf%2fconfig.xml%23
-><config>
->  <flat>
->    <definition src="definition.yaml"/>
->  </flat>
-></config>
+>$ curl http://localhost:8080/..%2fswagger.yaml%23
+>swagger: "2.0"
+>info:
+>  version: "1.0"
+>  title: Hello World!
+>…
 >```
+> Never use user input without checking it first!
 ></details>
 
 ## Request Validation
@@ -326,14 +329,14 @@ The [`matches` function](../reference/functions/matches.md) helps with that:
 Now we get:
 
 ```bash
-$ curl --include localhost:8080/..%2fconf%2fconfig.xml%23
+$ curl --include http://localhost:8080/..%2fswagger.yaml%23
 HTTP/1.1 400 Bad Request
 …
 {"error": "Input validation failed!"}
 ```
 
 Okay, that works! But request validation is something that is supposed to be
-done with the help of the OpenAPI definition. So we better put it in our `definition.yaml`:
+done with the help of the OpenAPI definition. So we better put it in our `swagger.yaml`:
 
 ```yaml
       …
@@ -347,22 +350,22 @@ done with the help of the OpenAPI definition. So we better put it in our `defini
           pattern: ^[a-zA-Z0-9]+$
 ```
 
-Then we have to enable the request validation feature in the `config.xml` file:
+Then, we have to enable the request validation feature in the top-level section of `swagger.yaml`:
 
-```xml
-<config>
-  <flat>
-    <definition src="definition.yaml"/>
-    <!-- ⬇ ⬇ ⬇ -->
-    <validation request="true"/>
-  </flat>
-</config>
+```yaml
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: Hello World!
+x-flat-validate:         # ⬅
+  request: true          # ⬅
+…
 ```
 
 Let's try again:
 
 ```bash
-$ curl --silent localhost:8080/..%2fconf%2fconfig.xml%23 | jq
+$ curl --silent localhost:8080/..%2fswagger.yaml%23 | jq
 {
   "error": {
     "message": "Input Validation Failed",
@@ -419,7 +422,7 @@ In the flow, we load that `mock.json` file with `copy` and throw away all unwant
 ```xml
 <flow>
   <!-- ⬇ ⬇ ⬇ -->
-  <copy in="../files/mock.json"/>
+  <copy in="files/mock.json"/>
 
   <template out="$url">{{ items/value[1]/html_url ?? "" }}</template>
 
@@ -564,7 +567,7 @@ So it might pay off to work with local mocks whenever possible. The following fl
 <flow>
   <if test="$request/get/mock or $request/headers/mock">
     <!-- Use mock.json when requested for example with "?mock" or the header "Mock: 1" -->
-    <copy in="../files/mock.json"/>
+    <copy in="files/mock.json"/>
   </if>
   <else>
     <request>
@@ -597,7 +600,7 @@ now return the URL from our local `mock.json` actually pointing to the C version
 
 ## Response Validation
 
-To ensure that we don't break our API while we are developing it further, let's validate our responses, too. To do so, we add another schema for our own API responses to our `definition.yaml`. That schema requires that the
+To ensure that we don't break our API while we are developing it further, let's validate our responses, too. To do so, we add another schema for our own API responses to our `swagger.yaml`. That schema requires that the
 `url` property exist in the response and point to `raw.githubusercontent.com`.
 
 ```yaml
@@ -624,16 +627,18 @@ To ensure that we don't break our API while we are developing it further, let's 
                 pattern: ^https://raw.githubusercontent.com/
 ```
 
-As before, the validation must be enabled in `config.xml`:
+As before, the validation must be enabled in the top-level section:
 
-```xml
-<config>
-  <flat>
-    <definition src="definition.yaml"/>
-    <!--                       ⬇ -->
-    <validation request="true" response="true"/>
-  </flat>
-</config>
+```yaml
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: Hello World!
+x-flat-validate:
+  request: true
+  response: true         # ⬅
+…
+```
 ```
 
 If we now twist the domain name in the second template of our flow to `flaw.githubusercontent.com`, we get a validation error:
@@ -668,7 +673,7 @@ a separate flow file that can be called from others flows like a subroutine:
   …
 ```
 
-The `request` action now resides in `conf/upstream_request.xml`:
+The `request` action now resides in `upstream_request.xml`:
 
 ```xml
 <flow>
@@ -731,7 +736,7 @@ So let's enhance our request configuration in `upstream_request.xml` with some v
 </flow>
 ```
 
-Furthermore, we need a second OpenAPI definition file (`conf/upstream.yaml`)
+Furthermore, we need a second OpenAPI definition file (`upstream.yaml`)
 that describes valid upstream requests along with the expected responses:
 
 ```yaml
@@ -967,13 +972,13 @@ Besides the built-in debug information, custom debug output can help understand 
 
 Here are the complete configuration files:
 
-## `conf/hello.xml`
+## `hello.xml`
 
 ```xml
 <flow>
   <if test="$request/get/mock or $request/headers/mock">
     <!-- Use mock.json when requested for example with "?mock" or the header "Mock: 1" -->
-    <copy in="../files/mock.json"/>
+    <copy in="files/mock.json"/>
   </if>
   <else>
     <sub-flow src="upstream_request.xml"/>
@@ -994,7 +999,7 @@ Here are the complete configuration files:
 </flow>
 ```
 
-## `conf/upstream_request.xml`
+## `upstream_request.xml`
 
 ```xml
 <flow>
@@ -1021,7 +1026,7 @@ Here are the complete configuration files:
 </flow>
 ```
 
-## `conf/definition.yaml`
+## `swagger.yaml`
 
 ```yaml
 swagger: "2.0"
@@ -1053,7 +1058,7 @@ paths:
                 pattern: ^https://raw.githubusercontent.com/
 ```
 
-## `conf/upstream.yaml`
+## `upstream.yaml`
 
 ```yaml
 swagger: "2.0"
@@ -1087,15 +1092,4 @@ paths:
                 type: integer
               items:
                 type: array
-```
-
-## `conf/config.xml`
-
-```xml
-<config>
-  <flat>
-    <definition src="definition.yaml"/>
-    <validation request="true" response="true"/>
-  </flat>
-</config>
 ```
