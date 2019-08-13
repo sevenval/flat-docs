@@ -16,3 +16,5 @@ FLAT uses [Swagger Extensions](https://swagger.io/docs/specification/2-0/swagger
 ## [Mocking](mocking.md)
 
 ## [CORS](cors.md)
+
+## [Upstream APIs](upstream.md)
