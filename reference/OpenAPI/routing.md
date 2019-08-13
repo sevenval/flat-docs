@@ -26,9 +26,9 @@ paths:
       …
 ```
 
-One important setting is the `basePath` property. All described API paths are only accessible blow that `basePath`.
+One important setting is the `basePath` property. All described API paths are only accessible below that `basePath`.
 
-Furthermore, paths may not be extended with undefined sub paths.
+Furthermore, only the paths that are explicitly defined are permissible, i.e. they may not be extended arbitrarily.
 
 In our example, the following paths are valid:
 
@@ -48,7 +48,7 @@ The Swagger docs have more information on [paths and operations](https://swagger
 
 ## Assigning FLAT Flows
 
-In FLAT you can assign every API path a [flow](/reference/flow.md) file to define the request processing. This is done with the `x-flat-flow` property:
+In FLAT you can assign a [flow](/reference/flow.md) file to every API path to define the request processing. This is done with the `x-flat-flow` property:
 
 ```yaml
 paths:
@@ -69,7 +69,7 @@ paths:
       …
 ```
 
-You can specify a flow for a path (as in `/dashboard`) or for specific methods/operations (as in `/users`). The same flow can be used in different paths.
+You can specify a flow for a path (as in `/dashboard`) or for specific methods/operations (as in `/users`). The same flow can be used for multiple paths or methods.
 
 ### Fallback Flow
 
