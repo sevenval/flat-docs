@@ -4,9 +4,16 @@
 OXN-node-set jwt-decode(string jws, string key)
 ```
 
-validates and unpacks the content of a _JSON web signature_ (JWS) as [OXN](Templating#object-xml-notation). [[RFC 7515](https://tools.ietf.org/html/rfc7515)]
-`jws` is expected to be a _compact serialization_. `key` is the matching Base64URL encoded
-symmetric key for the signature validation. Currently, signatures created via `HS256`, `HS385` and `HS512` can be validated.
+validates and unpacks the content of a _JSON web signature_ ([JWS](https://tools.ietf.org/html/rfc7515)) as [OXN](Templating#object-xml-notation).
+
+
+## Parameters
+
+`jws` is expected to be a _compact serialization_.
+
+For the HMAC based algorithms, `key` is a _Base64URL_ encoded symmetric key for the digital signature. For the `RSASSA` based algorithms, use the PEM encoded *public* key (without the `BEGIN` and `END` lines and without any line breaks).
+
+Currently, signatures created with `HS256`, `HS385`, `HS512`, `RS256`, `RS384` or `RS512` can be validated.
 
 If validation and decoding is successful, you get the original web token as OXN encoded node-set.
 
@@ -26,11 +33,18 @@ The Base64URL-encoded key `$key` is read from the JSON file `jwt-key.json`: `{"k
 The unpacked web token is stored in `$jwt`, which provides easy access to its content:
 
 ```xml
-<template out="$key">{{ json-doc('jwt-key.json')/k }}</template>
-<template out="$jwt">{{ jwt-decode($request/cookies/token, $key) }}</template>
-<template>{
+<template out="$key">
+{{ json-doc('jwt-key.json')/k }}
+</template>
+<template out="$jwt">
+{{ jwt-decode($request/cookies/token, $key) }}
+</template>
+<template>
+{
   "user":   {{ $jwt/user }},
   "expiry": {{ $jwt/exp }}
 }
 </template>
 ```
+
+A complete example can be found in [Working with JWT](/cookbook/jwt.md).
