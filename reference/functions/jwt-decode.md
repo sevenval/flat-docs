@@ -11,7 +11,7 @@ validates and unpacks the content of a _JSON web signature_ ([JWS](https://tools
 
 `jws` is expected to be a _compact serialization_.
 
-For the HMAC based algorithms, `key` is a _Base64URL_ encoded symmetric key for the digital signature. For the `RSASSA` based algorithms, use the PEM encoded *public* key (without the `BEGIN` and `END` lines and without any line breaks).
+For the HMAC based algorithms, `key` is a _Base64URL_ encoded symmetric key for the digital signature. For the `RSASSA` based algorithms, use the PEM encoded *public* key (without the `BEGIN` and `END` lines and without any line breaks). The key must not be password protected.
 
 Currently, signatures created with `HS256`, `HS385`, `HS512`, `RS256`, `RS384` or `RS512` can be validated.
 

@@ -11,7 +11,7 @@ packs and signs a _JSON web token_ (JWT) as _JSON web signature_ (JWS) in _compa
 
 `data`: The payload can be provided as a JSON string or [OXN](Templating#object-xml-notation).
 
-`key`: For the HMAC algorithms, a Base64URL encoded symmetric key for the digital signature. For the `RSASSA` based algorithms, use the PEM encoded *private* key (without the `BEGIN` and `END` lines and without any line breaks).
+`key`: For the HMAC algorithms, a Base64URL encoded symmetric key for the digital signature. For the `RSASSA` based algorithms, use the PEM encoded *private* key (without the `BEGIN` and `END` lines and without any line breaks). The key must not be password protected.
 
 `time-to-live`: Sets the time span in seconds until expiration in the `exp` claim of the `jwt`. If the TTL is `0`, no `exp` claim is added to the token – it is valid forever. Default: `0` (no expiration).
 
@@ -31,6 +31,7 @@ The return value is a _JWS compact serialization_ as a string:
 ```
 eyJ….….…
 ```
+An empty string or false will be returned if any errors occur.
 
 ## Example
 
