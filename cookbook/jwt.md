@@ -65,7 +65,7 @@ You have to be quick copy-pasting it, because the time-to-live (encoded as `exp`
 
 ## Pitfalls
 
-The JWT functions expect the key to be _base64 url encoded_.
+For `HMAC` based algorithms, the JWT functions expect the key to be _base64 url encoded_.
 
 But some "bare keys" may already look base64 encoded. [Auth0](https://auth0.com/) for example, uses base64 strings as keys. They need another `base64-encode()` to be used with `jwt-decode()`.
 
@@ -83,4 +83,19 @@ Of course, you could also do that once outside of FLAT before setting the env va
 $ echo -n "YXNkZg==" | base64
 WVhOa1pnPT0=
 $ FLAT_AUTH0_JWT_SECRET=WVhOa1pnPT0= flat start
+```
+
+For `RSASSA` based algorithms, the JWT functions expect the key to be PEM encoded, but without the `BEGIN` and `END` lines, and without any line breaks. To generate the private and public keys in this format:
+
+```shell
+$ openssl genrsa > privateAndPublic.key
+$ tail -n +2 privateAndPublic.key | head -n -1 | tr -d '\n'
+MIIEowIB[...]
+```
+
+To extract the public key for signature verification in the required format:
+```shell
+$ openssl rsa -in privateAndPublic.key -outform PEM -pubout -out public.key
+$ tail -n +2 public.key | head -n -1 | tr -d '\n'
+MIIBIjANBgkqhki[...]
 ```
