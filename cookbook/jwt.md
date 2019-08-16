@@ -99,3 +99,9 @@ $ openssl rsa -in privateAndPublic.key -outform PEM -pubout -out public.key
 $ tail -n +2 public.key | head -n -1 | tr -d '\n'
 MIIBIjANBgkqhki[...]
 ```
+
+## See also
+
+* [`jwt-encode()`](jwt-encode.md)
+* [`jwt-decode()`](jwt-decode.md)
+* [Working with JWT](/cookbook/jwt.md)

@@ -44,4 +44,7 @@ After 600 seconds the token becomes invalid:
 </template>
 ```
 
-A complete example can be found in [Working with JWT](/cookbook/jwt.md).
+## See also
+
+* [`jwt-decode()`](jwt-decode.md)
+* [Working with JWT](/cookbook/jwt.md)
