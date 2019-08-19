@@ -39,5 +39,6 @@ Omitting output is useful to call functions with side-effects:
 
 ## See also
 
+* [Variables](/reference/variables.md)
 * [`template`](template.md)
 * [JSON Templating](/reference/templating/README.md)
