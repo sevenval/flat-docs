@@ -67,34 +67,54 @@ The actions [`request`](actions/request.md) and [`requests`](actions/requests.md
 
 ## Defining and Accessing Variables
 
-Global variables are defined as the output of [`template` actions](actions/template.md)
-with `out="…"`. Their values are evaluated inside [placeholder expression `{{ … }}`](templating/placeholder.md):
+Global variables are usually defined as the output of [`eval`](actions/eval.md) actions.
+The variable name is defined in the `out="…"` attribute. It must
+begin with `$` followed by a letter and then more letters or numbers.
 
 ```xml
 <flow>
-  <template out="$x">1</template>                   <!-- $x = 1 -->
-  <template in="$x" out="$x">{{ . + 5 }}</template> <!-- $x = $x + 5 -->
-  <template out="$answer">{{ $x * 7 }}</template>   <!-- $answer = $x * 7 -->
-  <template>{{ $answer }}</template>
+  <!-- $x = 1 -->
+  <eval out="$x">1</eval>
+  <!-- $x = $x + 5 -->
+  <eval in="$x" out="$x">{{ . + 5 }}</eval>
+  <!-- $answer = $x * 7 -->
+  <eval out="$answer">{{ $x * 7 }}</eval>
 </flow>
 ```
 
-Variables may be [copied](actions/copy.md), too:
+For structured JSON variables, you can use the [`template`](actions/template.md) action:
 
 ```xml
 <flow>
-  <copy in="$request" out="$client_request"/>
+  <template out="$cfg">
+  {
+    "stage": "prod",
+    "mock": {{ boolean($request/get/mock) }},
+    "answer": {{ $answer }}
+  }
+  </template>
+</flow>
+```
+
+Variables may be copied with [eval](actions/eval.md), too:
+
+```xml
+<flow>
+  <eval out="$client_request">$request</eval>
   …
 </flow>
 ```
 
-Local variables created with [`{{$… := …}}`](templating/variable.md) are
+### Local Variables
+
+[Templates](/reference/templating/README.md) may define local variables with [`{{$… := …}}`](templating/variable.md). Those variables are
 [undefined](#undefined-variables) outside the template they're defined in:
 
 ```xml
 <flow>
   <template>{{$answer:= 42 }}</template>
-  <template>{{ $answer }}</template>      <!-- null -->
+  <!-- null -->
+  <template>{{ $answer }}</template>
 </flow>
 ```
 
@@ -107,7 +127,7 @@ Local variables created with [`{{$… := …}}`](templating/variable.md) are
 
 Attempting to access a variable that has not been set previously will yield
 an empty node-set. The empty node-set will be evaluated to `false` in
-conditions and to `null` in placeholders:
+conditions and produces the string `null` in placeholders:
 
 ```xml
 <flow>
@@ -115,7 +135,8 @@ conditions and to `null` in placeholders:
     {{if $undefined }}
       will never be reached
     {{else}}
-      {{ $undefined }}       <!-- null -->
+      <!-- null -->
+      {{ $undefined }}
     {{end}}
   </template>
 </flow>

@@ -39,8 +39,8 @@ The variable `$json` contains the JSON web token to be packed, the key is read f
 After 600 seconds the token becomes invalid:
 
 ```xml
-<template in="$json" out="$jws">
-{{ jwt-encode(., $env/JWT_SECRET, 600) }}
+<template out="$jws">
+{{ jwt-encode($json, $env/JWT_SECRET, 600) }}
 </template>
 ```
 

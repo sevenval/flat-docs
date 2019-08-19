@@ -33,12 +33,9 @@ The Base64URL-encoded key `$key` is read from the JSON file `jwt-key.json`: `{"k
 The unpacked web token is stored in `$jwt`, which provides easy access to its content:
 
 ```xml
-<template out="$key">
-{{ json-doc('jwt-key.json')/k }}
-</template>
-<template out="$jwt">
-{{ jwt-decode($request/cookies/token, $key) }}
-</template>
+<eval out="$key">json-doc('jwt-key.json')/k</eval>
+<eval out="$jwt">jwt-decode($request/cookies/token, $key)</eval>
+
 <template>
 {
   "user":   {{ $jwt/user }},
