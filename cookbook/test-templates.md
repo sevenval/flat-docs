@@ -1,6 +1,6 @@
 # Testing Templates
 
-You have written a [JSON Template](/reference/Templating/README.md) and now you want to test it. FLAT comes with a [Test Framework](/reference/testing/README.md) that makes it easy to exercise your code with various input and error conditions.
+You have written a [JSON Template](/reference/templating/README.md) and now you want to test it. FLAT comes with a [Test Framework](/reference/testing/README.md) that makes it easy to exercise your code with various input and error conditions.
 
 ## Our Test Specimen
 Let's write a simple template that outputs some information on the incoming request. (You have to register it in your [`swagger.yaml`](/reference/OpenAPI/routing.md), we assume it is stored as `api/request-info.xml`).
