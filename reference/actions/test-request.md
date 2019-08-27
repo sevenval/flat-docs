@@ -33,7 +33,7 @@ All [`request`](request.md) parameters and options can be used:
 
 The `test-request` sets these variables to inspect the result (with [`assert`](assert.md)):
 
-* `$status` the status code (number)
+* `$status` the HTTP status code (number)
 * `$response` the response body (string)
 * `$headers` the response headers (array)
 

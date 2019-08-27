@@ -2,7 +2,7 @@
 
 You have defined your API in `swagger.yaml`, provided a detailed [schema](/reference/OpenAPI/validation.md) and wrote [flows](/reference/OpenAPI/routing.md) for API paths. How can we test the flows?
 
-Let's say you have invented a incredibly useful API route that can tell whether a given number is odd.
+Let's say you have invented an incredibly useful API route that can tell whether a given number is odd.
 
 ## Example
 

@@ -68,7 +68,7 @@ The parameter is reflected back in the JSON responses `args` property. That is w
 
 ## Mocking the Backend
 
-A naive approach to writing a [flat test](/reference/testing/README.md) would be a `test-request` with some assertions.
+A naïve approach to writing a [flat test](/reference/testing/README.md) would be a `test-request` with some assertions.
 
 `tests/test-notifications.xml`:
 
@@ -91,7 +91,7 @@ A naive approach to writing a [flat test](/reference/testing/README.md) would be
 </flat-test>
 ```
 
-This actually works. However, our flow in fact sends the upstream request to `httpbin.org`. The test will fail, if their server is down. And if we were mocking a single-sign-on service, we would need real credentials. That's not how we like our automated tests to work.
+This actually works. However, our flow in fact sends the upstream request to `httpbin.org`. The test will fail if their server is down. And if we were mocking a single-sign-on service, we would need real credentials. That's not how we like our automated tests to work.
 
 The [`backend-flow` test action](/reference/actions/backend-flow.md) provides a mean mock backend responses.
 
@@ -113,13 +113,13 @@ We extend our `flat-test` with this `backend-flow` call as its first action:
 
 A `backend-flow` allows us to create a fake response for the upstream requests. We can use regular [actions](/reference/actions/README.md) to set headers, status code, response bodies and so on.
 
-Note, that the `backend-flow` action only _registers_ that flow for subsequent `request` actions. That's why we have to put it first.
+Note that the `backend-flow` action only _registers_ that flow for subsequent `request` actions. That's why we have to put it first.
 
 You can register multiple backend flows for your requests. Upstream requests and flows are matched using their `request` ID. In our case, `notifications`.
 
 ## Asserting Upstream Requests
 
-Injecting a mocked response into your flow only allows to test one direction: downstream. How do we test, that our flow has sent the right parameters to the upstream server?
+Injecting a mocked response into your flow only allows to test one direction: downstream. How do we test that our flow has sent the right parameters to the upstream server?
 
 You can use `assert` in `backend-flow`, too:
 
@@ -140,7 +140,7 @@ You can use `assert` in `backend-flow`, too:
   </backend-flow>
 ```
 
-This test will fail, if we don't pass the `count` parameter as expected.
+This test will fail if we don't pass the `count` parameter as expected.
 
 For this assertion we have made use of the [pre-defined variable `$request`](/reference/variables.md#predefined-variables). You can use `$body` to inspect the upstream request body. These variables are overridden in backend flows and restored afterwards. All other global variables are shared between flow, backend flow and test flow! This allows for dynamic backend mocks and more assertion possibilities.
 

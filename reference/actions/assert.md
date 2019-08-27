@@ -12,13 +12,13 @@ Used in [FLAT tests](/reference/testing/README.md) to assert expected results.
 </assert>
 ```
 
-The body is JSON array of assertions. An assertion is an array itself, it has three values:
+The body is JSON array of assertions. An assertion is an array itself, with up to three values:
 
 * Expression: _as string_ (see [`eval`](/reference/actions/eval.md)); (required)
-* Expected result:  a literal value (string, number, boolean) or an object with compare flags (see below); (optional, default: `true`)
+* Expected result: a literal value (string, number, boolean) or an object with compare flags (see below); (optional, default: `true`)
 * Message: String literal to be included in output of failed tests; (optional)
 
-Note, that the expression must be a *string*. You can use template syntax, but the resulting array of assertions must still contain a string as the expression parameter.
+Note that the expression must be a *string*. You can use template syntax, but the resulting array of assertions must still contain a string as the expression parameter.
 
 ## Examples
 
@@ -40,7 +40,7 @@ Note, that the expression must be a *string*. You can use template syntax, but t
 The expected value (second value) can be an object that defines one or more _compare flags_:
 
 * `file`: read wanted text from a _golden file_
-* `mode`: either `text` or `json`. `json` mode  validates JSON syntax in both, expected and actual result; compares JSON in compact (un-pretty) formatting.
+* `mode`: either `text` or `json`. `json` mode  validates JSON syntax in both expected and actual result; compares JSON in compact (un-pretty) formatting.
 
 ```xml
 <assert>

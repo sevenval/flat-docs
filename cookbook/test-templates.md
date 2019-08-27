@@ -36,7 +36,7 @@ The result is:
   "data": "foo"
 }
 ```
-So far, so good. If you look closely, you will notice that the template is buggy. But we will discover later when writing tests for it :)
+So far, so good. If you look closely, you will notice that the template is buggy. But we will bump into this when writing tests for it :)
 
 # Writing a Test
 
@@ -98,7 +98,7 @@ Create `tests/test-request-tpl.xml`:
 </flat-test>
 ```
 
-The [`flat` cli](/reference/flat-cli.md) has a `test` command to run tests. It assumes to be called inside the FLAT app dir (where `swagger.yaml` is).
+The [`flat` cli](/reference/flat-cli.md) has a `test` command to run tests. It it easiest to run it from  inside the FLAT app dir (where `swagger.yaml` resides).
 
 ```shell
 $ flat test tests/test-request-tpl.xml
@@ -107,13 +107,13 @@ ok 1 tests/test-request-tpl.xml: 1 assertions
 passed: 1, failed: 0
 ```
 
-Great! But not as great, yet…
+Great! But there's still room for improvement…
 
 ## Refactor for Testing
 
 In the test, we had to _copy_ the template from our production code. This doesn't really make sense. Because, now we test an isolated copy. If we break the actual flow, the test will still pass.
 
-There are a couple of option to get about this.
+There are a couple of option to go about this.
 
 We could extract the template body into a file:
 
@@ -187,7 +187,7 @@ We can still simplify that by using the `json` comparison mode:
 </assert>
 ```
 
-The `json` mode ensures that both, wanted and actual results, are valid JSON. The comparison is independent of the JSON formatting. This allows us the have the golden file pretty printed:
+The `json` mode ensures that both wanted and actual results are valid JSON. The comparison is independent of the JSON formatting. This allows us the have the golden file pretty printed:
 
 ```json
 {
@@ -198,7 +198,7 @@ The `json` mode ensures that both, wanted and actual results, are valid JSON. Th
 }
 ```
 
-This makes changes to the file easier during development. Especially, your co-workers will thank you for a readable git diff.
+This makes changes to the file easier during development. Especially your co-workers will thank you for a readable git diff.
 
 ## Full Example
 
@@ -270,7 +270,7 @@ passed: 1, failed: 0
 
 We have only tested one specific input. Let's provide another test with different input data, such as a `GET` request or one without the `data` query parameter. This will reveal a serious bug in our code!
 
-You can copy the test to another file for the `GET` case. If you think, those variants are closely related, you can also add more test-code after the `<assert>` in our `tests/test-request-tpl.xml` like this:
+You can copy the test to another file for the `GET` case. If you think those variants are closely related, you can also add more test-code after the `<assert>` in our `tests/test-request-tpl.xml` like this:
 
 ```xml
 <flat-test>
@@ -305,7 +305,7 @@ You can copy the test to another file for the `GET` case. If you think, those va
 
 What happens if you call the `flat test` command now?
 
-We get an execution error now. Luckily the debug (`-d [topic]`) is enabled, so we see:
+We get an execution error. Luckily the debug (`-d [topic]`) is enabled, so we see:
 
 ```
 Action "template": Output is not valid JSON: Syntax error
@@ -316,7 +316,7 @@ Action "template": Output is not valid JSON: Syntax error
 >
 > <details><summary>💡 Hint…</summary>
 >
-> Hint: Number 1 reason for invalid JSON syntax are [commas](/reference/templating/comma.md).
+> Hint: The number one reason for invalid JSON syntax are [commas](/reference/templating/comma.md).
 > </details>
 
 After we have fixed the bug in the template, the test result should look like this:
