@@ -40,4 +40,5 @@ The `test-request` sets these variables to inspect the result (with [`assert`](a
 ## See also
 
 * [Testing API Requests](/cookbook/test-api-request.md) (cookbook)
+* [Testing Upstream Requests](test-backend.md) (cookbook)
 * [Testing](/reference/testing/README.md) (reference)

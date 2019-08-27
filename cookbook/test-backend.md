@@ -93,7 +93,7 @@ A naive approach to writing a [flat test](/reference/testing/README.md) would be
 
 This actually works. However, our flow in fact sends the upstream request to `httpbin.org`. The test will fail, if their server is down. And if we were mocking a single-sign-on service, we would need real credentials. That's not how we like our automated tests to work.
 
-The `backend-flow` test action provides a mean mock backend responses.
+The [`backend-flow` test action](/reference/actions/backend-flow.md) provides a mean mock backend responses.
 
 We extend our `flat-test` with this `backend-flow` call as its first action:
 
@@ -150,3 +150,4 @@ For this assertion we have made use of the [pre-defined variable `$request`](/re
 * [Testing Templates](test-templates.md) (cookbook)
 * [Test Framework](/reference/testing/README.md) (reference)
 * [`test-request`](/reference/actions/test-request.md) (reference)
+* [`backend-flow`](/reference/actions/backend-flow.md) (reference)
