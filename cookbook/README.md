@@ -18,4 +18,6 @@
 
 ## [Extracting Common Initialization Flow Tasks](init-flow.md)
 
-## [Can I test my templates?](test-templates.md)
+## [Testing Templates](test-templates.md)
+
+## [Testing API Requests](test-api-request.md)
