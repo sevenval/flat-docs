@@ -134,7 +134,7 @@ passed: 3, failed: 0
 ```
 
 > 📝
-> **Exercise:** Add a test for negative numbers that also verifies that the `see-also` header is not set.
+> **Exercise:** Add a test for negative numbers, for numbers with fractional parts (and correct the schema accordingly) and that also verifies that the `see-also` header is not set.
 
 
 ## See also
