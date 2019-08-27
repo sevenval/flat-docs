@@ -46,4 +46,6 @@ If _all_ tests pass, the exit is code `0`. If _any_ test fails, the code is non-
 * [Testing Templates](/cookbook/test-templates.md) (cookbook)
 * [Testing API Requests](/cookbook/test-api-request.md) (cookbook)
 * [Testing Upstream Requests](/cookbook/test-backend.md) (cookbook)
+* [`assert`](/reference/actions/assert.md) (reference)
+* [`backend-flow`](/reference/actions/backend-flow.md) (reference)
 * [`test-request`](/reference/actions/test-request.md) (reference)

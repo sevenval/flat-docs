@@ -143,3 +143,4 @@ passed: 3, failed: 0
 * [Testing Upstream Requests](test-backend.md) (cookbook)
 * [Test Framework](/reference/testing/README.md) (reference)
 * [`test-request`](/reference/actions/test-request.md) (reference)
+* [`assert`](/reference/actions/assert.md) (reference)

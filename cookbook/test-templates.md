@@ -55,7 +55,7 @@ tests/
 A test usually comprises
 * the flow code under test
 * setup code to provide input/env data
-* assertions
+* [assertions](/reference/actions/assert.md)
 
 Create `tests/test-request-tpl.xml`:
 
@@ -343,3 +343,4 @@ passed: 2, failed: 0
 * [Testing API Requests](test-api-request.md) (cookbook)
 * [Testing Upstream Requests](test-backend.md) (cookbook)
 * [Testing](/reference/testing/README.md) (reference)
+* [`assert`](/reference/actions/assert.md) (reference)

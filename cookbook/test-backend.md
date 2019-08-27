@@ -149,5 +149,6 @@ For this assertion we have made use of the [pre-defined variable `$request`](/re
 * [Testing API Requests](test-api-request.md) (cookbook)
 * [Testing Templates](test-templates.md) (cookbook)
 * [Test Framework](/reference/testing/README.md) (reference)
-* [`test-request`](/reference/actions/test-request.md) (reference)
+* [`assert`](/reference/actions/assert.md) (reference)
 * [`backend-flow`](/reference/actions/backend-flow.md) (reference)
+* [`test-request`](/reference/actions/test-request.md) (reference)
