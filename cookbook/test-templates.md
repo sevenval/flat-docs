@@ -265,3 +265,75 @@ $ flat test tests/test-request-tpl.xml
 ok 1 tests/test-request-tpl.xml: 1 assertions
 passed: 1, failed: 0
 ```
+
+## Add more tests
+
+We have only tested one specific input. Let's provide another test with different input data, such as a `GET` request or one without the `data` query parameter. This will reveal a serious bug in our code!
+
+You can copy the test to another file for the `GET` case. If you think, those variants are closely related, you can also add more test-code after the `<assert>` in our `tests/test-request-tpl.xml` like this:
+
+```xml
+<flat-test>
+
+  <!-- test case from above -->
+  …
+  </assert>
+
+  <!-- test GET -->
+  <template out="$request">
+  {
+    "method": "GET",
+    "path": "/"
+  }
+  </template>
+
+  <sub-flow src="../request-info.xml" />
+
+    <assert>[[ "content()", {"file": "request-info2.golden", "mode": "json"} ]]</assert>
+</flow>
+```
+
+`tests/request-info2.golden` could look like this:
+
+```json
+{
+  "method": "GET",
+  "path": "/",
+  "numPostFields": 0
+}
+```
+
+What happens if you call the `flat test` command now?
+
+We get an execution error now. Luckily the debug (`-d [topic]`) is enabled, so we see:
+
+```
+Action "template": Output is not valid JSON: Syntax error
+```
+
+> 📝
+> **Exercise:** Fix that bug in the template!
+>
+> <details><summary>💡 Hint…</summary>
+>
+> Hint: Number 1 reason for invalid JSON syntax are [commas](/reference/templating/comma.md).
+> </details>
+
+After we have fixed the bug in the template, the test result should look like this:
+
+```shell
+$ flat test tests/test-request-tpl.xml
+1..1
+ok 1 tests/test-request-tpl.xml: 2 assertions
+passed: 1, failed: 0
+```
+
+💡 Hint: You can call `flat test` with many files:
+
+```shell
+$ flat test tests/test-*.xml
+1..2
+ok 1 tests/test-request-tpl.xml: 1 assertions
+ok 2 tests/test-request-tpl-get.xml: 1 assertions
+passed: 2, failed: 0
+```
