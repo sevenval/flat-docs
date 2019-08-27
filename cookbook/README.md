@@ -17,3 +17,5 @@
 ## [Using the Built-in Mocking](builtin-mocking.md)
 
 ## [Extracting Common Initialization Flow Tasks](init-flow.md)
+
+## [Can I test my templates?](test-templates.md)
