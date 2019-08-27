@@ -18,6 +18,13 @@
 * [`template`](template.md)
 * [`xslt`](xslt.md)
 
+## Test Actions
+
+For [testing](/reference/testing/README.md) there are some special purpose actions:
+
+* [`test-request`](test-request.md)
+
+
 
 ## `debug` Attribute
 
