@@ -968,7 +968,7 @@ Besides the built-in debug information, custom debug output can help understand 
   …
 ```
 
-# Complete Configuration
+## Complete Configuration
 
 Here are the complete configuration files:
 

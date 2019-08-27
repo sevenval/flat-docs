@@ -38,7 +38,7 @@ The result is:
 ```
 So far, so good. If you look closely, you will notice that the template is buggy. But we will bump into this when writing tests for it :)
 
-# Writing a Test
+## Writing a Test
 
 In FLAT, tests are written in `<flat-test>` XML files. Those tests work like regular [flows](/reference/flow.md), but they provide specialized [actions](/reference/actions/action.md#testing) to make testing easy.
 
