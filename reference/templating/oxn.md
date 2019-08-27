@@ -1,6 +1,6 @@
 # Object XML Notation (OXN)
 
-Templating data can not only be represented as JSON but also as Object XML Notation (OXN).
+Internally, decoded JSON is represented in _Object XML Notation_ (OXN). This allows [templates](/reference/templating/README.md) to uniformly address data in JSON, XML and HTML documents with XPath expressions.
 
 The following JSON and OXN are equivalent.
 
@@ -33,6 +33,10 @@ The following JSON and OXN are equivalent.
 </json>
 ```
 
-See also
-* [`json-to-xml()`](../functions/json-to-xml.md)
-* [`xml-to-json()`](../functions/xml-to-json.md)
+Under most circumstances, explicit conversions between both formats are not necessary.
+
+## See also
+
+* [`json-serialize()`](/reference/functions/json-serialize.md)
+* [`json-parse()`](/reference/functions/json-parse.md)
+* [JSON Templates](/reference/templating/README.md)
