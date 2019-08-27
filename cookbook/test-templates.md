@@ -341,4 +341,5 @@ passed: 2, failed: 0
 ## See also
 
 * [Testing API Requests](test-api-request.md) (cookbook)
+* [Testing Upstream Requests](test-backend.md) (cookbook)
 * [Testing](/reference/testing/README.md) (reference)

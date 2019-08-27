@@ -140,5 +140,6 @@ passed: 3, failed: 0
 ## See also
 
 * [Testing Templates](test-templates.md) (cookbook)
+* [Testing Upstream Requests](test-backend.md) (cookbook)
 * [Test Framework](/reference/testing/README.md) (reference)
 * [`test-request`](/reference/actions/test-request.md) (reference)
