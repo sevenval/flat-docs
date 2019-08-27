@@ -311,13 +311,9 @@ We get an execution error. Luckily the debug (`-d [topic]`) is enabled, so we se
 Action "template": Output is not valid JSON: Syntax error
 ```
 
-> 📝
-> **Exercise:** Fix that bug in the template!
->
-> <details><summary>💡 Hint…</summary>
->
-> Hint: The number one reason for invalid JSON syntax are [commas](/reference/templating/comma.md).
-> </details>
+**Exercise:** Fix that bug in the template!
+
+💡Hint: The number one reason for invalid JSON syntax are [commas](/reference/templating/comma.md).
 
 After we have fixed the bug in the template, the test result should look like this:
 
@@ -328,7 +324,7 @@ ok 1 tests/test-request-tpl.xml: 2 assertions
 passed: 1, failed: 0
 ```
 
-💡 Hint: You can call `flat test` with many files:
+💡Hint: You can call `flat test` with many files:
 
 ```shell
 $ flat test tests/test-*.xml
