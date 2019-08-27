@@ -29,6 +29,8 @@
 
 ## JSON Functions
 
+* [`json-parse()`](json-parse.md)
+* [`json-serialize()`](json-serialize.md)
 * [`json-doc()`](json-doc.md)
 * [`json-to-xml()`](json-to-xml.md)
 * [`jwt-decode()`](jwt-decode.md)

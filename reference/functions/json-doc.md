@@ -4,10 +4,9 @@
 node-set json-doc(string path)
 ```
 
-wandelt ein unter `path` hinterlegtes JSON Dokument in
-[XML-Notation](../Templating/README.md#object-xml-notation) um, parst und
-gibt das _Root-Element_ zurück. (Das entspricht dem obersten `<json>` Element.
-So kann direkt auf dessen Kinder zugegriffen werden.)
+converts the JSON document at the given `path` into
+[OXN](../Templating/README.md#object-xml-notation), parses it and
+returns the `<json>` _root element_.
 
 `user.json`:
 ```json
@@ -20,56 +19,14 @@ So kann direkt auf dessen Kinder zugegriffen werden.)
 json-doc("user.json")/name
 ```
 
-## Beispiel: POST-Daten auslesen
+## Example: Read a JSON config
 
 Flow:
+
 ```xml
 <flow>
-  <echo if="json-doc('fit://request/request/body')/cool">Cool!</echo>
+  <echo if="json-doc('fit://site/conf.json')/maintenance" status="503">
+    Under maintenance
+  </echo>
 </flow>
-```
-
-Aufruf mit `curl`:
-```
-curl --data '{"cool":"dude"}' http://localhost:8080/…
-```
-
-Ausgabe:
-```
-Cool!
-```
-
-## Beispiel: Upstream-Antwort auswerten
-
-Flow:
-```xml
-<flow>
-  <request url="https://httpbin.org/anything" method="POST" content="json">
-    <header name="Content-Type" value="application/json"/>
-    <body src="fit://request/request/body"/>
-  </request>
-
-  <set-header name="content-type" value="text/plain"/>
-
-  <template>
-    POST data:             {{ fit-document('fit://request/request/body;filter=xml') }}
-    Response:              {{ json-doc('fit://request/content/json') }}
-    POST data valid?       {{ not(json-doc('fit://request/content/json')/json/@null) }}
-    Response valid?        {{ boolean(json-doc('fit://request/content/json')) }}
-    POST data in response: {{ json-doc('fit://request/content/json')/json }}
-  </template>
-</flow>
-```
-
-Aufruf mit `curl`:
-```sh
-curl --data '{"cool": No!}' 'http://localhost:8080/…'
-```
-
-Ausgabe:
-```
-    POST data:             "{\"cool\":No!}"
-    POST data valid?       false
-    response valid?        true
-    POST data in response: null
 ```

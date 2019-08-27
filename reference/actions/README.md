@@ -5,6 +5,7 @@
 * [`debug`](debug.md)
 * [`dump`](dump.md)
 * [`echo`](echo.md)
+* [`eval`](eval.md)
 * [`nameshave`](nameshave.md)
 * [`regex`](regex.md)
 * [`request`](request.md)
@@ -16,6 +17,15 @@
 * [`sub-flow`](sub-flow.md)
 * [`template`](template.md)
 * [`xslt`](xslt.md)
+
+## Test Actions
+
+There are some special purpose actions for [testing](/reference/testing/README.md) :
+
+* [`assert`](assert.md)
+* [`backend-flow`](backend-flow.md)
+* [`test-request`](test-request.md)
+
 
 
 ## `debug` Attribute

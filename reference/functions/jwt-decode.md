@@ -11,7 +11,7 @@ validates and unpacks the content of a _JSON web signature_ ([JWS](https://tools
 
 `jws` is expected to be a _compact serialization_.
 
-For the HMAC based algorithms, `key` is a _Base64URL_ encoded symmetric key for the digital signature. For the `RSASSA` based algorithms, use the PEM encoded *public* key (without the `BEGIN` and `END` lines and without any line breaks).
+For the HMAC based algorithms, `key` is a _Base64URL_ encoded symmetric key for the digital signature. For the `RSASSA` based algorithms, use the PEM encoded *public* key (without the `BEGIN` and `END` lines and without any line breaks). The key must not be password protected.
 
 Currently, signatures created with `HS256`, `HS385`, `HS512`, `RS256`, `RS384` or `RS512` can be validated.
 
@@ -33,12 +33,9 @@ The Base64URL-encoded key `$key` is read from the JSON file `jwt-key.json`: `{"k
 The unpacked web token is stored in `$jwt`, which provides easy access to its content:
 
 ```xml
-<template out="$key">
-{{ json-doc('jwt-key.json')/k }}
-</template>
-<template out="$jwt">
-{{ jwt-decode($request/cookies/token, $key) }}
-</template>
+<eval out="$key">json-doc('jwt-key.json')/k</eval>
+<eval out="$jwt">jwt-decode($request/cookies/token, $key)</eval>
+
 <template>
 {
   "user":   {{ $jwt/user }},
@@ -47,4 +44,7 @@ The unpacked web token is stored in `$jwt`, which provides easy access to its co
 </template>
 ```
 
-A complete example can be found in [Working with JWT](/cookbook/jwt.md).
+## See also
+
+* [`jwt-encode()`](jwt-encode.md)
+* [Working with JWT](/cookbook/jwt.md)
