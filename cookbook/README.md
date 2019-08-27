@@ -17,3 +17,9 @@
 ## [Using the Built-in Mocking](builtin-mocking.md)
 
 ## [Extracting Common Initialization Flow Tasks](init-flow.md)
+
+## [Testing Templates](test-templates.md)
+
+## [Testing API Requests](test-api-request.md)
+
+## [Testing with Backend Requests](test-backend.md)

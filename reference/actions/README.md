@@ -18,6 +18,15 @@
 * [`template`](template.md)
 * [`xslt`](xslt.md)
 
+## Test Actions
+
+There are some special purpose actions for [testing](/reference/testing/README.md) :
+
+* [`assert`](assert.md)
+* [`backend-flow`](backend-flow.md)
+* [`test-request`](test-request.md)
+
+
 
 ## `debug` Attribute
 
