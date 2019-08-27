@@ -1,8 +1,8 @@
 # Testing API Requests
 
-You have defined your API in `swagger.yaml`, provided a tight [schema](/reference/OpenAPI/validation.md) and wrote [flows](/reference/OpenAPI/routing.md) for API paths. How can we test the flows?
+You have defined your API in `swagger.yaml`, provided a detailed [schema](/reference/OpenAPI/validation.md) and wrote [flows](/reference/OpenAPI/routing.md) for API paths. How can we test the flows?
 
-Let's say, you have invented a insanely useful API route that tells whether a given number is odd.
+Let's say you have invented a incredibly useful API route that can tell whether a given number is odd.
 
 ## Example
 
@@ -43,7 +43,7 @@ Flow in `odd.xml`:
 
   <template>
     {
-    "odd":  {{ $request/get/number mod 2 = 1 }}
+    "odd":  {{ $request/get/number mod 2 != 0 }}
     }
   </template>
 </flow>
@@ -51,13 +51,13 @@ Flow in `odd.xml`:
 
 ## Tests
 
-Now, test that! We could write a [sub-flow](/reference/actions/sub-flow.md) based test like in [Testing Templates](test-templates.md). But this time, we want to actually _call_ our API to make sure, validation works, status codes are correct and so on.
+Now lets test that! We could write a [sub-flow](/reference/actions/sub-flow.md) based test like in [Testing Templates](test-templates.md). But this time, we want to actually _call_ our API to make sure that validation works, status codes are correct and so on.
 
-The [`test-request` action](/reference/actions/test-request.md) does just that: You define the API `path` that should be called, and all necessary [`request`](/reference/actions/request.md) parameters.
+The [`test-request` action](/reference/actions/test-request.md) does just that: You define the API `path` that should be called and all necessary [`request`](/reference/actions/request.md) parameters.
 
-The `test-request` sets these variables to inspect the result:
+The `test-request` sets these variables so that you can easily inspect the result:
 
-* `$status` the status code (number)
+* `$status` the HTTP status code (number)
 * `$response` the response body (string)
 * `$headers` the response headers (array)
 
@@ -81,7 +81,7 @@ This is what we will use to assert that everything works as expected:
 </flat-test>
 ```
 
-Note, that we have used `json-parse()` to check the `odd` property.
+Note that we have used `json-parse()` to check the `odd` property.
 
 `tests/test-odd.xml`:
 ```xml
@@ -132,6 +132,10 @@ ok 2 GET /api/is-odd?number=4711 (tests/test-odd.xml): 2 assertions
 ok 3 GET /api/is-odd?number=0 (tests/test-zero.xml): 3 assertions
 passed: 3, failed: 0
 ```
+
+> 📝
+> **Exercise:** Add a test for negative numbers that also verifies that the `see-also` header is not set.
+
 
 ## See also
 
