@@ -16,4 +16,6 @@
 
 ## [OpenAPI/Swagger Integration](OpenAPI/README.md)
 
+## [Testing](testing/README.md)
+
 ## [Variables](variables.md)
