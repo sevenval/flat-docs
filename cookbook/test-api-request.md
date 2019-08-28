@@ -51,7 +51,7 @@ Flow in `odd.xml`:
 
 ## Tests
 
-Now lets test that! We could write a [sub-flow](/reference/actions/sub-flow.md) based test like in [Testing Templates](test-templates.md). But this time, we want to actually _call_ our API to make sure that validation works, status codes are correct and so on.
+Now let's test that! We could write a [sub-flow](/reference/actions/sub-flow.md) based test like in [Testing Templates](test-templates.md). But this time, we want to actually _call_ our API to make sure that validation works, status codes are correct and so on.
 
 The [`test-request` action](/reference/actions/test-request.md) does just that: You define the API `path` that should be called and all necessary [`request`](/reference/actions/request.md) parameters.
 

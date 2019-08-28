@@ -1,6 +1,6 @@
 # Testing Templates
 
-You have written a [JSON Template](/reference/Templating/README.md) and now you want to test it. FLAT comes with a [Test Framework](/reference/testing/README.md) that makes it easy to exercise your code with various input and error conditions.
+You have written a [JSON Template](/reference/templating/README.md) and now you want to test it. FLAT comes with a [Test Framework](/reference/testing/README.md) that makes it easy to exercise your code with various input and error conditions.
 
 ## Our Test Specimen
 Let's write a simple template that outputs some information on the incoming request. (You have to register it in your [`swagger.yaml`](/reference/OpenAPI/routing.md), we assume it is stored as `api/request-info.xml`).
@@ -38,7 +38,7 @@ The result is:
 ```
 So far, so good. If you look closely, you will notice that the template is buggy. But we will bump into this when writing tests for it :)
 
-# Writing a Test
+## Writing a Test
 
 In FLAT, tests are written in `<flat-test>` XML files. Those tests work like regular [flows](/reference/flow.md), but they provide specialized [actions](/reference/actions/action.md#testing) to make testing easy.
 
@@ -311,13 +311,9 @@ We get an execution error. Luckily the debug (`-d [topic]`) is enabled, so we se
 Action "template": Output is not valid JSON: Syntax error
 ```
 
-> 📝
-> **Exercise:** Fix that bug in the template!
->
-> <details><summary>💡 Hint…</summary>
->
-> Hint: The number one reason for invalid JSON syntax are [commas](/reference/templating/comma.md).
-> </details>
+**Exercise:** Fix that bug in the template!
+
+💡Hint: The number one reason for invalid JSON syntax are [commas](/reference/templating/comma.md).
 
 After we have fixed the bug in the template, the test result should look like this:
 
@@ -328,7 +324,7 @@ ok 1 tests/test-request-tpl.xml: 2 assertions
 passed: 1, failed: 0
 ```
 
-💡 Hint: You can call `flat test` with many files:
+💡Hint: You can call `flat test` with many files:
 
 ```shell
 $ flat test tests/test-*.xml
