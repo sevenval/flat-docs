@@ -29,4 +29,5 @@ The action argument may be a [JSON template](/reference/templating/README.md).
 ## See also
 
 * [`$env`](/reference/variables.md#predefined-variables) (reference)
+* [Using Env Vars](/cookbook/envvars.md) (cookbook)
 * [Testing](/reference/testing/README.md) (reference)

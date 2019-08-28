@@ -9,7 +9,7 @@ A valid variable name starts with `$` followed by a letter `a`…`z` or `A`…`Z
 The following predefined variables exist:
 
 * `$body`: client request body
-* `$env`: environment variables
+* `$env`: environment variables (see [Using Env Vars](/cookbook/envvars.md))
 * `$request`: client request information
 * `$server`: server information
 * `$upstream`: upstream response information
@@ -141,3 +141,7 @@ conditions and produces the string `null` in placeholders:
   </template>
 </flow>
 ```
+
+## See also
+
+* [Using Env Vars](/cookbook/envvars.md) (cookbook)
