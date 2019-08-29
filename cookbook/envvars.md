@@ -2,7 +2,7 @@
 
 It is good practice to make a FLAT app configurable so that it can run in multiple environments. For example, the upstream APIs have different locations in a local dev setup and the production system.
 
-FLAT runs as _Docker Container_ and can make use of the _environment variables_ defined in `Dockerfile`, `docker-compose.yml` or with `docker run -e`.
+FLAT runs as a _Docker Container_ and can make use of the _environment variables_ defined in `Dockerfile`, `docker-compose.yml` or with `docker run -e`.
 
 
 ## Defining Env Vars
@@ -11,7 +11,7 @@ FLAT runs as _Docker Container_ and can make use of the _environment variables_ 
 
 In a development setup we may use [`flat` cli](/reference/flat-cli.md) to run our API. By convention, all shell environment variables starting with `FLAT_` are passed into the container.
 
-Let's start FLAT with an env variable:o
+Let's start FLAT with an env variable:
 
 ```shell
 $ export FLAT_MY_VAR="my value"
@@ -47,7 +47,7 @@ The `inline` sink interweaves the debug output with your API response. It will d
 
 ### Docker
 
-If you control the docker setup yourself (e.g. `docker-compose`, Kubernetes …) you can use its built-in support for environment variable. In this case, your not bound to variable names starting with `FLAT_`.
+If you control the docker setup yourself (e.g. `docker-compose`, Kubernetes …) you can use its built-in support for environment variables. In this case, you are not bound to variable names starting with `FLAT_`.
 
 Your `docker-compose.yaml` could look like this:
 ```yaml
@@ -100,11 +100,11 @@ Another way of defining env vars would be the `-e` flag of a simple `docker run`
 $ docker run --rm -it -e MY_VAR="my value" -v "$(pwd):/app" sevenvaltechnologies/flatrunner
 ```
 
-Great! We now know how to define Environment Variables. Let's use them!
+Great! We now know how to define environment variables. Let's use them!
 
 ## Accessing Env Vars in Flows
 
-All environment variables are accessible from [flows](/reference/flow.md) by the system [variable `$env`](/reference/variables.md). It is a [OXN](/reference/templating/oxn.md) object with the defined environment variables as properties:
+All environment variables are accessible from [flows](/reference/flow.md) by the system [variable `$env`](/reference/variables.md). It is an [OXN](/reference/templating/oxn.md) object with the defined environment variables as properties:
 
 ```json
 {
@@ -152,7 +152,7 @@ To [request](/reference/actions/request.md) the auth service, we have to build a
 </flow>
 ```
 
-If the App is deployed into production, the `AUTH_SERVICE` variable will be set to another value, probably one with `https` and running on a different port.
+If the app is deployed into production, the `AUTH_SERVICE` variable will be set to another value, probably one with `https` and running on a different port.
 
 ## JWT
 
@@ -162,7 +162,7 @@ See [Working with JWT](/cookbook/jwt.md) for a larger example.
 
 ## Credentials
 
-Often, access between services is restricted by and [HTTP Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).
+Often, access between services is restricted by an [HTTP Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).
 
 You could read Basic Auth credentials from an env var in your [request](/reference/actions/request.md#options):
 

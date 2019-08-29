@@ -19,7 +19,7 @@ The action allows to override variables in the `$env` structure for testing purp
 
 The action argument is a JSON Object. The property values should be of type string.
 
-As env vars from the system (shell or `docker`) can only be strings, numeric or boolean values are casted to their _string representation_.
+As env vars from the system (shell or `docker`) can only be strings, numeric or boolean values are cast to their _string representation_.
 
 If the value is `null`, the env var is unset.
 
