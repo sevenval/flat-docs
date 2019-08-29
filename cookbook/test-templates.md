@@ -40,7 +40,7 @@ So far, so good. If you look closely, you will notice that the template is buggy
 
 ## Writing a Test
 
-In FLAT, tests are written in `<flat-test>` XML files. Those tests work like regular [flows](/reference/flow.md), but they provide specialized [actions](/reference/actions/action.md#testing) to make testing easy.
+In FLAT, tests are written in `<flat-test>` XML files. Those tests work like regular [flows](/reference/flow.md), but they provide specialized [actions](/reference/actions/README.md#test-actions) to make testing easy.
 
 Usually tests should run in the context of the FLAT app. Therefore, we recommend putting tests in a `tests/` folder next to the `swagger.yaml`:
 
