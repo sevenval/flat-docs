@@ -20,10 +20,11 @@
 
 ## Test Actions
 
-There are some special purpose actions for [testing](/reference/testing/README.md) :
+There are some special purpose actions for [testing](/reference/testing/README.md):
 
 * [`assert`](assert.md)
 * [`backend-flow`](backend-flow.md)
+* [`set-env`](set-env.md)
 * [`test-request`](test-request.md)
 
 

@@ -4,7 +4,7 @@ FLAT provides a built-in test framework. It is especially useful to unit-test [t
 
 ## Syntax
 
-FLAT tests are defined as [flow](/reference/flow.md) files with the root node `flat-test`. There are a couple of specialized [test actions](/reference/actions/README.md#testing) that accompany the test flow. The invocation of at least one [`assert` action](/reference/actions/assert.md) is mandatory.
+FLAT tests are defined as [flow](/reference/flow.md) files with the root node `flat-test`. There are a couple of specialized [test actions](/reference/actions/README.md#test-actions) that accompany the test flow. The invocation of at least one [`assert` action](/reference/actions/assert.md) is mandatory.
 
 ```xml
 <flat-test>
@@ -46,6 +46,8 @@ If _all_ tests pass, the exit is code `0`. If _any_ test fails, the code is non-
 * [Testing Templates](/cookbook/test-templates.md) (cookbook)
 * [Testing API Requests](/cookbook/test-api-request.md) (cookbook)
 * [Testing Upstream Requests](/cookbook/test-backend.md) (cookbook)
-* [`assert`](/reference/actions/assert.md) (reference)
-* [`backend-flow`](/reference/actions/backend-flow.md) (reference)
-* [`test-request`](/reference/actions/test-request.md) (reference)
+* [Test Actions](/reference/actions/README.md#test-actions) (reference)
+  * [`assert`](/reference/actions/assert.md) (reference)
+  * [`backend-flow`](/reference/actions/backend-flow.md) (reference)
+  * [`set-env`](/reference/actions/set-env.md) (reference)
+  * [`test-request`](/reference/actions/test-request.md) (reference)
