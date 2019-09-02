@@ -6,7 +6,7 @@ string fit-serialize(string|number|boolean|node-set argument [, boolean pretty-p
 
 The XPath function `fit-serialize` generates a storable and human readable representation
 of the given node-set. For example, you could use this function to obtain a string
-representation of an XML DOM and log it via the [`fit-log()`](XPath_Functions.html#fit-log) function
+representation of an XML DOM and log it via the [`fit-log()`](fit-log.md) function
 for debugging.
 
 If the type of the `argument` is scalar (`string`, `number` or `boolean`), the `argument` is cast to

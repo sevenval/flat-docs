@@ -1,6 +1,6 @@
 # Encoding and Decoding JWT
 
-This snippet demonstrates how to use the `jwt-encode()` and `jwt-decode()` functions to work with [JSON Web Tokens](https://en.wikipedia.org/wiki/JSON_Web_Token)
+This snippet demonstrates how to use the `jwt-encode()` and `jwt-decode()` functions to work with [JSON Web Tokens](https://en.wikipedia.org/wiki/JSON_Web_Token).
 
 ----
 

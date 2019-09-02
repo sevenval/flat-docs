@@ -1,6 +1,6 @@
 # How can I increase the request timeout to deal with a slow upstream system?
 
-[Various timeout options](https://git.office.sevenval.de/code/pre-couper/extension/blob/develop/docs/actions.md#options) can be set on the `request` action. Here we allow a five second overall timeout for the request:
+[Various timeout options](../reference/actions/request.md#options) can be set on the `request` action. Here we allow a five second overall timeout for the request:
 
 ```xml
 <flow>

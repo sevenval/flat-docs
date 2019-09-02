@@ -16,12 +16,8 @@ is given, the current context node is used.
 `has-class('myClass', /*)` returns `true` if the document element contains `myClass` in
 its `class` attribute, otherwise `false`.
 
-;;block-warning
-
 Searching for multiple class names simultaneously (e.g. `has-class('a b')`) is not supported
 and triggers a warning. Use an `and` or an `or` expression instead, e.g.
 `has-class('a') and has-class('b')`.
 
 Searching an empty string is also not allowed and triggers a warning, too.
-
-block;;

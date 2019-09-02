@@ -9,7 +9,7 @@ in a database file. The database file specified by the `fidj-uri` can be either 
 or [SHMT](https://github.com/sevenval/SHMT) format. If the
 `key` is not found, the `default` string will be returned.
 
-* `fidj-file-uri`: [FIDJ URI](../config/FS_Structure.html#fit-protocol) pointing to a local database _file_. The extension
+* `fidj-file-uri`: FIDJ URI pointing to a local database _file_. The extension
   of the database file must be either lowercase `.json` for a JSON file or lowercase
   `.shmt` for an SHMT file.
 * `key`: database key to search for
@@ -31,10 +31,8 @@ does this automatically):
 }
 ```
 
-;;block-tip
-
 If a value is either of type `object` or `ordered list of values` (`array`),
-the value is always converted to a JSON string. By using the [`json-to-xml()`](XPath_Functions.html#json-to-xml)
+the value is always converted to a JSON string. By using the [`json-to-xml()`](json-to-xml.md)
 function, the result string can be translated into a corresponding XML structure.
 
 Example:
@@ -45,13 +43,11 @@ Example:
 
 would result in the string `"{\"k\":\"v\"}"`.
 
-block;;
-
 
 ## Debugging
 
 The `lookup` XPath function provides many information or error messages in
-the `json` [debug channel](../core/Debugging.html).
+the `json` [debug channel](../debugging.md).
 
 
 ## Examples
