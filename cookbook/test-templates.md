@@ -334,6 +334,49 @@ ok 2 tests/test-request-tpl-get.xml: 1 assertions
 passed: 2, failed: 0
 ```
 
+## Use more compare flags
+
+You can use more compare flags for your tests.
+
+The `contains` flag can be used to test whether an expression result contains a given string:
+
+```xml
+<flat-test>
+  <template out="$request">
+  {
+    "method": "POST",
+    "path": "/a/path#"
+  }
+  </template>
+
+  <assert>
+  [
+    [ "$request/path", {"contains", "a/"} ]
+  ]
+  </assert>
+</flat-test>
+```
+
+This assertion tests whether the `path` property of `$request` contains the string "a/".
+
+The `pattern` flag can be used to test whether an expression result matches a given regular expression:
+
+```xml
+  <assert>
+  [
+    [ "$request/method", {"pattern", "^(?i)post$"} ]
+  ]
+  </assert>
+```
+
+This assertion tests whether the `method` property of `$request` matches case-insensitively (note the modifier `(?i)`) the string "post".
+
+Note: The pattern does not contain delimiters. The implementation uses `#` as delimiters. So, if you want to use `#` within a pattern, you have to escape it:
+
+```json
+    [ "$request/path", {"pattern", "\\#$"} ]
+```
+
 ## See also
 
 * [Testing API Requests](test-api-request.md) (cookbook)
