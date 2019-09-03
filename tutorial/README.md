@@ -45,14 +45,12 @@ Let's try to start FLAT:
 
 ```bash
 $ flat start ~/hello-world
-
 No FLAT app found in ~/hello-world: create swagger.yaml to start
 ```
 
 Before we can start FLAT, we need an API definition. The default location is `./swagger.yaml`. To get the server up and running, an empty one will do the job:
 ```bash
-$ cd ~/hello-world
-$ touch swagger.yaml
+$ touch ~/hello-world/swagger.yaml
 ```
 
 Now you can start FLAT like this
@@ -97,7 +95,7 @@ Object required
 Looks like an empty definition isn't really useful.
 
 We will need at least a minimal [OpenAPI definition](https://swagger.io/docs/specification/2-0/basic-structure/)
-to get rid of that error page.
+in our `swagger.yaml` to get rid of that error page.
 
 Currently, FLAT supports OpenAPI 2.0 also known as Swagger:
 
@@ -125,8 +123,8 @@ We'll get rid of it in the next section.
 
 ## In the Flow
 
-The [_Flow_](../reference/flow.md) feature of FLAT gives us full control over request and response processing.
-Let's create a simple Flow definition in `hello.xml` with an
+The [_flow_](../reference/flow.md) feature of FLAT gives us full control over request and response processing.
+Let's create a simple flow definition in `hello.xml` with an
 [`echo` _action_](../reference/actions/echo.md) that produces a JSON snippet:
 
 ```xml
@@ -193,7 +191,7 @@ In the flow, path parameters can be accessed via `$request/params/…`. With the
 </flow>
 ```
 
-![FLAT error](images/hello-css.png)
+!["Hello World" in CSS](images/hello-css.png)
 
 Did you notice how we change the HTTP status code to 404 when the requested
 language is unsupported?
@@ -972,7 +970,7 @@ Besides the built-in debug information, custom debug output can help understand 
 
 Here are the complete configuration files:
 
-## `hello.xml`
+### `hello.xml`
 
 ```xml
 <flow>
@@ -999,7 +997,7 @@ Here are the complete configuration files:
 </flow>
 ```
 
-## `upstream_request.xml`
+### `upstream_request.xml`
 
 ```xml
 <flow>
@@ -1026,13 +1024,16 @@ Here are the complete configuration files:
 </flow>
 ```
 
-## `swagger.yaml`
+### `swagger.yaml`
 
 ```yaml
 swagger: "2.0"
 info:
   version: "1.0"
   title: Hello World!
+x-flat-validate:
+  request: true
+  response: true
 paths:
   /{language}:
     get:
@@ -1058,7 +1059,7 @@ paths:
                 pattern: ^https://raw.githubusercontent.com/
 ```
 
-## `upstream.yaml`
+### `upstream.yaml`
 
 ```yaml
 swagger: "2.0"
