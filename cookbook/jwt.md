@@ -97,6 +97,8 @@ $ tail -n +2 public.key | head -n -1 | tr -d '\n'
 MIIBIjANBgkqhki[...]
 ```
 
+Note that, with `RSASSA` based algorithms, you have to specify the algorithm in the `jwt-decode()` function.
+
 ## See also
 
 * [`jwt-encode()`](jwt-encode.md)
