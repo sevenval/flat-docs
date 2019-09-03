@@ -15,7 +15,7 @@ For the HMAC based algorithms, `key` is a _Base64URL_ encoded symmetric key for 
 
 Currently, signatures created with `HS256`, `HS385`, `HS512`, `RS256`, `RS384` or `RS512` can be validated.
 
-The optional `algorithm` parameter specifies the signing algorithm the signature is expected to be created with. Valid values are `HS256`, `HS385`, `HS512`, `HS` (any supported HMAC based algorithm), `RS256`, `RS384`, `RS512`, and `RS` (any supported RSASSA based algorithm). When using RSASSA based signing, it is strongly recommended to specify the `algorithm` parameter.
+The additional `algorithm` parameter specifies the signing algorithm the signature is expected to be created with. Valid values are `HS256`, `HS385`, `HS512`, `HS` (any supported HMAC based algorithm), `RS256`, `RS384`, `RS512`, and `RS` (any supported RSASSA based algorithm). When using RSASSA based signing, the `algorithm` parameter is mandatory.
 
 If validation and decoding is successful, you get the original web token as OXN encoded node-set.
 
