@@ -28,7 +28,7 @@ alter `fit://request/content` throughout the request.
 remains unchanged. Thus, `content()` and `content('main')` are not necessarily
 equivalent.
 
-Optionally, a [content ID](../flow.md) can
+Optionally, a [content ID](../actions/requests.md) can
 be passed to read data from `fit://request/content/<ID>`:
 
 * `content('side')/some/data`
