@@ -351,7 +351,7 @@ The `contains` flag can be used to test whether an expression result contains a 
 
   <assert>
   [
-    [ "$request/path", {"contains", "a/"} ]
+    [ "$request/path", {"contains": "a/"} ]
   ]
   </assert>
 </flat-test>
@@ -364,7 +364,7 @@ The `pattern` flag can be used to test whether an expression result matches a gi
 ```xml
   <assert>
   [
-    [ "$request/method", {"pattern", "#^post$#i"} ]
+    [ "$request/method", {"pattern": "#^post$#i"} ]
   ]
   </assert>
 ```
