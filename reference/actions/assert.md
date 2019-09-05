@@ -52,11 +52,10 @@ The expected value (second value) can be an object that defines one or more _com
 
 The [Testing Templates](/cookbook/test-templates.md) recipe provides a full example.
 
-
 ## See also
 
 * [Testing Templates](/cookbook/test-templates.md) (cookbook)
 * [Testing Upstream Requests](/cookbook/test-backend.md) (cookbook)
 * [Testing](/reference/testing/README.md) (reference)
 * [`json-parse()`](/reference/functions/json-parse.md)
-* [`json-serialize()`](/reference/functions/json-serialize.md)
+* [`json-stringify()`](/reference/functions/json-stringify.md)
