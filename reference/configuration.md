@@ -26,8 +26,8 @@ The difference is, that you may use _Dynamic Attribute Values_ and if-clauses as
 ```xml
 <config>
   <flat>
-    <validation request="true" if="$server/role = 'dev'"/
-    <validation request="report-only" if="$server/role = 'prod'"/
+    <validation request="true" if="$server/role = 'dev'"/>
+    <validation request="report-only" if="$server/role = 'prod'"/>
   </flat>
 </config>
 ```
