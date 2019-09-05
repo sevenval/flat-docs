@@ -37,6 +37,6 @@ Under most circumstances, explicit conversions between both formats are not nece
 
 ## See also
 
-* [`json-serialize()`](/reference/functions/json-serialize.md)
+* [`json-stringify()`](/reference/functions/json-stringify.md)
 * [`json-parse()`](/reference/functions/json-parse.md)
 * [JSON Templates](/reference/templating/README.md)

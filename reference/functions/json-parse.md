@@ -17,10 +17,10 @@ If the parameter cannot be decoded, the function returns an empty node-set.
 ```
 json-parse('{"active":true}')/active = true()
 json-parse($data/description)
-json-parse(json-serialize($body))
+json-parse(json-stringify($body))
 ```
 
 ## See also
 
-* [`json-serialize()`](/reference/functions/json-serialize.md)
+* [`json-stringify()`](/reference/functions/json-stringify.md)
 * [`assert`](/reference/actions/assert.md)
