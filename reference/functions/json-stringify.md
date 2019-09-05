@@ -1,7 +1,7 @@
-# `json-serialize()`
+# `json-stringify()`
 
 ```
-string json-serialize(OXN json, bool pretty = false)
+string json-stringify(OXN json, bool pretty = false)
 ```
 
 Serializes a JSON ([OXN](/reference/templating/oxn.md)) object or atomic values (strings, numbers, booleans) into JSON text.
@@ -16,13 +16,13 @@ The compact form (default) is useful for logging.
 ## Example
 
 ```
-json-serialize(true) = 'true'
-json-serialize("foo") = '"foo"'
-json-serialize($data) = '{"foo":"bar"}'
-json-serialize($data, true) = '{
+json-stringify(true) = 'true'
+json-stringify("foo") = '"foo"'
+json-stringify($data) = '{"foo":"bar"}'
+json-stringify($data, true) = '{
   "foo": "bar"
 }'
-json-serialize(json-parse('[1, 2]')) = '[1, 2]'
+json-stringify(json-parse('[1, 2]')) = '[1, 2]'
 ```
 
 ## See also

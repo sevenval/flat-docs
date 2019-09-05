@@ -29,9 +29,9 @@
 
 ## JSON Functions
 
-* [`json-parse()`](json-parse.md)
-* [`json-serialize()`](json-serialize.md)
 * [`json-doc()`](json-doc.md)
+* [`json-parse()`](json-parse.md)
+* [`json-stringify()`](json-stringify.md)
 * [`json-to-xml()`](json-to-xml.md)
 * [`jwt-decode()`](jwt-decode.md)
 * [`jwt-encode()`](jwt-encode.md)
@@ -45,8 +45,8 @@
 * [`true()` ↗](https://developer.mozilla.org/en/XPath/Functions/true)
 
 ## Math Functions
-* [`floor()` ↗](https://developer.mozilla.org/en/XPath/Functions/floor)
 * [`ceiling()` ↗](https://developer.mozilla.org/en/XPath/Functions/ceiling)
+* [`floor()` ↗](https://developer.mozilla.org/en/XPath/Functions/floor)
 * [`number()` ↗](https://developer.mozilla.org/en/XPath/Functions/number)
 * [`round()` ↗](https://developer.mozilla.org/en/XPath/Functions/round)
 * [`sum()` ↗](https://developer.mozilla.org/en/XPath/Functions/sum)
@@ -66,8 +66,8 @@
 * [`has-class()`](has-class.md)
 * [`id()` ↗](https://developer.mozilla.org/en/XPath/Functions/id)
 * [`lang()` ↗](https://developer.mozilla.org/en/XPath/Functions/lang)
-* [`local-name()` ↗](https://developer.mozilla.org/en/XPath/Functions/local-name)
 * [`last()` ↗](https://developer.mozilla.org/en/XPath/Functions/last)
+* [`local-name()` ↗](https://developer.mozilla.org/en/XPath/Functions/local-name)
 * [`lookup()`](lookup.md)
 * [`name()` ↗](https://developer.mozilla.org/en/XPath/Functions/name)
 * [`namespace-uri()` ↗](https://developer.mozilla.org/en/XPath/Functions/namespace-uri)
