@@ -85,9 +85,6 @@ Or use `curl` on the command line in a new terminal:
 
 ```bash
 $ curl localhost:8080
-…
-Couper very sorry :(
-
 XNlS3M0L3o-5iHrwuGgNJQAAAI0: Invalid definition: swagger.yaml
 Object required
 ```
@@ -117,7 +114,7 @@ paths:
 Now we get a different error message:
 
 ```bash
-$ curl localhost:8080 | tail -n1
+$ curl localhost:8080
 XNlTpvUrpUX@vMuN6J30rAAAAA8: No flow found for GET /
 ```
 
