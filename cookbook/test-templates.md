@@ -364,18 +364,12 @@ The `pattern` flag can be used to test whether an expression result matches a gi
 ```xml
   <assert>
   [
-    [ "$request/method", {"pattern", "^(?i)post$"} ]
+    [ "$request/method", {"pattern", "#^post$#i"} ]
   ]
   </assert>
 ```
 
-This assertion tests whether the `method` property of `$request` matches case-insensitively (note the modifier `(?i)`) the string "post".
-
-Note: The pattern does not contain delimiters. The implementation uses `#` as delimiters. So, if you want to use `#` within a pattern, you have to escape it:
-
-```json
-    [ "$request/path", {"pattern", "\\#$"} ]
-```
+This assertion tests whether the `method` property of `$request` matches case-insensitively the string "post".
 
 ## See also
 

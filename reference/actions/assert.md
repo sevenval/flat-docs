@@ -42,7 +42,7 @@ The expected value (second value) can be an object that defines one or more _com
 * `file`: read wanted text from a _golden file_
 * `mode`: either `text` or `json`. `json` mode  validates JSON syntax in both expected and actual result; compares JSON in compact (un-pretty) formatting.
 * `contains`: a string that must be contained in the expression result
-* `pattern`: a regular expression pattern (without delimiters) that the expression result must match (the implementation uses `#` delimiters).
+* `pattern`: a regular expression pattern (with delimiters and optional modifiers) that the expression result must match.
 
 ```xml
 <assert>
@@ -57,12 +57,10 @@ The expected value (second value) can be an object that defines one or more _com
 </assert>
 <assert>
 [
-  [ "$s2", {"pattern": "^(?i)[a-z ]+$"} ]
+  [ "$s2", {"pattern": "#^[a-z ]+$#i"} ]
 ]
 </assert>
 ```
-
-Use the `(?i)` modified to test case-insensitively.
 
 The [Testing Templates](/cookbook/test-templates.md) recipe provides a full example.
 
