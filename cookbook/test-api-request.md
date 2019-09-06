@@ -32,7 +32,6 @@ paths:
 Flow in `odd.xml`:
 ```xml
 <flow>
-
   <if test="$request/get/number = 0">
     <set-response-headers>
     {
@@ -42,9 +41,9 @@ Flow in `odd.xml`:
   </if>
 
   <template>
-    {
+  {
     "odd":  {{ $request/get/number mod 2 != 0 }}
-    }
+  }
   </template>
 </flow>
 ```
@@ -122,7 +121,7 @@ Note that we have used `json-parse()` to check the `odd` property.
 
 Run the tests with `flat test`:
 
-```shell
+```bash
 $ flat test tests/*.xml
 ```
 ```tap

@@ -12,7 +12,7 @@ Used in [FLAT tests](/reference/testing/README.md) to assert expected results.
 </assert>
 ```
 
-The body is JSON array of assertions. An assertion is an array itself, with up to three values:
+The body is a JSON array of assertions. An assertion is an array itself, with up to three values:
 
 * Expression: _as string_ (see [`eval`](/reference/actions/eval.md)); (required)
 * Expected result: a literal value (string, number, boolean) or an object with compare flags (see below); (optional, default: `true`)
@@ -50,13 +50,10 @@ The expected value (second value) can be an object that defines one or more _com
   [ "$response", {"file": "login.golden", "mode": "json"} ]
 ]
 </assert>
+
 <assert>
 [
-  [ "$s1", {"contains": "foo bar"} ]
-]
-</assert>
-<assert>
-[
+  [ "$s1", {"contains": "foo bar"} ],
   [ "$s2", {"pattern": "#^[a-z ]+$#i"} ]
 ]
 </assert>
@@ -71,4 +68,4 @@ The [Testing Templates](/cookbook/test-templates.md) recipe provides a full exam
 * [Testing Upstream Requests](/cookbook/test-backend.md) (cookbook)
 * [Testing](/reference/testing/README.md) (reference)
 * [`json-parse()`](/reference/functions/json-parse.md)
-* [`json-serialize()`](/reference/functions/json-serialize.md)
+* [`json-stringify()`](/reference/functions/json-stringify.md)
