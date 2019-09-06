@@ -13,7 +13,7 @@ In a development setup we may use [`flat` cli](/reference/flat-cli.md) to run ou
 
 Let's start FLAT with an env variable:
 
-```shell
+```bash
 $ export FLAT_MY_VAR="my value"
 $ flat start
 ```
@@ -22,7 +22,7 @@ $ flat start
 
 The env vars can be inspected with the `env` [debug topic](/reference/debugging.md):
 
-```shell
+```bash
 $ curl -s -H debug:env localhost:8080/ > /dev/null
 debug   [env]                  Env vars: {
     "HOSTNAME": "cee6f96cd5ac",
@@ -39,7 +39,7 @@ There's our `FLAT_MY_VAR`! (The `FLAT_DEBUG` var is set by `flat` cli to allow t
 
 Note that we have discarded the actual HTTP response with `> /dev/null`. The default debug sink in `flat` is `stderr` which is printed on the starting shell. If you have no idea where this terminal window is, you can also include the debug output in the HTTP response:
 
-```shell
+```bash
 $ curl -s -H debug:env::inline localhost:8080
 ```
 
@@ -47,7 +47,7 @@ The `inline` sink interweaves the debug output with your API response. It will d
 
 ### Docker
 
-If you control the docker setup yourself (e.g. `docker-compose`, Kubernetes …) you can use its built-in support for environment variables. In this case, you are not bound to variable names starting with `FLAT_`.
+If you control the docker setup yourself (e.g. `docker-compose`, Kubernetes, …) you can use its built-in support for environment variables. In this case, you are not bound to variable names starting with `FLAT_`.
 
 Your `docker-compose.yaml` could look like this:
 ```yaml
@@ -65,19 +65,19 @@ services:
 
 We have defined `MY_VAR` in the `environment` section. Start the container with
 
-```shell
+```bash
 $ docker-compose up
 ```
 
 and run the `curl` command again:
 
-```
+```bash
 $ curl -s -H debug:env::inline localhost:8080
 ```
 
 This time the debug output will appear in the `docker-compose` output. If your container is running in the background, you may start another log tail with
 
-```
+```bash
 $ docker-compose logs -f
 ```
 
@@ -96,7 +96,7 @@ flat_1  | }
 
 Another way of defining env vars would be the `-e` flag of a simple `docker run`:
 
-```shell
+```bash
 $ docker run --rm -it -e MY_VAR="my value" -v "$(pwd):/app" sevenvaltechnologies/flatrunner
 ```
 
@@ -133,7 +133,7 @@ A typical use-case for an env var is the base URL of an upstream API.
 
 Let's define the origin of our auth service:
 
-```shell
+```bash
 AUTH_SERVICE=http://localhost:3000
 ```
 
