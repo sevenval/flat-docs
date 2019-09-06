@@ -50,3 +50,4 @@ Ist eine Datei nicht lesbar, wird der Request mit `403 Forbidden` beantwortet.
 ## See also
 
 * [File Serving](/cookbook/file-serving.md) (cookbook)
+* [Default Flow](/reference/flow.md#default-flow)

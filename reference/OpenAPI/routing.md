@@ -110,7 +110,12 @@ request**; the regular flow (specified by `x-flat-flow`) is _not_ executed. A
 [`return`](#return) statement terminates only the init flow; the regular flow
 is executed. Terminating [actions](actions/README.md) like
 [`echo`](actions/echo.md) or [`dump`](actions/dump.md) will prevent the actual
-flow being executed, too.
+flow from being executed, too.
+
+## Default Flow
+
+Requests to resources outside the `basePath` are handled by the default flow defined
+in `conf/flow.xml`. This allows for [serving HTML, images, JavaScript](/cookbook/file-serving.md) and the like.
 
 
 ## Path Parameters

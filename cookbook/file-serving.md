@@ -1,8 +1,8 @@
 # File Serving
 
-Sometimes you want to serve local files, e.g. HTML, JavaScript, or CSS. This is a task for the default flow (`conf/flow.xml`) and the [`serve` action](/reference/actions/serve.md).
+Sometimes you want to serve local files, e.g. HTML, JavaScript, or CSS. This is a task for the [default flow](/reference/flow.md#default-flow) defined in `conf/flow.xml` and the [`serve` action](/reference/actions/serve.md).
 
-First, create `flow.xml` in `conf` with the following content:
+First, we create `flow.xml` in `conf` with the following content:
 
 ```xml
 <flow>
@@ -12,15 +12,7 @@ First, create `flow.xml` in `conf` with the following content:
 
 This assumes that the local files should be found in an `htdocs` directory next to `conf` (`dir="../htdocs"`) and that there is an `index.html` fallback document in the `htdocs` directory.
 
-Now, let's create them
-
-```shell
-cd ..
-mkdir htdocs
-cd htdocs
-```
-
-and save
+So, let's create `htdocs/index.html`
 
 ```html
 <!DOCTYPE html>
@@ -35,9 +27,10 @@ and save
   </body>
 </html>
 ```
-to `index.html`.
 
-```shell
+and fetch it with `curl`:
+
+```bash
 curl -si http://localhost:8080/
 HTTP/1.1 200 OK
 Server: FLAT
@@ -46,14 +39,7 @@ Content-Type: text/html
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Main page</title>
-  </head>
-  <body>
-    <h1>Main page</h1>
-    <p>This is the main page.</p>
-  </body>
+  …
 </html>
 ```
 
@@ -92,10 +78,10 @@ Now edit `index.html`:
   <head>
     <meta charset="utf-8">
     <title>Main page</title>
-    <link rel="stylesheet" href="/css/main.css"> <!---  ⬅ -->
-    <script src="/js/main.js"></script>          <!---  ⬅ -->
+    <link rel="stylesheet" href="/css/main.css"> <!-- ⬅ -->
+    <script src="/js/main.js"></script>          <!-- ⬅ -->
   </head>
-…
+  …
 ```
 
 Now let's create another HTML document in a different directory:
@@ -157,3 +143,6 @@ Content-Type: text/html
 ```
 
 FLAT served the document in htdocs/somewhere/index.html, just like a webserver would do.
+
+> 📎
+> Note that requests to missing resources always return the fallback document.
