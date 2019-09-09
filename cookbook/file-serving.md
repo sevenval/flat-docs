@@ -23,11 +23,10 @@ So, let's create `htdocs/index.html`
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Main page</title>
+    <title>Fallback page</title>
   </head>
   <body>
-    <h1>Main page</h1>
-    <p>This is the main page.</p>
+    <h1>Fallback page</h1>
   </body>
 </html>
 ```
@@ -47,43 +46,20 @@ Content-Type: text/html
 </html>
 ```
 
-Now let's add some style and script:
+Let's add some style and script, too,
 
-```shell
-mkdir css
-mkdir js
+```bash
+$ echo 'body { background-color: red }' > htdocs/styles.css
+$ echo 'document.write("Hello!")' > htdocs/script.js
 ```
 
-and save
-
-```css
-body {
-  color: #000;
-  background: #fff
-}
-
-h1 {
-  font-size: 2em
-}
-```
-to `css/main.css`
-
-and
-
-```js
-console.log('from main.js')
-```
-to `js/main.js`.
-
-Now edit `index.html`:
+and reference them in `index.html`:
 
 ```html
-…
-  <head>
-    <meta charset="utf-8">
-    <title>Main page</title>
-    <link rel="stylesheet" href="/css/main.css"> <!-- ⬅ -->
-    <script src="/js/main.js"></script>          <!-- ⬅ -->
+    …
+    <title>Fallback page</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- ⬅ -->
+    <script src="/script.js"></script>         <!-- ⬅ -->
   </head>
   …
 ```
@@ -101,8 +77,8 @@ and save
   <head>
     <meta charset="utf-8">
     <title>Somewhere</title>
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/script.js"></script>
   </head>
   <body>
     <h1>Somewhere</h1>
@@ -136,8 +112,8 @@ Content-Type: text/html
   <head>
     <meta charset="utf-8">
     <title>Somewhere</title>
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/script.js"></script>
   </head>
   <body>
     <h1>Somewhere</h1>
