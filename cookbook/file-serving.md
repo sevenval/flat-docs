@@ -24,12 +24,22 @@ So, let's create `htdocs/index.html`
   <head>
     <meta charset="utf-8">
     <title>Fallback page</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/script.js"></script>
   </head>
   <body>
     <h1>Fallback page</h1>
   </body>
 </html>
 ```
+
+and some assets:
+
+```bash
+$ echo 'body { background-color: red }' > htdocs/styles.css
+$ echo 'document.write("Hello!")'       > htdocs/script.js
+```
+
 
 and fetch it with `curl`:
 
@@ -46,47 +56,14 @@ Content-Type: text/html
 </html>
 ```
 
-Let's add some style and script, too,
+Finally, we create another HTML document in a different directory:
 
 ```bash
-$ echo 'body { background-color: red }' > htdocs/styles.css
-$ echo 'document.write("Hello!")' > htdocs/script.js
+$ mkdir -p htdocs/some/where
+
+$ echo '<html><body><h1>Some/where</h1><body></html>' > htdocs/some/where/index.html
 ```
 
-and reference them in `index.html`:
-
-```html
-    …
-    <title>Fallback page</title>
-    <link rel="stylesheet" href="/styles.css"> <!-- ⬅ -->
-    <script src="/script.js"></script>         <!-- ⬅ -->
-  </head>
-  …
-```
-
-Now let's create another HTML document in a different directory:
-
-```shell
-mkdir somewhere
-```
-
-and save
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Somewhere</title>
-    <link rel="stylesheet" href="/styles.css">
-    <script src="/script.js"></script>
-  </head>
-  <body>
-    <h1>Somewhere</h1>
-    <p>This is somewhere.</p>
-  </body>
-</html>
-```
-to `somewhere/index.html`.
 
 ```shell
 curl -si http://localhost:8080/somewhere
