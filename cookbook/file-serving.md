@@ -40,66 +40,52 @@ $ echo 'body { background-color: red }' > htdocs/styles.css
 $ echo 'document.write("Hello!")'       > htdocs/script.js
 ```
 
-
-and fetch it with `curl`:
-
-```bash
-curl -si http://localhost:8080/
-HTTP/1.1 200 OK
-Server: FLAT
-Content-Type: text/html
-…
-
-<!DOCTYPE html>
-<html>
-  …
-</html>
-```
-
 Finally, we create another HTML document in a different directory:
 
 ```bash
 $ mkdir -p htdocs/some/where
 
-$ echo '<html><body><h1>Some/where</h1><body></html>' > htdocs/some/where/index.html
+$ echo '<html><body><h1>Somewhere</h1></body></html>' > htdocs/some/where/index.html
 ```
 
+Let's go surfin' now:
 
-```shell
-curl -si http://localhost:8080/somewhere
-HTTP/1.1 301 Moved Permanently
-Server: FLAT
-Location: /somewhere/
-Content-Type: text/html
-…
-
-```
-
-Note the redirect.
-
-```shell
-curl -si http://localhost:8080/somewhere/
+```bash
+$ curl -si localhost:8080
 HTTP/1.1 200 OK
 Server: FLAT
 Content-Type: text/html
 …
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Somewhere</title>
-    <link rel="stylesheet" href="/styles.css">
-    <script src="/script.js"></script>
-  </head>
-  <body>
-    <h1>Somewhere</h1>
-    <p>This is somewhere.</p>
+    <h1>Fallback page</h1>
   </body>
 </html>
+
+$ curl -si localhost:8080/styles.css
+HTTP/1.1 200 OK
+…
+Content-Type: text/css
+
+body { background-color: red }
 ```
 
-FLAT served the document in htdocs/somewhere/index.html, just like a webserver would do.
+Note the redirection when we request `/some/where` without the trailing `/`:
+
+```bash
+$ curl -si --location localhost:8080/some/where
+HTTP/1.1 301 Moved Permanently
+Server: FLAT
+Location: /some/where/
+Content-Type: text/html
+…
+
+HTTP/1.1 200 OK
+…
+<html><body><h1>Somewhere</h1></body></html>
+```
+
+FLAT responds with `index.html` just like a web server would do.
 
 > 📎
-> Note that requests to missing resources always return the fallback document.
+> Requests to missing resources always return the fallback document.
+> Therefore, any resources therein must be absolutely referenced.
