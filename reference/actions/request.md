@@ -29,7 +29,7 @@ Example: GET request
 {
   "url": "http://www.example.com/foo",
   "method": "GET",
-  "headers" {
+  "headers": {
     "User-Agent": "foo",
     "X-Foo": "value 1, value 2"
   },
@@ -48,7 +48,7 @@ Example: POST request
 {
   "url": "http://www.example.com/foo",
   "method": "POST",
-  "headers" {
+  "headers": {
     "User-Agent": "foo",
     "X-Foo": "value 1, value 2"
   },
@@ -118,7 +118,7 @@ Example: `cookies` as a JSON object
 Example: `cookies` as an array
 
 ```json
-cookies: [
+"cookies": [
   { "name": "a", "value": "b" },
   { "name": "c", "value": "foo" }
 ]
