@@ -2,9 +2,9 @@
 
 Sometimes you want to serve local files, e.g. HTML, JavaScript, or CSS. This is a task for the [default flow](/reference/OpenAPI/routing.md#default-flow) defined in `conf/flow.xml` and the [`serve` action](/reference/actions/serve.md).
 
-> 📎
-> In the following we assume that the `basePath` in `swagger.yaml` is *not* `/` so that
-> the default flow will actually be effective.
+📎
+In the following we assume that the `basePath` in `swagger.yaml` is *not* `/` so that
+the default flow will actually be effective.
 
 First, we create `flow.xml` in `conf` with the following content:
 
@@ -86,6 +86,6 @@ HTTP/1.1 200 OK
 
 FLAT responds with `index.html` just like a web server would do.
 
-> 📎
-> Requests to missing resources always return the fallback document.
-> Therefore, any resources therein must be absolutely referenced.
+📎
+Requests to missing resources always return the fallback document.
+Therefore, any resources therein must be absolutely referenced.
