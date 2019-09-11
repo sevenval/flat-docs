@@ -90,7 +90,7 @@ If multiple header fields with the same name should be set, the values must be c
 Example:
 
 ```json
-"headers" {
+"headers": {
   "User-Agent": "foo",
   "content-type": "application/octet-stream",
   "X-Foo": {{ concat("value1", ",", "value2") }}
