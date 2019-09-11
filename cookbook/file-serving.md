@@ -1,6 +1,6 @@
 # File Serving
 
-Sometimes you want to serve local files, e.g. HTML, JavaScript, or CSS. This is a task for the [default flow](/reference/flow.md#default-flow) defined in `conf/flow.xml` and the [`serve` action](/reference/actions/serve.md).
+Sometimes you want to serve local files, e.g. HTML, JavaScript, or CSS. This is a task for the [default flow](/reference/OpenAPI/routing.md#default-flow) defined in `conf/flow.xml` and the [`serve` action](/reference/actions/serve.md).
 
 > 📎
 > In the following we assume that the `basePath` in `swagger.yaml` is *not* `/` so that
