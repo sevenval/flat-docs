@@ -89,3 +89,15 @@ FLAT responds with `index.html` just like a web server would do.
 📎
 Requests to missing resources always return the fallback document.
 Therefore, any resources therein must be absolutely referenced.
+
+```bash
+$ curl -si localhost:8080/not/existing/
+HTTP/1.1 200 OK
+Server: FLAT
+Content-Type: text/html
+…
+
+    <h1>Fallback page</h1>
+  </body>
+</html>
+```
