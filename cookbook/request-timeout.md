@@ -1,6 +1,6 @@
-# How can I increase the request timeout to deal with a slow upstream system?
+# Increasing the Request Timeout
 
-[Various timeout options](../reference/actions/request.md#options) can be set on the `request` action. Here we allow a five second overall timeout for the request:
+In case we have to deal with a slow upstream system, the [various timeout options](../reference/actions/request.md#options) on the `request` action will help. Here we allow a five second overall timeout for the request:
 
 ```xml
 <flow>
@@ -15,4 +15,4 @@
 </flow>
 ```
 
-Without that option the request will be aborted after three seconds – FLAT's default timeout setting.
+Without that `timeout` option the request will be aborted after three seconds – FLAT's default timeout setting.

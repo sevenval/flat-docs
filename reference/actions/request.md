@@ -11,16 +11,12 @@ remote upstream servers. If you want to do multiple requests in parallel, use th
 
 ## Usage
 
-The response body will be written into `fit://request/content/<ID>`.
- <upstream>
-    <main>
-
-
+The response body will be written into `fit://request/content/<ID>`. It can be accessed with the [`content` function](/reference/functions/content.md): `content(<ID>)`
 
 Additional information about the response, such as headers and status code can
-be found in `fit://request/content/<ID>/response`.
+be found in the [`$upstream` variable](/reference/variables.md#predefined-variables).
 
-You can use a JSON template with the features defined below.
+You can use a [JSON template](/reference/templating.md) with the features defined below.
 
 Example: GET request
 
@@ -327,3 +323,11 @@ Example:
 > Any request options set in a `conf/sources.xml` file that match the requested domain and path
 > will also be applied to your request. Options directly set in the action have precedence, though.
 > We do **not** recommend using `conf/sources.xml`.
+
+
+## See also
+
+* [Tutorial](/tutorial/README.md#upstream-requests)
+* [Sending POST Requests](/cookbook/upstream-post-requests.md)
+* [Passing Header Fields](/cookbook/pass-header-field-upstream.md)
+* [Increasing the Request Timeout](/cookbook/request-timeout.md)
