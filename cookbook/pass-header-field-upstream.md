@@ -1,7 +1,7 @@
 # How can I pass an arbitrary header field to an upstream system?
 
 Use
-[pair producers](../reference/templating/pair-producer.md) to copy the wanted  header fields of the incoming request (`$request/headers`)
+[pair producers](../reference/templating/pair-producer.md) to copy the wanted  header fields of the incoming request ([`$request/headers`](/reference/variables.md#predefined-variables))
 to the [`request` action configuration](../reference/actions/request.md).
 Here we pass `User-Agent` and `Accept`:
 

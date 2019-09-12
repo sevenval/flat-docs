@@ -191,7 +191,7 @@ The `body` property sets the request body, in case the body is not `x-www-form-u
 
 The optional `mime` property sets the `Content-Type` request header. If no `mime` property is set, the content type is determined automatically.
 
-Example: `body` with `src` using a variable
+Example: `body` with `src` using the [predefined `$body` variable](../variables.md#predefined-variables) to pass the incoming request body
 
 ```json
 "body": {
