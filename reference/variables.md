@@ -16,7 +16,7 @@ The following predefined variables exist:
 
 Try the following flow with
 
-```
+```bash
 $ curl --data hello localhost:8080 | jq
 ```
 
