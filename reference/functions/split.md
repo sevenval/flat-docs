@@ -33,15 +33,17 @@ returns
 
 The elements of the result node-set may be used with positional predicates:
 ```
-split("A B C")[2]
+split("A  B C")[2]
 ```
 returns
 ```xml
 <token>B</token>
 ```
 
-For use in a [Template](../Templating/README.md) `loop`, the result node-set
-has to be casted into an array with the [`array()` function](#array):
+> 📎 Note that empty token elements will be discarded.
+
+For use in a [JSON template](../templating/README.md) with [`loop()`](../templating/loop.md), the resulting node-set
+has to be cast into an array with the [`array()` function](array.md):
 
 ```xml
 <template>
