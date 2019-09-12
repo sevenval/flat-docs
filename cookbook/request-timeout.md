@@ -1,6 +1,6 @@
 # Increasing the Request Timeout
 
-In case we have to deal with a slow upstream system, the [various timeout options](../reference/actions/request.md#options) on the `request` action will help. Here we allow a five second overall timeout for the request:
+In case we have to deal with a slow upstream system, the [various timeout options](../reference/actions/request.md#options) of the `request` action will help. Here we allow a five second overall timeout for the request:
 
 ```xml
 <flow>
