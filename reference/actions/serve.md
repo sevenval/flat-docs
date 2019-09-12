@@ -45,3 +45,9 @@ Ist eine Datei nicht lesbar, wird der Request mit `403 Forbidden` beantwortet.
 * Das in `dir` angegebenes Verzeichnis existiert nicht oder ist nicht lesbar.
 * Das in `dir` angegebenes Verzeichnis liegt nicht unterhalb des Projekt-Pfades.
 * Das in `fallback-doc` angegebenes Dokument soll geladen werden, existiert aber nicht.
+
+
+## See also
+
+* [File Serving](/cookbook/file-serving.md) (cookbook)
+* [Default Flow](/reference/flow.md#default-flow)
