@@ -11,11 +11,6 @@ remote upstream servers. If you want to do multiple requests in parallel, use th
 
 ## Usage
 
-The response body will be written into `fit://request/content/<ID>`. It can be accessed with the [`content` function](/reference/functions/content.md): `content(<ID>)`
-
-Additional information about the response, such as headers and status code can
-be found in the [`$upstream` variable](/reference/variables.md#predefined-variables).
-
 You can use a [JSON template](/reference/templating.md) with the features defined below.
 
 Example: GET request
@@ -56,6 +51,11 @@ Example: POST request
 </request>
 ```
 
+The response body will be written into `fit://request/content/<ID>`.
+It can be accessed with the [`content` function](/reference/functions/content.md): `content(<ID>)`.
+Additional information about the response, such as headers and status code can
+be found in the [`$upstream` variable](/reference/variables.md#predefined-variables).
+
 ### `url`
 
 The `url` property sets the request URL.
@@ -69,7 +69,7 @@ Example:
 ### `method`
 
 The `method` property sets the request method. Its value must be a string.
-If `method` is set in the JSON object, is not `null` and not `""`, it will be  used, and a `method` attribute on the `method` element will be ignored.
+If `method` is set in the JSON object, is not `null` and not `""`, it will be used and a `method` attribute on the `request` element will be ignored.
 
 The default value is `GET`. However, if `post`, `upload` or `body` are set in the JSON object, the default value will be `POST`.
 
@@ -80,7 +80,7 @@ Example:
 
 ### `headers`
 
-The `headers` property sets the request headers. Its value must be a JSON object, with each header field name and value set as properties with values of the JSON objects. Header field values must be set as string.
+The `headers` property sets the request headers. Its value must be a JSON object, with each header field name and value set as properties with values of the JSON objects.
 If multiple header fields with the same name should be set, the values must be concatenated in advance.
 
 Example:
@@ -95,7 +95,7 @@ Example:
 
 ### `cookies`
 
-The `cookies` property sets the cookies (sets a `Cookie` request header). Its value must be one of the following:
+The `cookies` property sets the cookies, i.e. it sets a `Cookie` request header. Its value must be one of the following:
 
 * a JSON object with the cookie key value pairs as properties; or
 * an array of JSON objects with `name` and `value` properties; the objects must have both `name` and `value` properties `name` must not be empty; other properties are ignored.

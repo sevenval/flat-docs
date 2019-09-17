@@ -9,7 +9,7 @@ A valid variable name starts with `$` followed by a letter `a`…`z` or `A`…`Z
 The following predefined variables exist:
 
 * `$body`: client request body
-* `$env`: environment variables (see [Using Env Vars](/cookbook/envvars.md))
+* `$env`: [environment variables](/cookbook/envvars.md)
 * `$request`: client request information
 * `$server`: server information
 * `$upstream`: upstream response information
