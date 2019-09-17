@@ -1,7 +1,7 @@
 # `content()`
 
 The `content` function is a convenient function to access
-contents from inside the [flow](../flow.md).
+upstream response bodies from inside the [flow](../flow.md).
 
 ```xml
 <flow>
