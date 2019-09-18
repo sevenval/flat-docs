@@ -129,7 +129,7 @@ Output:
       "Content-Length": "13",
       "Content-Type": "application/json",
       "Host": "httpbin.org",
-      "User-Agent": "Sevenval FIT"
+      "User-Agent": "FLAT"
     },
     "json": {
       "cool": true
