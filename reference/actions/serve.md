@@ -6,9 +6,9 @@ The `serve` action can be used to deliver local files to clients. The action imp
 
 `dir` and `fallback-doc` are mandatory:
 
-* `dir="…"` defines the directory from which the local files are read. That directory must exist within the project path. The `dir` directory is resolved relatively to the calling flow file.
-* `fallback-doc`: Defines a fallback document. This document will be used if the requested file cannot be found. The `fallback-doc` file is resolved relatively to the calling flow file.
-* `terminate="true|false"`: if `true` (default) the file loaded by `serve` is sent to the client and flow processing stopps. Otherwise, the flow continues.
+* `dir="…"` defines the directory from which the local files are read. That directory must exist within the project path. The `dir` directory is resolved relative to the calling flow file.
+* `fallback-doc`: Defines a fallback document. This document will be used if the requested file cannot be found. The `fallback-doc` file is resolved relative to the calling flow file.
+* `terminate="true|false"`: if `true` (default) the file loaded by `serve` is sent to the client and flow processing stops. Otherwise, the flow continues.
 
 * The action has no input (`in`).
 * If further processing of the loaded file is required, the output of `serve` can be redirected via the `out` attribute.
@@ -23,7 +23,7 @@ The `serve` action can be used to deliver local files to clients. The action imp
 
 ## Usage
 
-The `$request/path` is resolved relatively to `dir`. If the resolved path references a directory instead of a file, `index.html` within that directory is used instead. If `$request/path` references a directory but does not end with a slash (`/`), a `301 Moved Permanently` redirection to the same path with a trailing slash (`/`) is executed.
+The `$request/path` is resolved relative to `dir`. If the resolved path references a directory instead of a file, `index.html` within that directory is used instead. If `$request/path` references a directory but does not end with a slash (`/`), a `301 Moved Permanently` redirection to the same path with a trailing slash (`/`) is executed.
 
 If the requested file is found, the following HTTP header fields are set:
 
