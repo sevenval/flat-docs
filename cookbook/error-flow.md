@@ -37,3 +37,8 @@ In this example, we use `error.xml` to format a custom error message:
 ```
 
 This will ensure that all errors that trigger the error flow will produce a consistent status, error message and headers.
+
+## See also
+
+* [Error Flow](/reference/OpenAPI/routing.md#error-flow)
+* [`$error`](/reference/variables.md#usderror)
