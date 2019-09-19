@@ -29,9 +29,9 @@ In this example, we use `error.xml` to format a custom error message:
   </template>
   <set-response-headers>
     {
-	  "Status": {{ $error/status }},
+      "Status": {{ $error/status }},
       "Error-Code": {{ $error/code }}
-	}
+    }
   </set-response-headers>
 </flow>
 ```

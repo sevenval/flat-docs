@@ -120,7 +120,7 @@ It is specified by setting the `flow` property of `x-flat-error` on the top leve
 ```yaml
 …
 x-flat-error:
-	flow: error.xml
+  flow: error.xml
 …
 ```
 
