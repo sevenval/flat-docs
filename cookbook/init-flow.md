@@ -1,7 +1,7 @@
 # Extracting Common Initialization Flow Tasks
 
 You don't t like to repeat yourself. And that holds true for your API flows,
-too! The [_init flow_](/reference/OpenAPI/routing.md#init-flow) helps you avoiding that.
+too! The [_init flow_](/reference/OpenAPI/routing.md#init-flow) helps you avoid that.
 You can extract common initialization tasks that every flow would need into an
 _init flow_ that is executed before the regular flow for your API paths.
 

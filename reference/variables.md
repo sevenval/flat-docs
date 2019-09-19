@@ -13,6 +13,7 @@ The following predefined variables exist:
 * `$request`: client request information
 * `$server`: server information
 * `$upstream`: upstream response information
+* `$error`: Contains information regarding the most recent error, but is initially empty.
 
 Try the following flow with
 
@@ -141,6 +142,26 @@ conditions and produces the string `null` in placeholders:
   </template>
 </flow>
 ```
+
+## $error
+
+Both client request and response, as well as upstream request and response validation errors will store information about the error in `$error`. While initially empty, `$error` will have the following properties containing information about the most recent error:
+
+* `status` - the HTTP status that is used by default for responses if the error was passed to the client (type: `number`)
+* `code` - an error code (type: `number`)
+* `message` - a (type: `string`)
+* `info` - detailed information about the error (type: `array` of `string`)
+* `requestID` - the requestID as it should appear in the logs (type: `string`)
+
+example:
+```json
+{
+  "status":400,
+  "code":3204,
+  "message":"Input Validation Failed",
+  "info":["Path \/api\/empty-body\/ not found."],
+  "requestID":"XYOGvOu@c2mhpIlgFB-yPwAAAF8"
+}
 
 ## See also
 

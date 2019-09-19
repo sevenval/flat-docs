@@ -302,6 +302,7 @@ The `options` property sets the request options. Its value must be a JSON object
 * `validate-request` - Whether to validate the request (valid values: `true`, `false`, "report-only", default: `false`)
 * `validate-response` - Whether to validate the response (valid values: `true`, `false`, "report-only", default: `false`)
 * `definition` - The path to the swagger definition file (type: `string`)
+* `exit-on-error` - if `true`, abort normal processing of the flow in case of validation errors. If configured, the [error flow](OpenAPI/routing.md#error-flow) is run. Otherwise a standard error message is substituted as a response to the request (type: `boolean`, default `false`)
 
 Example:
 
