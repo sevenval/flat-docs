@@ -101,6 +101,5 @@ Note that, with `RSASSA` based algorithms, you have to specify the algorithm in 
 
 ## See also
 
-* [`jwt-encode()`](jwt-encode.md)
-* [`jwt-decode()`](jwt-decode.md)
-* [Working with JWT](/cookbook/jwt.md)
+* [`jwt-encode()`](/reference/functions/jwt-encode.md)
+* [`jwt-decode()`](/reference/functions/jwt-decode.md)
