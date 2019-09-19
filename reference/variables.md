@@ -149,7 +149,7 @@ Both client request and response, as well as upstream request and response valid
 
 * `status` - the HTTP status that is used by default for responses if the error was passed to the client (type: `number`)
 * `code` - an error code (type: `number`)
-* `message` - a (type: `string`)
+* `message` - a single line of text describing the error (type: `string`)
 * `info` - detailed information about the error (type: `array` of `string`)
 * `requestID` - the requestID as it should appear in the logs (type: `string`)
 
