@@ -1,8 +1,17 @@
 # `serve` Action
 
-Die Serve-Action wird benutzt, um lokale Dateien an Clients auszuliefern. Die Action implementiert einen einfachen File-Server. Die Action beendet den Flow aber nicht, damit Manipulationen am gefundenen Inhalt möglich sind.
+The `serve` action can be used to deliver local files to clients. The action implements a simple file server. Optionally, processing of the flow can continue if the content provided by the `serve` action needs to be modified.
 
 ## Syntax
+
+`dir` and `fallback-doc` are mandatory:
+
+* `dir="…"` defines the directory from which the local files are read. That directory must exist within the project path. The `dir` directory is resolved relative to the calling flow file.
+* `fallback-doc`: Defines a fallback document. This document will be used if the requested file cannot be found. The `fallback-doc` file is resolved relative to the calling flow file.
+* `terminate="true|false"`: if `true` (default) the file loaded by `serve` is sent to the client and flow processing stops. Otherwise, the flow continues.
+
+* The action has no input (`in`).
+* If further processing of the loaded file is required, the output of `serve` can be redirected via the `out` attribute.
 
 ```xml
 <flow>
@@ -12,36 +21,29 @@ Die Serve-Action wird benutzt, um lokale Dateien an Clients auszuliefern. Die Ac
 </flow>
 ```
 
-Beide Parameter sind Pflicht-Parameter:
-
-* `dir`: Definiert das Verzeichnis mit den lokalen Dateien. Der Pfad wird relativ zum aufrufenden Flow aufgelöst. Das angegebene Verzeichnis muss existieren und sich unterhalb des Projekt-Pfades befinden.
-* `fallback-doc`: Definiert ein Fallback-Dokument. Das Fallback-Dokument wird immer dann geladen, wenn eine angefragte Datei nicht existiert. Der Pfad zu dem Fallback-Dokument wird relativ zum `dir` aufgelöst.
-* Die Action hat keinen Input (`in`)
-* Der Output kann in Sonderfällen mit `out` umgeleitet werden
-
 ## Usage
 
-Der Request-Pfad wird aus dem Delivery-Context `request/path` ausgelesen und relativ zum `dir` aufgelöst. Zeigt der Pfad auf ein Verzeichnis statt einer Datei, wird in dem Verzeichnis nach einer `index.html` gesucht. Endet ein Pfad auf ein Verzeichnis nicht mit einem Slash (`/`), wird ein `301 Moved Permanently` Redirect auf das selbe Verzeichnis mit einem abschließenden Slash ausgelöst.
+The `$request/path` is resolved relative to `dir`. If the resolved path references a directory instead of a file, `index.html` within that directory is used instead. If `$request/path` references a directory but does not end with a slash (`/`), a `301 Moved Permanently` redirection to the same path with a trailing slash (`/`) is executed.
 
-Für alle gefundenen Dateien werden folgende HTTP-Header-Felder
+If the requested file is found, the following HTTP header fields are set:
 
 * `Content-Type`
 * `Content-Length`
 * `Last-Modified`
 
-und folgende Delivery-Context-Properties gesetzt
+The `Content-Type` is determined by the suffix of the file. The HTTP status code is set to `200 OK`.
 
-* `content/<type>` (sog. Handling-Type, z.B. `content/html` für `text/html`)
-* `content/mime` (wie `Content-Type` HTTP-Header-Feld, z.B. `text/html`)
-
-`Content-Type` und die Delivery-Context-Properties werden anhand der jeweiligen Datei-Endung bestimmt. Der Status-Code wird auf `200 OK` gesetzt.
-
-Ist eine Datei nicht lesbar, wird der Request mit `403 Forbidden` beantwortet.
+If the file is not readable, the HTTP status is set to `403 Forbidden`.
 
 ## Errors
 
-* Parameter `dir` fehlt.
-* Parameter `fallback-doc` fehlt.
-* Das in `dir` angegebenes Verzeichnis existiert nicht oder ist nicht lesbar.
-* Das in `dir` angegebenes Verzeichnis liegt nicht unterhalb des Projekt-Pfades.
-* Das in `fallback-doc` angegebenes Dokument soll geladen werden, existiert aber nicht.
+* The attribute `dir` is missing.
+* The attribute `fallback-doc` is missing.
+* The directory referenced by `dir` does not exist or cannot be read.
+* The directory referenced by `dir` is not within the project directory.
+* The file referenced by `fallback-doc` is to be loaded but does not exist or cannot be read.
+
+## See also
+
+* [File Serving](/cookbook/file-serving.md) (cookbook)
+* [Default Flow](/reference/flow.md#default-flow)

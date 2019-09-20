@@ -15,7 +15,7 @@ official Swagger-UI that is available as Docker Image
 If you want to see a pretty (and interactive!) documentation for you API
 definition, start the UI server on your local machine like this:
 
-```shell
+```bash
 $ docker run --rm -p 9002:8080 -v $(pwd)/swagger.yml:/swagger.yaml -e SWAGGER_JSON=/swagger.yaml swaggerapi/swagger-ui
 ```
 
@@ -36,7 +36,7 @@ The Swagger UI features a _Try it out!_ function that creates API calls for you.
 
 To make that work, however, you need to have `host` and `scheme` settings in your API definition. Your `swagger.yml` could start like this:
 
-```yml
+```yaml
 swagger: '2.0'
 host: localhost:8080
 schemes:

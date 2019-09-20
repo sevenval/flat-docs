@@ -65,4 +65,4 @@ Such a mock response always identifies itself with a `Mock: true` response heade
 
 A fitting mock response body will be picked from the `examples` section according to the submitted `Accept` header – with `application/json` being the default.
 
-Mock responses will be validated, if response validation is enabled in `config.xml`.
+Mock responses will be validated, if [response validation](/reference/OpenAPI/validation.md) is enabled in `swagger.yaml`.

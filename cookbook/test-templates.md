@@ -1,6 +1,6 @@
 # Testing Templates
 
-You have written a [JSON Template](/reference/templating/README.md) and now you want to test it. FLAT comes with a [Test Framework](/reference/testing/README.md) that makes it easy to exercise your code with various input and error conditions.
+You have written a [JSON Template](/reference/templating/README.md) and now you want to test it. FLAT comes with a [Test Framework](/reference/testing/README.md) that makes it easy to execute your code with various input and error conditions.
 
 ## Our Test Specimen
 Let's write a simple template that outputs some information on the incoming request. (You have to register it in your [`swagger.yaml`](/reference/OpenAPI/routing.md), we assume it is stored as `api/request-info.xml`).
@@ -22,7 +22,7 @@ Let's write a simple template that outputs some information on the incoming requ
 
 Looks easy. Let's try it out:
 
-```shell
+```bash
 $ curl -s -d 'a=b&c=d' localhost:8080/api/jt?data=foo |jq
 ```
 
@@ -40,11 +40,11 @@ So far, so good. If you look closely, you will notice that the template is buggy
 
 ## Writing a Test
 
-In FLAT, tests are written in `<flat-test>` XML files. Those tests work like regular [flows](/reference/flow.md), but they provide specialized [actions](/reference/actions/action.md#testing) to make testing easy.
+In FLAT, tests are written in `<flat-test>` XML files. Those tests work like regular [flows](/reference/flow.md), but they provide specialized [actions](/reference/actions/README.md#test-actions) to make testing easy.
 
-Usually tests should run in the context of the FLAT app. Therefore, we recommend putting tests in a `tests/` folder next to the `swagger.yaml`:
+Usually, tests should run in the context of the FLAT app. Therefore, we recommend putting tests in a `tests/` folder next to the `swagger.yaml`:
 
-```shell
+```bash
 $ ls my-project
 swagger.yaml
 api/
@@ -100,7 +100,7 @@ Create `tests/test-request-tpl.xml`:
 
 The [`flat` cli](/reference/flat-cli.md) has a `test` command to run tests. It it easiest to run it from  inside the FLAT app dir (where `swagger.yaml` resides).
 
-```shell
+```bash
 $ flat test tests/test-request-tpl.xml
 1..1
 ok 1 tests/test-request-tpl.xml: 1 assertions
@@ -113,7 +113,7 @@ Great! But there's still room for improvement…
 
 In the test, we had to _copy_ the template from our production code. This doesn't really make sense. Because, now we test an isolated copy. If we break the actual flow, the test will still pass.
 
-There are a couple of option to go about this.
+There are a couple of options to go about this.
 
 We could extract the template body into a file:
 
@@ -123,25 +123,25 @@ We could extract the template body into a file:
 </flow>
 ```
 
-Now, in the test, we only repeat the action call:
+Now, in the test, we only repeat that action call:
 
 ```xml
 <flat-test>
-…
+  …
   <template src="../api/request.tpl" />
-…
+  …
 </flat-test>
 ```
 
-Note, that we provide a different `src` attribute, because the relative path to the template differs for the the flow and the test file.
+Note, that we provide a different `src` attribute, because the relative path to the template differs for the flow and the test file.
 
-Another approach is to extract the template code into a [sub flow](/reference/actions/sub-flow.md). This can be called by the path flow and the test:
+Another approach is to extract the template code into a [sub flow](/reference/actions/sub-flow.md). This can be called both by the path flow and the test:
 
 ```xml
 <flat-test>
-…
+  …
   <sub-flow src="../api/request-info.xml" />
-…
+  …
 </flat-test>
 ```
 
@@ -171,7 +171,7 @@ The comparison parameter (2nd field of assertions) can also be an object with sp
 </assert>
 ```
 
-Now we can put the expected JSON string into the _golden file_ `tests/request-info.golden:
+Now we can put the expected JSON string into the _golden file_ `tests/request-info.golden`:
 
 ```json
 {"method":"POST","path":"/a/path","numPostFields":3,"data":"foo"}
@@ -259,18 +259,18 @@ This makes changes to the file easier during development. Especially your co-wor
 ```
 
 Call test:
-```shell
+```bash
 $ flat test tests/test-request-tpl.xml
 1..1
 ok 1 tests/test-request-tpl.xml: 1 assertions
 passed: 1, failed: 0
 ```
 
-## Add more tests
+## Adding More Tests
 
-We have only tested one specific input. Let's provide another test with different input data, such as a `GET` request or one without the `data` query parameter. This will reveal a serious bug in our code!
+So far, we have only tested one specific input. Let's provide another test with different input data, such as a `GET` request or one without the `data` query parameter. This will reveal a serious bug in our code!
 
-You can copy the test to another file for the `GET` case. If you think those variants are closely related, you can also add more test-code after the `<assert>` in our `tests/test-request-tpl.xml` like this:
+You can copy the test to another file for the `GET` case. If you think those variants are closely related, you can also add more test code after the `<assert>` in our `tests/test-request-tpl.xml` like this:
 
 ```xml
 <flat-test>
@@ -289,7 +289,7 @@ You can copy the test to another file for the `GET` case. If you think those var
 
   <sub-flow src="../request-info.xml" />
 
-    <assert>[[ "content()", {"file": "request-info2.golden", "mode": "json"} ]]</assert>
+  <assert>[[ "content()", {"file": "request-info2.golden", "mode": "json"} ]]</assert>
 </flow>
 ```
 
@@ -303,36 +303,73 @@ You can copy the test to another file for the `GET` case. If you think those var
 }
 ```
 
-What happens if you call the `flat test` command now?
+What happens, when you call the `flat test` command now?
 
-We get an execution error. Luckily the debug (`-d [topic]`) is enabled, so we see:
+We get an execution error! Luckily the debug (`-d [topic]`) is enabled, so we see:
 
 ```
 Action "template": Output is not valid JSON: Syntax error
 ```
 
-**Exercise:** Fix that bug in the template!
+📝 **Exercise:** Fix that bug in the template!
 
-💡Hint: The number one reason for invalid JSON syntax are [commas](/reference/templating/comma.md).
+💡 Hint: The number one reason for invalid JSON syntax are [commas](/reference/templating/comma.md).
 
 After we have fixed the bug in the template, the test result should look like this:
 
-```shell
+```bash
 $ flat test tests/test-request-tpl.xml
 1..1
 ok 1 tests/test-request-tpl.xml: 2 assertions
 passed: 1, failed: 0
 ```
 
-💡Hint: You can call `flat test` with many files:
+💡 Hint: You can call `flat test` with multiple files:
 
-```shell
+```bash
 $ flat test tests/test-*.xml
 1..2
 ok 1 tests/test-request-tpl.xml: 1 assertions
 ok 2 tests/test-request-tpl-get.xml: 1 assertions
 passed: 2, failed: 0
 ```
+
+## Using Other Compare Flags
+
+You can use more compare flags for your tests.
+
+The `contains` flag can be used to test whether an expression result contains a given string:
+
+```xml
+<flat-test>
+  <template out="$request">
+  {
+    "method": "POST",
+    "path": "/a/path#"
+  }
+  </template>
+
+  <assert>
+  [
+    [ "$request/path", {"contains": "a/"} ]
+  ]
+  </assert>
+</flat-test>
+```
+
+This assertion tests whether the `path` property of `$request` contains the string "a/".
+
+The `pattern` flag can be used to test whether an expression result matches a given regular expression:
+
+```xml
+  <assert>
+  [
+    [ "$request/method", {"pattern": "#^post$#i"} ]
+  ]
+  </assert>
+```
+
+This assertion tests whether the `method` property of `$request` matches case-insensitively the string "post".
 
 ## See also
 

@@ -9,14 +9,15 @@ A valid variable name starts with `$` followed by a letter `a`…`z` or `A`…`Z
 The following predefined variables exist:
 
 * `$body`: client request body
-* `$env`: environment variables
+* `$env`: [environment variables](/cookbook/envvars.md)
 * `$request`: client request information
 * `$server`: server information
 * `$upstream`: upstream response information
+* `$error`: Contains information regarding the most recent error, but is initially empty.
 
 Try the following flow with
 
-```
+```bash
 $ curl --data hello localhost:8080 | jq
 ```
 
@@ -141,3 +142,27 @@ conditions and produces the string `null` in placeholders:
   </template>
 </flow>
 ```
+
+## $error
+
+Both client request and response, as well as upstream request and response validation errors will store information about the error in `$error`. While initially empty, `$error` will have the following properties containing information about the most recent error:
+
+* `status` - the HTTP status that is used by default for responses if the error was passed to the client (type: `number`)
+* `code` - an error code (type: `number`)
+* `message` - a single line of text describing the error (type: `string`)
+* `info` - detailed information about the error (type: `array` of `string`)
+* `requestID` - the requestID as it should appear in the logs (type: `string`)
+
+example:
+```json
+{
+  "status":400,
+  "code":3204,
+  "message":"Input Validation Failed",
+  "info":["Path \/api\/empty-body\/ not found."],
+  "requestID":"XYOGvOu@c2mhpIlgFB-yPwAAAF8"
+}
+
+## See also
+
+* [Using Env Vars](/cookbook/envvars.md) (cookbook)

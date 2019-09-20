@@ -2,7 +2,7 @@
 
 The `request` action carries out a single HTTP or HTTPS request to load content from
 remote upstream servers. If you want to do multiple requests in parallel, use the
-[`requests` action](requests.html) instead.
+[`requests` action](requests.md) instead.
 
 ## Syntax
 
@@ -11,16 +11,7 @@ remote upstream servers. If you want to do multiple requests in parallel, use th
 
 ## Usage
 
-The response body will be written into `fit://request/content/<ID>`.
- <upstream>
-    <main>
-
-
-
-Additional information about the response, such as headers and status code can
-be found in `fit://request/content/<ID>/response`.
-
-You can use a JSON template with the features defined below.
+You can use a [JSON template](/reference/templating.md) with the features defined below.
 
 Example: GET request
 
@@ -29,7 +20,7 @@ Example: GET request
 {
   "url": "http://www.example.com/foo",
   "method": "GET",
-  "headers" {
+  "headers": {
     "User-Agent": "foo",
     "X-Foo": "value 1, value 2"
   },
@@ -48,7 +39,7 @@ Example: POST request
 {
   "url": "http://www.example.com/foo",
   "method": "POST",
-  "headers" {
+  "headers": {
     "User-Agent": "foo",
     "X-Foo": "value 1, value 2"
   },
@@ -59,6 +50,11 @@ Example: POST request
 }
 </request>
 ```
+
+The response body will be written into `fit://request/content/<ID>`.
+It can be accessed with the [`content` function](/reference/functions/content.md): `content(<ID>)`.
+Additional information about the response, such as headers and status code can
+be found in the [`$upstream` variable](/reference/variables.md#predefined-variables).
 
 ### `url`
 
@@ -73,7 +69,7 @@ Example:
 ### `method`
 
 The `method` property sets the request method. Its value must be a string.
-If `method` is set in the JSON object, is not `null` and not `""`, it will be  used, and a `method` attribute on the `method` element will be ignored.
+If `method` is set in the JSON object, is not `null` and not `""`, it will be used and a `method` attribute on the `request` element will be ignored.
 
 The default value is `GET`. However, if `post`, `upload` or `body` are set in the JSON object, the default value will be `POST`.
 
@@ -84,13 +80,13 @@ Example:
 
 ### `headers`
 
-The `headers` property sets the request headers. Its value must be a JSON object, with each header field name and value set as properties with values of the JSON objects. Header field values must be set as string.
+The `headers` property sets the request headers. Its value must be a JSON object, with each header field name and value set as properties with values of the JSON objects.
 If multiple header fields with the same name should be set, the values must be concatenated in advance.
 
 Example:
 
 ```json
-"headers" {
+"headers": {
   "User-Agent": "foo",
   "content-type": "application/octet-stream",
   "X-Foo": {{ concat("value1", ",", "value2") }}
@@ -99,7 +95,7 @@ Example:
 
 ### `cookies`
 
-The `cookies` property sets the cookies (sets a `Cookie` request header). Its value must be one of the following:
+The `cookies` property sets the cookies, i.e. it sets a `Cookie` request header. Its value must be one of the following:
 
 * a JSON object with the cookie key value pairs as properties; or
 * an array of JSON objects with `name` and `value` properties; the objects must have both `name` and `value` properties `name` must not be empty; other properties are ignored.
@@ -118,7 +114,7 @@ Example: `cookies` as a JSON object
 Example: `cookies` as an array
 
 ```json
-cookies: [
+"cookies": [
   { "name": "a", "value": "b" },
   { "name": "c", "value": "foo" }
 ]
@@ -191,7 +187,7 @@ The `body` property sets the request body, in case the body is not `x-www-form-u
 
 The optional `mime` property sets the `Content-Type` request header. If no `mime` property is set, the content type is determined automatically.
 
-Example: `body` with `src` using a variable
+Example: `body` with `src` using the [predefined `$body` variable](../variables.md#predefined-variables) to pass the incoming request body
 
 ```json
 "body": {
@@ -306,6 +302,7 @@ The `options` property sets the request options. Its value must be a JSON object
 * `validate-request` - Whether to validate the request (valid values: `true`, `false`, "report-only", default: `false`)
 * `validate-response` - Whether to validate the response (valid values: `true`, `false`, "report-only", default: `false`)
 * `definition` - The path to the swagger definition file (type: `string`)
+* `exit-on-error` - if `true`, abort normal processing of the flow in case of validation errors. If configured, the [error flow](OpenAPI/routing.md#error-flow) is run. Otherwise a standard error message is substituted as a response to the request (type: `boolean`, default `false`)
 
 Example:
 
@@ -327,3 +324,11 @@ Example:
 > Any request options set in a `conf/sources.xml` file that match the requested domain and path
 > will also be applied to your request. Options directly set in the action have precedence, though.
 > We do **not** recommend using `conf/sources.xml`.
+
+
+## See also
+
+* [Tutorial](/tutorial/README.md#upstream-requests)
+* [Sending POST Requests](/cookbook/upstream-post-requests.md)
+* [Passing Header Fields](/cookbook/pass-header-field-upstream.md)
+* [Increasing the Request Timeout](/cookbook/request-timeout.md)

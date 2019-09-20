@@ -24,7 +24,7 @@ The supplied JSON response from `https://httpbin.org/` reflects the request we'v
     "Content-Length": "0",
     "Content-Type": "application/x-www-form-urlencoded",
     "Host": "httpbin.org",
-    "User-Agent": "Sevenval FIT"
+    "User-Agent": "FLAT"
   },
   "json": null,
   "origin": "88.130.59.205, 88.130.59.205",

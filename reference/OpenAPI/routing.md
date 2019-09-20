@@ -98,7 +98,7 @@ paths:
 …
 ```
 
-The init flow can be used [extract common initialization
+The init flow can be used to [extract common initialization
 tasks](/cookbook/init-flow.md), e.g. initialize variables or set HTTP response
 headers.
 
@@ -110,7 +110,26 @@ request**; the regular flow (specified by `x-flat-flow`) is _not_ executed. A
 [`return`](#return) statement terminates only the init flow; the regular flow
 is executed. Terminating [actions](actions/README.md) like
 [`echo`](actions/echo.md) or [`dump`](actions/dump.md) will prevent the actual
-flow being executed, too.
+flow from being executed, too.
+
+## Error Flow
+
+An _error flow_ is an optional separate flow file that is executed if a client request or response validation error has occurred, or the `exit-on-error` option was set for a [request](reference/actions/request.md) that has failed.
+It is specified by setting the `flow` property of `x-flat-error` on the top level in the OpenAPI definition:
+
+```yaml
+…
+x-flat-error:
+  flow: error.xml
+…
+```
+
+The error flow can be used to [produce error messages with a custom format or status](/cookbook/error-flow.md). Note that the output generated after the error flow has run will not be validated. Additionally, after errors encountered while the error flow is processed will not re-start the error flow.
+
+## Default Flow
+
+Requests to resources outside the `basePath` are handled by the default flow defined
+in `conf/flow.xml`. This allows for [serving HTML, images, JavaScript](/cookbook/file-serving.md) and the like.
 
 
 ## Path Parameters

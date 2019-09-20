@@ -1,6 +1,6 @@
 # Encoding and Decoding JWT
 
-This snippet demonstrates how to use the `jwt-encode()` and `jwt-decode()` functions to work with [JSON Web Tokens](https://en.wikipedia.org/wiki/JSON_Web_Token)
+This snippet demonstrates how to use the `jwt-encode()` and `jwt-decode()` functions to work with [JSON Web Tokens](https://en.wikipedia.org/wiki/JSON_Web_Token).
 
 ----
 
@@ -8,7 +8,7 @@ We want to have the JWT Secret (used for signing and verifying a JWS) configurab
 
 In a development setup, we can simply define a shell variable that starts with `FLAT_`. `flat` will forward all `FLAT_*` variables to the docker container:
 
-```shell
+```bash
 $ FLAT_JWT_SECRET=YXNkZg== flat start
 ```
 
@@ -76,7 +76,7 @@ You can do this on-the-fly:
 
 Of course, you could also do that once outside of FLAT before setting the env var:
 
-```shell
+```bash
 $ echo -n "YXNkZg==" | base64
 WVhOa1pnPT0=
 $ FLAT_AUTH0_JWT_SECRET=WVhOa1pnPT0= flat start
@@ -84,21 +84,22 @@ $ FLAT_AUTH0_JWT_SECRET=WVhOa1pnPT0= flat start
 
 For `RSASSA` based algorithms, the JWT functions expect the key to be PEM encoded, but without the `BEGIN` and `END` lines, and without any line breaks. To generate the private and public keys in this format:
 
-```shell
+```bash
 $ openssl genrsa > privateAndPublic.key
 $ tail -n +2 privateAndPublic.key | head -n -1 | tr -d '\n'
 MIIEowIB[...]
 ```
 
 To extract the public key for signature verification in the required format:
-```shell
+```bash
 $ openssl rsa -in privateAndPublic.key -outform PEM -pubout -out public.key
 $ tail -n +2 public.key | head -n -1 | tr -d '\n'
 MIIBIjANBgkqhki[...]
 ```
 
+Note that, with `RSASSA` based algorithms, you have to specify the algorithm in the `jwt-decode()` function.
+
 ## See also
 
-* [`jwt-encode()`](jwt-encode.md)
-* [`jwt-decode()`](jwt-decode.md)
-* [Working with JWT](/cookbook/jwt.md)
+* [`jwt-encode()`](/reference/functions/jwt-encode.md)
+* [`jwt-decode()`](/reference/functions/jwt-decode.md)
