@@ -4,8 +4,8 @@
 string base64-decode(string input [, boolean strict])
 ```
 
-Dekodiert die in dem `input` Parameter übergebenen base64-kodierte Daten.
+Decodes the data Base64 encoded data given in the `input` parameter.
 
-Ist der optionale `strict` Parameter gleich `true()`, dann gibt die `base64-decode()`
-Funktion `false()` zurück, wenn die Eingabe Zeichen enthält, die nicht im Base64-Alphabet
-vorkommen. Andernfalls werden ungültige Zeichen stillschweigend ausgesondert.
+If the optional `strict` parameters equals `true()`, the  `base64-decode()`
+function will return `false()` if the input contains characters that are not
+part of the Base64 alphabet. Otherwise invalid characters will be silently dropped.

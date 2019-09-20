@@ -4,7 +4,7 @@
 string capitalize-first(string input)
 ```
 
-Wandelt den ersten Buchstaben der via `input` Parameter übergebenen Eingabe-Zeichenkette
-in einen Großbuchstaben um. Wenn das erste Zeichen kein Kleinbuchstabe ist, wird
-`input` unverändert zurückgegeben. Es wird nur das erste Zeichen der gesamten Eingabe
-großgeschrieben, nicht der erste Buchstabe jedes Wortes.
+Converts the first character of the string given in the `input` parameter
+to upper case. If the first character is not a lower case character, `input`
+is returned unmodified. Only the very first character of the entire input is
+converted, not the first character of each word.

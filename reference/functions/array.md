@@ -4,11 +4,11 @@
 node-set array([node-set nodes])
 ```
 
-verpackt die Knoten des Node-sets `nodes` in eine `<json array="">…</json>`-Struktur, so dass sich die einzelnen Knoten in einem [JSON Template](../Templating/README.md) wie ein Array verarbeiten lassen.
+wraps the node of the node set `nodes` in a `<json array="">…</json>` structure, so that they can be used as an array in a [JSON Template](../Templating/README.md).
 
-Wenn im Node-set ein Attribut (`a="b"`) übergeben wird, wird es in ein Element (`<value name="a">b</value>`) verpackt, damit Key und Value im Template zugänglich sind.
+if the `nodes` contain an attribute (e.g. `a="b"`), it will be converted to an element `<value name="a">b</value>`), so that key and value are easily accessible in the template.
 
-## Beispiel
+## Example
 
 JSON:
 ```json
@@ -22,7 +22,7 @@ Template-Action:
 </template>
 ```
 
-Ausgabe:
+Output:
 ```json
 { "names": ["Alice","Bob"] }
 ```
