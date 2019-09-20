@@ -1,6 +1,6 @@
 # `with`
 
-Der Template-Befehl `{{with _expression_}}` setzt den Kontext für alle nachfolgenden Ausdrücke auf das Ergebnis von `expression`, oder führt den zugehörigen `{{else}}`-Teil aus, wenn das Ergebnis `null` ist.
+The template command `{{with _expression_}}` sets the context to the result of `expression` and executes the enclosed expressions or executes the corresponding `{{else}}` block if the expression evaluates to `null`.
 
 Input:
 ```json
@@ -31,10 +31,10 @@ Output:
 }
 ```
 
-### Beispiel: `with` und `json-doc()`
+### Example : `with` and `json-doc()`
 
-`{{with}}` ist insbesondere zusammen mit der `json-doc()` Funktion sinnvoll, um
-Daten aus verschiedenen Dateien ohne viel Schreibarbeit zusammenzuführen.
+`{{with}}` is especially useful in conjunction with `json-doc()` to
+consolidate data from multiple sources using more compact expressions.
 
 Input:
 ```json

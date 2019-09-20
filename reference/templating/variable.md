@@ -1,12 +1,12 @@
 ### Template Variables
 
-Local variables can be set like this
+Local variables can be set as follows
 
 ```json
 {{$variable := expr}}
 ```
 
-where `variable` is a freely choosen name and `expr` is a template expression.
+where `variable` is a freely chosen name and `expr` is a template expression.
 
 Note that we use the "beaver operator" `:=` for assignments. A simple `=` is
 the "equal operator". Additionally, there may be no whitespace between the
