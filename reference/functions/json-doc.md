@@ -5,7 +5,7 @@ node-set json-doc(string path)
 ```
 
 converts the JSON document at the given `path` into
-[OXN](../Templating/README.md#object-xml-notation), parses it and
+[OXN](../templating/oxn.md), parses it and
 returns the `<json>` _root element_.
 
 `user.json`:
