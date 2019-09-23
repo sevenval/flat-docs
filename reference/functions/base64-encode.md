@@ -4,4 +4,4 @@
 string base64-encode(string input)
 ```
 
-Kodiert die in dem `input` Parameter übergebenen Daten mittels base64.
+encodes the data passed in the `input` parameter using Base64.
