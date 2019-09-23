@@ -16,7 +16,7 @@ Template:
 <template>
 {
   {{with ./user}}
-    "Name": {{name}}
+    "Name": {{ name }}
   {{else}}
     "Name": "unknown"
   {{end}}
@@ -31,9 +31,9 @@ Output:
 }
 ```
 
-### Example : `with` and `json-doc()`
+## Example: `with` and `json-doc()`
 
-`{{with}}` is especially useful in conjunction with `json-doc()` to
+`{{with}}` is especially useful in conjunction with [`json-doc()`](/reference/functions/json-doc.md) to
 consolidate data from multiple sources using more compact expressions.
 
 Input:
@@ -55,11 +55,11 @@ Template:
 ```xml
 <template>
 {
-	"realm": {{ location }},
-	{{with json-doc("fit://request/request/body") }}
-	  "user": {{ user }},
-	  "password": {{ pass }}
-	{{end}}
+  "realm": {{ location }},
+  {{with json-doc("fit://request/request/body") }}
+    "user": {{ user }},
+    "password": {{ pass }}
+  {{end}}
 }
 </template>
 ```

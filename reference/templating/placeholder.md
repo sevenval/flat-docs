@@ -1,13 +1,13 @@
 # Placeholder
 
 
-Values of JSON-Objects are addressed using property names separated by a slash (`/`).
+Values of JSON objects are addressed using property names separated by a slash (`/`).
 
 
 > 📎
 > Note that the `placeholder` requires whitespace between the opening `{{` and the expression. All other template commands must immediately follow the `{{`.
 
-### Example: Placeholder
+## Example
 
 Input:
 ```json

@@ -45,14 +45,14 @@ JSON requires a comma to separate array values or pairs in objects. Therefore, t
 command _automatically_ produces commas to separate its child productions.
 
 You may also use a literal comma at the end of the loop body. This will not result in
-duplicate commas. However, as a literal comma is produces as part of each iteration, the last production
+duplicate commas. However, as a literal comma is produced as part of each iteration, the last production
 will end with that comma. This may result in invalid JSON if the surrounding array or
 object ends after the loop.
 
 
 ### Example: loop over non-JSON data
 
-If the data to be used in a `loop` is not a JSON-Array, the `array()` function
+If the data to be used in a `loop` is not a JSON array, the [`array()` function](/reference/functions/array.md)
 can be used to convert the data:
 
 Input:
@@ -98,7 +98,7 @@ Template (identical input as above):
 <template>
 {
   {{loop array(//ul/@*)}}
-    {{@name}}: {{.}}
+    {{ @name }}: {{.}}
   {{end}}
 }
 </template>

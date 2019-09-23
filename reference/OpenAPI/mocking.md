@@ -12,7 +12,7 @@ If given, FLAT will look for the `examples` of the API path's `200` `response` s
 
 ## Example
 
-The [cookbook](/cookbook/README.md) has a recipe for the [built-in mocking](cookbook/builtin-mocking.md).
+The [cookbook](/cookbook/README.md) has a recipe for the [built-in mocking](/cookbook/builtin-mocking.md).
 
 ## Configuration
 
