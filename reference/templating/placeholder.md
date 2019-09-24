@@ -1,14 +1,13 @@
 # Placeholder
 
 
-Die Adressierung von Werten aus JSON-Objekten erfolgt über mit Slash `/` getrennten Property-Namen.
+Values of JSON objects are addressed using property names separated by a slash (`/`).
 
 
-Achtung: Bei `placeholder` ist führender Leerraum
-erforderlich, alle anderen Befehle werden ausschließlich in der oben angegebenen
-Schreibweise erkannt!
+> 📎
+> Note that the `placeholder` requires whitespace between the opening `{{` and the expression. All other template commands must immediately follow the `{{`.
 
-### Beispiel: Placeholder
+## Example
 
 Input:
 ```json
@@ -32,7 +31,7 @@ Template:
 </template>
 ```
 
-Ergebnis:
+Result:
 ```json
 {
   "user": "alice",
@@ -41,4 +40,4 @@ Ergebnis:
 }
 ```
 
-Der Placeholder erzeugt eine typisierte Ausgabe. Es dürfen z.B keine Quotes (`""`) um den `{{ … }}` Ausdruck geschrieben werden. Das geschieht bei der Ausführung des Templates automatisch. So können alle JSON-Typen, auch Zahlen, Boolesche Werte oder Arrays und Objekte korrekt produziert werden.
+The placeholder generates typed output. For example, no quotes (`""`) should be used to enclose the `{{ … }}` expression, since a string result will automatically be emitted with quotes during execution of the template. Without explicit quotes, all JSON types, including numbers, boolean values or arrays and objects can be produced correctly.
