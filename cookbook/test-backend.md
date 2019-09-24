@@ -33,7 +33,7 @@ and the flow in `dashboard.xml`:
     }
   }
   </request>
-  <break if="$upstream/*/error" status="500" />
+  <break if="$upstream/*/error" />
 
   <template>
     {{$rsp := content("notifications")/json }}
@@ -99,7 +99,7 @@ We extend our `flat-test` with this `backend-flow` call as its first action:
 
 ```xml
 <flat-test>
-  <backend-flow request="state">
+  <backend-flow request="notifications">
     <template>
     {
       "args": {
