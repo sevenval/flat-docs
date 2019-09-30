@@ -56,6 +56,11 @@ It can be accessed with the [`content` function](/reference/functions/content.md
 Additional information about the response, such as headers and status code can
 be found in the [`$upstream` variable](/reference/variables.md#predefined-variables).
 
+### `id`
+
+The `id` property sets the request ID.
+If `id` is set in the JSON object, is not `null` and not `""`, it will be used and a `content` attribute on the `request` element will be ignored.
+
 ### `url`
 
 The `url` property sets the request URL.
