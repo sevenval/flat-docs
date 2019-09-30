@@ -221,7 +221,7 @@ Example: `body` with JSON `value`
     "user": "fred",
     "pass": "wilma"
   },
-  "mime": "application/json
+  "mime": "application/json"
 }
 ```
 
@@ -311,7 +311,7 @@ Example:
   "timeout": 5,
   "follow-redirects": true,
   "max-redirects": 10,
-  "basic-auth-credentials": "user:s3CreT"
+  "basic-auth-credentials": "user:s3CreT",
   "validate-response": true,
   "set-response-headers": {
     "Cache-Control": "s-maxage=3600",

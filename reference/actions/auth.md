@@ -1,6 +1,6 @@
 # `auth` Action
 
-The `auth` action implements [HTTP Basic authentication)(https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) between the client and FLAT.
+The `auth` action implements [HTTP Basic authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication) between the client and FLAT.
 It is useful to protect APIs under development.
 
 ## Syntax
