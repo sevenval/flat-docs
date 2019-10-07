@@ -64,6 +64,7 @@
 * [`fit-log()`](fit-log.md)
 * [`fit-serialize()`](fit-serialize.md)
 * [`has-class()`](has-class.md)
+* [`html-parse()`](html-parse.md)
 * [`id()` ↗](https://developer.mozilla.org/en/XPath/Functions/id)
 * [`lang()` ↗](https://developer.mozilla.org/en/XPath/Functions/lang)
 * [`last()` ↗](https://developer.mozilla.org/en/XPath/Functions/last)
