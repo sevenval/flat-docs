@@ -15,7 +15,7 @@ Used in [FLAT tests](/reference/testing/README.md) to assert expected results.
 The body is a JSON array of assertions. An assertion is an array itself, with up to three values:
 
 * Expression: _as string_ (see [`eval`](/reference/actions/eval.md)); (required)
-* Expected result: a literal value (string, number, boolean) or an object with compare flags (see below); (optional, default: `true`)
+* Expected result: a literal value (string, number, boolean, or `null`) or an object with compare flags (see below); (optional, default: `true`)
 * Message: String literal to be included in output of failed tests; (optional)
 
 Note that the expression must be a *string*. You can use template syntax, but the resulting array of assertions must still contain a string as the expression parameter.
