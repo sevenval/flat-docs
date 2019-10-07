@@ -26,11 +26,11 @@ Note that the expression must be a *string*. You can use template syntax, but th
 <assert>
 [
   [ "$foo", "bar", "…" ],
-  [ "not($request/headers/authorization)", true, "No Authorization header is set" ],
+  [ "$request/headers/authorization", null, "No Authorization header is set" ],
   [ "$response", "OK" ],
   [ "json-parse($response)/user", "alice" ],
   [ "$status", 201, "got 201 - created" ],
-  [ "true()", true, "for sure!" ],
+  [ "true()", true, "for sure!" ]
 ]
 </assert>
 ```
