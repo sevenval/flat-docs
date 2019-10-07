@@ -73,3 +73,4 @@
 * [`name()` ↗](https://developer.mozilla.org/en/XPath/Functions/name)
 * [`namespace-uri()` ↗](https://developer.mozilla.org/en/XPath/Functions/namespace-uri)
 * [`position()` ↗](https://developer.mozilla.org/en/XPath/Functions/position)
+* [`xml-parse()`](xml-parse.md)
