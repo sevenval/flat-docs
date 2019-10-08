@@ -30,7 +30,7 @@ Reasons for a decoding failure can be:
 
 ## Example
 
-In this example the JWS is read from the `token`-Cookie in the request: `Cookie: token=eyJ….….…`.
+In this example, the JWS is read from the `token`-Cookie in the request: `Cookie: token=eyJ….….…`.
 The Base64URL-encoded key `$key` is read from the JSON file `jwt-key.json`: `{"k":"c2VjcmV0"}`.
 The unpacked web token is stored in `$jwt`, which provides easy access to its content:
 
