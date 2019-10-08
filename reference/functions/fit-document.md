@@ -8,7 +8,7 @@ The `fit-document` function accepts exactly one argument that is converted to a 
 
 If the content pointed to by the URI can be retrieved and parsed, the `fit-document` function returns a node-set containing the document node at the root of the resulting tree. When attempting to access non-existent content, the node-set will be empty.
 
-The `fit-document` function is similar to the  [XSLT document function](http://www.w3.org/TR/xslt#document).
+The `fit-document` function is similar to the  [XSLT `document()` function](http://www.w3.org/TR/xslt20/#function-document).
 
 ## Example
 
