@@ -11,8 +11,8 @@ The `xml-parse` function accepts exactly one argument that is converted to a str
 ```xml
 <flow>
   <copy in="a.xml" out="$_xml"/>
-  <eval our="$parsedXML1">xml-parse($_xml)</eval>
-  <eval out="$parsedXML2"><![CDATA[xml-parse("<root foo='bar'><x/></root>")]]></eval>
+  <eval out="$parsedXML1">xml-parse($_xml)</eval>
+  <eval out="$parsedXML2"><![CDATA[xml-parse('<root foo="bar"><x/></root>')]]></eval>
   <template>
   {
     "firstItem": {{ $parsedXML1/list/item[1] }},
