@@ -7,7 +7,7 @@ for easy decoupling frontend from backend in modern web applications. It is the
 preview version of _Couper_. See [couper.io](https://couper.io/) for more
 details.
 
-This developer's documention helps building maintainable JSON-based web APIs
+This developer's documentation helps building maintainable JSON-based web APIs
 on top of FLAT.
 
 ## [Tutorial](tutorial/README.md)
