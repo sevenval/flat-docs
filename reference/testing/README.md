@@ -30,6 +30,8 @@ FLAT tests are started with the [`flat` cli](/reference/flat-cli.md) command `te
 $ flat test tests/test-foo.xml tests/test-bar.xml
 ```
 
+The arguments can either be files or directories. For each directory, `flat test` will recursively collect all files in that directory and its subdirectories that contain XML text and have the root element `flat-test` and run them. `flat test` will execute all non-directory arguments as tests and flag errors if they are not readable regular files with XML root element `flat-test`.
+
 The test result is printed in [TAP](https://testanything.org) format:
 
 ```tap

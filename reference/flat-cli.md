@@ -8,7 +8,7 @@ Start the local FLAT server with:
 $ flat start
 ```
 
-Type
+Run
 
 ```sh
 $ flat -h
