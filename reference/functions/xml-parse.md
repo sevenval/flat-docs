@@ -4,7 +4,7 @@
 node-set xml-parse(string xml)
 ```
 
-The `xml-parse` function accepts exactly one argument that is converted to a string. The argument is parsed as an XML document. If the argument can be parsed as an XML document, the function returns a node-set containing the document node at the root of the resulting tree. Otherwise, an error is logged, and an empty node-set is returned.
+The `xml-parse` function accepts exactly one argument. The value of the argument is converted to a string and parsed as an XML document. If the argument can be parsed as an XML document, the function returns a node-set containing the document node at the root of the resulting tree. Otherwise, an error is logged, and an empty node-set is returned.
 
 ## Example
 

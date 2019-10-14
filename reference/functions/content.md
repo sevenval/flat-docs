@@ -11,7 +11,7 @@ upstream response bodies from inside the [flow](../flow.md).
 </flow>
 ```
 
-When called without parameter, the function returns the main content DOM from
+When called without parameters, the function returns the main content DOM from
 `fit://request/content`.
 
 The following `test` expressions are equivalent:
