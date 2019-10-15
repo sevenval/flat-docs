@@ -34,7 +34,7 @@ Client requests received by FLAT are recorded as type `flat_access` and have the
 
 * `timestamp`: Start time of the request in ISO 8601 format
 * `type`: Event type discriminator, fixed string `flat_access`
-* `requestID`: Log Correlation ID, accessible in flows as [`$request/id`](/reference/variables#predefined-variables) and [`$error/requestID`](/reference/variables#usderror)
+* `requestID`: Log Correlation ID, accessible in flows as [`$request/id`](/reference/variables.md#predefined-variables) and [`$error/requestID`](/reference/variables.md#usderror)
 * `method` HTTP method of the client request (`GET`, `POST`…)
 * `path`: path and query string of the client request
 * `agent`: `User-Agent` header of the client request
@@ -45,7 +45,7 @@ Client requests received by FLAT are recorded as type `flat_access` and have the
 
 ## Request Log
 
-Outgoing [requests](/reference/actions/request) to upstream APIs are recorded as type `flat_request` and have the following format:
+Outgoing [requests](/reference/actions/request.md) to upstream APIs are recorded as type `flat_request` and have the following format:
 
 ```json
 {
@@ -82,8 +82,8 @@ Outgoing [requests](/reference/actions/request) to upstream APIs are recorded as
 * `mime`: `Content-Type` header of the upstream response (`text/html`, `application/json`…)
 * `bytes`: Size of the (possibly compressed) response body in bytes (number) (`0` if the body is empty; when read from the internal cache, the original response length is used)
 * `duration`: Time spent waiting for the response in seconds (number)
-* `id`: Request/Content identifier as configured with the request's [`id` field](/reference/actions/request#id) or `content` attribute (suffixed with `.N` where `N` is incremented for each followed redirect starting with `0`)
-* `cacheHit`: Indicating whether the response was read from FLAT's HTTP Cache (boolean) (activated with request option [`use-http-cache`](/reference/actions/request#options))
+* `id`: Request/Content identifier as configured with the request's [`id` field](/reference/actions/request.md#id) or `content` attribute (suffixed with `.N` where `N` is incremented for each followed redirect starting with `0`)
+* `cacheHit`: Indicating whether the response was read from FLAT's HTTP Cache (boolean) (activated with request option [`use-http-cache`](/reference/actions/request.md#options))
 * `refresh`: Indicating whether the response was a `304` response to a request revalidating the local cache (boolean)
 * `timing`: Contains timing information about request phases
   * `DNS`: Time to perform name lookup in `ms` (number)
@@ -94,7 +94,7 @@ Outgoing [requests](/reference/actions/request) to upstream APIs are recorded as
 
 ## Error Log
 
-Errors that have occurred during processing, such as [Validation Errors](/reference/openapi/validation) are recorded as type `flat_alert`.
+Errors that have occurred during processing, such as [Validation Errors](/reference/openapi/validation.md) are recorded as type `flat_alert`.
 
 This log events should be monitored!
 
@@ -113,7 +113,7 @@ This log events should be monitored!
 * `timestamp`: Start time of the request in ISO 8601 format
 * `type`: Event type discriminator, fixed string `flat_alert`
 * `requestID`: Log Correlation ID
-* `topic`: Log topic of the alert, corresponds to [debugging topics](/reference/debugging)
+* `topic`: Log topic of the alert, corresponds to [debugging topics](/reference/debugging.md)
 * `message`: An informative error message
 
 
