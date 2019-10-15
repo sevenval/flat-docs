@@ -12,7 +12,7 @@ on top of FLAT.
 
 ## [Tutorial](tutorial/README.md)
 
-Create your first FLAT application hands-on, and learn the basics in the [Tutorial](tutorial/README.md).
+Create your first FLAT application hands-on and learn the basics in the [Tutorial](tutorial/README.md).
 This is the best place to start.
 
 ## [Cookbook](cookbook/README.md)
