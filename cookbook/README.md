@@ -29,3 +29,5 @@
 ## [File Serving](file-serving.md)
 
 ## [Error Handling](error-flow.md)
+
+## [Logging Custom Fields](custom-logging.md)
