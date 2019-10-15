@@ -10,6 +10,6 @@ Sorts the given JSON array in [OXN](/reference/templating/oxn.md). The optional 
 
 * `json-stringify(sort(json-parse("[2,1,3]")))` ➡ `[1,2,3]`
 * `json-stringify(sort(json-parse("[2,1,3]", "", true())))` ➡ `[3,2,1]`
-* With `$data` being `[{"id":3,"name":"A"},{"id":1,"name":"C"},{"id":2,"name":"B"}]`:
-  `json-stringify(sort($data, "id"))` ➡ `[{"id":1,…},{"id":2,…},{"id":3,…}]`
-  `json-stringify(sort($data, "name"))` ➡ `[{…"A"},{…"B"},{…"C"}]`
+* with `$data` being `[{"id":3,"name":"A"},{"id":1,"name":"C"},{"id":2,"name":"B"}]`:
+  * `json-stringify(sort($data, "id"))` ➡ `[{"id":1,…},{"id":2,…},{"id":3,…}]`
+  * `json-stringify(sort($data, "name"))` ➡ `[{…"A"},{…"B"},{…"C"}]`
