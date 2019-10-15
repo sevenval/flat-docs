@@ -1,8 +1,8 @@
 # Logging
 
-FLAT Server writes most of its logs in JSON format to the standard error output (_stderr_). Each line is written for an event. That is a client request, an upstream request or an error.
+FLAT Server writes most of its logs in JSON format to the standard error output (_stderr_). One line is written for each event. I.e. one line each for a client request, an upstream request or an error.
 
-For comfortable log processing events are discriminated with the `type` field that is one of
+For comfortable log processing, events are discriminated with the `type` field that is one of
 
 * `flat_access`
 * `flat_request`
@@ -14,7 +14,7 @@ All JSON log lines have a `requestID` field. Its value can be used to correlate 
 
 ## Access Log
 
-Client requests accessing FLAT are recorded as type `flat_access` and have the following format:
+Client requests received by FLAT are recorded as type `flat_access` and have the following format:
 
 ```json
 {
