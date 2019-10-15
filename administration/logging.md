@@ -90,7 +90,7 @@ Outgoing [requests](/reference/actions/request) to upstream APIs are recorded as
   * `TCP`: Time to establish a TCP connection in `ms` (number) (may be near zero for keep-alive requests)
   * `TTFB`: Time to first byte in `ms` since request was sent (number)
 * `curlErrorCode`: [cURL Error Code](https://curl.haxx.se/libcurl/c/libcurl-errors.html) for failed requests (number, optional) (e.g. `28`)
-* `curlErrorMessage`: Text error message of libcurl for failed requests (optional)
+* `curlErrorMessage`: Text error message of _libcurl_ for failed requests (optional)
 
 ## Error Log
 
@@ -115,3 +115,14 @@ This log events should be monitored!
 * `requestID`: Log Correlation ID
 * `topic`: Log topic of the alert, corresponds to [debugging topics](/reference/debugging)
 * `message`: An informative error message
+
+
+## Other Log Events
+
+In rare cases plain text log lines may be written to _stdout_ or _stderr_. For example, this happens during startup.
+
+These lines are usually _error log_ messages of the included [Apache Web server](https://httpd.apache.org) that look like this:
+
+```
+[Tue Oct 15 13:11:30.190335 2019] [mpm_worker:notice] [pid 28:tid 139763282708608] - AH00292: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips configured -- resuming normal operations
+```
