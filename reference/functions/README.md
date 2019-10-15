@@ -37,6 +37,12 @@
 * [`jwt-encode()`](jwt-encode.md)
 * [`xml-to-json()`](xml-to-json.md)
 
+## Array Functions
+
+* [`array()`](array.md)
+* [`array-reverse()`](array-reverse.md)
+* [`sort()`](sort.md)
+
 ## Boolean Functions
 
 * [`boolean()` ↗](https://developer.mozilla.org/en/XPath/Functions/boolean)
@@ -57,7 +63,6 @@
 
 ## Other Functions
 
-* [`array()`](array.md)
 * [`content()`](content.md)
 * [`count()` ↗](https://developer.mozilla.org/en/XPath/Functions/count)
 * [`fit-document()`](fit-document.md)
