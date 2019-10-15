@@ -4,3 +4,4 @@ _FLAT Server_ is publicly available as a [Docker](https://www.docker.com) image:
 
 Therefore, running FLAT requires a Docker setup of your choice.
 
+## [Logging](logging.md)
