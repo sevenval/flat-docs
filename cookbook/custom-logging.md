@@ -231,7 +231,68 @@ Every API has to rely on user input for its operation. But we should do so with 
 
 For logging alone, the JSON armor prevents format breakouts and log attacks. HTTP request headers and query strings are limited in size. However, you could use [Swagger](/reference/OpenAPI/validation.md) to further validate a parameter's format.
 
-# See also
+## Testing
+
+Log augmentation with the [`log`  action](/reference/actions/log.md) belongs to our project code. Therefore, we would like to test that! This can be done by using the `get-log()` function in a [FLAT test](/reference/testing/README.md).
+
+Put this into `tests/loggging.xml`:
+```xml
+<flat-test>
+  <eval out="$user">"alice"</eval>
+  <log>
+  {
+    "user": {
+      "name": {{ $user }}
+    }
+  }
+  </log>
+  <assert>
+  [
+    [ "get-log()/user/name", "alice", "user/name was logged" ]
+  ]
+  </assert>
+</flat-test>
+```
+You can run the test with this command:
+```sh
+$ flat test tests/logging.xml
+1..1
+ok 1 tests/logging.xml: 1 assertions
+```
+
+In a real project, you would rather send a request to your FLAT API and check if the log was written as expected
+
+```xml
+<flat-test>
+  <!-- fake env vars -->
+  <set-env>
+  {
+    "FLAT_STAGE": "test",
+    "FLAT_DC": "myLaptop"
+  }
+  </set-env>
+
+  <test-request>
+  {
+    "path": "/api/jt",
+    "headers": {
+      "X-Forwarded-Proto": "https"
+    }
+  }
+  </test-request>
+
+  <eval out="$log">get-log()</eval>
+  <assert>
+  [
+    [ "$log/env/stage", "test", "FLAT_STAGE was logged" ],
+    [ "$log/env/location", "myLaptop", "FLAT_DC was logged" ],
+    [ "$log/request/x-forwarded-proto", "https", "XFP was logged" ]
+  ]
+  </assert>
+</flat-test>
+```
+
+## See also
 
 * [Logging](/administration/logging.md) (Administration)
 * [`log` action](/reference/actions/log.md) (Reference)
