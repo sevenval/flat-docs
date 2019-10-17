@@ -229,9 +229,10 @@ $ curl -H "X-Forwarded-Proto: https" localhost:8080/api/…
 
 Every API has to rely on user input for its operation. But we should do so with care. (Every client could sent a `X-Forwarded-Proto` header. The administrator should take measures to _override_ this header in the SSL offloader.)
 
-For logging alone, the JSON armor prevents format breakouts and log attacks. Headers are limited in size. However, you could use [Swagger](/reference/OpenAPI/validation.md) to validate the header format.
+For logging alone, the JSON armor prevents format breakouts and log attacks. HTTP request headers and query strings are limited in size. However, you could use [Swagger](/reference/OpenAPI/validation.md) to further validate a parameter's format.
 
 # See also
 
 * [Logging](/administration/logging.md) (Administration)
-* [`log` Action](/reference/actions/log.md) (Reference)
+* [`log` action](/reference/actions/log.md) (Reference)
+* [`get-log()` function](/reference/functions/get-log.md) (Reference)

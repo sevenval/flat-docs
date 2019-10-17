@@ -63,3 +63,4 @@ The `user` field of the previous example can be unregistered like this:
 
 * [Logging](/administration/logging.md) (Administration)
 * [Custom Logging](/cookbook/custom-logging.md) (Cookbook)
+* [`get-log()` function](/reference/functions/get-log.md) (Reference)

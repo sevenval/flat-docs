@@ -130,4 +130,5 @@ These lines are usually _error log_ messages of the included [Apache Web server]
 # See also
 
 * [Custom Logging](/cookbook/custom-logging.md) (Cookbook)
-* [`log` Action](/reference/actions/log.md) (Reference)
+* [`log` action](/reference/actions/log.md) (Reference)
+* [`get-log()` function](/reference/functions/get-log.md) (Reference)
