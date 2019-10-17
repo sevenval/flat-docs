@@ -8,7 +8,7 @@ For comfortable log processing, events are discriminated with the `type` field t
 * `flat_request`
 * `flat_alert`
 
-The access log can be augmented with custom fields.
+The access log can be augmented with [custom fields](/cookbook/custom-logging.md).
 
 All JSON log lines have a `requestID` field. Its value can be used to correlate log events.
 
@@ -127,6 +127,7 @@ These lines are usually _error log_ messages of the included [Apache Web server]
 [Tue Oct 15 13:11:30.190335 2019] [mpm_worker:notice] [pid 28:tid 139763282708608] - AH00292: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips configured -- resuming normal operations
 ```
 
-# See Also
+# See also
 
 * [Custom Logging](/cookbook/custom-logging.md) (Cookbook)
+* [`log` Action](/reference/actions/log.md) (Reference)
