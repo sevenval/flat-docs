@@ -61,6 +61,11 @@ be found in the [`$upstream` variable](/reference/variables.md#predefined-variab
 The `id` property sets the request ID.
 If `id` is set in the JSON object, is not `null` and not `""`, it will be used and a `content` attribute on the `request` element will be ignored.
 
+### `encoding`
+
+The `encoding` property sets the character encoding used for the URI including the query string and `POST` form data.
+Its value must be a string. The default value is `UTF-8`.
+
 ### `url`
 
 The `url` property sets the request URL.
