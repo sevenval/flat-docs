@@ -94,7 +94,7 @@ Outgoing [requests](/reference/actions/request.md) to upstream APIs are recorded
 
 ## Error Log
 
-Errors that have occurred during processing, such as [Validation Errors](/reference/openapi/validation.md) are recorded as type `flat_alert`.
+Errors that have occurred during processing, such as [Validation Errors](/reference/OpenAPI/validation.md) are recorded as type `flat_alert`.
 
 This log events should be monitored!
 
