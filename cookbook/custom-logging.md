@@ -1,6 +1,6 @@
 # Logging Custom Fields
 
-FLAT writes [JSON logs](/administration/logging.md) for events like client access or upstream requests. The structured log events is easily extensible.
+FLAT writes [JSON logs](/administration/logging.md) for events like client access or upstream requests. The structured log events are easily extensible.
 
 The [access log](/administration/logging.md#access-log) already provides a basic set of information about the incoming request. However, when inspecting (any) logs quickly the wish for more contextual information will arise.
 
