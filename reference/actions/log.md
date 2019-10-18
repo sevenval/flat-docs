@@ -48,13 +48,13 @@ The merged custom log fields are:
 }
 ```
 
-Fields with `NULL` values are not included in the log event. In order to remove a previously registered field, you can unset it with `NULL` value.
+Fields with `null` values are not included in the log event. In order to remove a previously registered field, you can unset it with `null` value.
 
 The `user` field of the previous example can be unregistered like this:
 ```xml
 <log>
 {
-  "user": NULL
+  "user": null
 }
 </log>
 ```
