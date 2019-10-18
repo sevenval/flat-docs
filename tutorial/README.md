@@ -1,4 +1,4 @@
-# FLAT Tutorial
+# Tutorial
 
 _Hello World!_
 

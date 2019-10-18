@@ -1,4 +1,4 @@
-# FLAT Reference
+# Reference
 
 ## [Actions](actions/README.md)
 

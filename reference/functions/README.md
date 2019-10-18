@@ -68,6 +68,7 @@
 * [`fit-document()`](fit-document.md)
 * [`fit-log()`](fit-log.md)
 * [`fit-serialize()`](fit-serialize.md)
+* [`get-log()`](get-log.md)
 * [`has-class()`](has-class.md)
 * [`html-parse()`](html-parse.md)
 * [`id()` ↗](https://developer.mozilla.org/en/XPath/Functions/id)
