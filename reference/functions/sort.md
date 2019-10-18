@@ -4,7 +4,7 @@
 OXN-array sort(OXN-array node-set, string key = '', boolean descending = false())
 ```
 
-Sorts the given JSON array in [OXN](/reference/templating/oxn.md). The optional `key` expression specifies the sorting key. An empty string is ignored. To sort descending, the optional third parameter must be `true()`.
+Given a JSON array in [Object XML Notation](/reference/templating/oxn.md), `sort()` returns a new, sorted array. The optional `key` expression specifies the sorting key. An empty string is ignored. The default behaviour is to sort in ascending order. To sort in descending order, the optional third parameter must be `true()`.
 
 ## Examples
 
