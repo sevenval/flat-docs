@@ -1,4 +1,4 @@
-# FLAT Cookbook
+# Cookbook
 
 ## [How can I inspect the client request?](see-client-request.md)
 
@@ -27,3 +27,7 @@
 ## [Using Environment Variables](envvars.md)
 
 ## [File Serving](file-serving.md)
+
+## [Error Handling](error-flow.md)
+
+## [Logging Custom Fields](custom-logging.md)

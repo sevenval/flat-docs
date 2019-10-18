@@ -1,4 +1,4 @@
-# FLAT Tutorial
+# Tutorial
 
 _Hello World!_
 
@@ -633,7 +633,6 @@ x-flat-validate:
   request: true
   response: true         # ⬅
 …
-```
 ```
 
 If we now twist the domain name in the second template of our flow to `flaw.githubusercontent.com`, we get a validation error:

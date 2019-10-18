@@ -153,15 +153,18 @@ Both client request and response, as well as upstream request and response valid
 * `info` - detailed information about the error (type: `array` of `string`)
 * `requestID` - the requestID as it should appear in the logs (type: `string`)
 
-example:
+Example:
 ```json
 {
-  "status":400,
-  "code":3204,
-  "message":"Input Validation Failed",
-  "info":["Path \/api\/empty-body\/ not found."],
-  "requestID":"XYOGvOu@c2mhpIlgFB-yPwAAAF8"
+  "status": 400,
+  "code": 3204,
+  "message": "Input Validation Failed",
+  "info": [
+    "Path /api/empty-body/ not found."
+  ],
+  "requestID": "XYOGvOu@c2mhpIlgFB-yPwAAAF8"
 }
+```
 
 ## See also
 

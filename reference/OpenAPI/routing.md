@@ -114,7 +114,7 @@ flow from being executed, too.
 
 ## Error Flow
 
-An _error flow_ is an optional separate flow file that is executed if a client request or response validation error has occurred, or the `exit-on-error` option was set for a [request](reference/actions/request.md) that has failed.
+An _error flow_ is an optional separate flow file that is executed if a client request or response validation error has occurred, or the `exit-on-error` option was set for a [request](/reference/actions/request.md) that has failed.
 It is specified by setting the `flow` property of `x-flat-error` on the top level in the OpenAPI definition:
 
 ```yaml

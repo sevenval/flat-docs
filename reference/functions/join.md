@@ -16,8 +16,8 @@ join(":", "a", "b")
 ```
 returns `a:b`.
 
-The input can be a string or a number or a node-set. In the latter case, all
-nodes in the node-set are casted into a string.
+Each input argument can be a string or a number or a node-set. In the latter case,
+all nodes in the node-set are cast to a string.
 
 Example XML input:
 
@@ -46,7 +46,7 @@ Example JSON input:
 }
 ```
 
-If an argument is a JSON array its values will be joined:
+If an argument is a JSON array, its values will be joined:
 
 ```
 join(", ", names)

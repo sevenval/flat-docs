@@ -20,4 +20,4 @@ Searching for multiple class names simultaneously (e.g. `has-class('a b')`) is n
 and triggers a warning. Use an `and` or an `or` expression instead, e.g.
 `has-class('a') and has-class('b')`.
 
-Searching an empty string is also not allowed and triggers a warning, too.
+Searching an empty string is also not allowed and triggers a warning.

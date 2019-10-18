@@ -33,7 +33,7 @@ and the flow in `dashboard.xml`:
     }
   }
   </request>
-  <break if="$upstream/*/error" status="500" />
+  <break if="$upstream/*/error" />
 
   <template>
     {{$rsp := content("notifications")/json }}
@@ -93,13 +93,13 @@ A naïve approach to writing a [flat test](/reference/testing/README.md) would b
 
 This actually works. However, our flow in fact sends the upstream request to `httpbin.org`. The test will fail if their server is down. And if we were mocking a single-sign-on service, we would need real credentials. That's not how we like our automated tests to work.
 
-The [`backend-flow` test action](/reference/actions/backend-flow.md) provides a mean mock backend responses.
+A [`backend-flow` test action](/reference/actions/backend-flow.md) allows us to create a fake response for the upstream requests. We can use regular [actions](/reference/actions/README.md) to set headers, status code, response bodies and so on.
 
 We extend our `flat-test` with this `backend-flow` call as its first action:
 
 ```xml
 <flat-test>
-  <backend-flow request="state">
+  <backend-flow request="notifications">
     <template>
     {
       "args": {
@@ -109,13 +109,19 @@ We extend our `flat-test` with this `backend-flow` call as its first action:
     </template>
   </backend-flow>
   …
-  ```
-
-A `backend-flow` allows us to create a fake response for the upstream requests. We can use regular [actions](/reference/actions/README.md) to set headers, status code, response bodies and so on.
+```
 
 Note that the `backend-flow` action only _registers_ that flow for subsequent `request` actions. That's why we have to put it first.
 
 You can register multiple backend flows for your requests. Upstream requests and flows are matched using their `request` ID. In our case, `notifications`.
+
+💡If your mock response is a bit longer than ours here, you can store it in a separate file and use [`copy`](/reference/actions/copy.md) instead:
+
+```xml
+<backend-flow>
+  <copy in="mock.json" />
+</backend-flow>
+```
 
 ## Asserting Upstream Requests
 

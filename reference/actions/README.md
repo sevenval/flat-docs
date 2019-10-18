@@ -6,6 +6,7 @@
 * [`dump`](dump.md)
 * [`echo`](echo.md)
 * [`eval`](eval.md)
+* [`log`](log.md)
 * [`nameshave`](nameshave.md)
 * [`regex`](regex.md)
 * [`request`](request.md)
