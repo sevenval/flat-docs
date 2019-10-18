@@ -22,7 +22,7 @@ Client requests received by FLAT are recorded as type `flat_access` and have the
   "type": "flat_access",
   "requestID": "XaXJeWA-@B@3XFNhk42H@QAAAAQ",
   "method": "GET",
-  "path": "/api/jt",
+  "path": "/api/path",
   "agent": "curl/7.54.0",
   "referrer": "",
   "status": 200,

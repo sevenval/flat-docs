@@ -274,7 +274,7 @@ In a real project, you would rather send a request to your FLAT API and check if
 
   <test-request>
   {
-    "path": "/api/jt",
+    "path": "/api/path",
     "headers": {
       "X-Forwarded-Proto": "https"
     }

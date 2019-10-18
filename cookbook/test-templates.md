@@ -23,7 +23,7 @@ Let's write a simple template that outputs some information on the incoming requ
 Looks easy. Let's try it out:
 
 ```bash
-$ curl -s -d 'a=b&c=d' localhost:8080/api/jt?data=foo |jq
+$ curl -s -d 'a=b&c=d' localhost:8080/api/path?data=foo |jq
 ```
 
 The result is:
@@ -31,7 +31,7 @@ The result is:
 ```json
 {
   "method": "POST",
-  "path": "/api/jt",
+  "path": "/api/path",
   "numPostFields": 2,
   "data": "foo"
 }
