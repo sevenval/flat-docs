@@ -233,7 +233,7 @@ For logging alone, the JSON armor prevents format breakouts and log attacks. HTT
 
 ## Testing
 
-Log augmentation with the [`log`  action](/reference/actions/log.md) belongs to our project code. Therefore, we would like to test that! This can be done by using the `get-log()` function in a [FLAT test](/reference/testing/README.md).
+Log augmentation with the [`log`  action](/reference/actions/log.md) belongs to our project code. Therefore, we would like to test that! This can be done by using the [`get-log()` function](/reference/functions/get-log.md) in a [FLAT test](/reference/testing/README.md).
 
 Put this into `tests/loggging.xml`:
 ```xml
