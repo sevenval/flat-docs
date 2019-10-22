@@ -25,6 +25,20 @@ Example: `requests` with inline JSON
 </requests>
 ```
 
+**Note:** An `id` property in the JSON request configuration will be ignored:
+
+```json
+{
+  "myID":{
+     "id":"ignored",
+     "url":"http://example.com",
+     "method":"GET",
+     …
+   },
+   …
+}
+```
+
 Example: `requests` with referenced resource
 
 ```xml
