@@ -4,7 +4,7 @@
 OXN-array array-reverse(OXN-array node-set)
 ```
 
-Reverses the given JSON array in [OXN](/reference/templating/oxn.md).
+Given a JSON array in [Object XML Notation](/reference/templating/oxn.md), `array-reverse()` returns a new array in reverse order.
 
 ## Example
 
