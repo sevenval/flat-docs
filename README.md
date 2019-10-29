@@ -27,3 +27,7 @@ Look up detailed usage information about FLAT's nuts and bolts in the [Reference
 ## [Administration](administration/README.md)
 
 Learn how to deploy and run FLAT APIs in the [Administration](administration/README.md) section.
+
+## [Changelog](CHANGELOG.md)
+
+See information about released features in the [Changelog](CHANGELOG.md).
