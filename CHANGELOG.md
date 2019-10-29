@@ -7,7 +7,7 @@
 - The [`id`](/reference/actions/request.md#id) and [`encoding`](/reference/actions/request.md#encoding) properties in the JSON request configuration
 
 
-## [sevenvaltechnologies/flatrunner:20191018](https://hub.docker.com/layers/sevenvaltechnologies/flatrunner/20191018/images/sha256-8e2a72f1cd7ceb5a1d284ff31f57f94de83284f15233827c2c9e54348704edfe)
+## [20191018](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
 
@@ -29,7 +29,7 @@
 - Relative paths for e.g. `in` with `copy` in [`backend-flows`](/reference/actions/backend-flow.md)
 
 
-## [sevenvaltechnologies/flatrunner:20190919](https://hub.docker.com/layers/sevenvaltechnologies/flatrunner/20190919/images/sha256-2f675ae9290a97fb52f0056c16724f6f2df557a1ce4d4bceb418332316b76279)
+## [20190919](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
 
