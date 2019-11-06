@@ -4,11 +4,9 @@
 boolean file-exists(string path)
 ```
 
-The `file-exists` function accepts exactly one argument that is converted to a string. The argument must be either a `fit` URI or a path to a local file. If the argument is a relative path, the path is resolved relative to the flow file's path.
+The `file-exists` function accepts exactly one argument that is converted to a string. The argument must be a path to a local file. If the argument is a relative path, the path is resolved relative to the flow file's path.
 
 The funktion returns `true` if the file exists, `false` otherwise.
-
-If the argument is a URI with a URI scheme different from `fit`, the function throws an error.
 
 
 ## Examples
@@ -16,4 +14,3 @@ If the argument is a URI with a URI scheme different from `fit`, the function th
 * `file-exists('relative/path/to/file')`
 * `file-exists('../relative/path/to/file')`
 * `file-exists('/absolute/path/to/file')`
-* `file-exists('fit://site/conf/local.xml')`
