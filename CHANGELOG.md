@@ -9,8 +9,7 @@
 
 ### Fixed
 
-- Double alert messages are now [logged](/administration/logging.md) only once
-
+- Some alert messages were [logged](/administration/logging.md) twice
 
 ## [20191018](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
