@@ -4,12 +4,12 @@
 
 ### Added
 
-- The [`$error`](/reference/variables#usderror) variable is set and [`exit-on-error`/`error flow` handling](/cookbook/error-flow) is triggered if a request error occurs
+- The [`$error`](/reference/variables.md#usderror) variable is set and [`exit-on-error`/`error flow` handling](/cookbook/error-flow.md) is triggered if a request error occurs
 - The [`id`](/reference/actions/request.md#id) and [`encoding`](/reference/actions/request.md#encoding) properties in the JSON request configuration
 
 ### Fixed
 
-- Double alert messages are now [logged](/administration/logging) only once
+- Double alert messages are now [logged](/administration/logging.md) only once
 
 
 ## [20191018](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
