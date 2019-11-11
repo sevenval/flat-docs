@@ -24,3 +24,7 @@ It returns `true` if the signature could be verified, `false` otherwise.
   </template>
 <flow>
 ```
+
+## See also
+
+* [`calc-signature()`](calc-signature.md)

@@ -51,3 +51,7 @@ The optional parameter `algorithm` is the signing algorithm (the default is 'SHA
   </template>
 <flow>
 ```
+
+## See also
+
+* [`verify-signature()`](verify-signature.md)

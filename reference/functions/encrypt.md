@@ -21,3 +21,7 @@ It returns a string with the encrypted data.
   </template>
 <flow>
 ```
+
+## See also
+
+* [`decrypt()`](decrypt.md)
