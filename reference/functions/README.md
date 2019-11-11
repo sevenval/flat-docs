@@ -2,6 +2,7 @@
 
 ## String Functions
 
+* [`apply-codecs()`](apply-codecs.md)
 * [`base64-decode()`](base64-decode.md)
 * [`base64-encode()`](base64-encode.md)
 * [`capitalize-first()`](capitalize-first.md)
