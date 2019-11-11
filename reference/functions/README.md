@@ -24,8 +24,8 @@
 * [`toupper()`](toupper.md)
 * [`translate()` ↗](https://developer.mozilla.org/en/XPath/Functions/translate)
 * [`trim()`](trim.md)
-* [`urldecode()`](urldecode.md)
-* [`urlencode()`](urlencode.md)
+* [`urldecode()`, `url-decode()`](urldecode.md)
+* [`urlencode()`, `url-encode()`](urlencode.md)
 
 ## JSON Functions
 
