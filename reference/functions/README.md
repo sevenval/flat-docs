@@ -65,6 +65,8 @@
 ## Encryption and Signature Functions
 
 * [`calc-signature`](calc-signature.md)
+* [`decrypt`](decrypt.md)
+* [`encrypt`](encrypt.md)
 * [`verify-signature`](verify-signature.md)
 
 ## Other Functions
