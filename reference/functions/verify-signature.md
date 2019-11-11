@@ -5,7 +5,7 @@ boolean verify-signature(string signature, string data, string public_key [, str
 ```
 
 The `verify-signature` function verifies a given `signature` for the given `data` using the given `public_key` (in PEM format, with or without boundaries).
-The optional parameter `algorithm` is the signing algorithm (the default is 'SHA256').
+The optional parameter `algorithm` is the signing algorithm (the default is 'SHA256'; [list of supported algorithms](calc-signature.md#supported-algorithms)).
 It returns `true` if the signature could be verified, `false` otherwise.
 
 ## Example
