@@ -62,6 +62,11 @@
 
 * [`unixtime()`](unixtime.md)
 
+## Encryption and Signature Functions
+
+* [`calc-signature`](calc-signature.md)
+* [`verify-signature`](verify-signature.md)
+
 ## Other Functions
 
 * [`content()`](content.md)
