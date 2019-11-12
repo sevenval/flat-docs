@@ -25,11 +25,11 @@ The following codecs are supported:
   <template>
   {
     {{$input := 'my input' }}
-    {{$encoded := apply-codecs($input, , 'deflate', 'base64-encode', 'urlencode') }}
+    {{$encoded := apply-codecs($input, 'deflate', 'base64-encode', 'url-encode') }}
     <!-- is the same as -->
-    {{$deflated := apply-codecs($input, , 'deflate') }}
-    {{$base64encoded := apply-codecs($deflated, , 'base64-encode') }}
-    {{$encoded := apply-codecs($base64encoded, , 'urlencode') }}
+    {{$deflated := apply-codecs($input, 'deflate') }}
+    {{$base64encoded := apply-codecs($deflated, 'base64-encode') }}
+    {{$encoded := apply-codecs($base64encoded, 'url-encode') }}
   }
   </template>
 <flow>

@@ -1,4 +1,4 @@
-# `urldecode()`, `url- decode()`
+# `urldecode()`, `url-decode()`
 
 ```
 string urldecode(string argument)
