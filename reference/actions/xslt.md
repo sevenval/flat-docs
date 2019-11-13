@@ -6,7 +6,7 @@ The `xslt` action performs an [XSL 1.0 Transformation](http://www.w3.org/TR/xslt
 
 * `src="..."` path to the XSLT file (required)
 * `cache="..."` controls whether the XSLT compiler cache shall be used (optional, default is `true`).
-  Cache usage depends on the `$FIT_XSLT_USE_CACHE`.
+  Cache usage depends on the `$FLAT_XSLT_USE_CACHE`.
 * `in="..."` to define the input location (optional, default is `fit://request/content`)
 * `out="..."` to define the output location (optional, default is `fit://request/content`)
 
