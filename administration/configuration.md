@@ -2,7 +2,7 @@
 
 
 Certain settings of the FLAT runner can be configured using environment variables.
-The chapter [Defining Env Vars](/cookbook/envvars#defining-env-vars) in the Cookbook provides information on how to set environment variables.
+The chapter [Defining Env Vars](/cookbook/envvars.md#defining-env-vars) in the Cookbook provides information on how to set environment variables.
 
 
 ## Environment Variables
