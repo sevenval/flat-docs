@@ -9,7 +9,7 @@ The chapter [Defining Env Vars](/cookbook/envvars.md#defining-env-vars) in the C
 
 ### Miscellaneous
 
-* `FLAT_SERVER_ROLE`: This setting is typically used to distinguish production systems from staging or development servers. Its value is accessible in the [`server` Delivery Context properties](../ress/DC_Props.html#server) as `$dc/server/role`.
+* `FLAT_SERVER_ROLE`: This setting is typically used to distinguish production systems from staging or development servers. Its value is accessible in the [`$server` variable](/reference/variables.md#predefined-variables) as `$server/role`.
 
 
 ### Request Timeouts
