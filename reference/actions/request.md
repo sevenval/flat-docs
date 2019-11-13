@@ -289,7 +289,7 @@ The `options` property sets the request options. Its value must be a JSON object
 
 * `timeout` - Maximum time in seconds for processing a request (type: `number`, default: `$FLAT_FETCH_DEFAULT_TIMEOUT`)
 * `connect-timeout` - Maximum time in seconds for establishing a connection to a server (type: `number`, default: `$FLAT_FETCH_DEFAULT_CONNECT_TIMEOUT)`)
-* `time-to-first-byte-timeout` - Maximum time in seconds for receiving the first byte (type: `integer`, default: `$FLAT_DEFAULT_TTFB_TIMEOUT`)   ######### FIT_FETCH_DEFAULT_LOW_SPEED_TIMEOUT`)
+* `time-to-first-byte-timeout` - Maximum time in seconds for receiving the first byte (type: `integer`, default: `$FLAT_DEFAULT_TTFB_TIMEOUT`)
 * `send-x-forwarded-for` - Whether to include the client's IP address in an `X-Forwarded-For` header (type: `boolean`, default `false`)
 * `set-response-headers` - The HTTP response header fields to set in the response (type: `object` with field name as key and `string` or array of `string` as value)
 * `tls-version` - The TLS version (valid values: `"auto"`, `"TLSv1"`, `"TLSv1.0"`, `"TLSv1.1"`, `"TLSv1.2"`)
