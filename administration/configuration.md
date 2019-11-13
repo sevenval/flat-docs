@@ -14,7 +14,7 @@ The chapter [Defining Env Vars](/cookbook/envvars.md#defining-env-vars) in the C
 
 ### Request Timeouts
 
-Note that the maximum allowed overall time for a given request is always limited by FLAT_MAX_TIMEOUT. All other timeouts can be individually adjusted for each request using the appropriate [request option](/develop/reference/actions/request.md#options).
+Note that the maximum allowed overall time for a given request is always limited by FLAT_MAX_TIMEOUT. All other timeouts can be individually adjusted for each request using the appropriate [request option](/reference/actions/request.md#options).
 
 Use the following environment variables to configure the timeouts used during requests:
 
