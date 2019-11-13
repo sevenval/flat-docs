@@ -33,7 +33,6 @@ $ curl -H "Debug: request:info:append" localhost:8080
 ```
 
 Per request debugging may be password-protected via the `$FLAT_DEBUG_AUTH` environment variable.
-(In a non-Docker installation please use the `$FIT_DEBUG_AUTH_PASSWORD` environment variable instead).
 If such authorization is required, the password has to be appended as `;auth=…` in the `Debug` header, for example:
 
 ```bash
