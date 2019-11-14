@@ -30,7 +30,7 @@ The following modifications are applied to the content:
 <dump in="fit://request/content" status="201" mime="text/plain"/>
 ```
 
-The action is handy in debugging situations to terminate the [flow](../flow.md`)
+The action is handy in debugging situations to terminate the [flow](../flow.md)
 at a certain position. In this example we dump the main content after
 applying regular expressions but before parsing the content:
 

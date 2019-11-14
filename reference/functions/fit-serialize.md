@@ -28,7 +28,7 @@ An empty `node-set` results in an empty `string`.
 </flow>
 ```
 
-Example output of the [`server` Delivery Context properties](../ress/DC_Props.html#server)
+Example output of the `server` Delivery Context properties
 in the `fit_engine.log`:
 
 ```

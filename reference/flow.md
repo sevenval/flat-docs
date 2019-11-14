@@ -1,11 +1,11 @@
 # Flow
 
 The flow describes how the incoming request from the client is transformed into the outgoing response.
-The flow comprises [_actions_](actions.md), [control structures](#control-structures) and [variables](variables.md).
+The flow comprises [_actions_](actions/README.md), [control structures](#control-structures) and [variables](variables.md).
 
 Each endpoint of your API can have its individual flow specified by `x-flat-flow`, see [Routing](OpenAPI/routing.md).
 
-Here we have a flow with [`if-elseif-else` conditional statements](#if-elseif-else) and some [`echo` actions](actions/echo.md) evaluating the [`$request` variable](variables.md):
+Here we have a flow with [`if-elseif-else` conditional statements](#less-than-if-greater-than-less-than-elseif-greater-than-less-than-else-greater-than) and some [`echo` actions](actions/echo.md) evaluating the [`$request` variable](variables.md):
 
 ```xml
 <flow>
