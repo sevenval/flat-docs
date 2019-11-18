@@ -5,7 +5,7 @@ The flow comprises [_actions_](actions/README.md), [control structures](#control
 
 Each endpoint of your API can have its individual flow specified by `x-flat-flow`, see [Routing](OpenAPI/routing.md).
 
-Here we have a flow with [`if-elseif-else` conditional statements](#less-than-if-greater-than-less-than-elseif-greater-than-less-than-else-greater-than) and some [`echo` actions](actions/echo.md) evaluating the [`$request` variable](variables.md):
+Here we have a flow with [`if-elseif-else` conditional statements](#if-elseif-else) and some [`echo` actions](actions/echo.md) evaluating the [`$request` variable](variables.md):
 
 ```xml
 <flow>
@@ -51,7 +51,7 @@ See also:
  * [`sub-flow`](actions/sub-flow.md)
 
 
-### `<if>`-`<elseif>`-`<else>`
+### `if`-`elseif`-`else`
 
 The `if` statement and the optional `elseif` and `else` statements allow for conditional execution of flow blocks.
 
