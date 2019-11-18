@@ -9,7 +9,7 @@ packs and signs a _JSON web token_ (JWT) as _JSON web signature_ (JWS) in _compa
 
 ## Parameters
 
-`data`: The payload can be provided as a JSON string or [OXN](Templating#object-xml-notation).
+`data`: The payload can be provided as a JSON string or [OXN](/reference/templating/oxn.md).
 
 `key`: For the HMAC algorithms, a Base64URL encoded symmetric key for the digital signature. For the `RSASSA` based algorithms, use the PEM encoded *private* key (without the `BEGIN` and `END` lines and without any line breaks). The key must not be password protected.
 

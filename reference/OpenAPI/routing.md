@@ -108,8 +108,8 @@ flow is _not_ executed. It is only called for API requests.
 A [`break`](#break) statement in the init flow terminates the **whole
 request**; the regular flow (specified by `x-flat-flow`) is _not_ executed. A
 [`return`](#return) statement terminates only the init flow; the regular flow
-is executed. Terminating [actions](actions/README.md) like
-[`echo`](actions/echo.md) or [`dump`](actions/dump.md) will prevent the actual
+is executed. Terminating [actions](/reference/actions/README.md) like
+[`echo`](/reference/actions/echo.md) or [`dump`](/reference/actions/dump.md) will prevent the actual
 flow from being executed, too.
 
 ## Error Flow

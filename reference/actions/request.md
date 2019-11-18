@@ -11,7 +11,7 @@ remote upstream servers. If you want to do multiple requests in parallel, use th
 
 ## Usage
 
-You can use a [JSON template](/reference/templating.md) with the features defined below.
+You can use a [JSON template](/reference/templating/README.md) with the features defined below.
 
 Example: GET request
 

@@ -2,7 +2,7 @@
 
 Used in [FLAT tests](/reference/testing/README.md) to change the environment of the FLAT app under test.
 
-Normally, env vars are set on server start-up and are immutable later on. They are available in the pre-defined variable [`$env`](/references/variables.md#predefined-variables).
+Normally, env vars are set on server start-up and are immutable later on. They are available in the pre-defined variable [`$env`](/reference/variables.md#predefined-variables).
 
 The action allows to override variables in the `$env` structure for testing purposes.
 

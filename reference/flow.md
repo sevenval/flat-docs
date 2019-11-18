@@ -1,7 +1,7 @@
 # Flow
 
 The flow describes how the incoming request from the client is transformed into the outgoing response.
-The flow comprises [_actions_](actions.md), [control structures](#control-structures) and [variables](variables.md).
+The flow comprises [_actions_](actions/README.md), [control structures](#control-structures) and [variables](variables.md).
 
 Each endpoint of your API can have its individual flow specified by `x-flat-flow`, see [Routing](OpenAPI/routing.md).
 
@@ -51,7 +51,7 @@ See also:
  * [`sub-flow`](actions/sub-flow.md)
 
 
-### `<if>`-`<elseif>`-`<else>`
+### `if`-`elseif`-`else`
 
 The `if` statement and the optional `elseif` and `else` statements allow for conditional execution of flow blocks.
 
