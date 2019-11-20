@@ -4,9 +4,9 @@
 boolean file-exists(string path)
 ```
 
-The `file-exists` function accepts exactly one argument that is converted to a string. The argument must be a path to a local file. If the argument is a relative path, the path is resolved relative to the flow file's path.
+The `file-exists` function accepts exactly one argument that is converted to a string. The argument must be a `fit://`-URL, otherwise an empty result is returned and an error will be raised.
 
-The funktion returns `true` if the file exists, `false` otherwise.
+The function returns `true` if the URL references an existing file or directory, `false` otherwise.
 
 
 ## Examples
