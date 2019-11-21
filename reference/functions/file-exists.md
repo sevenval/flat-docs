@@ -11,6 +11,6 @@ The function returns `true` if the URL references an existing file or directory,
 
 ## Examples
 
-* `file-exists('relative/path/to/file')`
-* `file-exists('../relative/path/to/file')`
-* `file-exists('/absolute/path/to/file')`
+* `file-exists('fit://site/path/to/file')`
+* `file-exists('fit://site/path/to/directory/')`
+* `file-exists('fit://request/content')`
