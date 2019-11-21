@@ -4,7 +4,8 @@
 
 ### Added
 
-- Functions [`apply-codecs()`](/reference/functions/apply-codecs.md), [`encrypt()`](/reference/functions/encrypt.md), [`decrypt()`](/reference/functions/decrypt.md), [`calc-signature()`](/reference/functions/calc-signature.md) and [`verify-signature()`](/reference/functions/verify-signature.md)
+- The functions [`apply-codecs()`](/reference/functions/apply-codecs.md), [`encrypt()`](/reference/functions/encrypt.md), [`decrypt()`](/reference/functions/decrypt.md), [`calc-signature()`](/reference/functions/calc-signature.md) and [`verify-signature()`](/reference/functions/verify-signature.md)
+- The function [`file-exists()`](/reference/functions/file-exists.md)
 - The [`$error`](/reference/variables.md#usderror) variable is set and [`exit-on-error`/`error flow` handling](/cookbook/error-flow.md) is triggered if a request error occurs
 - The [`id`](/reference/actions/request.md#id) and [`encoding`](/reference/actions/request.md#encoding) properties in the JSON request configuration
 - More environment variables for system [configuration and tuning](/administration/configuration.md)
