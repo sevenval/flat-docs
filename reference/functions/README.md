@@ -73,6 +73,7 @@
 
 * [`content()`](content.md)
 * [`count()` ↗](https://developer.mozilla.org/en/XPath/Functions/count)
+* [`file-exists()`](file-exists.md)
 * [`fit-document()`](fit-document.md)
 * [`fit-log()`](fit-log.md)
 * [`fit-serialize()`](fit-serialize.md)
