@@ -4,6 +4,8 @@
 
 ## [How can I pass an arbitrary header field to an upstream system?](pass-header-field-upstream.md)
 
+## [ How can I forward a request to an upstream API?](forward-request-upstream.md)
+
 ## [How can I pass response headers to the client?](pass-header-field-downstream.md)
 
 ## [How can I increase the request timeout to deal with a slow upstream system?](request-timeout.md)
