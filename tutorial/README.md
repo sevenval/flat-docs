@@ -803,6 +803,105 @@ which we expect to be something like `{ "total_count": <integer>, "items": [ …
 Now we'd immediately notice if GitHub changed relevant parts of its API that affect our
 "Hello World" API built on top of it.
 
+In case we would want to abort the flow if the upstream request or response is invalid, we add the `exit-on-error` request option:
+
+```xml
+        …
+        "validate-response": true, {{// ⬅ comma }}
+        "exit-on-error": true      {{// ⬅ }}
+      }
+    }
+  </request>
+```
+
+To see the effect, change the parameter name `language` to `lang` in upstream_request.xml:
+
+```xml
+      …
+      {{ concat("lang:", $request/params/language) }}
+	  <!--       ⬆ ⬆ ⬆ -->
+    ]
+  </template>
+```
+
+If we request our API
+```
+curl -si localhost:8080/html
+```
+
+instead of the output
+
+```
+HTTP/1.1 404 Not Found
+…
+```
+```
+{"error": "Unknown language"}
+```
+
+we now get
+
+```
+HTTP/1.1 400 Bad Request
+…
+```
+```json
+{"error":{"message":"Upstream Request Validation Failed","status":400,"requestID":"main","info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello-world filename:html lang:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."],"code":3202}}
+```
+
+If you prefer to receive a custom error document, you can configure an error flow. Just create `error.xml`:
+
+```xml
+<flow>
+  <template>
+    {
+      "CustomError":  {
+        "Message": {{ $error/message }},
+        "Info": {{ $error/info }}
+      }
+    }
+  </template>
+  <set-response-headers>
+    {
+      "Status": {{ $error/status }},
+      "Error-Code": {{ $error/code }}
+    }
+  </set-response-headers>
+</flow>
+```
+
+and reference it on the top level in `swagger.yaml`:
+
+```yaml
+…
+x-flat-error:           # ⬅
+  flow: error.xml       # ⬅ error flow
+…
+```
+
+We now get
+
+```
+HTTP/1.1 400 Bad Request
+…
+Error-Code: 3202
+…
+```
+```json
+{"CustomError":{"Message":"Upstream Request Validation Failed","Info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello-world filename:html lang:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."]}}
+```
+
+Now revert the change to upstream_request.xml:
+
+```xml
+      …
+      {{ concat("language:", $request/params/language) }}
+	  <!--       ⬆ ⬆ ⬆ -->
+    ]
+  </template>
+```
+
+
 ## Improving the Configuration
 
 Currently we send an error response when our template expression
@@ -1013,7 +1112,8 @@ Here are the complete configuration files:
       "options": {
         "definition": "upstream.yaml",
         "validate-request": true,
-        "validate-response": true
+        "validate-response": true,
+        "exit-on-error": true
       }
     }
   </request>
@@ -1030,6 +1130,8 @@ info:
 x-flat-validate:
   request: true
   response: true
+x-flat-error:
+  flow: error.xml
 paths:
   /{language}:
     get:
