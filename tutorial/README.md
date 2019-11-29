@@ -819,7 +819,7 @@ To see the effect, change the parameter name `language` to `lang` in upstream_re
 ```xml
       …
       {{ concat("lang:", $request/params/language) }}
-	  <!--       ⬆ ⬆ ⬆ -->
+      <!--       ⬆ ⬆ ⬆ -->
     ]
   </template>
 ```
@@ -896,7 +896,7 @@ Now revert the change to upstream_request.xml:
 ```xml
       …
       {{ concat("language:", $request/params/language) }}
-	  <!--       ⬆ ⬆ ⬆ -->
+      <!--       ⬆ ⬆ ⬆ -->
     ]
   </template>
 ```
