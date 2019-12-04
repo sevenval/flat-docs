@@ -18,13 +18,13 @@ To forward a request to an upstream API ("proxy" a request), just set the approp
     },
     {{// copy specific headers, here foo and bar }}
     {{with $request/headers }}
-        "headers": {
-            {{: foo | bar }}
-        },
+      "headers": {
+        {{: foo | bar }}
+      },
     {{end}}
     {{// copy all cookies; you may want to limit this to specific cookies as with the headers }}
     "cookies": {
-        {{: $request/cookies/* }}
+      {{: $request/cookies/* }}
     }
   }
   </request>
