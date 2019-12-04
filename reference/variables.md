@@ -143,6 +143,43 @@ conditions and produces the string `null` in placeholders:
 </flow>
 ```
 
+## $request
+
+The `$request` variable contains information about the incoming client request, such as the URL, the request header fields and possibly the query component or cookies, if any were sent.
+
+Example:
+```xml
+<request>
+  <method>POST</method>
+  <purpose>main</purpose>
+  <debug/>
+  <host>localhost</host>
+  <port>12345</port>
+  <id>XeeSVJ5AFt8VyXYagp3lvgAAACc</id>
+  <url>http://localhost:12345/api/proxy?a=b&amp;c=d</url>
+  <path>/api/proxy</path>
+  <query>a=b&amp;c=d</query>
+  <headers>
+    <host>localhost:12345</host>
+    <user-agent>curl/7.64.0</user-agent>
+    <accept>*/*</accept>
+    <cookie>NAME1=VALUE1; NAME2=VALUE2</cookie>
+    <content-type>application/x-www-form-urlencoded</content-type>
+    <foo>asdf</foo>
+    <bar>qwer</bar>
+    <content-length>17</content-length>
+  </headers>
+  <get>
+    <a>b</a>
+    <c>d</c>
+  </get>
+  <cookies>
+    <NAME1>VALUE1</NAME1>
+    <NAME2>VALUE2</NAME2>
+  </cookies>
+</request>
+```
+
 ## $error
 
 Both client request and response, as well as upstream request and response validation errors will store information about the error in `$error`. While initially empty, `$error` will have the following properties containing information about the most recent error:
