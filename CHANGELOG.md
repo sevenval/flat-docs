@@ -17,6 +17,8 @@
 ### Fixed
 
 - Some alert messages were [logged](/administration/logging.md) twice
+- Evaluating an undefined or `null` [variable](/reference/variables.md), as a string, now returns the empty string instead of the string `null`.
+
 
 ## [20191018](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
