@@ -13,11 +13,13 @@
 ### Changed
 
 - [Swagger validation](/reference/OpenAPI/validation.md) now gracefully accepts empty objects in the definition.
+- Logging of [template results](/reference/templating/README.md) for more [flow actions](/reference/actions/README.md).
 
 ### Fixed
 
 - Some alert messages were [logged](/administration/logging.md) twice
 - Evaluating an undefined or `null` [variable](/reference/variables.md), as a string, now returns the empty string instead of the string `null`.
+- Incorrect default content-type `text/xml` for request bodies.
 
 
 ## [20191018](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
