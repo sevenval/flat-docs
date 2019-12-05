@@ -803,7 +803,7 @@ which we expect to be something like `{ "total_count": <integer>, "items": [ …
 Now we'd immediately notice if GitHub changed relevant parts of its API that affect our
 "Hello World" API built on top of it.
 
-In case we would want to abort the flow if the upstream request or response is invalid, we add the `exit-on-error` request option:
+To abort the flow in case the upstream request or response is invalid or the request fails outright, we add the `exit-on-error` request option:
 
 ```xml
         …
@@ -849,7 +849,7 @@ HTTP/1.1 400 Bad Request
 {"error":{"message":"Upstream Request Validation Failed","status":400,"requestID":"main","info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello-world filename:html lang:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."],"code":3202}}
 ```
 
-If you prefer to receive a custom error document, you can configure an error flow. Just create `error.xml`:
+If you prefer to provide a custom error document, you can configure an error flow. Just create `error.xml`:
 
 ```xml
 <flow>
@@ -904,8 +904,8 @@ Now revert the change to upstream_request.xml:
 
 ## Improving the Configuration
 
-Currently we send an error response when our template expression
-`{{ items/value[1]/html_url ?? "" }}` yields an empty string. A more straightforward way would be to simply check the number of results (`total_count`) we get in return:
+Currently we send an error response if our template expression
+`{{ items/value[1]/html_url ?? "" }}` yields an empty string. A more straightforward way would be to simply check the number of results (`total_count`) that are returned:
 
 ```xml
 <flow>
@@ -930,9 +930,8 @@ Currently we send an error response when our template expression
 
 As before, the `template` for `$count` operates on the result of the previous request and therefore has no `in="…"`.
 
-If we now also change the above condition into `0 >= $count` we can completely abandon the `else` as the
-[`echo` action](../reference/actions/echo.md)
-already finishes the request:
+Now we can completely do away with the `else` block if we change the above condition into `0 >= $count` as the
+[`echo` action](../reference/actions/echo.md) already finishes the request:
 
 ```xml
   …
