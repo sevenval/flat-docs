@@ -10,6 +10,10 @@
 - The [`id`](/reference/actions/request.md#id) and [`encoding`](/reference/actions/request.md#encoding) properties in the JSON request configuration
 - More environment variables for system [configuration and tuning](/administration/configuration.md)
 
+### Changed
+
+- [Swagger validation](/reference/OpenAPI/validation.md) now gracefully accepts empty objects in the definition.
+
 ### Fixed
 
 - Some alert messages were [logged](/administration/logging.md) twice
