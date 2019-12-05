@@ -3,7 +3,7 @@
 To forward a request to an upstream API ("proxy" a request), just set the appropriate `url`, copy the request `method` using a [pair producer](../reference/templating/pair-producer.md) and set the request `body` referencing the [client request body `$body`](/reference/variables.md#predefined-variables).
 
 In this case, since we are using the request ID `main`, the body together with
-its content-type is already automatically set as the response body to be sent
+its `Content-Type` is automatically set as the response body to be sent
 to the client. To correctly forward the upstream response to the client, the HTTP
 status code and possible additional header fields must be relayed explicitly.
 
@@ -12,14 +12,14 @@ status code and possible additional header fields must be relayed explicitly.
   <request>
   {
     {{// the URL for the upstream API}}
-    "url": "http://httpbin.org/anything",
+    "url": "https://httpbin.org/anything",
 
     {{// copy the request method}}
     {{: $request/method }},
 
     {{// set the request body}}
     "body": {
-      "src": "$body" 
+      "src": "$body"
     },
     {{// if set, copy specific headers, here foo and bar }}
     "headers": {
@@ -31,6 +31,8 @@ status code and possible additional header fields must be relayed explicitly.
     }
   }
   </request>
+
+
   <set-response-headers>
   {
     {{// pass through the upstream response status (defaults to 200) }}
@@ -41,5 +43,10 @@ status code and possible additional header fields must be relayed explicitly.
 </flow>
 ```
 
-**Note: ** The `Content-Type` request header is passed automatically, so you don't have to copy it.
-**Note: ** The forwarded request will not have a body if the incoming request does not have one.
+The `Content-Type` request and response header is passed automatically with the body. So you don't have to copy it explicitly.
+
+The forwarded request will not have a body if the incoming request does not have one.
+
+## See also
+
+* [`request` action](/reference/actions/request.md) (reference)
