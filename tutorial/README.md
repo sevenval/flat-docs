@@ -89,10 +89,10 @@ Object required
 
 ## OpenAPI
 
-Looks like an empty definition isn't really useful.
+Looks like an empty definition isn't all that useful after all.
 
 We will need at least a minimal [OpenAPI definition](https://swagger.io/docs/specification/2-0/basic-structure/)
-in our `swagger.yaml` to get rid of that error page.
+in our `swagger.yaml` to avoid that error page.
 
 Currently, FLAT supports OpenAPI 2.0 also known as Swagger:
 
@@ -142,7 +142,7 @@ paths:
 ```
 
 > 📎
-> File paths are resolved relatively to the location of the file they are referenced in. For `swagger.yaml` and `hello.xml` are in the same directory, we can simply use the filename here.
+> File paths are resolved relative to the location of the file they are referenced in. For `swagger.yaml` and `hello.xml` are in the same directory, we can simply use the filename here.
 
 There we have our first "Hello World" snippet in JSON format:
 
@@ -433,7 +433,7 @@ Let's take a closer look. The `copy` action has no explicit `out="…"` and the 
 The `template` action evaluates the expression between `{{` and `}}` and stores its result in the variable `$url` as set by `out`. The expression itself extracts the wanted `html_url` property from the first object of the `items` array (`items/value[1]`).
 If that property does not exist, the [Null Coalescing Operator `??`](/reference/templating/null-coalescing-operator.md) sets the empty string `""` as the result.
 
-The rest of the flow is only slightly modified: We now check if we got content in `$url` and create the final JSON response with a second `template`. If `$url` is empty, we send the error response as before.
+The rest of the flow is only slightly modified: We now check if we have content in `$url` and create the final JSON response with a second `template`. If `$url` is empty, we send the error response as before.
 
 > 📎
 > Instead of using the `$url` variable as input (`in="$url"`) in the second template and operating on its content, we could have accessed `$url`
@@ -444,7 +444,7 @@ The rest of the flow is only slightly modified: We now check if we got content i
 >   <template in="">{"url": {{ $url }}}</template>
 > ```
 >
-> Note that we now explicitly omit the input with `in=""` to prevent
+> Note that we now explicitly omit the input using `in=""` to prevent
 > the unwanted default input from being loaded – which happens to be the huge
 > JSON output from the `copy` action.
 
@@ -635,7 +635,7 @@ x-flat-validate:
 …
 ```
 
-If we now twist the domain name in the second template of our flow to `flaw.githubusercontent.com`, we get a validation error:
+If we now alter the domain name in the second template of our flow to `flaw.githubusercontent.com`, we get a validation error:
 
 ```bash
 $ curl --silent localhost:8080/javascript | jq
@@ -653,7 +653,7 @@ $ curl --silent localhost:8080/javascript | jq
 
 ## Request Configuration
 
-Instead of putting together the request URL with `concat` we can configure it.
+Instead of assembling the request URL with `concat`, we can configure it.
 For better readability, we first move the request part into a
 [`sub-flow`](../reference/actions/sub-flow.md) –
 a separate flow file that can be called from others flows like a subroutine:
@@ -803,10 +803,109 @@ which we expect to be something like `{ "total_count": <integer>, "items": [ …
 Now we'd immediately notice if GitHub changed relevant parts of its API that affect our
 "Hello World" API built on top of it.
 
+To abort the flow in case the upstream request or response is invalid or the request fails outright, we add the `exit-on-error` request option:
+
+```xml
+        …
+        "validate-response": true, {{// ⬅ comma }}
+        "exit-on-error": true      {{// ⬅ }}
+      }
+    }
+  </request>
+```
+
+To see the effect, change the parameter name `language` to `lang` in upstream_request.xml:
+
+```xml
+      …
+      {{ concat("lang:", $request/params/language) }}
+      <!--       ⬆ ⬆ ⬆ -->
+    ]
+  </template>
+```
+
+If we request our API
+```
+curl -si localhost:8080/html
+```
+
+instead of the output
+
+```
+HTTP/1.1 404 Not Found
+…
+```
+```
+{"error": "Unknown language"}
+```
+
+we now get
+
+```
+HTTP/1.1 400 Bad Request
+…
+```
+```json
+{"error":{"message":"Upstream Request Validation Failed","status":400,"requestID":"main","info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello-world filename:html lang:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."],"code":3202}}
+```
+
+If you prefer to provide a custom error document, you can configure an error flow. Just create `error.xml`:
+
+```xml
+<flow>
+  <template>
+    {
+      "CustomError":  {
+        "Message": {{ $error/message }},
+        "Info": {{ $error/info }}
+      }
+    }
+  </template>
+  <set-response-headers>
+    {
+      "Status": {{ $error/status }},
+      "Error-Code": {{ $error/code }}
+    }
+  </set-response-headers>
+</flow>
+```
+
+and reference it on the top level in `swagger.yaml`:
+
+```yaml
+…
+x-flat-error:           # ⬅
+  flow: error.xml       # ⬅ error flow
+…
+```
+
+We now get
+
+```
+HTTP/1.1 400 Bad Request
+…
+Error-Code: 3202
+…
+```
+```json
+{"CustomError":{"Message":"Upstream Request Validation Failed","Info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello-world filename:html lang:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."]}}
+```
+
+Now revert the change to upstream_request.xml:
+
+```xml
+      …
+      {{ concat("language:", $request/params/language) }}
+      <!--       ⬆ ⬆ ⬆ -->
+    ]
+  </template>
+```
+
+
 ## Improving the Configuration
 
-Currently we send an error response when our template expression
-`{{ items/value[1]/html_url ?? "" }}` yields an empty string. A more straightforward way would be to simply check the number of results (`total_count`) we get in return:
+Currently we send an error response if our template expression
+`{{ items/value[1]/html_url ?? "" }}` yields an empty string. A more straightforward way would be to simply check the number of results (`total_count`) that are returned:
 
 ```xml
 <flow>
@@ -831,9 +930,8 @@ Currently we send an error response when our template expression
 
 As before, the `template` for `$count` operates on the result of the previous request and therefore has no `in="…"`.
 
-If we now also change the above condition into `0 >= $count` we can completely abandon the `else` as the
-[`echo` action](../reference/actions/echo.md)
-already finishes the request:
+Now we can completely do away with the `else` block if we change the above condition into `0 >= $count` as the
+[`echo` action](../reference/actions/echo.md) already finishes the request:
 
 ```xml
   …
@@ -922,7 +1020,7 @@ $ flat start -d '*:debug:log' ~/hello-world
 ```
 
 > 📎
-> Mind the `'` quoting to prevent the shell expanding `*`.
+> Mind the `'` quoting to prevent the shell from expanding `*`.
 
 Both commands start FLAT with the [debug log level](../reference/debugging.md) lowered from `error` to `debug`.
 The `*` stands for any topic. `log` means that debug information will be written to the log file.
@@ -943,7 +1041,7 @@ $ curl --header Debug:template,echo localhost:8080/html
 ```
 
 If we also set the debug sink to `inline` or `append`, the output
-will be put included in the HTTP response rather than the log file, for example:
+will be included in the HTTP response rather than the log file, for example:
 
 ```bash
 $ curl --header Debug:time:info:inline localhost:8080/html
@@ -1013,7 +1111,8 @@ Here are the complete configuration files:
       "options": {
         "definition": "upstream.yaml",
         "validate-request": true,
-        "validate-response": true
+        "validate-response": true,
+        "exit-on-error": true
       }
     }
   </request>
@@ -1030,6 +1129,8 @@ info:
 x-flat-validate:
   request: true
   response: true
+x-flat-error:
+  flow: error.xml
 paths:
   /{language}:
     get:

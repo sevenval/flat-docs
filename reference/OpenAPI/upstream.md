@@ -56,20 +56,8 @@ The informational message (array) also contains the original status code of the 
 
 In both cases, the error will be noted in `$upstream/id/error` where `id` is the content ID of the request (defaults to `main`).
 
-That allows for easy error handling in flows:
+If the request was configured with the [`exit-on-error` option](/reference/actions/request.md#options), errors (e.g. connection errors, invalid requests or responses) cause the normal flow to be aborted. If configured, the [error flow](/reference/OpenAPI/routing.md#error-flow) is run. Otherwise a standard error message is substituted as the response to the client request. See [more on error flows](/cookbook/error-flow.md) in the cookbook.
 
-```xml
-<flow>
-  <request>…</request>
-
-  <if test="$upstream/*/error">
-    <!-- error handling here. e.g. just break an leave it to (client) response validation -->
-    <break/>
-  </if>
-
-  <!-- all is well. response processing here -->
-</flow>
-```
 
 ## Mocking
 
