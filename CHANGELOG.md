@@ -9,18 +9,20 @@
 - The [`$error`](/reference/variables.md#usderror) variable is set and [`exit-on-error`/`error flow` handling](/cookbook/error-flow.md) is triggered if a request error occurs
 - The [`id`](/reference/actions/request.md#id) and [`encoding`](/reference/actions/request.md#encoding) properties in the JSON request configuration
 - More environment variables for system [configuration and tuning](/administration/configuration.md)
+- If a path in [`swagger.yaml`](/reference/OpenAPI/README.md) ends with `/**`, this entry matches the given path as well as arbitrary paths below it
+- A path specified in [`swagger.yaml`](/reference/OpenAPI/README.md) is now valid even if it only contains an `x-flat-flow` statement
 
 ### Changed
 
 - [Swagger validation](/reference/OpenAPI/validation.md) now gracefully accepts empty objects in the definition.
-- Logging of [template results](/reference/templating/README.md) for more [flow actions](/reference/actions/README.md).
+- Logging of [template results](/reference/templating/README.md) for more [flow actions](/reference/actions/README.md)
 
 ### Fixed
 
 - Some alert messages were [logged](/administration/logging.md) twice
-- Evaluating an undefined or `null` [variable](/reference/variables.md), as a string, now returns the empty string instead of the string `null`.
-- Incorrect default content-type `text/xml` for request bodies.
-- The [`set-response-headers` action](/reference/actions/set-response-headers.md) now replaces `Cache-Control` headers instead of merging them.
+- Evaluating an undefined or `null` [variable](/reference/variables.md), as a string, now returns the empty string instead of the string `null`
+- Incorrect default content-type `text/xml` for request bodies
+- The [`set-response-headers` action](/reference/actions/set-response-headers.md) now replaces `Cache-Control` headers instead of merging them
 
 
 ## [20191018](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
