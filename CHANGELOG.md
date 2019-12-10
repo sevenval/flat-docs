@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [20191210](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
 
