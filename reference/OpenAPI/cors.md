@@ -36,7 +36,7 @@ x-flat-cors:
 
 The special origin `*` allows all Websites to access the API.
 
-The optional property `allow-credentials` controls whether the browser is allowed to send `Cookies` or `Authorization` headers to the API. This is often necessary if the API wants to read access tokens from request headers. (Also see [Working with JWT](/cookobook/jwt.md)).
+The optional property `allow-credentials` controls whether the browser is allowed to send `Cookies` or `Authorization` headers to the API. This is often necessary if the API wants to read access tokens from request headers. (Also see [Working with JWT](/cookbook/jwt.md)).
 
 ## Swagger Integration
 

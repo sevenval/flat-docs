@@ -2,6 +2,7 @@
 
 ## String Functions
 
+* [`apply-codecs()`](apply-codecs.md)
 * [`base64-decode()`](base64-decode.md)
 * [`base64-encode()`](base64-encode.md)
 * [`capitalize-first()`](capitalize-first.md)
@@ -24,8 +25,8 @@
 * [`toupper()`](toupper.md)
 * [`translate()` ↗](https://developer.mozilla.org/en/XPath/Functions/translate)
 * [`trim()`](trim.md)
-* [`urldecode()`](urldecode.md)
-* [`urlencode()`](urlencode.md)
+* [`urldecode()`, `url-decode()`](urldecode.md)
+* [`urlencode()`, `url-encode()`](urlencode.md)
 
 ## JSON Functions
 
@@ -61,10 +62,18 @@
 
 * [`unixtime()`](unixtime.md)
 
+## Encryption and Signature Functions
+
+* [`calc-signature`](calc-signature.md)
+* [`decrypt`](decrypt.md)
+* [`encrypt`](encrypt.md)
+* [`verify-signature`](verify-signature.md)
+
 ## Other Functions
 
 * [`content()`](content.md)
 * [`count()` ↗](https://developer.mozilla.org/en/XPath/Functions/count)
+* [`file-exists()`](file-exists.md)
 * [`fit-document()`](fit-document.md)
 * [`fit-log()`](fit-log.md)
 * [`fit-serialize()`](fit-serialize.md)

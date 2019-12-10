@@ -19,6 +19,6 @@ The [cookbook](/cookbook/README.md) has a recipe for the [built-in mocking](/coo
 To avoid accidently running on mocks in production, mocking can be activated/disabled with the environment variable:
 
 ```
-FIT_FLAT_ALLOW_MOCKING=true
-FIT_FLAT_ALLOW_MOCKING=false
+FLAT_ALLOW_MOCKING=true
+FLAT_ALLOW_MOCKING=false
 ```

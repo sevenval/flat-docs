@@ -11,7 +11,7 @@ remote upstream servers. If you want to do multiple requests in parallel, use th
 
 ## Usage
 
-You can use a [JSON template](/reference/templating.md) with the features defined below.
+You can use a [JSON template](/reference/templating/README.md) with the features defined below.
 
 Example: GET request
 
@@ -287,13 +287,14 @@ Example: `uploads` with `src` or `value`
 
 The `options` property sets the request options. Its value must be a JSON object. The following options are valid:
 
-* `timeout` - Maximum time in seconds for processing a request (type: `number`, default: `$FIT_FETCH_DEFAULT_TIMEOUT`)
-* `connect-timeout` - Maximum time in seconds for establishing a connection to a server (type: `number`, default: `$FIT_FETCH_DEFAULT_CONNECT_TIMEOUT)`)
-* `time-to-first-byte-timeout` - Maximum time in seconds for reveiving the first byte (type: `integer`, default: `$FIT_FETCH_DEFAULT_LOW_SPEED_TIMEOUT`)
+* `timeout` - Maximum time in seconds for processing a request (type: `number`, default: `$FLAT_FETCH_DEFAULT_TIMEOUT`)
+* `connect-timeout` - Maximum time in seconds for establishing a connection to a server (type: `number`, default: `$FLAT_FETCH_DEFAULT_CONNECT_TIMEOUT)`)
+* `time-to-first-byte-timeout` - Maximum time in seconds for receiving the first byte (type: `integer`, default: `$FLAT_DEFAULT_TTFB_TIMEOUT`)
 * `send-x-forwarded-for` - Whether to include the client's IP address in an `X-Forwarded-For` header (type: `boolean`, default `false`)
 * `set-response-headers` - The HTTP response header fields to set in the response (type: `object` with field name as key and `string` or array of `string` as value)
 * `tls-version` - The TLS version (valid values: `"auto"`, `"TLSv1"`, `"TLSv1.0"`, `"TLSv1.1"`, `"TLSv1.2"`)
 * `tls-ciphers` - Ciphers to use for TLS connections (type: `string`)
+* `ignore-certificate-errors` - Do not check server certificate in order to use upstream services with self-signed or expired TLS certificates (not recommended, use with caution!) (type: `boolean`, default `false`)
 * `client-certificate-file` - Path to the client certificate (`.pem`) (type: `string`)
 * `client-certificate-password` - The certificate password (type: `string`)
 * `transport-protocol` - Protocol for communication with the upstream system (valid values: `http`, `https`)
@@ -312,7 +313,7 @@ The `options` property sets the request options. Its value must be a JSON object
 * `validate-request` - Whether to validate the request (valid values: `true`, `false`, "report-only", default: `false`)
 * `validate-response` - Whether to validate the response (valid values: `true`, `false`, "report-only", default: `false`)
 * `definition` - The path to the swagger definition file (type: `string`)
-* `exit-on-error` - if `true`, abort normal processing of the flow in case of validation errors. If configured, the [error flow](OpenAPI/routing.md#error-flow) is run. Otherwise a standard error message is substituted as a response to the request (type: `boolean`, default `false`)
+* `exit-on-error` - if `true`, abort normal processing of the flow in case of validation errors. If configured, the [error flow](/reference/OpenAPI/routing.md#error-flow) is run. Otherwise a standard error message is substituted as a response to the request (type: `boolean`, default `false`)
 
 Example:
 

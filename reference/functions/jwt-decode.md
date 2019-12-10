@@ -4,7 +4,7 @@
 OXN-node-set jwt-decode(string jws, string key [, string algorithm])
 ```
 
-validates and unpacks the content of a _JSON web signature_ ([JWS](https://tools.ietf.org/html/rfc7515)) as [OXN](Templating#object-xml-notation).
+validates and unpacks the content of a _JSON web signature_ ([JWS](https://tools.ietf.org/html/rfc7515)) as [OXN](/reference/templating/oxn.md).
 
 
 ## Parameters
