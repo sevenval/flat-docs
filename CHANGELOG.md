@@ -23,6 +23,7 @@
 - Evaluating an undefined or `null` [variable](/reference/variables.md), as a string, now returns the empty string instead of the string `null`
 - Incorrect default content-type `text/xml` for request bodies
 - The [`set-response-headers` action](/reference/actions/set-response-headers.md) now replaces `Cache-Control` headers instead of merging them
+- The [`serve` action](/reference/actions/serve.md) now correctly handles whitespace and other URL-Encoded characters in the name of the `fallback-doc`
 
 
 ## [20191018](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
