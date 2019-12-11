@@ -37,7 +37,7 @@ status code and possibly additional header fields must be relayed explicitly.
   {
     {{// pass through the upstream response status (defaults to 200) }}
     "status": {{ $upstream/main/status }}{{,}}
-    {{: $upstream/main/headers/set-cookie }}
+    {{: $upstream/main/headers/cache-control | $upstream/main/headers/set-cookie }}
   }
   </set-response-headers>
 </flow>
