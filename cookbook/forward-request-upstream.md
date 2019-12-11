@@ -15,7 +15,7 @@ status code and possibly additional header fields must be relayed explicitly.
     "url": "https://httpbin.org/anything",
 
     {{// copy the request method}}
-    {{: $request/method }},
+    {{: $request/method | $request/query }},
 
     {{// set the request body}}
     "body": {
