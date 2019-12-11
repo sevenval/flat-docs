@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- The default value for the use-http-cache  [request option](/reference/actions/request.md#options) is now false, even if no request options are configured.
+- The default value for the `use-http-cache` [request option](/reference/actions/request.md#options) is now false, even if no request options are configured.
 
 
 ## [20191210](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
