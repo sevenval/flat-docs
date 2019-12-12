@@ -55,9 +55,9 @@ paths:
 ```
 
 It is by no means a bad thing to write a conformant definition and provide a `description` or `version` information. However, it frequently slows you down unnecessarily and degrades readability.
-FLAT allows you to quickly define the endpoints of your API and start working on them. Once set up, you can gradually refine them by adding more operations and [schemas](validation.md) for requests and responses.
+FLAT allows you to quickly define the endpoints of your API and start working with them. Once set up, you can gradually refine them by adding more operations and [schemas](validation.md) for requests and responses.
 
-> 📎 Note that [other tools](/cookbook/swagger-docs.md) often require a complete Swagger definition and may refuse to process FLAT's slimline definitions.
+> 📎 Note that [most tools](/cookbook/swagger-docs.md) require a complete Swagger definition and may refuse to process FLAT's slimline definitions.
 
 ## Wildcard Paths
 
