@@ -98,7 +98,7 @@ paths:
   x-flat-flow: api/fallback.xml
 ```
 
-## Init Flow
+### Init Flow
 
 An _init flow_ is a separate flow file that is executed before the regular [flow](/reference/flow.md)
 that is defined for an API path. It is specified by setting `x-flat-init` on
@@ -120,16 +120,16 @@ headers.
 For requests outside of the API `basePath` (e.g. `/` or `/assets`), the init
 flow is _not_ executed. It is only called for API requests.
 
-A [`break`](#break) statement in the init flow terminates the **whole
+A [`break`](/reference/flow.md#break) statement in the init flow terminates the **whole
 request**; the regular flow (specified by `x-flat-flow`) is _not_ executed. A
-[`return`](#return) statement terminates only the init flow; the regular flow
+[`return`](/reference/flow.md#return) statement terminates only the init flow; the regular flow
 is executed. Terminating [actions](/reference/actions/README.md) like
 [`echo`](/reference/actions/echo.md) or [`dump`](/reference/actions/dump.md) will prevent the actual
 flow from being executed, too.
 
-## Error Flow
+### Error Flow
 
-An _error flow_ is an optional separate flow file that is executed if a client request or response validation error has occurred, or the `exit-on-error` option was set for a [request](/reference/actions/request.md) that has failed.
+An _error flow_ is an optional separate flow file that is executed if a client request or response validation error has occurred, or if the `exit-on-error` option was set for a failing  [request](/reference/actions/request.md).
 It is specified by setting the `flow` property of `x-flat-error` on the top level in the OpenAPI definition:
 
 ```yaml
@@ -139,9 +139,9 @@ x-flat-error:
 …
 ```
 
-The error flow can be used to [produce error messages with a custom format or status](/cookbook/error-flow.md). Note that the output generated after the error flow has run will not be validated. Additionally, after errors encountered while the error flow is processed will not re-start the error flow.
+The error flow can be used to [produce error messages with a custom format or status](/cookbook/error-flow.md). Note that the output generated after the error flow has run will not be validated. Additionally, errors encountered while the error flow is processed will not re-start the error flow.
 
-## Default Flow
+### Default Flow
 
 Requests to resources outside the `basePath` are handled by the default flow defined
 in `conf/flow.xml`. This allows for [serving HTML, images, JavaScript](/cookbook/file-serving.md) and the like.
@@ -149,7 +149,7 @@ in `conf/flow.xml`. This allows for [serving HTML, images, JavaScript](/cookbook
 
 ## Path Parameters
 
-Swagger Paths can define path parameters:
+Swagger paths can define path parameters:
 
 ```
 paths:
