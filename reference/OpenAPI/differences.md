@@ -14,7 +14,7 @@ First of all, several extensions named `x-flat-…` are recognized on different 
 
 ## Slimline Definition
 
-Defining endpoints in `swagger.yaml` should be straight-forward. However, typing Swagger compliant YAML or JSON can be rather cumbersome. To assign a [flow](routing.md#assigning-flat-flows) to a path with two operations (`get` and `post`) the Swagger specification requires you to write at least:
+Defining endpoints in `swagger.yaml` should be straight-forward. However, typing Swagger compliant YAML or JSON can be somewhat cumbersome. To assign a [flow](routing.md#assigning-flat-flows) to a path with two operations (`get` and `post`) the Swagger specification requires you to write at least:
 
 ```yaml
 swagger: "2.0"
@@ -45,7 +45,7 @@ paths:
     post:
 ```
 
-If you don't care which HTTP methods are allowed for a path, you may even go without the concrete operations `get` and `post`:
+If you don't care which HTTP methods are allowed for a path, you may skip specifying the operations entirely:
 
 ```yaml
 swagger: "2.0"
@@ -61,7 +61,7 @@ FLAT allows you to quickly define the endpoints of your API and start working on
 
 ## Wildcard Paths
 
-While paths ending with `/**` are not treated specially in standard Swagger, they are handled specifically in FLAT. Such a _wildcard path_ matches any request path having the same prefix and arbitrary following segments. "Normal" paths without a trailing wildcard pattern `/**` are always matched first:
+While paths ending with `/**` are treated like all other paths in standard Swagger, they are handled specially in FLAT. Such a _wildcard path_ matches any request path having the same prefix and, optionally, arbitrary additional segments. "Normal" paths without a trailing wildcard pattern `/**` are always matched first:
 
 ```yaml
 swagger: "2.0"
@@ -81,3 +81,5 @@ paths:
 ```
 
 The longest matching wildcard path wins. The position of a wildcard path in the definition is irrelevant.
+
+Note that path parameters (i.e. sections enclosed in curly braces) cannot be combined with wildcards.

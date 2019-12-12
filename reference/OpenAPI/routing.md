@@ -47,7 +47,7 @@ While these are undefined (especially those pointing outside of base path):
 The Swagger docs have more information on [paths and operations](https://swagger.io/docs/specification/2-0/paths-and-operations/).
 
 To skirt the rule that each permissible path must be defined, you can use FLAT's [wildcard path feature](differences.md#wildcard-paths) to match arbitrarily long request paths. Wildcard paths, i.e. paths ending with `/**`, match all paths sharing the same prefix.
-For example, by adding the wildcard path `/users/**` to the above definition the formerly undefined path `/v1/users/too/long` will be matched, too, as well as any other path starting with `/v1/users/`:
+For example, by adding the wildcard path `/users/**` to the above definition, the formerly undefined path `/v1/users/too/long` will be matched, too, as well as any other path starting with `/v1/users/`:
 
 ```yaml
 …
@@ -129,7 +129,7 @@ flow from being executed, too.
 
 ### Error Flow
 
-An _error flow_ is an optional separate flow file that is executed if a client request or response validation error has occurred, or if the `exit-on-error` option was set for a failing [request](/reference/actions/request.md).
+An _error flow_ is an optional separate flow file that is executed if a client request or response validation error has occurred, or if the `exit-on-error` option was set for a [request](/reference/actions/request.md) that has failed.
 It is specified by setting the `flow` property of `x-flat-error` on the top level in the OpenAPI definition:
 
 ```yaml
