@@ -1,6 +1,6 @@
 # Differences from Swagger
 
-FLAT uses an adapted version of Swagger.
+FLAT uses an enhanced version of Swagger.
 
 ## `x-flat-…` Extensions
 
