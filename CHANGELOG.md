@@ -16,8 +16,7 @@
 - The [`$error`](/reference/variables.md#usderror) variable is set and [`exit-on-error`/`error flow` handling](/cookbook/error-flow.md) is triggered if a request error occurs
 - The [`id`](/reference/actions/request.md#id) and [`encoding`](/reference/actions/request.md#encoding) properties in the JSON request configuration
 - More environment variables for system [configuration and tuning](/administration/configuration.md)
-- If a path in [`swagger.yaml`](/reference/OpenAPI/README.md) ends with `/**`, this entry matches the given path as well as arbitrary paths below it
-- A path specified in [`swagger.yaml`](/reference/OpenAPI/README.md) is now valid even if it only contains an `x-flat-flow` statement
+- If a path in [`swagger.yaml`](/reference/OpenAPI/differences.md#wildcard-paths) ends with `/**`, this entry matches the given path as well as arbitrary paths below it.
 
 ### Changed
 

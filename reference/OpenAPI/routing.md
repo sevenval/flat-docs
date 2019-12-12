@@ -28,7 +28,7 @@ paths:
 
 One important setting is the `basePath` property. All described API paths are only accessible below that `basePath`.
 
-Furthermore, only the paths that are explicitly defined are permissible, i.e. they may not be extended arbitrarily.
+In general, only the paths that are explicitly defined are permissible, i.e. they may not be extended arbitrarily.
 
 In our example, the following paths are valid:
 
@@ -45,6 +45,21 @@ While these are undefined (especially those pointing outside of base path):
 ```
 
 The Swagger docs have more information on [paths and operations](https://swagger.io/docs/specification/2-0/paths-and-operations/).
+
+To overcome the rule that each permissible path must be defined, you can use FLAT's [wildcard path feature](differences.md#wildcard-paths) to match arbitrarily long request paths. Wildcard paths, i.e. paths ending with `/**`, match all paths sharing the same prefix.
+For example, by adding the wildcard path `/users/**` to the above definition the formerly undefined path `/v1/users/too/long` will be matched, too, as well as any other path starting with `/v1/users/`:
+
+```yaml
+…
+basePath: "/v1"
+paths:
+  /users:
+    …
+  /users/**:
+    # Wildcard path matching /v1/users/…
+  /dashboard:
+    …
+```
 
 ## Assigning FLAT Flows
 
