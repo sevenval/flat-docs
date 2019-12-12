@@ -55,7 +55,7 @@ paths:
 ```
 
 It is by no means a bad thing to write a conformant definition and provide a `description` or `version` information. But often it slows you unnecessarily down and worsens readability.
-FLAT's slimline syntax allow you to quickly define the endpoints of your API and start working on them. Once setup, you can gradually elaborate them by adding more operations and schemas for requests and responses.
+FLAT's slimline syntax allows you to quickly define the endpoints of your API and start working on them. Once setup, you can gradually elaborate them by adding more operations and [schemas](validation.md) for requests and responses.
 
 > 📎 Note that [other tools](/cookbook/swagger-docs.md) often require a complete Swagger definition and may refuse to process FLAT's slimeline defintions.
 
