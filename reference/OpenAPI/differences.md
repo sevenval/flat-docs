@@ -9,8 +9,8 @@ First of all, several extensions named `x-flat-…` are recognized on different 
 * `x-flat-flow`: [flow](routing.md#assigning-flat-flows) to be started. Recognized at top-level and below `paths`, `paths/<path>` and `paths/<path>/<operation>`.
 * `x-flat-init`: [init flow](routing.md#init-flow) (top-level)
 * `x-flat-error`: [error flow](routing.md#error-flow) (top-level)
-* x-flat-cors: [CORS configuration](cors.md) (top-level)
-* x-flat-validate: [validation](validation.md) (top-level)
+* `x-flat-cors`: [CORS configuration](cors.md) (top-level)
+* `x-flat-validate`: [validation](validation.md) (top-level)
 
 ## Slimline Definition
 
@@ -54,10 +54,10 @@ paths:
     x-flat-flow: login-flow.xml
 ```
 
-It is by no means a bad thing to write a conformant definition and provide a `description` or `version` information. But often it slows you unnecessarily down and worsens readability.
-FLAT allows you to quickly define the endpoints of your API and start working on them. Once setup, you can gradually elaborate them by adding more operations and [schemas](validation.md) for requests and responses.
+It is by no means a bad thing to write a conformant definition and provide a `description` or `version` information. However, it frequently slows you down unnecessarily and degrades readability.
+FLAT allows you to quickly define the endpoints of your API and start working on them. Once set up, you can gradually refine them by adding more operations and [schemas](validation.md) for requests and responses.
 
-> 📎 Note that [other tools](/cookbook/swagger-docs.md) often require a complete Swagger definition and may refuse to process FLAT's slimeline definitions.
+> 📎 Note that [other tools](/cookbook/swagger-docs.md) often require a complete Swagger definition and may refuse to process FLAT's slimline definitions.
 
 ## Wildcard Paths
 
@@ -71,6 +71,7 @@ paths:
 
   /foo/bar/**:
     # matches /foo/bar, /foo/bar/…, /foo/bar/…/…, etc., e.g. /foo/bar/1
+    # but not e.g. /foo/bar1
 
   /foo/**:
     # matches /foo/…, /foo/…/…, etc., e.g. /foo/qux
@@ -78,3 +79,5 @@ paths:
   /**:
     # matches everything else, e.g. /bar
 ```
+
+The longest matching wildcard path wins. The position of a wildcard path in the definition is irrelevant.
