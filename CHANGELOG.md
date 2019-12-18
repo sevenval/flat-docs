@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- The `force-cache-ttl` [request option](/reference/actions/request.md#options)
+
 ### Fixed
 
 - The default value for the `use-http-cache` [request option](/reference/actions/request.md#options) is now false, even if no request options are configured.
