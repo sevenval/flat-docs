@@ -303,7 +303,7 @@ The `options` property sets the request options. Its value must be a JSON object
 * `proxy-server` - Proxy server hostname with port (type: `string`)
 * `proxy-credentials` - Authentication data for the proxy server (type: `string`)
 * `use-http-cache` - Whether to enable the HTTP cache (type: `boolean`, default: `false`). This option is mutually exclusive with `force-cache-ttl`.
-* `force-cache-ttl` - A fixed time-to-live of resources in the cache, ignoring cache response headers and other obstacles for caching (type: `integer`). A number > 0 enables this kind of caching. This option is mutually exclusive with `use-http-cache`.
+* `force-cache-ttl` - All resources are cached with a fixed time-to-live, ignoring all cache response headers and other obstacles for caching (type: `integer`). A number > 0 enables this kind of caching, specifying a lifetime in seconds. This option is mutually exclusive with `use-http-cache`.
 * `respect-client-cache-headers` - Whether to respect incoming cache headers (type: `boolean`, default: `false`)
 * `follow-redirects` - Whether to automatically follow redirects (type: `boolean`, default: `false`)
 * `max-redirects` - Maximum number of consecutive redirects to follow (type: `integer`)
