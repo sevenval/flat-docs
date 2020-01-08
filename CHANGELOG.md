@@ -4,6 +4,7 @@
 
 ### Added
 
+- The [Swagger extension](reference/OpenAPI/differences.md#x-flat-extensions) `x-flat-validate` is now also recognized below `paths/<path>` and `paths/<path>/<operation>`.
 - The `force-cache-ttl` [request option](/reference/actions/request.md#options)
 
 ### Changed
