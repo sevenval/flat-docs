@@ -8,7 +8,7 @@ The [tutorial](/tutorial/README.md) has a chapter on [validation](/tutorial/READ
 
 ## Configuration
 
-Overall validation is configured in the top-level [extension object `x-flat-validate`](differences.md#x-flat--extensions):
+Overall validation is configured in the top-level [extension object `x-flat-validate`](differences.md#x-flat-extensions):
 
 ```yaml
 swagger: "2.0"
