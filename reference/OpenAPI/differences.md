@@ -10,7 +10,7 @@ First of all, several extensions named `x-flat-…` are recognized on different 
 * `x-flat-init`: [init flow](routing.md#init-flow) (top-level)
 * `x-flat-error`: [error flow](routing.md#error-flow) (top-level)
 * `x-flat-cors`: [CORS configuration](cors.md) (top-level)
-* `x-flat-validate`: [validation](validation.md) (top-level)
+* `x-flat-validate`: [validation](validation.md) (top-level, below `paths/<path>` and `paths/<path>/<operation>`)
 
 ## Slimline Definition
 
