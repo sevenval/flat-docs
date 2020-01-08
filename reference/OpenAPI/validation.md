@@ -52,11 +52,11 @@ paths:
   # Reports invalid responses for POST.
   /strict:
     x-flat-validate:
-       request: true
+      request: true
 
     post:
       x-flat-validate:
-       response: report-only
+        response: report-only
 
     get:
       x-flat-validate:
