@@ -48,7 +48,8 @@ paths:
   # Does not validate responses (default).
   /relaxed:
 
-  # Validates all incoming requests and responses for GET.
+  # Validates all incoming requests.
+  # Validates responses for GET.
   # Reports invalid responses for POST.
   /strict:
     x-flat-validate:
