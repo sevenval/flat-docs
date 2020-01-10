@@ -33,7 +33,7 @@ $ sudo mv flat /usr/local/bin
 > You could also put `flat` into your `~/bin/` directory. If that is not
 > already in your `$PATH`, you can add it with `export PATH="$PATH:~/bin"`.
 
-## Getting started
+## Getting Started
 
 Let's create a workspace for our little project. We call it `hello-world` and create a directory with that name:
 
@@ -49,6 +49,7 @@ No FLAT app found in ~/hello-world: create swagger.yaml to start
 ```
 
 Before we can start FLAT, we need an API definition. The default location is `./swagger.yaml`. To get the server up and running, an empty one will do the job:
+
 ```bash
 $ touch ~/hello-world/swagger.yaml
 ```

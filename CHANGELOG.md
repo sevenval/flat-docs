@@ -1,5 +1,22 @@
 # Changelog
 
+## [20200110](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
+### Added
+
+- The [Swagger extension](reference/OpenAPI/differences.md#x-flat-extensions) `x-flat-validate` is now also recognized below `paths/<path>` and `paths/<path>/<operation>`.
+- The `force-cache-ttl` [request option](/reference/actions/request.md#options)
+
+### Changed
+
+- Only allow operations defined in [OpenAPI version 2.0](https://swagger.io/specification/v2/#pathItemObject) to be used in the [`swagger.yaml`](/reference/OpenAPI/README.md)
+
+### Fixed
+
+- The default value for the `use-http-cache` [request option](/reference/actions/request.md#options) is now false, even if no request options are configured.
+- Segmentation fault (or double free) when [eval](/reference/actions/eval.md) is used to assign nodes from a node-set variable to another variable
+
+
 ## [20191210](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
@@ -9,8 +26,7 @@
 - The [`$error`](/reference/variables.md#usderror) variable is set and [`exit-on-error`/`error flow` handling](/cookbook/error-flow.md) is triggered if a request error occurs
 - The [`id`](/reference/actions/request.md#id) and [`encoding`](/reference/actions/request.md#encoding) properties in the JSON request configuration
 - More environment variables for system [configuration and tuning](/administration/configuration.md)
-- If a path in [`swagger.yaml`](/reference/OpenAPI/README.md) ends with `/**`, this entry matches the given path as well as arbitrary paths below it
-- A path specified in [`swagger.yaml`](/reference/OpenAPI/README.md) is now valid even if it only contains an `x-flat-flow` statement
+- If a path in [`swagger.yaml`](/reference/OpenAPI/differences.md#wildcard-paths) ends with `/**`, this entry matches the given path as well as arbitrary paths below it.
 
 ### Changed
 

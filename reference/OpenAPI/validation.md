@@ -8,7 +8,7 @@ The [tutorial](/tutorial/README.md) has a chapter on [validation](/tutorial/READ
 
 ## Configuration
 
-Validation is configured in the top-level extension object `x-flat-validate`:
+Overall validation is configured in the top-level [extension object `x-flat-validate`](differences.md#x-flat-extensions):
 
 ```yaml
 swagger: "2.0"
@@ -36,6 +36,39 @@ Possible values for the validation properties are:
 * `report-only` performs validation and logs a validation error without terminating the request
 
 The default value is `false`.
+
+You can also set `x-flat-validate` more specifically for certain paths and methods, for example:
+
+```yaml
+swagger: "2.0"
+x-flat-validate:
+  request: report-only
+paths:
+  # Reports invalid requests (top-level fallback).
+  # Does not validate responses (default).
+  /relaxed:
+
+  # Validates all incoming requests.
+  # Validates responses for GET.
+  # Reports invalid responses for POST.
+  /strict:
+    x-flat-validate:
+      request: true
+
+    post:
+      x-flat-validate:
+        response: report-only
+
+    get:
+      x-flat-validate:
+        response: true
+
+  # No validation whatsoever (overrides top-level)
+  /experimental:
+    x-flat-validate:
+      request: false
+      response: false
+```
 
 If the validation configuration has to be dynamic (e.g. read an environment variable to active it), you can use [`conf/config.xml`](/reference/configuration.md) instead of `x-flat-validate`.
 
