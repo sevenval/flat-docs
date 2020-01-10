@@ -14,6 +14,7 @@
 ### Fixed
 
 - The default value for the `use-http-cache` [request option](/reference/actions/request.md#options) is now false, even if no request options are configured.
+- Segmentation fault (or double free) when [eval](/reference/actions/eval.md) is used to assign nodes from a node-set variable to another variable
 
 
 ## [20191210](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
