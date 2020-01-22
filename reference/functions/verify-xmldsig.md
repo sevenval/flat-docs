@@ -15,6 +15,6 @@ Returns `true()` if the included XML `Signature` element is valid for the given 
 
 ## Example
 
-```
+```xml
 <eval out="$valid">verify-xmldsig($signed-xml)</eval>
 ```
