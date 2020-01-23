@@ -25,7 +25,7 @@ It returns a Base64-encoded string with the encrypted data.
 
 Public keys are expected to be supplied in [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) format.
 
-They can be provided as [X.509 certificate](https://en.wikipedia.org/wiki/X.509),
+They can be provided as part of an [X.509 certificate](https://en.wikipedia.org/wiki/X.509),
 
 ```
 -----BEGIN CERTIFICATE-----
@@ -43,8 +43,8 @@ or in [PKCS #8 syntax](https://en.wikipedia.org/wiki/PKCS_8):
 
 For X.509 certificates the `-----BEGIN CERTIFICATE-----` and
 `-----END CERTIFICATE-----` boundaries may be omitted.
-They are required, however, if the certificate is kept in the same file as the
-accompanying private key.
+They are required, however, if the certificate is stored together with other data,
+such as the accompanying private key.
 
 ## See also
 

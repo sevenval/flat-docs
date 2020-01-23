@@ -8,7 +8,7 @@ The `decrypt` function decrypts the given Base64-encoded `ciphertext` using the 
 The optional parameter `passphrase` is the passphrase for decrypting an encrypted private key (default `""`).
 For an unencrypted private key the `passphrase` should be omitted or `""`.
 
-The function returns a string with the decrypted data.
+The function returns the decrypted data as a string.
 
 ## Example
 
@@ -28,8 +28,8 @@ The function returns a string with the decrypted data.
 ## Private Key Format
 
 Private keys should be supplied
-[PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) formatted in
-[PKCS #8 syntax](https://en.wikipedia.org/wiki/PKCS_8):
+in [PKCS #8 syntax](https://en.wikipedia.org/wiki/PKCS_8)
+using [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) encoding:
 
 ```
 -----BEGIN PRIVATE KEY-----
@@ -46,8 +46,8 @@ for an unencrypted key – or for an encrypted (i.e. passphrase-secured) key:
 ```
 
 For such PKCS #8 keys the `-----BEGIN …` and `-----END …` boundaries are optional.
-They are required, however, if the private key is kept in the same file as the
-accompanying public key.
+They are required, however, if the private key is stored together with other data,
+for example the accompanying public key.
 
 [PKCS #1](https://en.wikipedia.org/wiki/PKCS_1) formatted RSA private keys with boundaries
 (`-----BEGIN RSA PRIVATE KEY-----`) are also supported.
