@@ -1,5 +1,14 @@
 # Changelog
 
+### Added
+
+- The functions [`verify-xmldsig()`](/reference/functions/verify-xmldsig.md) and [`decrypt-xml()`](/reference/functions/decrypt-xml.md).
+
+### Fixed
+
+- Parameter handling of the functions [`decrypt()`](/reference/functions/decrypt.md) and [`calc-signature()`](/reference/functions/calc-signature.md).
+
+
 ## [20200110](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added

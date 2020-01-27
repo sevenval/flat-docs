@@ -8,6 +8,8 @@ The `calc-signature` function calculates a signature from the given `input` usin
 The optional parameter `passphrase` is the pass phrase for decrypting an encrypted private key (the default is the empty string).
 The optional parameter `algorithm` is the signing algorithm (the default is `SHA256`). The resulting signature is Base64-encoded.
 
+See [Private Key Format](decrypt.md#private-key-format) for the supported private key format.
+
 ## Supported Algorithms
 
 * DSA
