@@ -51,7 +51,7 @@ If `validate-response` detects that the response body violates the schema, the r
 }
 ```
 
-The informational message (array) also contains the original status code of the upstream response - in this case a `404` that may explain the problem.
+The informational message (array) also contains the original status code of the upstream response – in this case a `404` that may explain the problem.
 
 
 In both cases, the error will be noted in `$upstream/id/error` where `id` is the content ID of the request (defaults to `main`).
