@@ -65,7 +65,7 @@ You can mock upstream responses, too. This is handy for writing tests or develop
 
 ### Configuration
 
-As above, we use request options:
+As above, we use [request options](/reference/actions/request#options):
 
 * `definition` - The path to the swagger definition file (type: `string`)
 * `mock-response` - Whether to mock the response (type: `boolean`, default: `false`)

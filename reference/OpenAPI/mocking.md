@@ -10,6 +10,8 @@ Mock: true
 
 If given, FLAT will look for the `examples` of the API path's `200` `responses` section for an example with a content-type that matches the inbound `Accept` header.
 
+[Mocked responses from upstream](/reference/OpenAPI/upstream.md#mocking) work just the same way.
+
 ## Example
 
 The [cookbook](/cookbook/README.md) has a recipe for the [built-in mocking](/cookbook/builtin-mocking.md).
