@@ -8,6 +8,9 @@
 
 - Parameter handling of the functions [`decrypt()`](/reference/functions/decrypt.md) and [`calc-signature()`](/reference/functions/calc-signature.md).
 
+### Changed
+
+- Padding scheme for [`encrypt()`](/reference/functions/encrypt.md) and [`decrypt()`](/reference/functions/decrypt.md) to [RSAES-OAEP](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding).
 
 ## [20200110](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 

@@ -4,7 +4,8 @@
 boolean encrypt(string data, string public_key)
 ```
 
-The `encrypt` function encrypts the given `data` using the given `public_key` (see [below](#public-key-format)).
+The `encrypt` function encrypts the given `data` using the given `public_key` (see [below](#public-key-format))
+and the [RSAES-OAEP padding scheme](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding).
 It returns a Base64-encoded string with the encrypted data.
 
 ## Example
