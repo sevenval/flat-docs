@@ -5,6 +5,7 @@ string decrypt(string ciphertext, string private_key [, string passphrase])
 ```
 
 The `decrypt` function decrypts the given Base64-encoded `ciphertext` using the given `private_key` (see [below](#private-key-format)).
+It uses the [RSAES-OAEP padding scheme](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding).
 The optional parameter `passphrase` is the passphrase for decrypting an encrypted private key (default `""`).
 For an unencrypted private key the `passphrase` should be omitted or `""`.
 
