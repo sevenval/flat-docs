@@ -2,7 +2,7 @@
 
 ### Added
 
-- [`proxy-request`](/reference/actions/proxy-request.md) action
+- The [`proxy-request`](/reference/actions/proxy-request.md) action
 - The functions [`verify-xmldsig()`](/reference/functions/verify-xmldsig.md) and [`decrypt-xml()`](/reference/functions/decrypt-xml.md).
 
 ### Fixed
