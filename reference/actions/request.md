@@ -311,7 +311,7 @@ The `options` property sets the request options. Its value must be a JSON object
 * `basic-auth-credentials` - Basic Authentication credentials for the upstream system (type: `string`)
 * `query-encoding-raw-chars` - Characters in the query string to exclude from the URL encoding (type: `string`)
 * `disable-connection-reuse` - Whether to disable the reuse of HTTP connections (type: `boolean`, default: `false`)
-* `mock-response` - Whether to [mock the response](/reference/openapi/upstream#mocking) (type: `boolean`, default: `false`)
+* `mock-response` - Whether to [mock the response](/reference/OpenAPI/upstream.md#mocking) (type: `boolean`, default: `false`)
 * `validate-request` - Whether to validate the request (valid values: `true`, `false`, "report-only", default: `false`)
 * `validate-response` - Whether to validate the response (valid values: `true`, `false`, "report-only", default: `false`)
 * `definition` - The path to the swagger definition file (type: `string`)
