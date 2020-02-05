@@ -13,8 +13,8 @@ To forward a request to an upstream API ("proxy" a request), you can simply use 
     "headers": {
       {{// Set X-tra, drop X-Remove, copy Authorization }}
       "X-tra": "42",
-      "X-Remove": "",
-      {{: $request/headers/authorization }} {{,}}
+      "X-Remove": "" {{,}}
+      {{: $request/headers/authorization }}
     },
 
     "options": {
