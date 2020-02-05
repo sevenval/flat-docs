@@ -341,6 +341,8 @@ Example:
 
 ## See also
 
+* [`proxy-request` action](/reference/actions/proxy-request.md) (reference)
+* [`requests` action](/reference/actions/requests.md) (reference)
 * [Tutorial](/tutorial/README.md#upstream-requests)
 * [Sending POST Requests](/cookbook/upstream-post-requests.md)
 * [Passing Header Fields](/cookbook/pass-header-field-upstream.md)

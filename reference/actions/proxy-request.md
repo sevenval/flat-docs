@@ -54,4 +54,5 @@ Sets request options. See the [`request` action options](request.md#options) for
 
 ## See also
 
+* [`request` action](/reference/actions/request.md) (reference)
 * [Forwarding a Request to an Upstream API](/cookbook/forward-request-upstream.md)
