@@ -2,7 +2,8 @@
 
 The `request` action carries out a single HTTP or HTTPS request to load content from
 remote upstream servers. If you want to do multiple requests in parallel, use the
-[`requests` action](requests.md) instead.
+[`requests` action](requests.md) instead. To pass an incoming request almost unmodified
+to an upstream system, use the [`proxy-request` action](proxy-request.md).
 
 ## Syntax
 
