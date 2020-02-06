@@ -31,7 +31,7 @@ Sets request options. See the [`request` action options](request.md#options) for
 
 ## Example
 
-```
+```xml
 <flow>
   <proxy-request>
   {
