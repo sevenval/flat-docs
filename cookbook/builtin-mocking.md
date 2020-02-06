@@ -32,7 +32,7 @@ To improve readability, larger objects are better put in the OpenAPI `definition
 …
           examples:
             application/json:
-              $ref: "#definitions/Example"
+              $ref: "#/definitions/Example"
 …
 definitions:
   Example:

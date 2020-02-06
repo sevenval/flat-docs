@@ -51,7 +51,7 @@ If `validate-response` detects that the response body violates the schema, the r
 }
 ```
 
-The informational message (array) also contains the original status code of the upstream response - in this case a `404` that may explain the problem.
+The informational message (array) also contains the original status code of the upstream response – in this case a `404` that may explain the problem.
 
 
 In both cases, the error will be noted in `$upstream/id/error` where `id` is the content ID of the request (defaults to `main`).
@@ -65,7 +65,7 @@ You can mock upstream responses, too. This is handy for writing tests or develop
 
 ### Configuration
 
-As above, we use request options:
+As above, we use [request options](/reference/actions/request.md#options):
 
 * `definition` - The path to the swagger definition file (type: `string`)
 * `mock-response` - Whether to mock the response (type: `boolean`, default: `false`)
