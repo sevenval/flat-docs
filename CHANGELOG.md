@@ -2,6 +2,7 @@
 
 ### Added
 
+- Validation for `application/x-www-form-urlencoded` encoded [`formData` parameters](https://swagger.io/docs/specification/2-0/describing-parameters/#form-parameters)
 - The [`proxy-request`](/reference/actions/proxy-request.md) action
 - The functions [`verify-xmldsig()`](/reference/functions/verify-xmldsig.md) and [`decrypt-xml()`](/reference/functions/decrypt-xml.md).
 
