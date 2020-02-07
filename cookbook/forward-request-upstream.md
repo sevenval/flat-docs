@@ -1,7 +1,22 @@
 # Forwarding a Request to an Upstream API
 
 To forward a request to an upstream API ("proxy" a request), you can simply use a
-[`proxy-request` action](/reference/actions/proxy-request.md), for example:
+[`proxy-request` action](/reference/actions/proxy-request.md), for example
+
+
+```xml
+<flow>
+  <proxy-request>
+  {
+    "url": "https://httpbin.org/anything"
+  }
+  </proxy-request>
+</flow>
+```
+
+to delegate the incoming request to [httpbin.org](https://https://httpbin.org/#/Anything).
+
+The following [flow](/reference/flow.md) shows a more advanced example:
 
 ```xml
 <flow>
