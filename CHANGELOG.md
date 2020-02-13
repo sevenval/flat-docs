@@ -13,6 +13,7 @@
 ### Changed
 
 - Padding scheme for [`encrypt()`](/reference/functions/encrypt.md) and [`decrypt()`](/reference/functions/decrypt.md) to [RSAES-OAEP](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding).
+- Relative paths in the [`json-doc()` function](/reference/functions/json-doc.md) are resolved relative to the flow file's path.
 
 ## [20200110](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
