@@ -66,8 +66,10 @@
 
 * [`calc-signature`](calc-signature.md)
 * [`decrypt`](decrypt.md)
+* [`decrypt-xml`](decrypt-xml.md)
 * [`encrypt`](encrypt.md)
 * [`verify-signature`](verify-signature.md)
+* [`verify-xmldsig`](verify-xmldsig.md)
 
 ## Other Functions
 

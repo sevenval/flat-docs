@@ -86,3 +86,7 @@ Example: `requests` with variable
 </template>
 <requests src="$requests"/>
 ```
+
+## See also
+
+* [`request` action](/reference/actions/request.md) (reference)

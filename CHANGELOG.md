@@ -1,5 +1,22 @@
 # Changelog
 
+## [20200213](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
+### Added
+
+- Validation for `application/x-www-form-urlencoded` encoded [`formData` parameters](https://swagger.io/docs/specification/2-0/describing-parameters/#form-parameters)
+- The [`proxy-request`](/reference/actions/proxy-request.md) action
+- The functions [`verify-xmldsig()`](/reference/functions/verify-xmldsig.md) and [`decrypt-xml()`](/reference/functions/decrypt-xml.md).
+
+### Fixed
+
+- Parameter handling of the functions [`decrypt()`](/reference/functions/decrypt.md) and [`calc-signature()`](/reference/functions/calc-signature.md).
+
+### Changed
+
+- Padding scheme for [`encrypt()`](/reference/functions/encrypt.md) and [`decrypt()`](/reference/functions/decrypt.md) to [RSAES-OAEP](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding).
+- Relative paths in the [`json-doc()` function](/reference/functions/json-doc.md) are resolved relative to the flow file's path.
+
 ## [20200110](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added

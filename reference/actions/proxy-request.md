@@ -1,0 +1,58 @@
+# `proxy-request` Action
+
+The `proxy-request` action forwards the incoming request almost unmodified to an upstream system.
+
+The HTTP method and the request body are taken as-is from the client request.
+`Cookie`, `Authorization` and any hop-by-hop header fields like `Connection`
+will be automatically dropped.
+
+The response body is written into `fit://request/content/main` where it
+can be directly accessed with the [`content()` function](/reference/functions/content.md).
+Additional information about the response, such as headers and status code can
+be found in the [`$upstream` variable](/reference/variables.md#predefined-variables).
+
+## Usage
+
+Just like an ordinary [`request`](request.md) the `proxy-request`
+can be configured using a [JSON template](/reference/templating/README.md)
+with the following properties:
+
+### `url`
+
+Sets the URL to the upstream system.
+
+### `headers`
+
+Sets the request headers. The syntax is the same as in the [request action](request.md#headers).
+
+### `options`
+
+Sets request options. See the [`request` action options](request.md#options) for valid options.
+
+## Example
+
+```xml
+<flow>
+  <proxy-request>
+  {
+    "url": "https://example.com/api/",
+
+    "headers": {
+      "X-API-Key": "foo42bar"
+    },
+
+    "options": {
+      "exit-on-error": true,
+      "definition": "upstream.yaml",
+      "validate-request": true,
+      "validate-response": true
+    }
+  }
+  </proxy-request>
+</flow>
+```
+
+## See also
+
+* [`request` action](/reference/actions/request.md) (reference)
+* [Forwarding a Request to an Upstream API](/cookbook/forward-request-upstream.md)

@@ -8,7 +8,9 @@ Mocking can be activated by the client with the HTTP header
 Mock: true
 ```
 
-If given, FLAT will look for the `examples` of the API path's `200` `response` section for an example with a content-type that matches the inbound `Accept` header.
+If given, FLAT will look for the `examples` of the API path's `200` `responses` section for an example with a content-type that matches the inbound `Accept` header.
+
+[Mocked responses from upstream](/reference/OpenAPI/upstream.md#mocking) work just the same way.
 
 ## Example
 
@@ -16,9 +18,9 @@ The [cookbook](/cookbook/README.md) has a recipe for the [built-in mocking](/coo
 
 ## Configuration
 
-To avoid accidently running on mocks in production, mocking can be activated/disabled with the environment variable:
+To avoid accidentally running on mocks in production, mocking has to be explicitly activated with the
+`FLAT_ALLOW_MOCKING` environment variable (default `false`):
 
 ```
 FLAT_ALLOW_MOCKING=true
-FLAT_ALLOW_MOCKING=false
 ```

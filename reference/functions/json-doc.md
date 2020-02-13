@@ -8,6 +8,8 @@ converts the JSON document at the given `path` into
 [OXN](../templating/oxn.md), parses it and
 returns the `<json>` _root element_.
 
+Relative paths are resolved relative to the flow file's path.
+
 `user.json`:
 ```json
 {
