@@ -1,5 +1,7 @@
 # Changelog
 
+## [20200213](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
 ### Added
 
 - Validation for `application/x-www-form-urlencoded` encoded [`formData` parameters](https://swagger.io/docs/specification/2-0/describing-parameters/#form-parameters)
