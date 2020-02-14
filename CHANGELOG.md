@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- [`set-response-headers` action](/reference/actions/set-response-headers.md) now accepts the empty object `{}`
+
+
 ## [20200213](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
