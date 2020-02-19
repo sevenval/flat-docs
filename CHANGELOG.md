@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Added
+
+- [Security checks with JWT](/reference/OpenAPI/security.md).
+
+
 ### Changed
 
 - [`set-response-headers` action](/reference/actions/set-response-headers.md) now accepts the empty object `{}`

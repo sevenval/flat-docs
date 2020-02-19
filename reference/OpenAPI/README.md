@@ -13,6 +13,8 @@ FLAT uses [Swagger Extensions](https://swagger.io/docs/specification/2-0/swagger
 
 ## [Validation](validation.md)
 
+## [Security Check](security.md)
+
 ## [Mocking](mocking.md)
 
 ## [CORS](cors.md)
