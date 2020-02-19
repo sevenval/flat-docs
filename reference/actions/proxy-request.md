@@ -4,7 +4,7 @@ The `proxy-request` action forwards the incoming request almost unmodified to an
 
 The HTTP method and the request body are taken as-is from the client request.
 `Cookie`, `Authorization` and any hop-by-hop header fields like `Connection`
-will be automatically dropped.
+will be dropped automatically, the remaining header fields will be sent upstream.
 
 The response body is written into `fit://request/content/main` where it
 can be directly accessed with the [`content()` function](/reference/functions/content.md).
@@ -19,11 +19,12 @@ with the following properties:
 
 ### `url`
 
-Sets the URL to the upstream system.
+Sets the URL to the upstream system. Required.
 
 ### `headers`
 
-Sets the request headers. The syntax is the same as in the [request action](request.md#headers).
+Sets or removes request header fields. The syntax is the same as in the [request action](request.md#headers).
+To remove a header, set its value to `""`.
 
 ### `options`
 
@@ -54,5 +55,5 @@ Sets request options. See the [`request` action options](request.md#options) for
 
 ## See also
 
-* [`request` action](/reference/actions/request.md) (reference)
 * [Forwarding a Request to an Upstream API](/cookbook/forward-request-upstream.md)
+* [`request` action](/reference/actions/request.md) (reference)
