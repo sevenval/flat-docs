@@ -180,6 +180,13 @@ Example:
 </request>
 ```
 
+As HTTP request headers are defined to be case-insensitive, their names are lower-cased for convenient access even if the client has sent the field name with upper-case letters, e.g.:
+
+```
+$request/headers/user-agent
+```
+
+
 ## $error
 
 Both client request and response, as well as upstream request and response validation errors will store information about the error in `$error`. While initially empty, `$error` will have the following properties containing information about the most recent error:
