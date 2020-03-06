@@ -10,6 +10,7 @@
 ### Changed
 
 - [`set-response-headers` action](/reference/actions/set-response-headers.md) now accepts the empty object `{}`
+- Reading [`swagger.yaml`](/reference/OpenAPI/README.md) is faster because of caching
 
 
 ## [20200213](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
