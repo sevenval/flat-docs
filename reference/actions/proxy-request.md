@@ -7,7 +7,8 @@ The HTTP method and the request body are taken as-is from the client request.
 will be dropped automatically, the remaining header fields will be sent upstream.
 
 The response body is written into `fit://request/content/main` where it
-can be directly accessed with the [`content()` function](/reference/functions/content.md).
+can be directly accessed with the [`body`](/reference/functions/body.md) or the
+[`content` function](/reference/functions/content.md).
 Additional information about the response, such as headers and status code can
 be found in the [`$upstream` variable](/reference/variables.md#predefined-variables).
 
