@@ -4,8 +4,9 @@
 
 ### Added
 
+- [`body()` function](/reference/functions/body.md)
+- [`pass-body` action](/reference/actions/pass-body.md)
 - [Security checks with JWT](/reference/OpenAPI/security.md).
-
 
 ### Changed
 
