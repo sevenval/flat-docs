@@ -7,8 +7,8 @@ further.
 
 The [`body` function](/reference/functions/body.md) provides you with the raw body of
 an HTTP response. Parsing may be necessary using
-functions like [`parse-json`](/reference/functions/parse-json.md) or
-[`parse-xml`](/reference/functions/parse-xml.md):
+functions like [`json-parse`](/reference/functions/json-parse.md) or
+[`xml-parse`](/reference/functions/xml-parse.md):
 
 ```xml
 <flow>
@@ -18,8 +18,8 @@ functions like [`parse-json`](/reference/functions/parse-json.md) or
   }
   </requests>
 
-  <eval out="$upstream-json">parse-json(body('json'))</eval>
-  <eval out="$upstream-xml">parse-xml(body('xml'))</eval>
+  <eval out="$upstream-json">json-parse(body('json'))</eval>
+  <eval out="$upstream-xml">xml-parse(body('xml'))</eval>
 
   <if test="$upstream-json/success">…</if>
   …
