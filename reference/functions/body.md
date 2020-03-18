@@ -9,7 +9,7 @@ The `body` function provides access to an upstream response body. The result is
 the raw body – if needed, parsing has to be done explictly.
 
 When called without a parameter, the function returns the body for the request
-with the ID `main`.
+with the ID `main`, which is the default ID for an [upstream request](/reference/actions/request.md).
 
 
 ## Example
@@ -33,3 +33,4 @@ with the ID `main`.
 
 * [Processing Upstream Responses](/cookbook/upstream-response.md)
 * [`pass-body` action](/reference/actions/pass-body.md)
+* [`request` action](/reference/actions/request.md)
