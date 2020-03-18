@@ -17,13 +17,13 @@ with the ID `main`.
 ```xml
 <flow>
   <request>
-    {"id": "json", "url": "https://example.com/json"}
+    {"url": "https://example.com/json"}
   </request>
   <request>
     {"id": "xml", "url": "https://example.com/xml"}
   </request>
 
-  <eval out="$json">json-parse(body('json'))</eval>
+  <eval out="$json">json-parse(body())</eval>
   <eval out="$dom">xml-parse(body('xml'))</eval>
   …
 </flow>
