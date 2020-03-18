@@ -6,7 +6,7 @@ or [`proxy-request`](/reference/actions/proxy-request.md) actions can be process
 further.
 
 The [`body` function](/reference/functions/body.md) provides you with the raw body of
-an HTTP response. Parsing may be necessary using
+an HTTP response. For further processing, it may be necessary to parse the body using
 functions like [`json-parse`](/reference/functions/json-parse.md) or
 [`xml-parse`](/reference/functions/xml-parse.md):
 
@@ -28,7 +28,7 @@ functions like [`json-parse`](/reference/functions/json-parse.md) or
 
 The [`$upstream` variable](/reference/variables.md) gives additional information about
 upstream responses like the HTTP status and the headers. The following
-recursive [sub-flow](/reference/actions/sub-flow.md) shows you a general way how to
+recursive [sub-flow](/reference/actions/sub-flow.md) demonstrates a general way how to
 follow a redirect:
 
 request.xml:

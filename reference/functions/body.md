@@ -8,7 +8,7 @@ string body([string request-id])
 The `body` function provides access to an upstream response body. The result is
 the raw body – if needed, parsing has to be done explictly.
 
-When called without parameter, the function returns the body for the request
+When called without a parameter, the function returns the body for the request
 with the ID `main`.
 
 
