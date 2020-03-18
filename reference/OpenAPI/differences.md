@@ -11,6 +11,8 @@ First of all, several extensions named `x-flat-…` are recognized on different 
 * `x-flat-error`: [error flow](routing.md#error-flow) (top-level)
 * `x-flat-cors`: [CORS configuration](cors.md) (top-level)
 * `x-flat-validate`: [validation](validation.md) (top-level, below `paths/<path>` and `paths/<path>/<operation>`)
+* `x-flat-jwt`: [expected JWT](security.md#the-x-flat-jwt-field) (in a [security scheme object](https://swagger.io/specification/v2/#securitySchemeObject))
+* `x-flat-cookiename`: [JWT cookie name](security.md#jwt-in-cookie)
 
 ## Slimline Definition
 

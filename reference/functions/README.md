@@ -73,6 +73,7 @@
 
 ## Other Functions
 
+* [`body()`](body.md)
 * [`content()`](content.md)
 * [`count()` ↗](https://developer.mozilla.org/en/XPath/Functions/count)
 * [`file-exists()`](file-exists.md)

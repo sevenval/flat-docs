@@ -66,6 +66,22 @@ The actions [`request`](actions/request.md) and [`requests`](actions/requests.md
 </flow>
 ```
 
+
+```
+{
+  "$upstream": {
+    "ok": {
+      "url": "https://httpbin.org/status/200",
+      "status": 200,
+      "headers": { … }
+    },
+    "failure": {
+      …
+    }
+  }
+}
+```
+
 ## Defining and Accessing Variables
 
 Global variables are usually defined as the output of [`eval`](actions/eval.md) actions.
@@ -143,7 +159,7 @@ conditions and produces the string `null` in placeholders:
 </flow>
 ```
 
-## $request
+## `$request`
 
 The `$request` variable contains information about the incoming client request, such as the URL, the request header fields and possibly the query component or cookies, if any were sent.
 
@@ -180,7 +196,14 @@ Example:
 </request>
 ```
 
-## $error
+As HTTP request headers are defined to be case-insensitive, their names are lower-cased for convenient access even if the client has sent the field name with upper-case letters, e.g.:
+
+```
+$request/headers/user-agent
+```
+
+
+## `$error`
 
 Both client request and response, as well as upstream request and response validation errors will store information about the error in `$error`. While initially empty, `$error` will have the following properties containing information about the most recent error:
 

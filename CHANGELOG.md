@@ -1,5 +1,19 @@
 # Changelog
 
+## [20200318](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
+### Added
+
+- [`body()` function](/reference/functions/body.md)
+- [`pass-body` action](/reference/actions/pass-body.md)
+- [Security checks with JWT](/reference/OpenAPI/security.md).
+
+### Changed
+
+- [`set-response-headers` action](/reference/actions/set-response-headers.md) now accepts the empty object `{}`
+- Reading [`swagger.yaml`](/reference/OpenAPI/README.md) is faster because of caching
+
+
 ## [20200213](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
