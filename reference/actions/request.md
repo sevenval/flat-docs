@@ -52,8 +52,9 @@ Example: POST request
 </request>
 ```
 
-The response body will be written into `fit://request/content/<ID>`.
-It can be accessed with the [`content` function](/reference/functions/content.md): `content(<ID>)`.
+The response body will be written into `fit://request/content/<ID>` and can be
+accessed with the [`body` function](/reference/functions/body.md) or the
+[`content` function](/reference/functions/content.md).
 Additional information about the response, such as headers and status code can
 be found in the [`$upstream` variable](/reference/variables.md#predefined-variables).
 
