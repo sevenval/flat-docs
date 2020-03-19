@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- [Environment variables](/cookbook/envvars.md) are shown in the debug log if the [debug topic](/reference/debugging.md) is `env`
+
+
 ## [20200318](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
