@@ -1,5 +1,14 @@
 # Changelog
 
+## [20200323](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
+### Fixed
+
+- [Environment variables](/cookbook/envvars.md) are shown in the debug log if the [debug topic](/reference/debugging.md) is `env`
+- With activated [upstream validation](/tutorial/README.md#upstream-validation), a missing `definition` [option](/reference/actions/request.md#options) or a `definition` value referencing a non-existant resource now results in a 500 response with a proper error message.
+- Swagger security scheme objects without `x-flat-jwt` are ignored for [security checks](/reference/OpenAPI/security.md).
+
+
 ## [20200318](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
