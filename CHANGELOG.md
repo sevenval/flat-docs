@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [20200323](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Fixed
 
