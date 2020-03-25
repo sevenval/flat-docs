@@ -6,6 +6,10 @@
 
 - The [`json-to-csv()` function](/reference/functions/json-to-csv.md)
 
+### Changed
+
+- Enhanced [`flat_access` log](/administration/logging#access-log) with new fields
+
 ### Fixed
 
 - When [testing](/reference/testing/README.md) multiple test files with `flat test`, each test now tests its own response.
