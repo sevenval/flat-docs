@@ -21,12 +21,19 @@ Client requests received by FLAT are recorded as type `flat_access` and have the
   "timestamp": "2019-10-15T13:28:26+00:00",
   "type": "flat_access",
   "requestID": "XaXJeWA-@B@3XFNhk42H@QAAAAQ",
-  "method": "GET",
+  "url": "http://localhost:8080/api/path",
   "path": "/api/path",
+  "status": 200,
+  "method": "GET",
   "agent": "curl/7.54.0",
   "referrer": "",
-  "status": 200,
   "mime": "application/json"
+  "realtime": 0.019845,
+  "bytes": 563,
+  "requestbytes": 0,
+  "flow": "flow.xml",
+  "requestmime": "",
+  "location": ""
 }
 ```
 
@@ -35,12 +42,19 @@ Client requests received by FLAT are recorded as type `flat_access` and have the
 * `timestamp`: Start time of the request in ISO 8601 format
 * `type`: Event type discriminator, fixed string `flat_access`
 * `requestID`: Log Correlation ID, accessible in flows as [`$request/id`](/reference/variables.md#predefined-variables) and [`$error/requestID`](/reference/variables.md#usderror)
-* `method` HTTP method of the client request (`GET`, `POST`…)
+* `url`: request URL
 * `path`: path and query string of the client request
+* `status`: HTTP status code of the client response (number) (`200`, `404`, `500`, …)
+* `method`: HTTP method of the client request (`GET`, `POST`, …)
 * `agent`: `User-Agent` header of the client request
 * `referrer`: `Referer` [sic] header of the client request
-* `status`: HTTP status code of the client response (number) (`200`, `404`, `500`…)
 * `mime`: `Content-Type` header of the client response (`text/html`, `application/json`…)
+* `realtime`: request duration in seconds (number)
+* `bytes`: uncompressed size of the outgoing response body (number)
+* `requestbytes`: uncompressed size of the incoming request body (number)
+* `flow`: filename of the applied [flow](/reference/openapi/routing#assigning-flat-flows)
+* `requestmime`: `Content-Type` header of the client request i.e. MIME type of the incoming request body
+* `location`: `Location` header of the client response
 
 
 ## Request Log
@@ -77,7 +91,7 @@ Outgoing [requests](/reference/actions/request.md) to upstream APIs are recorded
 * `type`: Event type discriminator, fixed string `flat_request`
 * `requestID`: Log Correlation ID
 * `url`: Absolute URL of the upstream request including query-string
-* `method` HTTP method of the upstream request (`GET`, `POST`…)
+* `method`: HTTP method of the upstream request (`GET`, `POST`, …)
 * `status`: HTTP status code of the upstream response (number) (`0` for failed requests)
 * `mime`: `Content-Type` header of the upstream response (`text/html`, `application/json`…)
 * `bytes`: Size of the (possibly compressed) response body in bytes (number) (`0` if the body is empty; when read from the internal cache, the original response length is used)
