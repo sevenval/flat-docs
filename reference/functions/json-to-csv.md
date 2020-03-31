@@ -4,7 +4,7 @@
 string json-to-csv(OXN array)
 ```
 
-The `json-to-csv` function translates the given `array` OXN into CSV as
+The `json-to-csv` function translates the given [OXN `array`](/reference/templating/oxn.md) into CSV as
 described in [RFC 4180](https://tools.ietf.org/html/rfc4180).
 The array entries must either be arrays or "flat" objects with `number`, `boolean` or `string` values.
 
@@ -14,7 +14,7 @@ Example: array of arrays
 
 ```xml
 <flow>
-  ...
+  …
   <template out="$arr">
   [
     [ 1, "  foo ", true ],
@@ -40,7 +40,7 @@ Example: array of "flat" objects
 
 ```xml
 <flow>
-  ...
+  …
   <template out="$arr">
   [
     { "A": 1, "B": "  foo ", "C": true },
