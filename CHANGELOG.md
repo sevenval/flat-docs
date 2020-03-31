@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- The [`json-to-csv()` function](/reference/functions/json-to-csv.md)
+
+
 ## [20200323](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Fixed
