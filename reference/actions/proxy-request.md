@@ -18,9 +18,34 @@ Just like an ordinary [`request`](request.md) the `proxy-request`
 can be configured using a [JSON template](/reference/templating/README.md)
 with the following properties:
 
+### `origin`
+
+Sets the origin of the upstream system. Either `origin` or `url` is required. Type: `string`.
+
+### `stripEndpoint`
+
+To be used in connection with `origin`. If `true`, strips the endpoint path from the client request URL path before it is added to the upstream origin. Type: `boolean`, default: `false`
+
+E.g.
+
+```yaml
+basePath: /api
+paths:
+  /foo/bar:
+  /wildcard/**
+```
+
+For the client request URL `https://client.example.com/api/foo/bar`, the path is stripped to `/`.
+
+For the client request URL `https://client.example.com/api/wildcard/path/to`, the path is stripped to `/path/to`.
+
+### `addPrefix`
+
+Inserts a path prefix before the given (client request URL) path, after possible endpoint stripping (see `stripEndpoint`). Type: `string`.
+
 ### `url`
 
-Sets the URL to the upstream system. Required.
+Sets the URL to the upstream system. Either `url` or `origin` is required.
 
 ### `headers`
 
@@ -31,7 +56,44 @@ To remove a header, set its value to `""`.
 
 Sets request options. See the [`request` action options](request.md#options) for valid options.
 
-## Example
+## Examples
+
+Using `origin`:
+
+```xml
+<flow>
+  <proxy-request>
+  {
+    "origin": "https://example.com",
+	"stripEndpoint": true,
+	"addPrefix": "/path/to/api"
+
+    "headers": {
+      "X-API-Key": "foo42bar"
+    },
+
+    "options": {
+      "exit-on-error": true,
+      "definition": "upstream.yaml",
+      "validate-request": true,
+      "validate-response": true
+    }
+  }
+  </proxy-request>
+</flow>
+```
+
+With the client request URL `http://client.example.com/my/api/foo/bar` matching the swagger definition path
+
+```yaml
+basePath: /my/api
+paths:
+  /foo/**:
+    x-flat-flow: proxy.xml
+```
+the upstream request URL will be `https://example.com/path/to/api/bar`.
+
+Using `url`:
 
 ```xml
 <flow>
