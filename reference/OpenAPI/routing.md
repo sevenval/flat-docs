@@ -147,6 +147,37 @@ Requests to resources outside the `basePath` are handled by the default flow def
 in `conf/flow.xml`. This allows for [serving HTML, images, JavaScript](/cookbook/file-serving.md) and the like.
 
 
+## Assigning FLAT Proxies
+
+If FLAT acts as a proxy for an upstream API on a specific route, you could assign a flow containing a [`proxy-request` action](/reference/actions/proxy-request.md).
+
+A simpler way to achieve this is by using `x-flat-proxy` in the `swagger.yaml`:
+
+```yaml
+basePath: /api
+paths:
+  /users/**:
+    x-flat-proxy:
+      origin: https://users.upstream.example.com
+      stripEndpoint: true
+      addPrefix: /v4
+      headers:
+        Correlation-ID: 42
+      options:
+        timeout: 2
+        exit-on-error: true
+        definition: users-upstream.yaml
+        validate-request: true
+        validate-response: true
+```
+
+A client request to `https://client.example.com/api/users/profile` will be proxied to `https://users.upstream.example.com/v4/profile`. See [wildcard paths](differences.md#wildcard-paths) for more information about `/**`.
+
+`x-flat-proxy` can be used below `paths`, `paths/<path>` and `paths/<path>/<operation>`.
+
+The configuration for `x-flat-proxy` is the same as that for a [`proxy-request` action](/reference/actions/proxy-request.md) (translated from JSON to YAML syntax).
+
+
 ## Path Parameters
 
 Swagger paths can define path parameters:
