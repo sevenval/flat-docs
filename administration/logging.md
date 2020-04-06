@@ -42,8 +42,8 @@ Client requests received by FLAT are recorded as type `flat_access` and have the
 * `timestamp`: Start time of the request in ISO 8601 format
 * `type`: Event type discriminator, fixed string `flat_access`
 * `requestID`: Log Correlation ID, accessible in flows as [`$request/id`](/reference/variables.md#predefined-variables) and [`$error/requestID`](/reference/variables.md#usderror)
-* `url`: request URL
-* `path`: path and query string of the client request
+* `url`: client request URL
+* `path`: path, query string and fragment of the client request URL
 * `status`: HTTP status code of the client response (number) (`200`, `404`, `500`, …)
 * `method`: HTTP method of the client request (`GET`, `POST`, …)
 * `agent`: `User-Agent` header of the client request
