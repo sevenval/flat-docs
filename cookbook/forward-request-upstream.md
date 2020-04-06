@@ -22,8 +22,8 @@ The following [flow](/reference/flow.md) shows a more advanced example:
 <flow>
   <proxy-request>
   {
-    {{// Replace the hostname of the incoming request with the UPSTREAM_URI environment variable }}
-    "url": {{ replace($request/url, "^http://[^/]+", $env/UPSTREAM_URI) }},
+    {{// Replace the origin of the incoming request with the UPSTREAM_ORIGIN environment variable }}
+    "origin": {{ $env/UPSTREAM_ORIGIN }},
 
     "headers": {
       {{// Set X-tra, drop X-Remove, copy Authorization }}
@@ -42,7 +42,7 @@ The following [flow](/reference/flow.md) shows a more advanced example:
 </flow>
 ```
 
-The `proxy-request` action lets you set the `url` and modify the `headers` of the request.
+The `proxy-request` action lets you set the `origin` and modify the `headers` of the request.
 Everything else is set up automatically: The client request body will be forwarded
 as-is, any headers not intended for upstream will be dropped.
 
@@ -53,7 +53,7 @@ This gives you full control over the upstream request, but there's quite much th
 involved to get this fully right.
 
 The following example illustrates, how such a request could look like. We
-just modify the `url`, copy `method` and `query`
+just set the `origin`, copy `method` and `query`
 using [pair producers](/reference/templating/pair-producer.md) and set the request `body`
 by referencing the [`$body` variable](/reference/variables.md#predefined-variables):
 
@@ -61,8 +61,8 @@ by referencing the [`$body` variable](/reference/variables.md#predefined-variabl
 <flow>
   <request>
   {
-    {{// the URL for the upstream API}}
-    "url": {{ replace($request/url, "^http://[^/]+", $env/UPSTREAM_URI) }},
+    {{// the origin for the upstream API}}
+    "origin": {{ $env/UPSTREAM_ORIGIN }},
 
     {{// copy the request method and query }}
     {{: $request/method | $request/query }},
@@ -102,6 +102,29 @@ status code of the upstream response and possibly additional header fields are c
 
 The forwarded request will only have a body if the incoming request does.
 The `Content-Type` request and response headers are passed automatically with the body, therefore we don't have to copy them explicitly.
+
+If the client and the upstream request URL paths do not share a common prefix, you can easily adjust the path by using `stripEndpoint` and `addPrefix`:
+
+```json
+{
+  "origin": {{ $env/UPSTREAM_ORIGIN }},
+  "stripEndpoint: true,
+  "addPrefix": {{ $env/UPSTREAM_PATH_PREFIX }},
+  …
+}
+```
+
+Assuming the following `swagger.yaml` for `https://client.example.com/`
+
+```yaml
+basePath: /api
+paths:
+  /users/**:
+    …
+```
+
+, `https://users.upstream.example.com` for `UPSTREAM_ORIGIN`, and `/v4` for `UPSTREAM_PATH_PREFIX`, a client request for `https://client.example.com/api/users/profile` will be forwarded to `https://users.upstream.example.com/v4/profile`.
+
 
 ## See also
 
