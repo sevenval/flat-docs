@@ -3,7 +3,12 @@
 ## Unreleased
 
 ### Added
+
 - The [`json-to-csv()` function](/reference/functions/json-to-csv.md)
+
+### Fixed
+
+- When [testing](/reference/testing/README.md) multiple test files with `flat test`, each test now tests its own response.
 
 
 ## [20200323](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
