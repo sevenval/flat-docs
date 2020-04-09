@@ -1,5 +1,22 @@
 # Changelog
 
+## [20200409](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
+### Added
+
+- The [`json-to-csv()` function](/reference/functions/json-to-csv.md)
+- The FLAT revision is shown when FLAT is started and is available in [`$env/FLAT_REVISION`](/reference/variables.md)
+
+### Changed
+
+- Enhanced [`flat_access` log](/administration/logging.md#access-log) with new fields
+
+### Fixed
+
+- When [testing](/reference/testing/README.md) multiple test files with `flat test`, each test now tests its own response.
+- Fatal errors when using certain combinations of [`jwt-decode()`](/reference/functions/jwt-decode.md) and [`<eval/>`](/reference/actions/eval.md)
+
+
 ## [20200323](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Fixed

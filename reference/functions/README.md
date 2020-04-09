@@ -33,6 +33,7 @@
 * [`json-doc()`](json-doc.md)
 * [`json-parse()`](json-parse.md)
 * [`json-stringify()`](json-stringify.md)
+* [`json-to-csv()`](json-to-csv.md)
 * [`json-to-xml()`](json-to-xml.md)
 * [`jwt-decode()`](jwt-decode.md)
 * [`jwt-encode()`](jwt-encode.md)
