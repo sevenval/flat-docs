@@ -9,7 +9,7 @@
 
 ### Changed
 
-- Enhanced [`flat_access` log](/administration/logging#access-log) with new fields
+- Enhanced [`flat_access` log](/administration/logging.md#access-log) with new fields
 
 ### Fixed
 
