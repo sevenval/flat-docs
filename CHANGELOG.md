@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- The [`error` action](/reference/actions/error.md)
+
+
 ## [20200409](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
