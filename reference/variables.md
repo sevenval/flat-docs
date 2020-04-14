@@ -205,7 +205,7 @@ $request/headers/user-agent
 
 ## `$error`
 
-Both client request and response, as well as upstream request and response validation errors will store information about the error in `$error`. While initially empty, `$error` will have the following properties containing information about the most recent error:
+Client request and response validation, upstream connection and request and response validation errors, and those triggered by the [`error` action](/reference/actions/error.md) will store information about the error in `$error`. While initially empty, `$error` will have the following properties containing information about the most recent error, unless it is triggered by the `error` action:
 
 * `status` - the HTTP status that is used by default for responses if the error was passed to the client (type: `number`)
 * `code` - an error code (type: `number`)
@@ -225,6 +225,8 @@ Example:
   "requestID": "XYOGvOu@c2mhpIlgFB-yPwAAAF8"
 }
 ```
+
+If set by the `error` action, `$error` contains the [JSON template result](/reference/templating/README.md) of the action's element body.
 
 ## See also
 
