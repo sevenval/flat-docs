@@ -85,3 +85,7 @@ paths:
 The longest matching wildcard path wins. The position of a wildcard path in the definition is irrelevant.
 
 Note that path parameters (i.e. sections enclosed in curly braces) cannot be combined with wildcards.
+
+## Security
+
+[Security schemes](/reference/OpenAPI/security.md#applying-security-schemes) can also be applied to specific paths, not only to specific operations or top-level.
