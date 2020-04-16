@@ -5,7 +5,7 @@ To proxy requests to an upstream API, you can simply use a combination of two FL
 * [wildcard paths](/reference/OpenAPI/differences.md#wildcard-paths), and
 * [`x-flat-proxy`](/reference/OpenAPI/routing.md#assigning-flat-proxies).
 
-Imagine, the upstream API, you want to use, is located at `https://upstream.api/api/docs` and provides a route to get a document with a certain ID (`/get-doc/{docid}`). To set FLAT as a proxy to this API, the following swagger.yaml snippet will do the job:
+Imagine, the upstream API, you want to use, is located at `https://upstream.api/api/docs` and provides a route to get a document with a certain ID (`/get-doc/{docid}`). To set FLAT as a proxy to this API, the following `swagger.yaml` snippet will do the job:
 
 ```yaml
 …

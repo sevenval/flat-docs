@@ -43,7 +43,7 @@ securityDefinitions:
 ```
 The code in this example defines a security scheme named `JWTHeaderAuth`.
 The token is expected to be a bearer token in the `Authorization` header.
-The key is read from a file named `secret.pem` relative to the swagger.yaml.
+The key is read from a file named `secret.pem` relative to the `swagger.yaml`.
 The signing algorithm is read from the `FLAT_JWT_ALG` environment variable.
 The JWT will be stored in the `$header_token` variable.
 The JWT payload is expected to contain an `aud` claim with a value read from the `FLAT_JWT_AUDIENCE` environment variable.

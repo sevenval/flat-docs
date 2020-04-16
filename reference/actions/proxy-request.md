@@ -65,8 +65,8 @@ Using `origin`:
   <proxy-request>
   {
     "origin": "https://example.com",
-	"stripEndpoint": true,
-	"addPrefix": "/path/to/api"
+    "stripEndpoint": true,
+    "addPrefix": "/path/to/api",
 
     "headers": {
       "X-API-Key": "foo42bar"
