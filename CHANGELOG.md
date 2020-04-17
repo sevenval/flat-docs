@@ -1,5 +1,9 @@
 # Changelog
 
+### Added
+
+- [Swagger `security` requirements](/reference/OpenAPI/security.md) can now also be specified at the path level.
+
 ## [20200409](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
