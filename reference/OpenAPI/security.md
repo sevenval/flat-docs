@@ -92,18 +92,24 @@ paths:
 
 ## Applying Security Schemes
 
-In Swagger, Security Schemes can be specified at the top level (default security) or for specific operations.
+In Swagger, security schemes can be specified at the top level (default security) or for specific operations.
+With FLAT, you can also specify a security scheme for a specific path (default security for all operations on the path).
 
-In the following example, a `GET` request to `foo` must satisfy the security scheme named `JWTHeaderAuth`.
+In the following example, a `GET` request to `/foo` must satisfy the security scheme named `JWTHeaderAuth`, while e.g. a `POST` or `PUT` request to `/foo` must satisfy the security scheme named `JWTCookieAuth`.
 All other requests must satisfy either the `JWTHeaderAuth` **or** `JWTCookieAuth` security schemes.
 
 ```yaml
+# default
 security:
   - JWTHeaderAuth: []
   - JWTCookieAuth: []
 paths:
   /foo:
+    # default for all operations on /foo
+    security:
+      - JWTCookieAuth: []
     get:
+      # specific for GET on /foo
       security:
         - JWTHeaderAuth: []
 ```
