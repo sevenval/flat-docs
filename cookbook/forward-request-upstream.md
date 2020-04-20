@@ -128,5 +128,6 @@ paths:
 
 ## See also
 
+* [Proxying requests to Upstream APIs](proxy-requests.md) (cookbook)
 * [`proxy-request` action](/reference/actions/proxy-request.md) (reference)
 * [`request` action](/reference/actions/request.md) (reference)
