@@ -53,7 +53,7 @@ This gives you full control over the upstream request, but there's quite much th
 involved to get this fully right.
 
 The following example illustrates, how such a request could look like. We
-just set the `origin`, copy `method` and `query`
+just modify the `url`, copy `method` and `query`
 using [pair producers](/reference/templating/pair-producer.md) and set the request `body`
 by referencing the [`$body` variable](/reference/variables.md#predefined-variables):
 
@@ -61,8 +61,8 @@ by referencing the [`$body` variable](/reference/variables.md#predefined-variabl
 <flow>
   <request>
   {
-    {{// the origin for the upstream API}}
-    "origin": {{ $env/UPSTREAM_ORIGIN }},
+    {{// the URL for the upstream API}}
+    "url": {{ replace($request/url, "^http://[^/]+", $env/UPSTREAM_URI) }},
 
     {{// copy the request method and query }}
     {{: $request/method | $request/query }},
