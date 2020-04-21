@@ -47,9 +47,13 @@ Inserts a path prefix before the given (client request URL) path, after possible
 
 Sets the URL to the upstream system. Either `url` or `origin` is required.
 
+### `query`
+
+Overrides the query part of the URL. See the [`request` action](request.md#query) for the `query` syntax.
+
 ### `headers`
 
-Sets or removes request header fields. The syntax is the same as in the [request action](request.md#headers).
+Sets or removes request header fields. The syntax is the same as in the [`request` action](request.md#headers).
 To remove a header, set its value to `""`.
 
 ### `options`
