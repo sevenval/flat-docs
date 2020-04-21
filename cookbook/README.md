@@ -4,7 +4,9 @@
 
 ## [How can I pass an arbitrary header field to an upstream system?](pass-header-field-upstream.md)
 
-## [Forwarding a Request to an Upstream API](forward-request-upstream.md)
+## [Proxying Requests to Upstream APIs (Swagger)](proxy-requests.md)
+
+## [Forwarding a Request to an Upstream API (Flow)](forward-request-upstream.md)
 
 ## [How can I pass response headers to the client?](pass-header-field-downstream.md)
 

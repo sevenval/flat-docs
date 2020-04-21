@@ -22,8 +22,8 @@ The following [flow](/reference/flow.md) shows a more advanced example:
 <flow>
   <proxy-request>
   {
-    {{// Replace the hostname of the incoming request with the UPSTREAM_URI environment variable }}
-    "url": {{ replace($request/url, "^http://[^/]+", $env/UPSTREAM_URI) }},
+    {{// Replace the origin of the incoming request with the UPSTREAM_ORIGIN environment variable }}
+    "origin": {{ $env/UPSTREAM_ORIGIN }},
 
     "headers": {
       {{// Set X-tra, drop X-Remove, copy Authorization }}
@@ -42,7 +42,7 @@ The following [flow](/reference/flow.md) shows a more advanced example:
 </flow>
 ```
 
-The `proxy-request` action lets you set the `url` and modify the `headers` of the request.
+The `proxy-request` action lets you set the `origin` and modify the `headers` of the request.
 Everything else is set up automatically: The client request body will be forwarded
 as-is, any headers not intended for upstream will be dropped.
 
@@ -103,7 +103,31 @@ status code of the upstream response and possibly additional header fields are c
 The forwarded request will only have a body if the incoming request does.
 The `Content-Type` request and response headers are passed automatically with the body, therefore we don't have to copy them explicitly.
 
+If the client and the upstream request URL paths do not share a common prefix, you can easily adjust the path by using `stripEndpoint` and `addPrefix`:
+
+```json
+{
+  "origin": {{ $env/UPSTREAM_ORIGIN }},
+  "stripEndpoint: true,
+  "addPrefix": {{ $env/UPSTREAM_PATH_PREFIX }},
+  …
+}
+```
+
+Assuming the following `swagger.yaml` for `https://client.example.com/`
+
+```yaml
+basePath: /api
+paths:
+  /users/**:
+    …
+```
+
+, `https://users.upstream.example.com` for `UPSTREAM_ORIGIN`, and `/v4` for `UPSTREAM_PATH_PREFIX`, a client request for `https://client.example.com/api/users/profile` will be forwarded to `https://users.upstream.example.com/v4/profile`.
+
+
 ## See also
 
+* [Proxying requests to Upstream APIs](proxy-requests.md) (cookbook)
 * [`proxy-request` action](/reference/actions/proxy-request.md) (reference)
 * [`request` action](/reference/actions/request.md) (reference)
