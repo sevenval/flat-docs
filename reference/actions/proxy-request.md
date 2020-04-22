@@ -60,6 +60,8 @@ To remove a header, set its value to `""`.
 
 Sets request options. See the [`request` action options](request.md#options) for valid options.
 
+**Note**: that, with `proxy-request`, in contrast to `request`, the defaults for `exit-on-error`, `validate-request` and `validate-response` are `true`, if a `definition` is configured.
+
 ## Examples
 
 Using `origin`:
@@ -77,10 +79,8 @@ Using `origin`:
     },
 
     "options": {
-      "exit-on-error": true,
       "definition": "upstream.yaml",
-      "validate-request": true,
-      "validate-response": true
+      "validate-response": "report-only"
     }
   }
   </proxy-request>
@@ -110,10 +110,8 @@ Using `url`:
     },
 
     "options": {
-      "exit-on-error": true,
       "definition": "upstream.yaml",
-      "validate-request": true,
-      "validate-response": true
+      "validate-response": "report-only"
     }
   }
   </proxy-request>
