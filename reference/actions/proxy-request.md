@@ -47,14 +47,20 @@ Inserts a path prefix before the given (client request URL) path, after possible
 
 Sets the URL to the upstream system. Either `url` or `origin` is required.
 
+### `query`
+
+Overrides the query part of the URL. See the [`request` action](request.md#query) for the `query` syntax.
+
 ### `headers`
 
-Sets or removes request header fields. The syntax is the same as in the [request action](request.md#headers).
+Sets or removes request header fields. The syntax is the same as in the [`request` action](request.md#headers).
 To remove a header, set its value to `""`.
 
 ### `options`
 
 Sets request options. See the [`request` action options](request.md#options) for valid options.
+
+**Note**: that, with `proxy-request`, in contrast to `request`, the defaults for `exit-on-error`, `validate-request` and `validate-response` are `true`, if a `definition` is configured.
 
 ## Examples
 
@@ -73,10 +79,8 @@ Using `origin`:
     },
 
     "options": {
-      "exit-on-error": true,
       "definition": "upstream.yaml",
-      "validate-request": true,
-      "validate-response": true
+      "validate-response": "report-only"
     }
   }
   </proxy-request>
@@ -106,10 +110,8 @@ Using `url`:
     },
 
     "options": {
-      "exit-on-error": true,
       "definition": "upstream.yaml",
-      "validate-request": true,
-      "validate-response": true
+      "validate-response": "report-only"
     }
   }
   </proxy-request>

@@ -164,10 +164,8 @@ paths:
         Correlation-ID: 42
       options:
         timeout: 2
-        exit-on-error: true
         definition: users-upstream.yaml
-        validate-request: true
-        validate-response: true
+        validate-response: report-only
 ```
 
 A client request to `https://client.example.com/api/users/profile` will be proxied to `https://users.upstream.example.com/v4/profile`. See [wildcard paths](differences.md#wildcard-paths) for more information about `/**`.
