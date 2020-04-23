@@ -9,7 +9,7 @@
 ### Fixed
 
 - If a client URL path is below the API base path, does not match any defined route, and a path is defined which equals the API base path, so that a matching client URL path is the concatenation of the API base path with itself (e.g. `/api/api` if the `basePath` is `/api`), the [fallback flow](/reference/OpenAPI/routing.md#fallback-flow) is now properly executed.
-- Some PEM formatted keys could not be recognized during [JWT processing](/cookbook/jwt).
+- Some PEM formatted keys could not be recognized during [JWT processing](/cookbook/jwt.md).
 
 ### Changed
 
