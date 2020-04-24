@@ -100,8 +100,7 @@ paths:
 
 ### Init Flow
 
-An _init flow_ is a separate flow file that is executed before the regular [flow](/reference/flow.md)
-that is defined for an API path. It is specified by setting `x-flat-init` on
+An _init flow_ is a separate flow file that is executed before the regular [flow](/reference/flow.md) or [configured proxy](routing.md#assigning-flat-proxies) defined for an API path. It is specified by setting `x-flat-init` on
 the top level in the OpenAPI definition:
 
 ```yaml
@@ -129,7 +128,7 @@ flow from being executed, too.
 
 ### Error Flow
 
-An _error flow_ is an optional separate flow file that is executed if a client request or response validation error has occurred, or if the `exit-on-error` option was set for a [request](/reference/actions/request.md) that has failed.
+An _error flow_ is an optional separate flow file that is executed if a client request or response validation error has occurred, or if the `exit-on-error` option was set for a [request](/reference/actions/request.md), [proxy-request](/reference/actions/proxy-request.md) or [configured proxy](routing.md#assigning-flat-proxies) that has failed.
 It is specified by setting the `flow` property of `x-flat-error` on the top level in the OpenAPI definition:
 
 ```yaml
@@ -145,6 +144,39 @@ The error flow can be used to [produce error messages with a custom format or st
 
 Requests to resources outside the `basePath` are handled by the default flow defined
 in `conf/flow.xml`. This allows for [serving HTML, images, JavaScript](/cookbook/file-serving.md) and the like.
+
+
+## Assigning FLAT Proxies
+
+If FLAT acts as a proxy for an upstream API on a specific route, you could assign a flow containing a [`proxy-request` action](/reference/actions/proxy-request.md).
+
+A simpler way to achieve this is by using `x-flat-proxy` in the `swagger.yaml`:
+
+```yaml
+basePath: /api
+paths:
+  /users/**:
+    x-flat-proxy:
+      origin: https://users.upstream.example.com
+      stripEndpoint: true
+      addPrefix: /v4
+      headers:
+        Correlation-ID: 42
+      options:
+        timeout: 2
+        definition: users-upstream.yaml
+        validate-response: report-only
+```
+
+A client request to `https://client.example.com/api/users/profile` will be proxied to `https://users.upstream.example.com/v4/profile`. See [wildcard paths](differences.md#wildcard-paths) for more information about `/**`.
+
+`x-flat-proxy` can be used below `paths`, `paths/<path>` and `paths/<path>/<operation>`.
+
+The configuration for `x-flat-proxy` is the same as that for a [`proxy-request` action](/reference/actions/proxy-request.md) (translated from JSON to YAML syntax).
+
+If configured, the [init flow](routing.md#init-flow) is executed before the proxy request. If configured, the [error flow](routing.md#error-flow) is executed if the `exit-on-error` option was set and the proxy request fails.
+
+`x-flat-proxy` and `x-flat-flow` are alternatives and cannot be used in combination.
 
 
 ## Path Parameters

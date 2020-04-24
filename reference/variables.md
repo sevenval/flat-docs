@@ -172,8 +172,8 @@ Example:
   <host>localhost</host>
   <port>12345</port>
   <id>XeeSVJ5AFt8VyXYagp3lvgAAACc</id>
-  <url>http://localhost:12345/api/proxy?a=b&amp;c=d</url>
-  <path>/api/proxy</path>
+  <url>http://localhost:12345/api/proxy/foo?a=b&amp;c=d</url>
+  <path>/api/proxy/foo</path>
   <query>a=b&amp;c=d</query>
   <headers>
     <host>localhost:12345</host>
@@ -193,6 +193,7 @@ Example:
     <NAME1>VALUE1</NAME1>
     <NAME2>VALUE2</NAME2>
   </cookies>
+  <endpoint>/api/proxy</endpoint>
 </request>
 ```
 
@@ -201,6 +202,30 @@ As HTTP request headers are defined to be case-insensitive, their names are lowe
 ```
 $request/headers/user-agent
 ```
+
+If a client URL path is matched by a [wildcard path](/reference/OpenAPI/differences.md#wildcard-paths), `$request/endpoint` is the path part preceding the part matched by `/**`. Otherwise, `$request/endpoint` is the same as `$request/path`.
+
+```yaml
+…
+basePath: /api
+…
+paths:
+  /**:
+    …
+  /foo/**:
+    …
+  /foo/qux:
+    …
+  /foo/{p1}:
+    …
+```
+
+| Client URL | matches | `$request/path` | `$request/endpoint` |
+| --- | --- | --- | --- |
+| https://example.com/api/foo/qux | /foo/qux | /api/foo/qux | /api/foo/qux |
+| https://example.com/api/foo/quuux | /foo/{p1} | /api/foo/quuux | /api/foo/quuux |
+| https://example.com/api/foo/bar/qux | /foo/** | /api/foo/bar/qux | /api/foo |
+| https://example.com/api/bar | /** | /api/bar | /api |
 
 
 ## `$error`
