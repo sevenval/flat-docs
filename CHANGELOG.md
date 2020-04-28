@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- [Beta image](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags?name=beta) now publicly available. [More about Docker images…](/administration/docker.md)
+
 ## [20200424](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
