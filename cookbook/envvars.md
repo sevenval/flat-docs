@@ -47,7 +47,7 @@ The `inline` sink interweaves the debug output with your API response. It will d
 
 ### Docker
 
-If you control the Docker setup yourself (e.g. `docker-compose`, Kubernetes, …) you can use its built-in support for environment variables. In this case, you are not bound to variable names starting with `FLAT_`.
+If you control the Docker setup yourself (e.g. `docker-compose`, Kubernetes, …) you can use its built-in support for environment variables. In this case, you are not limited to variables with names starting with `FLAT_`.
 
 Your `docker-compose.yaml` could look like this:
 ```yaml
@@ -179,7 +179,7 @@ You could read Basic Auth credentials from an env var in your [request](/referen
 </flow>
 ```
 
-Or you need to include a token in your requests:
+Or if you need to include a token in your requests:
 
 ```xml
 <flow>

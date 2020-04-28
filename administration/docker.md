@@ -2,12 +2,13 @@
 
 The _FLAT Server_ is publicly available as a [Docker](https://www.docker.com) image:
 https://hub.docker.com/r/sevenvaltechnologies/flatrunner
-So, make sure you have Docker installed on your system.
+So, make sure you have Docker installed on your system or an alternative means to
+download and run Docker images off Docker Hub.
 
 ## Images
 
 The [`latest`](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags?name=latest)
-image provides you with the most recent official release.
+image provides you with the most recent stable official release.
 A [`beta`](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags?name=beta)
 image with brand-new [features](/CHANGELOG.md) is also available.
 

@@ -9,7 +9,7 @@ You can start the local FLAT server with
 $ flat start
 ```
 
-The option `-b` allows you to run the current beta version:
+The option `-b` allows you to run the current beta version instead of the stable version:
 
 ```sh
 $ flat start -b
@@ -23,13 +23,13 @@ $ flat pull
 
 to keep your local FLAT image up to date.
 
-Type
+Run
 
 ```sh
 $ flat -h
 ```
 
-for all available commands and options of the FLAT CLI.
+for a list of  all available commands and options of the FLAT CLI.
 
 
 See also
