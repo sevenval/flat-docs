@@ -8,20 +8,38 @@ Terminates the flow, sets its body template result as [`$error`](/reference/vari
 
 ## Syntax
 
-The `status` attribute defines the HTTP response status code. This is a
+The optional `status` attribute defines the HTTP response status code. This is a
 shortcut for a [`set-status` action](set-status.md). The default is `500`.
 
-The action body contains a JSON template reprensenting a JSON object.
+The action body contains a constant JSON string or a JSON template representing a JSON object.
+The object will be assigned to the `$error` variable.
+
+If the template is a string, it must be enclosed in double quotes (`"`), and its value will be
+assigned to the `$error/message` property.
+
+The following properties of the `$error` object are optional, but must have the specified 
+type if set and otherwise will receive the following default values:
+
+* `message`: `string`, default: `'FlowError'`
+* `status`: `integer` between 100 and 599, default: `500`
+* `code`: `integer` between 0 and 9999, default: `5000`
+* `info`: `array` of `string`, default: `["Flow Error triggered"]`
 
 
 ## Example
 
 ```xml
-<error status="400">
+<error >
 {
   {{: $request/url }}
   "message": "Something went wrong",
+  "status": 400,
   "code": 4711
 }
 </error>
+```
+
+## Example
+```xml
+<error status="503"> "A fatal error occurred." </error>
 ```
