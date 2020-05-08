@@ -3,9 +3,11 @@
 ## Unreleased
 
 ### Added
+
 - [Beta image](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags?name=beta) now publicly available. [More about Docker images…](/administration/docker.md)
 - Validation for [FLAT's Swagger definition](/reference/OpenAPI/differences.md) if the [debug level](/reference/debugging.md) is set to `debug` or `verbose`.
 - Validation for the [`assert`](/reference/actions/assert.md) and [`set-env`](/reference/actions/set-env.md) test action configurations.
+- The [`error` action](/reference/actions/error.md)
 
 ## Fixed
 
