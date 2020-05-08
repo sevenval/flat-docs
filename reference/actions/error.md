@@ -18,7 +18,7 @@ If the template is a string, it must be enclosed in double quotes (`"`), and its
 assigned to the `$error/message` property.
 
 The following properties of the `$error` object are optional, but must have the specified 
-type if set and otherwise will receive the following default values:
+type if set. If not set they will receive the following default values:
 
 * `message`: `string`, default: `'FlowError'`
 * `status`: `integer` between 100 and 599, default: `500`
@@ -29,7 +29,7 @@ type if set and otherwise will receive the following default values:
 ## Example
 
 ```xml
-<error >
+<error>
 {
   {{: $request/url }}
   "message": "Something went wrong",
