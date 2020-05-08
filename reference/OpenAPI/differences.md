@@ -9,6 +9,7 @@ First of all, several extensions named `x-flat-…` are recognized on different 
 * `x-flat-flow`: [flow](routing.md#assigning-flat-flows) to be started. Recognized at top-level and below `paths`, `paths/<path>` and `paths/<path>/<operation>`.
 * `x-flat-init`: [init flow](routing.md#init-flow) (top-level)
 * `x-flat-error`: [error flow](routing.md#error-flow) (top-level)
+* `x-flat-proxy`: [proxy configuration](routing.md#assigning-flat-proxies) (below `paths`, `paths/<path>` and `paths/<path>/<operation>`)
 * `x-flat-cors`: [CORS configuration](cors.md) (top-level)
 * `x-flat-validate`: [validation](validation.md) (top-level, below `paths/<path>` and `paths/<path>/<operation>`)
 * `x-flat-jwt`: [expected JWT](security.md#the-x-flat-jwt-field) (in a [security scheme object](https://swagger.io/specification/v2/#securitySchemeObject))
@@ -85,3 +86,7 @@ paths:
 The longest matching wildcard path wins. The position of a wildcard path in the definition is irrelevant.
 
 Note that path parameters (i.e. sections enclosed in curly braces) cannot be combined with wildcards.
+
+## Security
+
+[Security schemes](/reference/OpenAPI/security.md#applying-security-schemes) can also be applied to specific paths, not only to specific operations or top-level.

@@ -4,7 +4,33 @@
 
 ### Added
 
+- [Beta image](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags?name=beta) now publicly available. [More about Docker images…](/administration/docker.md)
+- Validation for [FLAT's Swagger definition](/reference/OpenAPI/differences.md) if the [debug level](/reference/debugging.md) is set to `debug` or `verbose`.
+- Validation for the [`assert`](/reference/actions/assert.md) and [`set-env`](/reference/actions/set-env.md) test action configurations.
 - The [`error` action](/reference/actions/error.md)
+
+## Fixed
+
+-  Calls to the [`content()` function](/reference/functions/content.md) affecting the result of the [`body()` function](/reference/functions/body.md)
+
+
+## [20200424](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
+### Added
+
+- [Swagger `security` requirements](/reference/OpenAPI/security.md) can now also be specified at the path level.
+- [`x-flat-proxy`](/reference/OpenAPI/routing.md#assigning-flat-proxies) to configure proxies without a flow
+- Enhanced [`proxy-request` action](/reference/actions/proxy-request.md) with `origin`, `query`, `stripEndpoint` and `addPrefix` properties
+
+### Fixed
+
+- If a client URL path is below the API base path, does not match any defined route, and a path is defined which equals the API base path, so that a matching client URL path is the concatenation of the API base path with itself (e.g. `/api/api` if the `basePath` is `/api`), the [fallback flow](/reference/OpenAPI/routing.md#fallback-flow) is now properly executed.
+- Some PEM formatted keys could not be recognized during [JWT processing](/cookbook/jwt.md).
+- Multi-line values for [environment variables](/cookbook/envvars.md) are now supported.
+
+### Changed
+
+- If the `definition` [request option](/reference/actions/request.md#options) is given with either a [`proxy-request` action](/reference/actions/proxy-request.md) or [`x-flat-proxy`](/reference/OpenAPI/routing.md#assigning-flat-proxies), the defaults for the `exit-on-error`, `validate-request` and `validate-response` request options are changed to `true`.
 
 
 ## [20200409](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)

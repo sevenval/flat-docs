@@ -9,6 +9,8 @@
 * [`eval`](eval.md)
 * [`log`](log.md)
 * [`nameshave`](nameshave.md)
+* [`pass-body`](pass-body.md)
+* [`proxy-request`](proxy-request.md)
 * [`regex`](regex.md)
 * [`request`](request.md)
 * [`requests`](requests.md)
