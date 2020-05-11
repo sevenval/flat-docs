@@ -8,6 +8,7 @@
 - Validation for [FLAT's Swagger definition](/reference/OpenAPI/differences.md) if the [debug level](/reference/debugging.md) is set to `debug` or `verbose`.
 - Validation for the [`assert`](/reference/actions/assert.md) and [`set-env`](/reference/actions/set-env.md) test action configurations.
 - The [`error` action](/reference/actions/error.md)
+- [`out-header`](/reference/OpenAPI/security.md#forwarding-jwt-upstream) property for easy JWT forwarding
 
 ## Fixed
 
