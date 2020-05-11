@@ -10,6 +10,7 @@ The chapter [Defining Env Vars](/cookbook/envvars.md#defining-env-vars) in the C
 ### Miscellaneous
 
 * `FLAT_SERVER_ROLE`: This setting is typically used to distinguish production systems from staging or development servers. Its value is accessible in the [`$server` variable](/reference/variables.md#predefined-variables) as `$server/role`.
+* `FLAT_STATUS_AUTH`: Username and password, separated by a `:` for access to the `php-fpm` and `httpd` status pages. The pages are disabled entirely if `FLAT_STATUS_AUTH` is not set. If enabled, the `httpd` status can be requested via HTTP at `/ServerStatus`, and the php-fpm status at `/FPMStatus?full`.
 
 
 ### Request Timeouts
@@ -28,8 +29,11 @@ Use the following environment variables to configure the timeouts used during re
 
 Some parameters used for PHP-FPM process management can be adjusted using environment variables. Refer to the [PHP-FPM documentation](https://www.php.net/manual/en/install.fpm.configuration.php) for more information.
 
-* `FLAT_FPM_MAX_PROCESSES`: Controls `pm.max_children`. Default `100`. The maximum number of child processes to be created.
+* `FLAT_FPM_MAX_PROCESSES`: Controls `pm.max_children`. Default `100`.
 * `FLAT_FPM_MAX_REQUESTS`: Controls `pm.max_requests`. Default `500`. Limits the number of requests each child process executes before it is replaced by a new process.
+* `FLAT_FPM_MIN_SPARE`: Controls `pm.min_spare_servers`. Default `???`. The desired minimum number of idle child processes to be created.
+* `FLAT_FPM_MAX_SPARE`: Controls `pm.min_spare_servers`. Default `???`. The desired maximum number of idle child processes.
+* `FLAT_FPM_START_SERVERS`: Controls `pm.start_servers`. The default is the average of `pm.min_spare_servers` and `pm.min_spare_servers`. The initial number of child processes to be started.
 
 ## See also
 
