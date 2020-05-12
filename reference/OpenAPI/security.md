@@ -198,9 +198,9 @@ The `headers` section in `proxy-request` is then no longer needed:
 
 ```xml
 <flow>
- <proxy-request>
+  <proxy-request>
   {
-      "url": "https://httpbin.org/get"
+    "url": "https://httpbin.org/get"
   }
   </proxy-request>
 </flow>
