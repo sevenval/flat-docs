@@ -32,8 +32,11 @@ sending the desired parameters in the HTTP `Debug` header field, for example:
 $ curl -H "Debug: request:info:append" localhost:8080
 ```
 
-Per request debugging may be password-protected via the `$FLAT_DEBUG_AUTH` environment variable.
-If such authorization is required, the password has to be appended as `;auth=…` in the `Debug` header, for example:
+To use per request debugging, you must enable it by setting the
+`$FLAT_DEBUG_ALLOW_HEADER` environment variable to `true` or by turning on
+password protection via the `$FLAT_DEBUG_AUTH` environment variable.
+If authorization is required, the password has to be appended as `;auth=…`
+in the `Debug` header, for example:
 
 ```bash
 $ curl -H "Debug: flow::append; auth=Pas5W0Rd" localhost:8080

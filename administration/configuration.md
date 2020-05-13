@@ -11,7 +11,8 @@ The chapter [Defining Env Vars](/cookbook/envvars.md#defining-env-vars) in the C
 
 * `FLAT_SERVER_ROLE`: This setting is typically used to distinguish production systems from staging or development servers. Its value is accessible in the [`$server` variable](/reference/variables.md#predefined-variables) as `$server/role`.
 * `FLAT_STATUS_AUTH`: Username and password, separated by a `:` for access to the `php-fpm` and `httpd` status pages. The pages are disabled entirely if `FLAT_STATUS_AUTH` is not set. If enabled, the `httpd` status can be requested via HTTP at `/ServerStatus`, and the php-fpm status at `/FPMStatus?full`.
-
+* `FLAT_DEBUG_ALLOW_HEADER`: enable [per request debugging](/reference/debugging.md), defaults to `false` unless `FLAT_DEBUG_AUTH` is set.
+* `FLAT_DEBUG_AUTH`: sets a password to protect [per request debugging](/reference/debugging.md).
 
 ### Request Timeouts
 
