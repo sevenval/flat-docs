@@ -31,8 +31,8 @@ Some parameters used for PHP-FPM process management can be adjusted using enviro
 
 * `FLAT_FPM_MAX_PROCESSES`: Controls `pm.max_children`. Default `100`.
 * `FLAT_FPM_MAX_REQUESTS`: Controls `pm.max_requests`. Default `500`. Limits the number of requests each child process executes before it is replaced by a new process.
-* `FLAT_FPM_MIN_SPARE`: Controls `pm.min_spare_servers`. Default `???`. The desired minimum number of idle child processes to be created.
-* `FLAT_FPM_MAX_SPARE`: Controls `pm.min_spare_servers`. Default `???`. The desired maximum number of idle child processes.
+* `FLAT_FPM_MIN_SPARE`: Controls `pm.min_spare_servers`. Default `5`. The desired minimum number of idle child processes to be created.
+* `FLAT_FPM_MAX_SPARE`: Controls `pm.max_spare_servers`. Default `7`. The desired maximum number of idle child processes.
 * `FLAT_FPM_START_SERVERS`: Controls `pm.start_servers`. The default is the average of `pm.min_spare_servers` and `pm.min_spare_servers`. The initial number of child processes to be started.
 
 ## See also
