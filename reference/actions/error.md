@@ -1,21 +1,29 @@
 # `error` Action
 
-Terminates the flow, sets its body template result as [`$error`](/reference/variables.md#usderror) and calls the [error flow](/reference/OpenAPI/routing.md#error-flow), if configured, or sends the [system error document](/reference/OpenAPI/validation.md#system-error-document) with the body template result as the value of the `error` property.
+The `error` action provides a simple and consistent way to handle errors throughout the configuration.
+
+It terminates the flow, sets its body template result as [`$error`](/reference/variables.md#usderror) and calls the [error flow](/reference/OpenAPI/routing.md#error-flow), if configured, or sends the [system error document](/reference/OpenAPI/validation.md#system-error-document) with the body template result as the value of the `error` property.
+
+In its simplest form, an error is triggered like this:
 
 ```xml
-<error status="555">{}</error>
+<error/>
 ```
 
-## Syntax
+To make errors more useful, they should contain a message:
 
-The optional `status` attribute defines the HTTP response status code. This is a
-shortcut for a [`set-status` action](set-status.md). The default is `500`.
+```xml
+<error>
+{
+  "message": "Upstream system sent unusable data"
+}
+</error>
+```
 
-The action body contains a constant JSON string or a JSON template representing a JSON object.
+## Error Properties
+
+The action body contains a constant JSON string or a [JSON template](/reference/templating/README.md) representing a JSON object.
 The object will be assigned to the `$error` variable.
-
-If the template is a string, it must be enclosed in double quotes (`"`), and its value will be
-assigned to the `$error/message` property.
 
 The following properties of the `$error` object are optional, but must have the specified 
 type if set. If not set they will receive the following default values:
@@ -25,8 +33,7 @@ type if set. If not set they will receive the following default values:
 * `code`: `integer` between 0 and 9999, default: `5000`
 * `info`: `array` of `string`, default: `["Flow Error triggered"]`
 
-
-## Example
+Additional properties are allowed. They will be accessible in the Error Flow. The following example includes the URL in `$error/url`:
 
 ```xml
 <error>
@@ -39,7 +46,33 @@ type if set. If not set they will receive the following default values:
 </error>
 ```
 
-## Example
+## Status Code
+
+The `status` property will be used as the HTTP response status code. (The status code may alternatively be defined with the optional `status` attribute).
+
 ```xml
-<error status="503"> "A fatal error occurred." </error>
+<error status="403"/>
 ```
+
+```xml
+<error status="502">
+{
+  "message": "Upstream system sent unusable data"
+}
+</error>
+```
+
+## Fixed message shortcut
+
+If the action body is only a JSON string (it must be enclosed in double quotes) its value will be
+assigned to the `$error/message` property. This is a handy shortcut to trigger simple errors with fixed messages:
+
+```xml
+<error status="502"> "Upstream system sent unusable data" </error>
+```
+
+## See also
+
+* [Error Flow](/reference/OpenAPI/routing.md#error-flow)
+* [`$error`](/reference/variables.md#usderror)
+* [Handling Errors](/cookbook/error-flow.md) (Cookbook)
