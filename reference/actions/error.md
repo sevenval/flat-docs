@@ -26,7 +26,7 @@ The action body contains a constant JSON string or a [JSON template](/reference/
 The object will be assigned to the `$error` variable.
 
 The following properties of the `$error` object are optional, but must have the specified 
-type if set. If not set they will receive the following default values:
+type if set. If not set, they will receive the following default values:
 
 * `message`: `string`, default: `'FlowError'`
 * `status`: `integer` between 100 and 599, default: `500`
@@ -48,7 +48,7 @@ Additional properties are allowed. They will be accessible in the Error Flow. Th
 
 ## Status Code
 
-The `status` property will be used as the HTTP response status code. (The status code may alternatively be defined with the optional `status` attribute).
+The `status` property will be used as the HTTP response status code. The status code may alternatively be defined with the optional `status` attribute.
 
 ```xml
 <error status="403"/>
@@ -64,7 +64,7 @@ The `status` property will be used as the HTTP response status code. (The status
 
 ## Fixed message shortcut
 
-If the action body is only a JSON string (it must be enclosed in double quotes) its value will be
+If the action body is a string constant (it must be enclosed in double quotes), its value will be
 assigned to the `$error/message` property. This is a handy shortcut to trigger simple errors with fixed messages:
 
 ```xml

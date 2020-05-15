@@ -1,7 +1,9 @@
 
 # Handling Errors with an Error Flow
 
-The [_error flow_](/reference/OpenAPI/routing.md#error-flow) is typically used to 
+The [_error flow_](/reference/OpenAPI/routing.md#error-flow) is triggered when certain
+severe errors occur while processing the flow, or when the
+[`error` action](/reference/actions/error.md) is invoked. It is typically used to
 produce custom error messages or headers, or set the HTTP status. Another example
 would be to use it to log additional information using [`fit-log()`](/reference/functions/fit-log.md)
 
@@ -42,3 +44,4 @@ This will ensure that all errors that trigger the error flow will produce a cons
 
 * [Error Flow](/reference/OpenAPI/routing.md#error-flow)
 * [`$error`](/reference/variables.md#usderror)
+* [`error` action](/reference/actions/error.md)
