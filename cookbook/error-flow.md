@@ -5,7 +5,7 @@ The [_error flow_](/reference/OpenAPI/routing.md#error-flow) is triggered when c
 severe errors occur while processing the flow, or when the
 [`error` action](/reference/actions/error.md) is invoked. It is typically used to
 produce custom error messages or headers, or set the HTTP status. Another example
-is augmenting the [access log](/administration/logging) with [custom log fields](/cookbook/custom-logging.md).
+is augmenting the [access log](/administration/logging.md) with [custom log fields](/cookbook/custom-logging.md).
 
 In your `swagger.yaml`, point the top-level property `x-flat-error` to a flow
 file:
