@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [20200519](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
 ### Added
 
 - [Beta image](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags?name=beta) now publicly available. [More about Docker images…](/administration/docker.md)
