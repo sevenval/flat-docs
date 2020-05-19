@@ -27,7 +27,7 @@ Client requests received by FLAT are recorded as type `flat_access` and have the
   "method": "GET",
   "agent": "curl/7.54.0",
   "referrer": "",
-  "mime": "application/json"
+  "mime": "application/json",
   "realtime": 0.019845,
   "bytes": 563,
   "requestbytes": 0,

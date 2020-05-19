@@ -39,8 +39,8 @@ Additional properties are allowed. They will be accessible in the Error Flow. Th
 <error>
 {
   {{: $request/url }}
-  "message": "Something went wrong",
-  "status": 400,
+  "message": "Upstream system sent unusable data",
+  "status": 502,
   "code": 4711
 }
 </error>
@@ -69,6 +69,20 @@ assigned to the `$error/message` property. This is a handy shortcut to trigger s
 
 ```xml
 <error status="502"> "Upstream system sent unusable data" </error>
+```
+
+## Logging
+
+The `error` emits an [error log](/administration/logging.md#error-log) event with the `error` topic and the given `message`:
+
+```json
+{
+  "timestamp": "2020-05-19T16:27:46+00:00",
+  "type": "flat_alert",
+  "requestID": "XsQJAMvNgp1P2qKAxKmdaAAAAAI",
+  "topic": "error",
+  "message": "Upstream system sent unusable data"
+}
 ```
 
 ## See also
