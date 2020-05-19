@@ -11,7 +11,7 @@ There you go! This tutorial helps you create a REST API for "Hello World" code s
 
 ## Tools
 
-FLAT is supplied as a Docker image, so please make sure you have Docker installed on your system.
+FLAT is supplied as a [Docker](/administration/docker.md) image, so please make sure you have Docker installed on your system.
 
 We assume you have the `curl` command line tool installed, too, which comes in handy when
 working with REST APIs. The [`jq` JSON processor](https://stedolan.github.io/jq/)

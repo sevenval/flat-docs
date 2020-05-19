@@ -1,3 +1,23 @@
+# Changelog
+
+## Unreleased
+
+## [20200519](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
+### Added
+
+- [Beta image](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags?name=beta) now publicly available. [More about Docker images…](/administration/docker.md)
+- Warnings in [debug log](/reference/debugging.md) about invalid [Swagger definitions](/reference/openapi/differences.md)
+- Validation for the [`assert`](/reference/actions/assert.md) and [`set-env`](/reference/actions/set-env.md) test action configurations.
+- The [`error` action](/reference/actions/error.md)
+- additional configuration options for the [PHP-FPM process management](/administration/configuration.md)
+- [`out-header`](/reference/OpenAPI/security.md#forwarding-jwt-upstream) property for easy JWT forwarding
+
+## Fixed
+
+-  Calls to the [`content()` function](/reference/functions/content.md) affecting the result of the [`body()` function](/reference/functions/body.md)
+
+
 ## [20200424](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added

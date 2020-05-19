@@ -1,20 +1,35 @@
 # `flat` CLI
 
 Get the `flat` CLI from [sevenval/flat-cli](https://github.com/sevenval/flat-cli).
+See the [tutorial](/tutorial/README.md#tools) for installation instructions.
 
-Start the local FLAT server with:
+You can start the local FLAT server with
 
 ```sh
 $ flat start
 ```
 
-Type
+The option `-b` allows you to run the current beta version instead of the stable version:
+
+```sh
+$ flat start -b
+```
+
+FLAT is provided as a [Docker](/administration/docker.md) image. Use
+
+```sh
+$ flat pull
+```
+
+to keep your local FLAT image up to date.
+
+Run
 
 ```sh
 $ flat -h
 ```
 
-for all available commands and options of the FLAT cli.
+for a list of  all available commands and options of the FLAT CLI.
 
 
 See also

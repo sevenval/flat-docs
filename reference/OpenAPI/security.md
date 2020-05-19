@@ -12,6 +12,7 @@ The `x-flat-jwt` field references an object with fields describing the expected 
 * `key` - REQUIRED. The key to decode the JSON Web Signature (JWS). This can either be specified with a value, or by referencing a file (`file`) or an environment variable (`env`).
 * `alg` - The signing algorithm the JWS is expected to be created with. This can either be specified with a value, or by referencing a file (`file`) or an environment variable (`env`). See the [`algorithm` parameter for `jwt-decode()`](/reference/functions/jwt-decode.md) for more information.
 * `out-var` - The name of the variable in which the JWT is stored (must be a proper variable name, starting with `$`; default: `"$jwt"`).
+* `out-header` - The name of the HTTP header that shall carry the JWT
 * `claims` - An object with claims the JWT payload is expected to contain. The field names are the claim names, the expected claim value is specified either with a value, or by referencing a file (`file`) or an environment variable (`env`).
 
 The token is considered valid if all of the following are true:
@@ -155,3 +156,73 @@ paths:
         - JWTHeaderAuth: []
 ```
 
+## Forwarding JWT Upstream
+
+The claims of an incoming JWT are stored in `$jwt` – or in any other global
+[variable](/reference/variables.md) that you specify in the `out-var`
+property of `x-flat-jwt`.
+In a [`request`](/reference/actions/request.md) or
+[`proxy-request`](/reference/actions/proxy-request.md) action you can send
+these claims upstream, for example using a query parameter or a header:
+
+```xml
+<flow>
+  <proxy-request>
+  {
+    "url": "https://httpbin.org/get",
+    "query": {{ $jwt }},                  <!-- ⬅ as query parameters -->
+    "headers": {
+      "Token": {{ json-stringify($jwt) }} <!-- ⬅ as 'Token' header -->
+    }
+  }
+  </proxy-request>
+</flow>
+```
+
+If we assume the value of `$jwt` being `{"id":42,"name":"John Doe"}`, the resulting
+upstream request URL would be `https://httpbin.org/get?id=42&name=John%20Doe`
+and the request would include a `Token` header: `Token: {"id":42,"name":"John Doe"}`.
+
+To just forward the received JWT token upstream as a header, you can also specify
+the desired header name with the `out-header` property of `x-flat-jwt`:
+
+```yaml
+securityDefinitions:
+  JWTHeaderAuth:
+    …
+    x-flat-jwt:
+      key: …
+      out-header: Token # ⬅ forwards this JWT in the 'Token' header
+```
+
+The `headers` section in `proxy-request` is then no longer needed:
+
+```xml
+<flow>
+  <proxy-request>
+  {
+    "url": "https://httpbin.org/get"
+  }
+  </proxy-request>
+</flow>
+```
+
+Moreover, if you just want to proxy requests, there's no need to define a [flow](routing.md#assigning-flat-flows)
+and you can simply set up your requests using [`x-flat-proxy`](routing.md#assigning-flat-proxies):
+
+```yaml
+…
+securityDefinitions:
+  JWTHeaderAuth:
+    …
+    x-flat-jwt:
+      key: …
+      out-header: Token # ⬅ forwards the JWT in the 'Token' header
+paths:
+  /:
+    get:
+      x-flat-proxy: # ⬅ no more x-flat-flow
+        url: https://httpbin.org/get
+      security:
+        - JWTHeaderAuth: []
+```
