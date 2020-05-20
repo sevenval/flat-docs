@@ -1049,8 +1049,8 @@ $ curl --header Debug:time:debug:inline localhost:8080/html
 ```
 
 The latter is the only reasonable way to debug on a production system where we usually can't access the log file.
-Header debugging is enabled by default in the [`flat` command line tool](/reference/flat-cli.md),
-but has to be explicitly enabled in other environments, usually by setting
+While the [`flat` command line tool](/reference/flat-cli.md) enables header debugging by default,
+the appropriate environment variables must be set to enable it in other environments, typically
 [`$FLAT_DEBUG_AUTH`](/administration/configuration.md).
 
 > 📎
