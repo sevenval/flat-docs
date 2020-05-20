@@ -1045,10 +1045,13 @@ If we also set the debug sink to `inline` or `append`, the output
 will be included in the HTTP response rather than the log file, for example:
 
 ```bash
-$ curl --header Debug:time:info:inline localhost:8080/html
+$ curl --header Debug:time:debug:inline localhost:8080/html
 ```
 
 The latter is the only reasonable way to debug on a production system where we usually can't access the log file.
+While the [`flat` command line tool](/reference/flat-cli.md) enables header debugging by default,
+the appropriate environment variables must be set to enable it in other environments, typically
+[`$FLAT_DEBUG_AUTH`](/administration/configuration.md).
 
 > 📎
 > If the `$FLAT_DEBUG_AUTH` environment variable is set (this is a **must** on production systems!), FLAT requires a password to enable debugging by means of the `Debug` header, for example `--header 'Debug: *:warn:append; auth=Pa5sw0rd'`.
