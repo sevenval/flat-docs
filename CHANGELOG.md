@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- [`FLAT_DEBUG_ALLOW_HEADER`](/reference/debugging.md#request-debugging) to enable debugging using the `Debug` request header, defaults to `false`
+
 ## [20200519](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
