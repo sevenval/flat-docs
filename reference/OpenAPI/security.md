@@ -226,3 +226,7 @@ paths:
       security:
         - JWTHeaderAuth: []
 ```
+
+## See also
+
+* [Protecting Access using JWT Tokens](/cookbook/x-flat-jwt.md) (cookbook)
