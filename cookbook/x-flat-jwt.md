@@ -1,6 +1,6 @@
 # Protecting Access using JWT Tokens
 
-Imagine, you have a [proxy](/reference/OpenAPI/routing.md#assigning-flat-proxies) to an API, e.g. httpbin.org.
+Imagine you had a [proxy](/reference/OpenAPI/routing.md#assigning-flat-proxies) to an API, e.g. httpbin.org.
 
 swagger.yml:
 ```yaml
@@ -44,7 +44,7 @@ That's what you would expect from httpbin.org, right?
 
 ## Restricting access: Swagger Security and `x-flat-jwt`
 
-Now, you don't want everyone, but only authorized users to use this proxy. This is typically achieved with access tokens. Some tokens are JSON Web Tokens ([JWT](https://tools.ietf.org/html/rfc7519)), while others are opaque.
+Now, you don't want anyone except authorized users to use this proxy. This is typically achieved with access tokens. Some tokens are JSON Web Tokens ([JWT](https://tools.ietf.org/html/rfc7519)), while others are opaque.
 
 Swagger has a two-part feature to describe protected access to routes: `securityDefinitions` (what sort of protection is applied …) and `security` (… to which routes), e.g.:
 
@@ -64,9 +64,9 @@ paths:
 
 This defines a security scheme object (named `JWTCookie`), meaning that some sort of cookie is needed to access certain routes. This is applied to the [wildcard path](/reference/OpenAPI/differences.md#wildcard-paths) `/httpbin/**`.
 
-This documentation feature, with some extensions, is used to make FLAT actually allow access to the route only if a certain JWT token is presented.
+This documentation feature, with some extensions, is used to make FLAT actually permit access to the route only if a valid JWT token is presented.
 
-First, we specify the name of the cookie expected to accompany the API request:
+First, we define the name of the cookie expected to accompany the API request:
 
 ```yaml
 …
@@ -79,7 +79,7 @@ securityDefinitions:
 …
 ```
 
-Then we give some [configuration](/reference/OpenAPI/security.md#the-x-flat-jwt-field) for decoding the JWT token:
+Then we specify the [configuration](/reference/OpenAPI/security.md#the-x-flat-jwt-field) for decoding the JWT token:
 
 ```yaml
 …
@@ -88,7 +88,7 @@ Then we give some [configuration](/reference/OpenAPI/security.md#the-x-flat-jwt-
     in: header
     name: Cookie
     x-flat-cookiename: authtoken
-    x-flat-jwt:                     # ⬅ specify the JWT configuration:
+    x-flat-jwt:                     # ⬅ our JWT configuration:
       key:                          # ⬅ the key to decode the JWT …
         file: secret.pem            # ⬅ … is read from the file secret.pem
       alg: RS256                    # ⬅ the signing algorithm is RS256
@@ -105,9 +105,9 @@ rdAOci3W9u3zOSGj4QIDAQAB
 -----END PUBLIC KEY-----
 ```
 
-That's all. Here, only those tokens will be accepted that are signed with the RS256 algorithm in a way that they can be decoded using the given public key.
+That's all. Now FLAT will only permit requests if they supply a token that bear an RS256 signature that was created with the private key that matches the given public key.
 
-(You may want to try this with the key and algorithm given to you by the party providing you with tokens, e.g. an OAuth2 authorization server.)
+(You may want to try this with the key and algorithm provided to you by the party providing you with tokens, e.g. an OAuth2 authorization server.)
 
 Let's give it a try:
 
@@ -193,7 +193,7 @@ But there are two additional features that can be quite handy: `out-var` and `ou
 
 ## Storing JWT claims: `out-var`
 
-With `out-var` you can specify the name of the [variable](/reference/variables.md) where to store the JSON claims encoded in the JWT, in order to make them available to further processing. E.g.
+With `out-var` you can specify the name of a [variable](/reference/variables.md) where FLAT will store the JSON claims encoded in the JWT, in order to make them available for further processing. E.g.
 
 
 ```yaml
