@@ -90,12 +90,12 @@ Then we specify the [configuration](/reference/OpenAPI/security.md#the-x-flat-jw
     x-flat-cookiename: authtoken
     x-flat-jwt:                     # ⬅ our JWT configuration:
       key:                          # ⬅ the key to decode the JWT …
-        file: secret.pem            # ⬅ … is read from the file secret.pem
+        file: pubkey.pem            # ⬅ … is read from the file pubkey.pem
       alg: RS256                    # ⬅ the signing algorithm is RS256
 …
 ```
 
-The specified key is a public key, read from the file secret.pem, e.g.:
+The specified key is a public key, read from the file pubkey.pem, e.g.:
 ```
 -----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGSd+sSTss2uOuVJKpumpFAaml
@@ -175,7 +175,7 @@ securityDefinitions:
     name: Authorization             # ⬅
     x-flat-jwt:
       key:
-        file: secret.pem
+        file: pubkey.pem
       alg: RS256
 paths:
   /httpbin/**:
@@ -200,7 +200,7 @@ With `out-var` you can specify the name of a [variable](/reference/variables.md)
 …
     x-flat-jwt:
       key:
-        file: secret.pem
+        file: pubkey.pem
       alg: RS256
       out-var: $the_claims          # ⬅
 …
@@ -244,7 +244,7 @@ With [`out-header`](/reference/OpenAPI/security.md#forwarding-jwt-upstream) you 
 …
     x-flat-jwt:
       key:
-        file: secret.pem
+        file: pubkey.pem
       alg: RS256
       out-var: $the_claims
       out-header: JWT               # ⬅ the name of the request header with the JWT claims
@@ -282,7 +282,7 @@ securityDefinitions:
     x-flat-cookiename: authtoken
     x-flat-jwt:
       key:
-        file: secret.pem
+        file: pubkey.pem
       alg: RS256
       out-var: $the_claims
       out-header: JWT
@@ -296,7 +296,7 @@ paths:
       stripEndpoint: true
 ```
 
-secret.pem:
+pubkey.pem:
 ```
 -----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGSd+sSTss2uOuVJKpumpFAaml
