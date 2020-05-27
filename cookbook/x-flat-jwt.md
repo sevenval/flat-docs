@@ -233,7 +233,7 @@ Content-Type: application/json
 }
 ```
 
-## Storing JWT claims: `out-var`
+## Accessing JWT claims: `out-var`
 
 With `out-var` you can specify the name of a [variable](/reference/variables.md) where FLAT will store the JSON claims encoded in the JWT, in order to make them available for further processing. E.g.
 
