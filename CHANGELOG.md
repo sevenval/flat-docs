@@ -6,6 +6,10 @@
 
 - [`FLAT_DEBUG_ALLOW_HEADER`](/reference/debugging.md#request-debugging) to enable debugging using the `Debug` request header, defaults to `false`
 
+## Fixed
+
+- Empty objects are no longer [logged](/cookbook/custom-logging#adding-a-log-field) as empty arrays.
+
 ## [20200519](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
