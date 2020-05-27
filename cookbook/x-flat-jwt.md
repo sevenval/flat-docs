@@ -206,7 +206,7 @@ With `out-var` you can specify the name of a [variable](/reference/variables.md)
 …
 ```
 
-We can log the claims by adding a `log` action to an [init flow](/reference/OpenAPI/routing.md#init-flow):
+We can log the claims by adding a [`log` action](/reference/actions/log.md) to an [init flow](/reference/OpenAPI/routing.md#init-flow):
 
 ```yaml
 swagger: "2.0" 
