@@ -107,7 +107,7 @@ rdAOci3W9u3zOSGj4QIDAQAB
 
 That's all. Now FLAT will only permit requests if they supply a token that bear an RS256 signature that was created with the private key that matches the given public key.
 
-(You may want to try this with the key and algorithm provided to you by the party providing you with tokens, e.g. an OAuth2 authorization server.)
+(You may want to try this with the key and algorithm acquired from the party providing you with tokens, e.g. an OAuth2 authorization server.)
 
 Let's give it a try:
 
