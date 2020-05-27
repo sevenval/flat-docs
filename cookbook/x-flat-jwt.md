@@ -107,7 +107,17 @@ rdAOci3W9u3zOSGj4QIDAQAB
 
 That's all. Now FLAT will only permit requests if they supply a token that bear an RS256 signature that was created with the private key that matches the given public key.
 
-(You may want to try this with the key and algorithm acquired from the party providing you with tokens, e.g. an OAuth2 authorization server.)
+Usually, you would get the key and algorithm from your identity provider (e.g. an OAuth2 authorization server). That service would be responsible for issuing JWT tokens for your users.
+
+For this tutorial we have prepared a couple of JWT tokens for you to try out different situations:
+
+```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzb21lX3VzZXIiLCJpc3MiOiJzb21lX3Byb3ZpZGVyIiwiZXhwIjoxNTkwNDkxNTI4fQ.lJnUpBzMx84_5yigeHeLw4f8sbdSdu_7fWr1--t7EAp8v8K-kSmVYUGnR0Jx4o_ZE84N2M72Kn1pKssrzgTHsFi7txcZHHz_JqgnPgKqsZwjrmWDC-XVvdrSXjAsPO6wn0qy3KEMT1y6Z8YQA4ZyzA1dDsRRIUFiNrgF6_b5pC4
+```
+
+```
+eybGciOiJSUzI1NiJ9.eyJzdWIiOiJzb21lX3VzZXIiLCJpc3MiOiJzb21lX3Byb3ZpZGVyIn0.bNXv28XmnFBjirPbCzBqyfpqHKo6PpoFORHsQ-80IJLi3IhBh1y0pFR0wm-2hiz_F7PkGQLTsnFiSXxCt1DZvMstbQeklZIh7O3tQGJyCAi-HRVASHKKYqZ_-eqQQhNr8Ex00qqJWD9BsWVJr7Q526Gua7ghcttmVgTYrfSNDzU
+```
 
 Let's give it a try:
 
@@ -122,7 +132,7 @@ Content-Type: application/json
 
 Ah, yes, we forgot to present a token in the `authtoken` cookie. But we see, that the protection works.
 
-Let's try again with a token:
+Let's try again with the first token:
 
 ```
 $ curl -i -H "Cookie: authtoken=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzb21lX3VzZXIiLCJpc3MiOiJzb21lX3Byb3ZpZGVyIiwiZXhwIjoxNTkwNDkxNTI4fQ.lJnUpBzMx84_5yigeHeLw4f8sbdSdu_7fWr1--t7EAp8v8K-kSmVYUGnR0Jx4o_ZE84N2M72Kn1pKssrzgTHsFi7txcZHHz_JqgnPgKqsZwjrmWDC-XVvdrSXjAsPO6wn0qy3KEMT1y6Z8YQA4ZyzA1dDsRRIUFiNrgF6_b5pC4" http://localhost:8080/httpbin/anything
@@ -135,7 +145,7 @@ Content-Type: application/json
 
 Hmm, expired. So this one is too old. (Access tokens typically have a restricted period of use.)
 
-OK, let's use another token:
+OK, let's use the other token:
 
 ```
 $ curl -i -H "Cookie: authtoken=eybGciOiJSUzI1NiJ9.eyJzdWIiOiJzb21lX3VzZXIiLCJpc3MiOiJzb21lX3Byb3ZpZGVyIn0.bNXv28XmnFBjirPbCzBqyfpqHKo6PpoFORHsQ-80IJLi3IhBh1y0pFR0wm-2hiz_F7PkGQLTsnFiSXxCt1DZvMstbQeklZIh7O3tQGJyCAi-HRVASHKKYqZ_-eqQQhNr8Ex00qqJWD9BsWVJr7Q526Gua7ghcttmVgTYrfSNDzU" http://localhost:8080/httpbin/anything
