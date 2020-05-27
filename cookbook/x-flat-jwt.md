@@ -201,6 +201,38 @@ $ curl -i -H "Authorization: Bearer eybGciOiJSUzI1NiJ9.eyJzdWIiOiJzb21lX3VzZXIiL
 
 But there are two additional features that can be quite handy: `out-var` and `out-header`.
 
+## Sending JWT claims upstream: `out-header`
+
+With [`out-header`](/reference/OpenAPI/security.md#forwarding-jwt-upstream) you can send the whole set of claims from the JWT upstream:
+
+```yaml:
+…
+    x-flat-jwt:
+      key:
+        file: pubkey.pem
+      alg: RS256
+      out-var: $the_claims
+      out-header: JWT               # ⬅ the name of the request header with the JWT claims
+…
+```
+
+```
+$ curl -i -H "Cookie: authtoken=eybGciOiJSUzI1NiJ9.eyJzdWIiOiJzb21lX3VzZXIiLCJpc3MiOiJzb21lX3Byb3ZpZGVyIn0.bNXv28XmnFBjirPbCzBqyfpqHKo6PpoFORHsQ-80IJLi3IhBh1y0pFR0wm-2hiz_F7PkGQLTsnFiSXxCt1DZvMstbQeklZIh7O3tQGJyCAi-HRVASHKKYqZ_-eqQQhNr8Ex00qqJWD9BsWVJr7Q526Gua7ghcttmVgTYrfSNDzU" http://localhost:8080/httpbin/anything
+HTTP/1.1 200 OK
+…
+Content-Type: application/json
+
+{
+…
+  "headers": {
+…
+    "Jwt": "{\"sub\":\"some_user\",\"iss\":\"some_provider\"}",
+…
+  },
+…
+}
+```
+
 ## Storing JWT claims: `out-var`
 
 With `out-var` you can specify the name of a [variable](/reference/variables.md) where FLAT will store the JSON claims encoded in the JWT, in order to make them available for further processing. E.g.
@@ -245,38 +277,6 @@ If you look at the [FLAT logs](/administration/logging.md) and try again with a 
 ```
 
 Here you see the two claims from the JWT token.
-
-## Sending JWT claims upstream: `out-header`
-
-With [`out-header`](/reference/OpenAPI/security.md#forwarding-jwt-upstream) you can send the whole set of claims from the JWT upstream:
-
-```yaml:
-…
-    x-flat-jwt:
-      key:
-        file: pubkey.pem
-      alg: RS256
-      out-var: $the_claims
-      out-header: JWT               # ⬅ the name of the request header with the JWT claims
-…
-```
-
-```
-$ curl -i -H "Cookie: authtoken=eybGciOiJSUzI1NiJ9.eyJzdWIiOiJzb21lX3VzZXIiLCJpc3MiOiJzb21lX3Byb3ZpZGVyIn0.bNXv28XmnFBjirPbCzBqyfpqHKo6PpoFORHsQ-80IJLi3IhBh1y0pFR0wm-2hiz_F7PkGQLTsnFiSXxCt1DZvMstbQeklZIh7O3tQGJyCAi-HRVASHKKYqZ_-eqQQhNr8Ex00qqJWD9BsWVJr7Q526Gua7ghcttmVgTYrfSNDzU" http://localhost:8080/httpbin/anything
-HTTP/1.1 200 OK
-…
-Content-Type: application/json
-
-{
-…
-  "headers": {
-…
-    "Jwt": "{\"sub\":\"some_user\",\"iss\":\"some_provider\"}",
-…
-  },
-…
-}
-```
 
 ## All files together
 
