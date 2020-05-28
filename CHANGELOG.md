@@ -8,7 +8,7 @@
 
 ## Fixed
 
-- Empty objects are no longer [logged](/cookbook/custom-logging#adding-a-log-field) as empty arrays.
+- Empty objects are no longer [logged](/cookbook/custom-logging.md#adding-a-log-field) as empty arrays.
 
 ## [20200519](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
