@@ -10,6 +10,11 @@
 
 - Empty objects are no longer [logged](/cookbook/custom-logging.md#adding-a-log-field) as empty arrays.
 
+## Changed
+
+The [`log` action](/reference/actions/log.md) can no longer override [system log fields](/administration/logging.md#fields).
+
+
 ## [20200519](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
