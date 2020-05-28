@@ -101,5 +101,6 @@ Note that, with `RSASSA` based algorithms, you have to specify the algorithm in 
 
 ## See also
 
-* [`jwt-encode()`](/reference/functions/jwt-encode.md)
-* [`jwt-decode()`](/reference/functions/jwt-decode.md)
+* [`jwt-encode()`](/reference/functions/jwt-encode.md) (reference)
+* [`jwt-decode()`](/reference/functions/jwt-decode.md) (reference)
+* [Protecting Access using JWT Tokens](/cookbook/x-flat-jwt.md) (cookbook)
