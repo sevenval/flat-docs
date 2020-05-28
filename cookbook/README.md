@@ -1,5 +1,7 @@
 # Cookbook
 
+## [Protecting Access using JWT Tokens](x-flat-jwt.md)
+
 ## [How can I inspect the client request?](see-client-request.md)
 
 ## [How can I pass an arbitrary header field to an upstream system?](pass-header-field-upstream.md)
