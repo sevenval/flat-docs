@@ -127,7 +127,17 @@ HTTP/1.1 403 Forbidden
 …
 Content-Type: application/json
 
-{"error":{"message":"Security violation","status":403,"requestID":"Xsz@QAv8CEBZfWbmQhKLIQAAAII","info":["JWT Security (JWTCookie): No Cookie header sent"],"code":3206}}
+{
+  "error": {
+    "message": "Security violation",
+    "status": 403,
+    "requestID": "Xsz@QAv8CEBZfWbmQhKLIQAAAII",
+    "info": [
+      "JWT Security (JWTCookie): No Cookie header sent"
+    ],
+    "code": 3206
+  }
+}
 ```
 
 Ah, yes, we forgot to present a token in the `authtoken` cookie. But we see, that the protection works.
@@ -140,7 +150,17 @@ HTTP/1.1 403 Forbidden
 …
 Content-Type: application/json
 
-{"error":{"message":"Security violation","status":403,"requestID":"Xsz80Av8CEBZfWbmQhKLIAAAAIE","info":["JWT Security (JWTCookie): Invalid JWT: Token has expired."],"code":3206}}
+{
+  "error": {
+    "message": "Security violation",
+    "status": 403,
+    "requestID": "Xsz80Av8CEBZfWbmQhKLIAAAAIE",
+    "info": [
+      "JWT Security (JWTCookie): Invalid JWT: Token has expired."
+    ],
+    "code": 3206
+  }
+}
 ```
 
 Hmm, expired. So this one is too old. (Access tokens typically have a restricted period of use.)
