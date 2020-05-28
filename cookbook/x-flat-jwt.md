@@ -194,7 +194,7 @@ Content-Type: application/json
 
 Tada!
 
-By the way, apart from Cookies, this also works similarly with the `Authorization: Bearer …` header:
+By the way, apart from cookies, this also works similarly with the `Authorization: Bearer …` header:
 
 ```
 …
@@ -219,7 +219,7 @@ You can try that with
 $ curl -i -H "Authorization: Bearer eybGciOiJSUzI1NiJ9.eyJzdWIiOiJzb21lX3VzZXIiLCJpc3MiOiJzb21lX3Byb3ZpZGVyIn0.bNXv28XmnFBjirPbCzBqyfpqHKo6PpoFORHsQ-80IJLi3IhBh1y0pFR0wm-2hiz_F7PkGQLTsnFiSXxCt1DZvMstbQeklZIh7O3tQGJyCAi-HRVASHKKYqZ_-eqQQhNr8Ex00qqJWD9BsWVJr7Q526Gua7ghcttmVgTYrfSNDzU" http://localhost:8080/httpbin/anything
 ```
 
-But there are two additional features that can be quite handy: `out-var` and `out-header`.
+But there are two additional features that can be quite handy: `out-header` and `out-var`.
 
 ## Sending JWT claims upstream: `out-header`
 
@@ -231,7 +231,6 @@ With [`out-header`](/reference/OpenAPI/security.md#forwarding-jwt-upstream) you 
       key:
         file: pubkey.pem
       alg: RS256
-      out-var: $the_claims
       out-header: JWT               # ⬅ the name of the request header with the JWT claims
 …
 ```
@@ -264,6 +263,7 @@ With `out-var` you can specify the name of a [variable](/reference/variables.md)
       key:
         file: pubkey.pem
       alg: RS256
+      out-header: JWT
       out-var: $the_claims          # ⬅
 …
 ```
