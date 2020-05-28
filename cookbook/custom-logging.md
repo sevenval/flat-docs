@@ -157,13 +157,7 @@ In our case, we might want to gather information about the environment:
 {
   "timestamp": "2019-10-15T15:49:13+00:00",
   "type": "flat_access",
-  "requestID": "XaXqeccky00IowY@OUgG8AAAAAA",
-  "path": "/api/…",
-  "status": 200,
-  "method": "GET",
-  "agent": "curl/7.54.0",
-  "referrer": "",
-  "mime": "application/json",
+  …
   "project": "myAPIProject",
   "env": {
     "stage": "production",
@@ -201,13 +195,7 @@ $ curl -H "X-Forwarded-Proto: https" localhost:8080/api/…
 {
   "timestamp": "2019-10-15T15:49:13+00:00",
   "type": "flat_access",
-  "requestID": "XaXqeccky00IowY@OUgG8AAAAAA",
-  "path": "/api/…",
-  "status": 200,
-  "method": "GET",
-  "agent": "curl/7.54.0",
-  "referrer": "",
-  "mime": "application/json",
+  …
   "project": "myAPIProject",
   "env": {
     "stage": "production",
