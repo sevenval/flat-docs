@@ -17,7 +17,7 @@ We want all of that!
 
 To play with logging, you need a FLAT project. If you don't have on, yet, have a look into the [tutorial](/tutorial/README.md) to [get started](/tutorial/README.md#getting-started).
 
-## Reading logs
+## Reading Logs
 
 Before start customizing our logs, we need to setup our workplace in order to see what we are doing. Where can we inspect FLAT logs?
 
@@ -34,7 +34,7 @@ However, once you call your API with `curl` you will see JSON lines in your term
 $ curl localhost:8080/api/…
 ```
 ```json
-{"timestamp":"2019-10-15T15:49:13+00:00","type":"flat_access","requestID":"XaXqeccky00IowY@OUgG8AAAAAA","path":"/api/…","status":200,"method":"GET","agent":"curl/7.54.0","referrer":"","mime":"application/json"}
+{"timestamp":"2019-10-15T15:49:13+00:00","type":"flat_access",…}
 ```
 
 You can have the JSON colored and pretty printed by piping the output to the [`jq` command](https://stedolan.github.io/jq/):
@@ -51,17 +51,23 @@ Now, the access log will be nicely readable on your terminal:
   "timestamp": "2019-10-15T15:49:13+00:00",
   "type": "flat_access",
   "requestID": "XaXqeccky00IowY@OUgG8AAAAAA",
+  "url": "http://localhost:8080/api/…",
   "path": "/api/…",
   "status": 200,
   "method": "GET",
   "agent": "curl/7.54.0",
   "referrer": "",
-  "mime": "application/json"
+  "mime": "application/json",
+  "realtime": 0.08935,
+  "bytes": 1387,
+  "requestbytes": 0,
+  "flow": "flow.xml",
+  "requestmime": "",
+  "location": ""
 }
 ```
 
-
-## Adding a log field
+## Adding a Log Field
 
 Now that we know where our logs go, we're finally ready to add fields!
 
@@ -90,20 +96,14 @@ $ curl localhost:8080/api/…
 {
   "timestamp": "2019-10-15T15:49:13+00:00",
   "type": "flat_access",
-  "requestID": "XaXqeccky00IowY@OUgG8AAAAAA",
-  "path": "/api/…",
-  "status": 200,
-  "method": "GET",
-  "agent": "curl/7.54.0",
-  "referrer": "",
-  "mime": "application/json",
+  …
   "project": "myAPIProject"
 }
 ```
 
 Our first custom log field has hit the terminal!
 
-## Adding dynamic log fields
+## Adding Dynamic Log Fields
 
 With [JSON templates](/reference/templating/README.md) you can use expressions to dynamically set field names and values.
 
@@ -127,13 +127,7 @@ Notice, how we can provide default values for missing data. If _both_ of the var
 {
   "timestamp": "2019-10-15T15:49:13+00:00",
   "type": "flat_access",
-  "requestID": "XaXqeccky00IowY@OUgG8AAAAAA",
-  "path": "/api/…",
-  "status": 200,
-  "method": "GET",
-  "agent": "curl/7.54.0",
-  "referrer": "",
-  "mime": "application/json",
+  …
   "project": "myAPIProject",
   "stage": "unknown"
 }
@@ -141,7 +135,7 @@ Notice, how we can provide default values for missing data. If _both_ of the var
 
 `stage` is always defined. But `location` is missing, because its expression has evaluated to `null`. Nulled fields don't show up in the log.
 
-## Structured log fields
+## Structured Log Fields
 
 Your custom log fields are not restricted to the top-level field-list. If you have more fields, that belong together, you can group them in an object.
 
@@ -159,19 +153,11 @@ In our case, we might want to gather information about the environment:
 </log>
 ```
 
-Notice, how we can provide default values for missing data. If _both_ of the variables are not set, a log may look like this:
-
 ```json
 {
   "timestamp": "2019-10-15T15:49:13+00:00",
   "type": "flat_access",
-  "requestID": "XaXqeccky00IowY@OUgG8AAAAAA",
-  "path": "/api/…",
-  "status": 200,
-  "method": "GET",
-  "agent": "curl/7.54.0",
-  "referrer": "",
-  "mime": "application/json",
+  …
   "project": "myAPIProject",
   "env": {
     "stage": "production",
@@ -180,9 +166,9 @@ Notice, how we can provide default values for missing data. If _both_ of the var
 }
 ```
 
-## Using request data
+## Using Request Data
 
-Client's provide a lot of useful information in the HTTP request headers. We can easily use them to augment our log:
+Clients provide a lot of useful information in the HTTP request headers. We can easily use them to augment our log:
 
 
 ```xml
@@ -209,13 +195,7 @@ $ curl -H "X-Forwarded-Proto: https" localhost:8080/api/…
 {
   "timestamp": "2019-10-15T15:49:13+00:00",
   "type": "flat_access",
-  "requestID": "XaXqeccky00IowY@OUgG8AAAAAA",
-  "path": "/api/…",
-  "status": 200,
-  "method": "GET",
-  "agent": "curl/7.54.0",
-  "referrer": "",
-  "mime": "application/json",
+  …
   "project": "myAPIProject",
   "env": {
     "stage": "production",
@@ -233,7 +213,7 @@ For logging alone, the JSON armor prevents format breakouts and log attacks. HTT
 
 ## Testing
 
-Log augmentation with the [`log`  action](/reference/actions/log.md) belongs to our project code. Therefore, we would like to test that! This can be done by using the [`get-log()` function](/reference/functions/get-log.md) in a [FLAT test](/reference/testing/README.md).
+Log augmentation with the [`log` action](/reference/actions/log.md) belongs to our project code. Therefore, we would like to test that! This can be done by using the [`get-log()` function](/reference/functions/get-log.md) in a [FLAT test](/reference/testing/README.md).
 
 Put this into `tests/loggging.xml`:
 ```xml
@@ -260,7 +240,7 @@ $ flat test tests/logging.xml
 ok 1 tests/logging.xml: 1 assertions
 ```
 
-In a real project, you would rather send a request to your FLAT API and check if the log was written as expected
+In a real project, you would rather send a request to your FLAT API and check if the log was written as expected:
 
 ```xml
 <flat-test>
