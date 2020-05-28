@@ -9,6 +9,7 @@
 ## Fixed
 
 - Empty objects are no longer [logged](/cookbook/custom-logging.md#adding-a-log-field) as empty arrays.
+- The [`json-to-csv()` function](/reference/functions/json-to-csv.md) allows `null` values in array entry objects.
 
 ## Changed
 
