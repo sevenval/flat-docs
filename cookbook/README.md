@@ -16,7 +16,7 @@
 
 ## [Sending POST requests](upstream-post-requests.md)
 
-## [Working with JWT](jwt.md)
+## [Signing JWT](jwt.md)
 
 ## [Auto Docs with Swagger UI](swagger-docs.md)
 
