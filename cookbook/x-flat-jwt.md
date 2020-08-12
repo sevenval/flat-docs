@@ -4,7 +4,7 @@ Imagine you had a [proxy](/reference/OpenAPI/routing.md#assigning-flat-proxies) 
 
 swagger.yml:
 ```yaml
-swagger: "2.0" 
+swagger: "2.0"
 basePath: /
 paths:
   /httpbin/**:
@@ -31,12 +31,12 @@ Content-Type: application/json
     "Accept-Encoding": "deflate, gzip",
     "Host": "httpbin.org",
     "User-Agent": "curl/7.29.0",
-    "X-Amzn-Trace-Id": "…" 
+    "X-Amzn-Trace-Id": "…"
   },
   "json": null,
   "method": "GET",
   "origin": "…",
-  "url": "https://httpbin.org/anything" 
+  "url": "https://httpbin.org/anything"
 }
 ```
 
@@ -49,7 +49,7 @@ Now, you don't want anyone except authorized users to use this proxy. This is ty
 Swagger has a two-part feature to describe protected access to routes: `securityDefinitions` (what sort of protection is applied …) and `security` (… to which routes), e.g.:
 
 ```yaml
-swagger: "2.0" 
+swagger: "2.0"
 basePath: /
 securityDefinitions:
   JWTCookie:
@@ -168,7 +168,7 @@ Hmm, expired. So this one is too old. (Access tokens typically have a restricted
 OK, let's use the other token:
 
 ```sh
-$ curl -i -H "Cookie: authtoken=eeyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzb21lX3VzZXIiLCJpc3MiOiJzb21lX3Byb3ZpZGVyIn0.bNXv28XmnFBjirPbCzBqyfpqHKo6PpoFORHsQ-80IJLi3IhBh1y0pFR0wm-2hiz_F7PkGQLTsnFiSXxCt1DZvMstbQeklZIh7O3tQGJyCAi-HRVASHKKYqZ_-eqQQhNr8Ex00qqJWD9BsWVJr7Q526Gua7ghcttmVgTYrfSNDzU" http://localhost:8080/httpbin/anything
+$ curl -i -H "Cookie: authtoken=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzb21lX3VzZXIiLCJpc3MiOiJzb21lX3Byb3ZpZGVyIn0.bNXv28XmnFBjirPbCzBqyfpqHKo6PpoFORHsQ-80IJLi3IhBh1y0pFR0wm-2hiz_F7PkGQLTsnFiSXxCt1DZvMstbQeklZIh7O3tQGJyCAi-HRVASHKKYqZ_-eqQQhNr8Ex00qqJWD9BsWVJr7Q526Gua7ghcttmVgTYrfSNDzU" http://localhost:8080/httpbin/anything
 HTTP/1.1 200 OK
 …
 Content-Type: application/json
@@ -183,12 +183,12 @@ Content-Type: application/json
     "Accept-Encoding": "deflate, gzip",
     "Host": "httpbin.org",
     "User-Agent": "curl/7.29.0",
-    "X-Amzn-Trace-Id": "…" 
+    "X-Amzn-Trace-Id": "…"
   },
   "json": null,
   "method": "GET",
   "origin": "…",
-  "url": "https://httpbin.org/anything" 
+  "url": "https://httpbin.org/anything"
 }
 ```
 
@@ -271,7 +271,7 @@ With `out-var` you can specify the name of a [variable](/reference/variables.md)
 We can log the claims by adding a [`log` action](/reference/actions/log.md) to an [init flow](/reference/OpenAPI/routing.md#init-flow):
 
 ```yaml
-swagger: "2.0" 
+swagger: "2.0"
 …
 x-flat-init: init.xml
 paths:
@@ -302,7 +302,7 @@ Here you see the two claims from the JWT token.
 
 swagger.yaml:
 ```yaml
-swagger: "2.0" 
+swagger: "2.0"
 basePath: /
 securityDefinitions:
   JWTCookie:
