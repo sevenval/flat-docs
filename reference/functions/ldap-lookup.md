@@ -15,7 +15,7 @@ Otherwise an empty node-set is returned.
 * `url` The ldap URL (string)
 * `rdn` The (relative) distinguished name of the (system) user (string)
 * `rdnPassword` The password of the (system) user (string)
-* `base_dn` The base distinguished name for the search (string)
+* `base_dn` The base distinguished name for the directory, used for the search (string)
 * `userSearch` The filter for searching a user (string)
 * `userPassword` The user's password (string)
 * `attributes` A comma-separated list of attributes to return (string)
@@ -32,7 +32,7 @@ In addition to the (default) `dn`, the `sAMAccountName` and `mail` from the entr
   <eval out="$userSearch">concat("(&amp;(objectClass=person)(memberOf=CN=Users,ou=People,dc=example,dc=com)(mail=john.doe@example.com))")</eval>
   <eval out="$attributes">"sAMAccountName,mail"</eval>
 
-  <eval out="$ldap">ldap-lookup($ldap_settings/url, $ldap_settings/bind_dn, $env/FLAT_SYSTEM_PASSWORD, $ldap_settings/base_dn, $userSearch, "myP4s5w0rD, $attributes)</eval>
+  <eval out="$ldap">ldap-lookup($ldap_settings/url, $ldap_settings/bind_dn, $env/FLAT_SYSTEM_PASSWORD, "dc=example,dc=com", $userSearch, "myP4s5w0rD", $attributes)</eval>
   <error if="not($ldap)">
   {
     "status": 403,
