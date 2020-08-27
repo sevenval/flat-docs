@@ -335,11 +335,6 @@ Example:
 }
 ```
 
-> 📎
-> Any request options set in a `conf/sources.xml` file that match the requested domain and path
-> will also be applied to your request. Options directly set in the action have precedence, though.
-> We do **not** recommend using `conf/sources.xml`.
-
 
 ## See also
 
