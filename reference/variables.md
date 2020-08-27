@@ -260,7 +260,7 @@ The `$upstream` variable contains information about upstream responses. The prop
 Example:
 ```xml
 <upstream>
-  <ok>
+  <request1>
     <url>https://httpbin.org/status/200</url>
     <status number="">200</status>
     <cacheHit>false</cacheHit>
@@ -272,8 +272,8 @@ Example:
       <access-control-allow-origin>*</access-control-allow-origin>
       <access-control-allow-credentials>true</access-control-allow-credentials>
     </headers>
-  </ok>
-  <failure>
+  </request1>
+  <request2>
     <url>https://httpbin.org/status/500</url>
     <status number="">500</status>
     <cacheHit>false</cacheHit>
@@ -285,7 +285,7 @@ Example:
       <access-control-allow-origin>*</access-control-allow-origin>
       <access-control-allow-credentials>true</access-control-allow-credentials>
     </headers>
-  </failure>
+  </request2>
 </upstream>
 ```
 
