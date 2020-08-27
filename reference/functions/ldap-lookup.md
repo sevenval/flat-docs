@@ -41,3 +41,12 @@ In addition to the (default) `dn`, the `sAMAccountName` and `mail` from the entr
   </error>
 </flow>
 ```
+
+The result in the case of success, is
+```json
+{
+  "dn": "cn=John Doe,ou=People,dc=example,dc=com",
+  "sAMAccountName": "john.doe",
+  "mail": "john.doe@example.com"
+}
+```
