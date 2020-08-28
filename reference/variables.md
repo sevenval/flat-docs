@@ -8,12 +8,12 @@ A valid variable name starts with `$` followed by a letter `a`…`z` or `A`…`Z
 
 The following predefined variables exist:
 
-* `$body`: client request body
+* [`$body`](#usdbody): client request body
 * `$env`: [environment variables](/cookbook/envvars.md)
-* `$request`: client request information
+* [`$request`](#usdrequest): client request information
 * `$server`: server information
-* `$upstream`: upstream response information
-* `$error`: Contains information regarding the most recent error, but is initially empty.
+* [`$upstream`](#usdupstream): upstream response information
+* [`$error`](#usderror): Contains information regarding the most recent error, but is initially empty.
 
 Try the following flow with
 
@@ -248,7 +248,7 @@ paths:
 | https://example.com/api/bar | /** | /api/bar | /api |
 
 
-## `upstream`
+## `$upstream`
 
 The `$upstream` variable contains information about upstream responses. The properties for each upstream response are stored with the request ID ([`id` property](/reference/actions/request.md#id) or [`content` attribute](/reference/actions/request.md#syntax)).
 
