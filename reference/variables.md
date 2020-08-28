@@ -8,12 +8,12 @@ A valid variable name starts with `$` followed by a letter `a`…`z` or `A`…`Z
 
 The following predefined variables exist:
 
-* `$body`: client request body
+* [`$body`](#usdbody): client request body
 * `$env`: [environment variables](/cookbook/envvars.md)
-* `$request`: client request information
+* [`$request`](#usdrequest): client request information
 * `$server`: server information
-* `$upstream`: upstream response information
-* `$error`: Contains information regarding the most recent error, but is initially empty.
+* [`$upstream`](#usdupstream): upstream response information
+* [`$error`](#usderror): Contains information regarding the most recent error, but is initially empty.
 
 Try the following flow with
 
@@ -47,7 +47,7 @@ The actions [`request`](actions/request.md) and [`requests`](actions/requests.md
 <flow>
   <requests>
   {
-      "ok": {
+    "ok": {
       "url": "https://httpbin.org/status/200"
     },
     "failure": {
@@ -73,6 +73,7 @@ The actions [`request`](actions/request.md) and [`requests`](actions/requests.md
     "ok": {
       "url": "https://httpbin.org/status/200",
       "status": 200,
+      "cacheHit": false,
       "headers": { … }
     },
     "failure": {
@@ -159,6 +160,25 @@ conditions and produces the string `null` in placeholders:
 </flow>
 ```
 
+## `$body`
+
+The `$body` variable contains the request body.
+
+If the request body is JSON (`Content-Type: application/json`) `$body` contains the parsed JSON. You can access its properties with XPath expressions with a `json` segment before the top-level properties. E.g.
+
+```json
+{
+  "foo": 1,
+  "bar": {
+    "baz": true
+  }
+}
+```
+The value for `foo` can be accessed by `$body/json/foo`, the value for `baz` by `$body/json/bar/baz`.
+
+In other cases the content is stored in `$body` as a string and cannot be accessed by XPath.
+
+
 ## `$request`
 
 The `$request` variable contains information about the incoming client request, such as the URL, the request header fields and possibly the query component or cookies, if any were sent.
@@ -226,6 +246,54 @@ paths:
 | https://example.com/api/foo/quuux | /foo/{p1} | /api/foo/quuux | /api/foo/quuux |
 | https://example.com/api/foo/bar/qux | /foo/** | /api/foo/bar/qux | /api/foo |
 | https://example.com/api/bar | /** | /api/bar | /api |
+
+
+## `$upstream`
+
+The `$upstream` variable contains information about upstream responses. The properties for each upstream response are stored with the request ID ([`id` property](/reference/actions/request.md#id) or [`content` attribute](/reference/actions/request.md#syntax)).
+
+* `url` - The request URL (string)
+* `status` - The response status code (integer)
+* `cacheHit` - `true` if the response was served from a cache (see [`use-http-cache` or `force-cache-ttl` request options](/reference/actions/request.md#options)), `false` otherwise
+* `headers` - The response headers, each with a lower-cased field name
+
+Example:
+```xml
+<upstream>
+  <request1>
+    <url>https://httpbin.org/status/200</url>
+    <status number="">200</status>
+    <cacheHit>false</cacheHit>
+    <headers>
+      <date>Thu, 27 Aug 2020 14:12:33 GMT</date>
+      <content-type>text/html; charset=utf-8</content-type>
+      <connection>keep-alive</connection>
+      <server>gunicorn/19.9.0</server>
+      <access-control-allow-origin>*</access-control-allow-origin>
+      <access-control-allow-credentials>true</access-control-allow-credentials>
+    </headers>
+  </request1>
+  <request2>
+    <url>https://httpbin.org/status/500</url>
+    <status number="">500</status>
+    <cacheHit>false</cacheHit>
+    <headers>
+      <date>Thu, 27 Aug 2020 14:12:33 GMT</date>
+      <content-type>text/html; charset=utf-8</content-type>
+      <connection>keep-alive</connection>
+      <server>gunicorn/19.9.0</server>
+      <access-control-allow-origin>*</access-control-allow-origin>
+      <access-control-allow-credentials>true</access-control-allow-credentials>
+    </headers>
+  </request2>
+</upstream>
+```
+
+To check, for example, if the status code of the response with the ID `myRequest` is successful you can use the following XPath expression:
+
+```
+$upstream/myRequest/status = 200
+```
 
 
 ## `$error`
