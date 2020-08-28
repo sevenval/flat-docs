@@ -7,6 +7,7 @@
 - [`FLAT_DEBUG_ALLOW_HEADER`](/reference/debugging.md#request-debugging) to enable debugging using the `Debug` request header, defaults to `false`
 - The [request option](/reference/actions/request.md#options) `force-cache-refresh`
 - The [`ldap-lookup()` function](/reference/functions/ldap-lookup.md)
+- The `cacheHit` property in the [upstream response information (`$upstream`)](/reference/variables.md#usdupstream)
 
 ## Fixed
 
