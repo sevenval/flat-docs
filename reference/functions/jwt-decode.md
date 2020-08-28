@@ -48,5 +48,6 @@ The unpacked web token is stored in `$jwt`, which provides easy access to its co
 
 ## See also
 
-* [`jwt-encode()`](jwt-encode.md)
-* [Encoding and Decoding JWT](/cookbook/jwt.md)
+* [`jwt-encode()`](jwt-encode.md) (reference)
+* [Encoding and Decoding JWT](/cookbook/jwt.md) (cookbook)
+* [Protecting Access using JWT Tokens](/cookbook/x-flat-jwt.md) (cookbook)

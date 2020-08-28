@@ -19,6 +19,8 @@ The action takes a JSON object as its argument. The object may contain nested fi
 
 All name/value pairs of the object are registered for logging.  When the system writes the `flat_access` event the registered fields are included in that log line.
 
+[System log fields](/administration/logging.md#fields) like `timestamp` cannot be overriden.
+
 You can call the action multiple times. Fields of the same name are overwritten. However, nested fields are merged into the previously registered log fields.
 
 ```xml

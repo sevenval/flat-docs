@@ -12,7 +12,7 @@ The `x-flat-jwt` field references an object with fields describing the expected 
 * `key` - REQUIRED. The key to decode the JSON Web Signature (JWS). This can either be specified with a value, or by referencing a file (`file`) or an environment variable (`env`).
 * `alg` - The signing algorithm the JWS is expected to be created with. This can either be specified with a value, or by referencing a file (`file`) or an environment variable (`env`). See the [`algorithm` parameter for `jwt-decode()`](/reference/functions/jwt-decode.md) for more information.
 * `out-var` - The name of the variable in which the JWT is stored (must be a proper variable name, starting with `$`; default: `"$jwt"`).
-* `out-header` - The name of the HTTP header that shall carry the JWT
+* `out-header` - The name of an HTTP request header that shall carry the JWT in upstream requests.
 * `claims` - An object with claims the JWT payload is expected to contain. The field names are the claim names, the expected claim value is specified either with a value, or by referencing a file (`file`) or an environment variable (`env`).
 
 The token is considered valid if all of the following are true:
@@ -21,6 +21,8 @@ The token is considered valid if all of the following are true:
 * the JWT is not expired,
 * the JWT contains the expected claims, if any are configured,
 * the JWT can be stored in a variable.
+
+`$jwt` or the alternative variable specified in `out-var` and the header specified in `out-header` will be unset if the token is not valid.
 
 ## JWT in `Authorization` Header
 
@@ -158,7 +160,7 @@ paths:
 
 ## Forwarding JWT Upstream
 
-The claims of an incoming JWT are stored in `$jwt` – or in any other global
+The claims of an incoming JWT are stored in `$jwt` – or in the global
 [variable](/reference/variables.md) that you specify in the `out-var`
 property of `x-flat-jwt`.
 In a [`request`](/reference/actions/request.md) or
@@ -226,3 +228,7 @@ paths:
       security:
         - JWTHeaderAuth: []
 ```
+
+## See also
+
+* [Protecting Access using JWT Tokens](/cookbook/x-flat-jwt.md) (cookbook)

@@ -1,6 +1,23 @@
 # Changelog
 
-## Unreleased
+## [20200828](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
+### Added
+
+- [`FLAT_DEBUG_ALLOW_HEADER`](/reference/debugging.md#per-request-debugging) to enable debugging using the `Debug` request header, defaults to `false`
+- The [request option](/reference/actions/request.md#options) `force-cache-refresh`
+- The [`ldap-lookup()` function](/reference/functions/ldap-lookup.md)
+- The `cacheHit` property in the [upstream response information (`$upstream`)](/reference/variables.md#usdupstream)
+
+## Fixed
+
+- Empty objects are no longer [logged](/cookbook/custom-logging.md#adding-a-log-field) as empty arrays.
+- The [`json-to-csv()` function](/reference/functions/json-to-csv.md) allows `null` values in array entry objects.
+
+## Changed
+
+The [`log` action](/reference/actions/log.md) can no longer override [system log fields](/administration/logging.md#fields).
+
 
 ## [20200519](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
