@@ -289,7 +289,7 @@ Example:
 </upstream>
 ```
 
-To check, for example, if the status code of the response with `id="myRequest"` is successful you can use the following XPath expression:
+To check, for example, if the status code of the response with the ID `myRequest` is successful you can use the following XPath expression:
 
 ```
 $upstream/myRequest/status = 200
