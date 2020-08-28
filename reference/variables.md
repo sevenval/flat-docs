@@ -255,7 +255,7 @@ The `$upstream` variable contains information about upstream responses. The prop
 * `url` - The request URL (string)
 * `status` - The response status code (integer)
 * `cacheHit` - `true` if the response was served from a cache (see [`use-http-cache` or `force-cache-ttl` request options](/reference/actions/request.md#options)), `false` otherwise
-* ``headers - The response headers, each with a lower-cased field name
+* `headers` - The response headers, each with a lower-cased field name
 
 Example:
 ```xml
@@ -287,6 +287,12 @@ Example:
     </headers>
   </request2>
 </upstream>
+```
+
+To check, for example, if the status code of the response with `id="myRequest"` is successful you can use the following XPath expression:
+
+```
+$upstream/myRequest/status = 200
 ```
 
 
