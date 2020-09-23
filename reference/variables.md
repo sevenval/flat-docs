@@ -94,9 +94,9 @@ begin with `$` followed by a letter and then more letters or numbers.
   <!-- $x = 1 -->
   <eval out="$x">1</eval>
   <!-- $x = $x + 5 -->
-  <eval in="$x" out="$x">{{ . + 5 }}</eval>
+  <eval out="$x">$x + 5</eval>
   <!-- $answer = $x * 7 -->
-  <eval out="$answer">{{ $x * 7 }}</eval>
+  <eval out="$answer">$x * 7</eval>
 </flow>
 ```
 
