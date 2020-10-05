@@ -93,4 +93,5 @@
 * [`name()` ↗](https://developer.mozilla.org/en/XPath/Functions/name)
 * [`namespace-uri()` ↗](https://developer.mozilla.org/en/XPath/Functions/namespace-uri)
 * [`position()` ↗](https://developer.mozilla.org/en/XPath/Functions/position)
+* [`uuid3()` and `uuid4()`](uuid.md)
 * [`xml-parse()`](xml-parse.md)
