@@ -54,13 +54,7 @@ The merged custom log fields are:
 They would appear in the [access log](/administration/logging.md#access-log) like this:
 
 ```json
-{
-  "timestamp": "2019-10-15T15:49:13+00:00",
-  "type": "flat_access",
-  …
-  "name": "alice",
-  "role": "admin"
-}
+{"timestamp": …,"user":{"name":"alice","role":"admin"}}
 ```
 
 Fields with `null` values are not included in the log event. In order to remove a previously registered field, you can unset it with `null` value.
