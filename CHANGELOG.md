@@ -1,12 +1,5 @@
 # Changelog
 
-## Unreleased
-
-### Added
-
-- The [`uuid3()` and `uuid4()` functions](/reference/functions/uuid.md)
-
-
 ## [20200828](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
