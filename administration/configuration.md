@@ -13,6 +13,7 @@ The chapter [Defining Env Vars](/cookbook/envvars.md#defining-env-vars) in the C
 * `FLAT_STATUS_AUTH`: Username and password, separated by a `:` for access to the `php-fpm` and `httpd` status pages. The pages are disabled entirely if `FLAT_STATUS_AUTH` is not set. If enabled, the `httpd` status can be requested via HTTP at `/ServerStatus`, and the php-fpm status at `/FPMStatus?full`.
 * `FLAT_DEBUG_ALLOW_HEADER`: enable [per request debugging](/reference/debugging.md#request-debugging), defaults to `false` unless `FLAT_DEBUG_AUTH` is set.
 * `FLAT_DEBUG_AUTH`: sets a password to protect [per request debugging](/reference/debugging.md#request-debugging).
+* `FIT_FLAT_UID_FORMAT`: use `uuid3` or `uuid4` to switch the format of the `requestID` generated in the logs and the `id` in the DC to UUID version 3 or 4 respectively instead of the Apache httpd unique_id used by default.
 
 ### Request Timeouts
 
