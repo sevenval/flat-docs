@@ -15,4 +15,4 @@ The functions `uuid3()` and `uuid4()` generate a [UUID](https://tools.ietf.org/h
 
 ## See also
 
-* [`FIT_FLAT_UID_FORMAT`](/administration/configuration#miscellaneous)
+* [`FIT_FLAT_UID_FORMAT`](/administration/configuration.md#miscellaneous)
