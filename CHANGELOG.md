@@ -6,6 +6,10 @@
 
 - The [`uuid3()` and `uuid4()` functions](/reference/functions/uuid.md)
 
+### Fixed
+
+- [Path parameters](/reference/openapi/routing.md#path-parameters) were not usable in [error flows](/reference/openapi/routing.md#error-flow)
+
 
 ## [20200828](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
