@@ -1195,3 +1195,24 @@ paths:
               items:
                 type: array
 ```
+
+### `error.xml`
+
+```xml
+<flow>
+  <template>
+    {
+      "CustomError":  {
+        "Message": {{ $error/message }},
+        "Info": {{ $error/info }}
+      }
+    }
+  </template>
+  <set-response-headers>
+    {
+      "Status": {{ $error/status }},
+      "Error-Code": {{ $error/code }}
+    }
+  </set-response-headers>
+</flow>
+```
