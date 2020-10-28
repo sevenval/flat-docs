@@ -5,6 +5,7 @@
 ### Added
 
 - The [`uuid3()` and `uuid4()` functions](/reference/functions/uuid.md)
+- The [`ldap-query()` function](/reference/functions/ldap-query.md)
 
 ### Fixed
 
