@@ -8,7 +8,7 @@
 
 ### Fixed
 
-- [Path parameters](/reference/openapi/routing.md#path-parameters) were not usable in [error flows](/reference/openapi/routing.md#error-flow)
+- [Path parameters](/reference/OpenAPI/routing.md#path-parameters) were not usable in [error flows](/reference/OpenAPI/routing.md#error-flow)
 
 
 ## [20200828](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
