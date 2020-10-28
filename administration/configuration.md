@@ -27,6 +27,10 @@ Use the following environment variables to configure the timeouts used during re
 * `FLAT_MAX_TIMEOUT`: Maximum allowed time in seconds for outgoing HTTP requests.
 * `FLAT_MAX_TIMEOUT_PROCESSES`: Specifies how many PHP-FPM processes are allowed to wait for slow sources at any one time. The lower the threshold value, the earlier slow sources will be blocked.
 
+### php.ini
+
+Arbitrary directives can be merged into `php.ini` by setting environment variables starting with `PHP_INI_`. For example, to set `post_max_size = 100M`, just export `PHP_INI_post_max_size=50M` in your shell before starting `flat` CLI. Refer to the [PHP documentation](https://www.php.net/manual/en/ini.list.php) for a list of directives.
+
 ### PHP-FPM
 
 Some parameters used for PHP-FPM process management can be adjusted using environment variables. Refer to the [PHP-FPM documentation](https://www.php.net/manual/en/install.fpm.configuration.php) for more information.
