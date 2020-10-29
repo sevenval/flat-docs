@@ -6,6 +6,7 @@
 
 - The [`uuid3()` and `uuid4()` functions](/reference/functions/uuid.md)
 - The [`ldap-query()` function](/reference/functions/ldap-query.md)
+- [LDAP TLS configuration](/reference/configuration.md#ldap-tls-configuration)
 
 ### Fixed
 
