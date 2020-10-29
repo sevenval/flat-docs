@@ -31,3 +31,19 @@ The difference is, that you may use _Dynamic Attribute Values_ and if-clauses as
   </flat>
 </config>
 ```
+
+## LDAP TLS Configuration
+
+If you use the [`ldap-lookup()`](/reference/functions/ldap-lookup.md) or
+[`ldap-query()`](/reference/functions/ldap-query.md) function and connect to the LDAP server via TLS
+(`ldaps://...` URL), add the following config setting to your config file:
+
+```xml
+<config>
+  <flat>
+    <ldap cacert-src="path/to/ca-certificate.cer"/>
+  </flat>
+</config>
+```
+
+The path is resolved relative to the config.xml file.
