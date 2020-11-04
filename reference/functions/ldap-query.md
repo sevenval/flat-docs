@@ -1,4 +1,3 @@
-# `ldap-query()`
 
 ```
 OXN-node-set ldap-query(string url, string rdn, string rdnPassword, string base_dn, string search, string attributes)
@@ -6,8 +5,8 @@ OXN-node-set ldap-query(string url, string rdn, string rdnPassword, string base_
 
 The `ldap-query()` function connects to an LDAP server with the given `url`, `rdn` and `rdnPassword`.
 It then performs a query by the given `search`.
-An [OXN](/reference/templating/oxn.md) JSON array is returned with objects containing the found entities' `dn` and additional attributes given by `attributes`.
-If no entities match the query an empty node-set is returned.
+An [OXN](/reference/templating/oxn.md) JSON array is returned with objects containing `dn` and additional attributes given by `attributes` of all the entities that were found.
+If no entities match the query, an empty node-set is returned.
 
 ## Parameters
 
@@ -21,16 +20,17 @@ If no entities match the query an empty node-set is returned.
 
 ## Example
 
-In the following example, the LDAP server is connected with the DN given in the `rdn` and `rdnPassword` POST parameters.
-The given filter is used to search for an entry of a person which is a member of a group `Users` and sAMAccountName containg `doe`.
-In addition to the (default) `dn`, the `sAMAccountName`, `displayName` and `mail` from the found entries are added to the results.
+In the following example, FLAT connects to the LDAP server with the DN given in the `rdn` and `rdnPassword` POST parameters.
+The given filter is used to search for an entry of a person which is a member of a group `Users` and sAMAccountName containing `doe`.
+In addition to the (default) `dn`, the `sAMAccountName`, `displayName` and `mail` from the found entries are included to the results.
 
 ```xml
 <flow>
   <eval out="$search">concat("(&amp;(objectClass=person)(memberOf=CN=Users,ou=People,dc=example,dc=com)(sAMAccountName=*doe*))")</eval>
   <eval out="$attributes">"sAMAccountName,displayName,mail"</eval>
+  <eval out="$ldap_url">"ldap://ad.example.com"</eval>
 
-  <eval out="$ldap">ldap-lookup($ldap_settings/url, $request/post/rdn, $request/post/rdnPassword, "dc=example,dc=com", $search, $attributes)</eval>
+  <eval out="$ldap">ldap-lookup($ldap_url, $request/post/rdn, $request/post/rdnPassword, "dc=example,dc=com", $search, $attributes)</eval>
   <error if="not($ldap)">
   {
     "status": 403,
