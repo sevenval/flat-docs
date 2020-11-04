@@ -22,7 +22,7 @@ If no entities match the query, an empty node-set is returned.
 
 In the following example, FLAT connects to the LDAP server with the DN given in the `rdn` and `rdnPassword` POST parameters.
 The given filter is used to search for an entry of a person which is a member of a group `Users` and sAMAccountName containing `doe`.
-In addition to the (default) `dn`, the `sAMAccountName`, `displayName` and `mail` from the found entries are included to the results.
+In addition to the (default) `dn`, the `sAMAccountName`, `displayName` and `mail` from the found entries are included in the results.
 
 ```xml
 <flow>
