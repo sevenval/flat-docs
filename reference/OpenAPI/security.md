@@ -14,12 +14,16 @@ The `x-flat-jwt` field references an object with fields describing the expected 
 * `out-var` - The name of the variable in which the JWT is stored (must be a proper variable name, starting with `$`; default: `"$jwt"`).
 * `out-header` - The name of an HTTP request header that shall carry the JWT in upstream requests.
 * `claims` - An object with claims the JWT payload is expected to contain. The field names are the claim names, the expected claim value is specified either with a value, or by referencing a file (`file`) or an environment variable (`env`).
+* `scope-claim` - The name of the claim, storing the scope of the token (string; default: `scope`). The claim value must either be
+  * a string containing a whitespace-separated list of scopes (`"scope1 scope2 scope3"`) or
+  * an array with a string entry for each scope (`["scope1", "scope2", "scope3"]`).
 
 The token is considered valid if all of the following are true:
 * the JWS can be decoded,
 * the JWS has a proper JWT,
 * the JWT is not expired,
 * the JWT contains the expected claims, if any are configured,
+* the scope of the token contains all required scopes as specified in the security requirement,
 * the JWT can be stored in a variable.
 
 `$jwt` or the alternative variable specified in `out-var` and the header specified in `out-header` will be unset if the token is not valid.
@@ -40,6 +44,7 @@ securityDefinitions:
       alg:
         env: FLAT_JWT_ALG
       out-var: $header_token
+      scope-claim: permission
       claims:
         aud:
           env: FLAT_JWT_AUDIENCE
@@ -49,6 +54,7 @@ The token is expected to be a bearer token in the `Authorization` header.
 The key is read from a file named `secret.pem` relative to the `swagger.yaml`.
 The signing algorithm is read from the `FLAT_JWT_ALG` environment variable.
 The JWT will be stored in the `$header_token` variable.
+The scope of the token is specified in a `permission` claim.
 The JWT payload is expected to contain an `aud` claim with a value read from the `FLAT_JWT_AUDIENCE` environment variable.
 
 If the request does not contain an `Authorization` header with the proper bearer structure, or the token is invalid, this security scheme will fail.
@@ -98,8 +104,12 @@ paths:
 In Swagger, security schemes can be specified at the top level (default security) or for specific operations.
 With FLAT, you can also specify a security scheme for a specific path (default security for all operations on the path).
 
-In the following example, a `GET` request to `/foo` must satisfy the security scheme named `JWTHeaderAuth`, while e.g. a `POST` or `PUT` request to `/foo` must satisfy the security scheme named `JWTCookieAuth`.
+In the following example, a `GET` request to `/foo` must satisfy the security scheme named `JWTHeaderAuth`,
+a `POST` request to `/foo` must satisfy the security scheme named `JWTHeaderAuth` and the token must have both `write:foo` and `read:bar` scopes,
+while e.g. a `DELETE` or `PUT` request to `/foo` must satisfy the security scheme named `JWTCookieAuth`.
 All other requests must satisfy either the `JWTHeaderAuth` **or** `JWTCookieAuth` security schemes.
+
+**Note:** While in Swagger 2.0, specifying scopes in security requirements is limited to OAuth2 security definitions, FLAT has no such limitation.
 
 ```yaml
 # default
@@ -115,6 +125,10 @@ paths:
       # specific for GET on /foo
       security:
         - JWTHeaderAuth: []
+    post:
+      # specific for POST on /foo
+      security:
+        - JWTHeaderAuth: [ write:foo, read:bar ]
 ```
 
 If a request does not pass the security check, it is rejected with status code `403` and error code `3206`, and the [error flow](/reference/OpenAPI/routing.md#error-flow) is run, if configured.
@@ -135,6 +149,7 @@ securityDefinitions:
       alg:
         env: FLAT_JWT_ALG
       out-var: $header_token
+      scope-claim: permission
       claims:
         aud:
           env: FLAT_JWT_AUDIENCE
@@ -156,6 +171,10 @@ paths:
     get:
       security:               # token must be in Authorization header
         - JWTHeaderAuth: []
+    post:
+      # specific for POST on /foo
+      security:
+        - JWTHeaderAuth: [ write:foo, read:bar ]
 ```
 
 ## Forwarding JWT Upstream
