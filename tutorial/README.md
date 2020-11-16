@@ -818,12 +818,12 @@ To abort the flow in case the upstream request or response is invalid or the req
 To see the effect, shorten the `hello-world` of the repository name to just `hello` in `upstream_request.xml`:
 
 ```xml
-      …
+    …
+    [
+      "q=hello",
       "repo:leachim6/hello",
       <!--              ⬆ ⬆ ⬆ -->
       …
-    ]
-  </template>
 ```
 
 If we request our API
@@ -891,12 +891,12 @@ Error-Code: 3202
 Now revert the change to `upstream_request.xml`:
 
 ```xml
-      …
+    …
+    [
+      "q=hello",
       "repo:leachim6/hello-world",
       <!--              ⬆ ⬆ ⬆ -->
       …
-    ]
-  </template>
 ```
 
 
