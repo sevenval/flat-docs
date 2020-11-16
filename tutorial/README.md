@@ -815,19 +815,21 @@ To abort the flow in case the upstream request or response is invalid or the req
   </request>
 ```
 
-To see the effect, change the parameter name `language` to `lang` in upstream_request.xml:
+To see the effect, shorten the `hello-world` of the repository name to just `hello` in `upstream_request.xml`:
 
 ```xml
+    …
+    [
+      "q=hello",
+      "repo:leachim6/hello",
+      <!--              ⬆ ⬆ ⬆ -->
       …
-      {{ concat("lang:", $request/params/language) }}
-      <!--       ⬆ ⬆ ⬆ -->
-    ]
-  </template>
 ```
 
 If we request our API
-```
-curl -si localhost:8080/html
+
+```bash
+$ curl -si localhost:8080/html
 ```
 
 instead of the output
@@ -835,8 +837,6 @@ instead of the output
 ```
 HTTP/1.1 404 Not Found
 …
-```
-```
 {"error": "Unknown language"}
 ```
 
@@ -845,9 +845,7 @@ we now get
 ```
 HTTP/1.1 400 Bad Request
 …
-```
-```json
-{"error":{"message":"Upstream Request Validation Failed","status":400,"requestID":"main","info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello-world filename:html lang:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."],"code":3202}}
+{"error":{"message":"Upstream Response Validation Failed","status":502,"requestID":"main","info":["No definition for status code 422 and no 'default'.","Upstream status: 422 Unprocessable Entity"],"code":3203}}
 ```
 
 If you prefer to provide a custom error document, you can configure an error flow. Just create `error.xml`:
@@ -887,19 +885,18 @@ HTTP/1.1 400 Bad Request
 …
 Error-Code: 3202
 …
-```
-```json
-{"CustomError":{"Message":"Upstream Request Validation Failed","Info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello-world filename:html lang:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."]}}
+{"CustomError":{"Message":"Upstream Request Validation Failed","Info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello filename:html language:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."]}}
 ```
 
-Now revert the change to upstream_request.xml:
+Now revert the change to `upstream_request.xml`:
 
 ```xml
+    …
+    [
+      "q=hello",
+      "repo:leachim6/hello-world",
+      <!--              ⬆ ⬆ ⬆ -->
       …
-      {{ concat("language:", $request/params/language) }}
-      <!--       ⬆ ⬆ ⬆ -->
-    ]
-  </template>
 ```
 
 
@@ -1194,4 +1191,25 @@ paths:
                 type: integer
               items:
                 type: array
+```
+
+### `error.xml`
+
+```xml
+<flow>
+  <template>
+    {
+      "CustomError":  {
+        "Message": {{ $error/message }},
+        "Info": {{ $error/info }}
+      }
+    }
+  </template>
+  <set-response-headers>
+    {
+      "Status": {{ $error/status }},
+      "Error-Code": {{ $error/code }}
+    }
+  </set-response-headers>
+</flow>
 ```
