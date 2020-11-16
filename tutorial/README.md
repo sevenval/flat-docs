@@ -885,7 +885,7 @@ HTTP/1.1 400 Bad Request
 …
 Error-Code: 3202
 …
-{"CustomError":{"Message":"Upstream Request Validation Failed","Info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello-world filename:html lang:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."]
+{"CustomError":{"Message":"Upstream Request Validation Failed","Info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello-world filename:html lang:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."]}}
 ```
 
 Now revert the change to `upstream_request.xml`:
