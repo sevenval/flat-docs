@@ -815,7 +815,7 @@ To abort the flow in case the upstream request or response is invalid or the req
   </request>
 ```
 
-To see the effect, shorten the `hello-world` of the repository name to just `hello` in upstream_request.xml:
+To see the effect, shorten the `hello-world` of the repository name to just `hello` in `upstream_request.xml`:
 
 ```xml
       …
@@ -827,8 +827,9 @@ To see the effect, shorten the `hello-world` of the repository name to just `hel
 ```
 
 If we request our API
-```
-curl -si localhost:8080/html
+
+```bash
+$ curl -si localhost:8080/html
 ```
 
 instead of the output
@@ -836,8 +837,6 @@ instead of the output
 ```
 HTTP/1.1 404 Not Found
 …
-```
-```
 {"error": "Unknown language"}
 ```
 
@@ -846,8 +845,6 @@ we now get
 ```
 HTTP/1.1 400 Bad Request
 …
-```
-```json
 {"error":{"message":"Upstream Response Validation Failed","status":502,"requestID":"main","info":["No definition for status code 422 and no 'default'.","Upstream status: 422 Unprocessable Entity"],"code":3203}}
 ```
 
@@ -888,12 +885,10 @@ HTTP/1.1 400 Bad Request
 …
 Error-Code: 3202
 …
-```
-```json
 {"CustomError":{"Message":"Upstream Request Validation Failed","Info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello-world filename:html lang:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."]
 ```
 
-Now revert the change to upstream_request.xml:
+Now revert the change to `upstream_request.xml`:
 
 ```xml
       …
