@@ -33,6 +33,11 @@ $ sudo mv flat /usr/local/bin
 > You could also put `flat` into your `~/bin/` directory. If that is not
 > already in your `$PATH`, you can add it with `export PATH="$PATH:~/bin"`.
 
+If you do not have `bash` installed on your system, you can use `docker-compose` as an alternative to the flat-cli.
+In addition to all the configuration files used in this tutorial, the repository
+[FLAT tutorial files](https://github.com/sevenval/flat-tutorial-files) also provides `docker-compose.yml` files to
+get you started. Refer to the (accompanying documentation)[https://github.com/sevenval/flat-tutorial-files/blob/main/README.md] for more information.
+
 ## Getting Started
 
 Let's create a workspace for our little project. We call it `hello-world` and create a directory with that name:
@@ -1061,155 +1066,6 @@ Besides the built-in debug information, custom debug output can help understand 
   …
 ```
 
-## Complete Configuration
+## Configuration Files
 
-Here are the complete configuration files:
-
-### `hello.xml`
-
-```xml
-<flow>
-  <if test="$request/get/mock or $request/headers/mock">
-    <!-- Use mock.json when requested for example with "?mock" or the header "Mock: 1" -->
-    <copy in="files/mock.json"/>
-  </if>
-  <else>
-    <sub-flow src="upstream_request.xml"/>
-  </else>
-
-  <template out="$count">{{ total_count ?? 0}}</template>
-
-  <if test="$count = 0">
-    <echo mime="application/json" status="404">{"error": "Unknown language"}</echo>
-  </if>
-
-  <template>
-    {{$repo_url  := "https://raw.githubusercontent.com/leachim6/hello-world" }}
-    {{$file_path := substring-after(items/value[1]/html_url, '/blob') }}
-
-    {"url": {{ concat($repo_url, $file_path) }}}
-  </template>
-</flow>
-```
-
-### `upstream_request.xml`
-
-```xml
-<flow>
-  <template out="$query_parameters">
-    [
-      "q=hello",
-      "repo:leachim6/hello-world",
-      {{ concat("filename:", $request/params/language) }},
-      {{ concat("language:", $request/params/language) }}
-    ]
-  </template>
-
-  <request>
-    {
-      "url": "https://api.github.com/search/code",
-      "query": {{ join(" ", $query_parameters) }},
-      "options": {
-        "definition": "upstream.yaml",
-        "validate-request": true,
-        "validate-response": true,
-        "exit-on-error": true
-      }
-    }
-  </request>
-</flow>
-```
-
-### `swagger.yaml`
-
-```yaml
-swagger: "2.0"
-info:
-  version: "1.0"
-  title: Hello World!
-x-flat-validate:
-  request: true
-  response: true
-x-flat-error:
-  flow: error.xml
-paths:
-  /{language}:
-    get:
-      x-flat-flow: hello.xml
-      parameters:
-        - name: language
-          in: path
-          required: true
-          type: string
-          pattern: ^[a-zA-Z0-9]+$
-      produces:
-        - application/json
-      responses:
-        200:
-          description: URL to a "Hello World" snippet
-          schema:
-            type: object
-            required:
-              - url
-            properties:
-              url:
-                type: string
-                pattern: ^https://raw.githubusercontent.com/
-```
-
-### `upstream.yaml`
-
-```yaml
-swagger: "2.0"
-info:
-  version: "1.0"
-  title: GitHub Search API
-host: api.github.com
-schemes:
-  - https
-paths:
-  /search/code:
-    get:
-      parameters:
-        - name: q
-          in: query
-          required: true
-          type: string
-          pattern: ^hello repo:leachim6/hello-world filename:\w+ language:\w+$
-      produces:
-        - application/json
-      responses:
-        200:
-          description: GitHub code search results
-          schema:
-            type: object
-            required:
-              - total_count
-              - items
-            properties:
-              total_count:
-                type: integer
-              items:
-                type: array
-```
-
-### `error.xml`
-
-```xml
-<flow>
-  <template>
-    {
-      "CustomError":  {
-        "Message": {{ $error/message }},
-        "Info": {{ $error/info }}
-      }
-    }
-  </template>
-  <set-response-headers>
-    {
-      "Status": {{ $error/status }},
-      "Error-Code": {{ $error/code }}
-    }
-  </set-response-headers>
-</flow>
-```
+The complete configuration files can be found in the companion repository [FLAT tutorial files](https://github.com/sevenval/flat-tutorial-files).
