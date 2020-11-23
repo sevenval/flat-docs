@@ -16,3 +16,8 @@ In case we have to deal with a slow upstream system, the [various timeout option
 ```
 
 Without that `timeout` option the request will be aborted after three seconds – FLAT's default timeout setting.
+
+## See also
+
+* [`request` action timeouts](/reference/actions/request.md#options) (Reference)
+* [default timeouts](/administration/configuration.md#request-timeouts) (Administration)
