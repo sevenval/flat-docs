@@ -17,6 +17,7 @@ The `x-flat-jwt` field references an object with fields describing the expected 
 * `scope-claim` - The name of the claim, storing the scope of the token (string; default: `scope`). The claim value must either be
   * a string containing a whitespace-separated list of scopes (`"scope1 scope2 scope3"`) or
   * an array with a string entry for each scope (`["scope1", "scope2", "scope3"]`).
+* `post-check-flow` - The path to a flow executed after the JWT is checked and found valid. In this flow, e.g. additional checks can be implemented (use the [`error` action](/reference/actions/error.md) to throw errors).
 
 The token is considered valid if all of the following are true:
 * the JWS can be decoded,
@@ -162,6 +163,16 @@ securityDefinitions:
       key:
         env: FLAT_COOKIE_SECRET
       out-var: $cookie_token
+  JWTCookieAuth2:
+    type: apiKey
+    in: header
+    name: Cookie
+    x-flat-cookiename: authtoken2
+    x-flat-jwt:
+      key:
+        env: FLAT_COOKIE_SECRET
+      out-var: $cookie_token2
+      post-check-flow: check-cookie-jwt.xml
 security:                     # alternatives: token in Authorization header or authtoken cookie
   - JWTHeaderAuth: []
   - JWTCookieAuth: []
@@ -175,6 +186,34 @@ paths:
       # specific for POST on /foo
       security:
         - JWTHeaderAuth: [ write:foo, read:bar ]
+  /projects/{p}:
+    get:
+      security:
+        - JWTCookieAuth2: []
+      parameters:
+        - name: p
+          in: path
+          type: string
+          required: true
+```
+
+check-cookie-jwt.xml (checking whether the value of the `pid` JWT claim equals the `p` request path parameter):
+
+```xml
+<flow>
+  <log>
+  {
+    "token_id": {{ $cookie_token2/pid }},
+    "path_id": {{ $request/params/p }}
+  }
+  </log>
+  <error if="not($cookie_token2/pid) or $cookie_token2/pid != $request/params/p">
+  {
+    "status": 401,
+    "message": "Token is not applicable for this project."
+  }
+  </error>
+</flow>
 ```
 
 ## Forwarding JWT Upstream
