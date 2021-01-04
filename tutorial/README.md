@@ -369,10 +369,10 @@ Let's try again:
 $ curl --silent localhost:8080/..%2fswagger.yaml%23 | jq
 {
   "error": {
-    "message": "Input Validation Failed",
+    "message": "Input validation failed",
      …
     "info": [
-      "Pattern constraint violated in path for language: Does not match the regex pattern ^[a-zA-Z0-9]+$."
+      "Pattern constraint violated in path for language: '../swagger.yaml#' does not match the pattern '^[a-zA-Z0-9]+$'."
     ]
   }
 }
@@ -644,14 +644,14 @@ x-flat-validate:
 If we now alter the domain name in the second template of our flow to `flaw.githubusercontent.com`, we get a validation error:
 
 ```bash
-$ curl --silent localhost:8080/javascript | jq
+$ curl --silent localhost:8080/json | jq
 {
   "error": {
-    "message": "Output Validation Failed",
+    "message": "Client response validation failed",
     "status": 500,
     "requestID": "XNrzofUrpUX@vMuN6J31EwAAADQ",
     "info": [
-      "Pattern constraint violated in body for code: Does not match the regex pattern ^https://raw.githubusercontent.com/."
+      "Pattern constraint violated in body for url: 'https://flaw.githubusercontent.com/leachim6/hello-world/a5df0ebf101fbb762604717ad10165ad7d4a5317/j/json.json' does not match the pattern '^https://raw.githubusercontent.com/'."
     ]
   }
 }
@@ -848,7 +848,7 @@ HTTP/1.1 404 Not Found
 we now get
 
 ```
-HTTP/1.1 400 Bad Request
+HTTP/1.1 502 Bad Gateway
 …
 {"error":{"message":"Upstream Response Validation Failed","status":502,"requestID":"main","info":["No definition for status code 422 and no 'default'.","Upstream status: 422 Unprocessable Entity"],"code":3203}}
 ```
@@ -886,11 +886,11 @@ x-flat-error:           # ⬅
 We now get
 
 ```
-HTTP/1.1 400 Bad Request
+HTTP/1.1 502 Bad Gateway
 …
 Error-Code: 3202
 …
-{"CustomError":{"Message":"Upstream Request Validation Failed","Info":["Pattern constraint violated in query for q: 'hello repo:leachim6\/hello filename:html language:html' does not match the pattern '^hello repo:leachim6\/hello-world filename:\\w+ language:\\w+$'."]}}
+{"CustomError":{"Message":"Upstream Response Validation Failed","Info":["No definition for status code 422 and no 'default'.","Upstream status: 422 Unprocessable Entity"]}}
 ```
 
 Now revert the change to `upstream_request.xml`:
