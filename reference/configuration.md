@@ -48,7 +48,7 @@ If you use the [`ldap-lookup()`](/reference/functions/ldap-lookup.md) or
 
 The path is resolved relative to the config.xml file.
 
-## LDAP Timeouts
+## LDAP Timeout
 
 LDAP requests via [`ldap-lookup()`](/reference/functions/ldap-lookup.md) or
 [`ldap-query()`](/reference/functions/ldap-query.md) use `FLAT_MAX_TIMEOUT` as the default timeout.
