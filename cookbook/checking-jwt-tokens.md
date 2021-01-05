@@ -1,6 +1,6 @@
 # Performing Additional Checks on JWT Access Tokens
 
-Before you start, make sure that you read the cookbook [Protecting Access using JWT Tokens](x-flat-jwt.md).
+Before you start, make sure that you have read the cookbook chapter [Protecting Access using JWT Tokens](x-flat-jwt.md).
 
 Let's start with the following swagger definition:
 
@@ -61,7 +61,7 @@ In addition to this, FLAT provides features for further checks:
 
 ## Checking Claims
 
-You can e.g. make sure that the token was issued by a certain token provider (`iss` claim)
+For example, you can ensure that the token was issued by a specific token provider (`iss` claim)
 
 ```yaml
 …
@@ -132,7 +132,7 @@ Let's restrict the use of the `PATCH` operation to specially authorized requests
 …
 ```
 
-FLAT will now look for a scope claim (default claim name is `scope`) with a value of `write`. If the `write` scope is present (perhaps among others, like in `"scope": "read write create"`), the request passes, otherwise it is rejected.
+FLAT will now look for a scope claim (default claim name is `scope`) with a value of `write`. If the `write` scope is present (possibly along with further scopes, like in `"scope": "read write create"`), the request passes, otherwise it is rejected.
 
 BTW, you can specify another claim name for scopes using the `scope-claim` property of `x-flat-jwt`:
 
@@ -148,7 +148,7 @@ BTW, you can specify another claim name for scopes using the `scope-claim` prope
 
 ## The post-check flow
 
-Lastly, we want to check that a certain non-standard JWT claim `pid` matches the path param `p` (the project identifier).
+Finally, we want to check that a certain non-standard JWT claim `pid` matches the path param `p` (the project identifier).
 
 We use the post-check-flow feature:
 
@@ -189,7 +189,7 @@ A JWT with the claim
   …
 }
 ```
-will give access to `https://my-api.com/projects/ABC123`, but **not** to `https://my-api.com/projects/DEF456`.
+will permit access to `https://my-api.com/projects/ABC123`, but **not** to `https://my-api.com/projects/DEF456`.
 
 
 ## All files together
