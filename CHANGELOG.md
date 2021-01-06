@@ -9,6 +9,7 @@
 - [LDAP TLS configuration](/reference/configuration.md#ldap-tls-configuration) and [LDAP timeout](/reference/configuration.md#ldap-timeout)
 - The [`scope-claim`](/reference/OpenAPI/security.md#the-x-flat-jwt-field) and [`post-check-flow`](/reference/OpenAPI/security.md#the-x-flat-jwt-field) properties
 - Specifying the [required token scope](/reference/OpenAPI/security.md#applying-security-schemes)
+- [Merging directives into `php.ini`](/administration/configuration.md#phpini) via environment variables
 
 ### Fixed
 
