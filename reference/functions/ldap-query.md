@@ -1,3 +1,4 @@
+# `ldap-query()`
 
 ```
 OXN-node-set ldap-query(string url, string rdn, string rdnPassword, string base_dn, string search, string attributes)
