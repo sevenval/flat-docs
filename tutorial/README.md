@@ -369,7 +369,7 @@ Let's try again:
 $ curl --silent localhost:8080/..%2fswagger.yaml%23 | jq
 {
   "error": {
-    "message": "Input validation failed",
+    "message": "Client request validation failed",
      …
     "info": [
       "Pattern constraint violated in path for language: '../swagger.yaml#' does not match the pattern '^[a-zA-Z0-9]+$'."
