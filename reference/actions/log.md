@@ -22,6 +22,7 @@ All name/value pairs of the object are registered for logging.  When the system 
 [System log fields](/administration/logging.md#fields) like `timestamp` cannot be overriden.
 
 You can call the action multiple times. Fields of the same name are overwritten. However, nested fields are merged into the previously registered log fields.
+The order of fields is maintained.
 
 ```xml
 <log>
@@ -48,6 +49,12 @@ The merged custom log fields are:
     "role": "admin"
   }
 }
+```
+
+They would appear in the [access log](/administration/logging.md#access-log) like this:
+
+```json
+{"timestamp": …,"user":{"name":"alice","role":"admin"}}
 ```
 
 Fields with `null` values are not included in the log event. In order to remove a previously registered field, you can unset it with `null` value.

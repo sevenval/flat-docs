@@ -86,6 +86,7 @@
 * [`html-parse()`](html-parse.md)
 * [`id()` ↗](https://developer.mozilla.org/en/XPath/Functions/id)
 * [`ldap-lookup()`](ldap-lookup.md)
+* [`ldap-query()`](ldap-query.md)
 * [`lang()` ↗](https://developer.mozilla.org/en/XPath/Functions/lang)
 * [`last()` ↗](https://developer.mozilla.org/en/XPath/Functions/last)
 * [`local-name()` ↗](https://developer.mozilla.org/en/XPath/Functions/local-name)
@@ -93,4 +94,5 @@
 * [`name()` ↗](https://developer.mozilla.org/en/XPath/Functions/name)
 * [`namespace-uri()` ↗](https://developer.mozilla.org/en/XPath/Functions/namespace-uri)
 * [`position()` ↗](https://developer.mozilla.org/en/XPath/Functions/position)
+* [`uuid3()` and `uuid4()`](uuid.md)
 * [`xml-parse()`](xml-parse.md)
