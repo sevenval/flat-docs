@@ -2,6 +2,8 @@
 
 ## [Protecting Access using JWT Tokens](x-flat-jwt.md)
 
+## [Performing Additional Checks on JWT Access Tokens](checking-jwt-tokens.md)
+
 ## [Proxying Requests to Upstream APIs (Swagger)](proxy-requests.md)
 
 ## [Testing Templates](test-templates.md)

@@ -347,6 +347,8 @@ init.xml:
 </flow>
 ```
 
+If you want to know, how to perform some additional checks on the JWT, visit the cookbook [Performing Additional Checks on JWT Access Tokens](checking-jwt-tokens.md).
+
 ## See also
 
 * [FLAT Security](/reference/OpenAPI/security.md) (reference)
