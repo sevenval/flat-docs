@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- The [`validate-request-security` request option](/reference/actions/request.md#options)
+
+
 ## [20210107](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
