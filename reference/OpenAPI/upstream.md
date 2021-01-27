@@ -14,6 +14,7 @@ The configuration takes place in the [`request` action](/reference/actions/reque
 
 * `definition` - The path to the swagger definition file (type: `string`)
 * `validate-request` - Whether to validate the request (valid values: `true`, `false`, "report-only", default: `false`)
+* `validate-request-security` - Whether to validate the request security requirements according to `security` in the swagger definition (valid values: `true`, `false`, "report-only", default: `false`)
 * `validate-response` - Whether to validate the response (valid values: `true`, `false`, "report-only", default: `false`)
 
 ### Error Handling
@@ -29,6 +30,22 @@ The configuration takes place in the [`request` action](/reference/actions/reque
     "requestID": "W@W8DrjPEMPxyqu4zAL4PAAAABg",
     "info": [
        "Invalid method post."
+     ]
+  }
+}
+```
+
+If with `validate-request-security: true` a request security violation is found, the request _will not be sent_. The response will be an [error document](validation.md#system-error-document) with status `401 Unauthorized`.
+
+```json
+{
+  "error": {
+    "message": "Upstream Request Security Validation Failed",
+    "error": 3207,
+    "status": 401,
+    "requestID": "W@W8DrjPEMPxyqu4zAL4PAAAABg",
+    "info": [
+       "Header Security (HeaderAuth): Missing header My-Header"
      ]
   }
 }
