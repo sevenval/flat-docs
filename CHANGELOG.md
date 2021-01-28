@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- [`set-env`](/reference/actions/set-env.md) now does not produce unnecessary quotes for numeric values
+
+
 ## [20210107](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
