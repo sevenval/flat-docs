@@ -35,7 +35,7 @@ The configuration takes place in the [`request` action](/reference/actions/reque
 }
 ```
 
-If with `validate-request-security: true` a request security violation is found, the request _will not be sent_. The response will be an [error document](validation.md#system-error-document) with status `401 Unauthorized`.
+If `validate-request-security` is `true` and the request does not fullfill the security requirements, the request _will not be sent_. The response will be an [error document](validation.md#system-error-document) with status `401 Unauthorized`.
 
 ```json
 {
