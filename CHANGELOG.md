@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- The [`validate-request-security` request option](/reference/actions/request.md#options)
+
 ### Fixed
 
 - [`set-env`](/reference/actions/set-env.md) now does not produce unnecessary quotes for numeric values
