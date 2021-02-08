@@ -79,6 +79,22 @@ If the result of that expression is `false`, the block will be skipped and the c
 
 The block associated with the first matching conditional expression will be executed – or if all  expressions were evaluated to `false`, the `else` block will be executed.
 
+### `if` attribute
+
+The `if` attribute allows for conditional execution of a single action:
+
+```xml
+<flow>
+  …
+  <error if="$upstream/my_request/status != 200">
+  {
+    …
+  }
+  </error>
+  …
+</flow>
+```
+
 ### `return`
 
 `return` quits the current [sub flow](actions/sub-flow.md) and returns to its parent flow.
