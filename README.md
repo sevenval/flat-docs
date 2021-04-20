@@ -1,10 +1,16 @@
 # FLAT
 
 _FLAT_ - the "Frontend Layer API Toolkit" by [Sevenval](https://www.sevenval.com/) is designed
-for easy decoupling frontend from backend in modern web applications. 
+for easy decoupling frontend from backend in modern web applications.
 
-This documentation helps building maintainable JSON-based web APIs
-on top of FLAT.
+This documentation helps building maintainable JSON-based web APIs on
+top of FLAT.
+
+FLAT is the preview version of
+[_Couper_](https://github.com/avenga/couper) –
+[Avenga's](https://www.avenga.com) lightweight API gateway designed
+to support developers in building and operating API-driven Web
+projects. See [couper.io](https://couper.io/) for more details.
 
 ## [Tutorial](tutorial/README.md)
 
@@ -27,7 +33,3 @@ Learn how to deploy and run FLAT APIs in the [Administration](administration/REA
 ## [Changelog](CHANGELOG.md)
 
 See information about released features in the [Changelog](CHANGELOG.md).
-
-## [FLAT's open source successor: Couper](https://github.com/avenga/couper)
-
-[Couper](https://github.com/avenga/couper) is [Avenga's](https://www.avenga.com) lightweight open source API gateway designed to support developers in building and running API-driven Web projects.
