@@ -30,4 +30,4 @@ See information about released features in the [Changelog](CHANGELOG.md).
 
 ## [FLAT's open source successor: Couper](https://github.com/avenga/couper)
 
-Couper is Avenga's lightweight open source API gateway designed to support developers in building and running API-driven Web projects. 
+[Couper](https://github.com/avenga/couper) is [Avenga's](https://www.avenga.com) lightweight open source API gateway designed to support developers in building and running API-driven Web projects.
