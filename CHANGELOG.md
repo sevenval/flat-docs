@@ -8,6 +8,7 @@
 
 ### Fixed
 
+- More helpful error message for misspelled type names in [`Swagger schemas`](/reference/OpenAPI/README.md)
 - [`set-env`](/reference/actions/set-env.md) now does not produce unnecessary quotes for numeric values
 - Problem in the [`split()` function](/reference/functions/split.md), if called with a string containing an ampersand
 - Send `Vary: Origin` response headers for non-preflight requests if [CORS](/reference/OpenAPI/cors.md) is enabled but `Origin` was not sent
