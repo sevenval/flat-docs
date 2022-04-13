@@ -1,5 +1,17 @@
 # Changelog
 
+##  [20220413](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
+
+### Added
+
+- provide request info as a HAR file if [`flat/collect-request-info`](/reference/configuration.md) is enabled
+
+### Fixed
+
+- More helpful error message for misspelled type names in [`Swagger schemas`](/reference/OpenAPI/README.md)
+- don't leak Authorization in FLAT::getRequestInfo()
+- fixed a mixup of JSON DOM representation styles
+
 ##  [20210623](https://hub.docker.com/r/sevenvaltechnologies/flatrunner/tags)
 
 ### Added
